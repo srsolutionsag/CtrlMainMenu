@@ -70,15 +70,15 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	 */
 	public function isActive() {
 		if (! $this->isActiveStateCached()) {
-			$this->setCachedActiveState(false);
+			$this->setCachedActiveState(true);
 			$classes = array();
 			foreach (explode(',', $this->getGuiClass()) as $classname) {
 				$classes[] = strtolower($classname);
 			}
 			foreach ($this->ctrl->getCallHistory() as $class) {
 				$strtolower = strtolower($class['class']);
-				if (in_array($strtolower, $classes)) {
-					$this->setCachedActiveState(true);
+				if (!in_array($strtolower, $classes)) {
+					$this->setCachedActiveState(false);
 					break;
 				}
 			}

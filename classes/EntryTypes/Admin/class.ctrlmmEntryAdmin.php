@@ -70,6 +70,7 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	public function checkPermission() {
 		global $rbacsystem;
 
-		return $rbacsystem->checkAccess('write', SYSTEM_FOLDER_ID);
+		// As in ilMainMenuGUI::_checkAdministrationPermission() only visible is required
+		return $rbacsystem->checkAccess('visible', SYSTEM_FOLDER_ID);
 	}
 }

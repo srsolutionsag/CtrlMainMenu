@@ -31,7 +31,7 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 
 		$this->html->setVariable('CSS_PREFIX', ctrlmmMenu::getCssPrefix());
 		$this->html->setVariable('TARGET', $this->entry->getTarget());
-		$this->html->setVariable('STATE', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_INACTIVE));
+		$this->html->setVariable('STATE', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE));
 		$this->html->setVariable('CTRLMM_CLASS', $this->entry->isLoggedIn() ? 'ctrlMMLoggedIn' : 'ctrlMMLoggedout');
 
 		if ($this->entry->isLoggedIn()) {

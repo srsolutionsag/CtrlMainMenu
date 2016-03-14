@@ -95,10 +95,10 @@ class ctrlmmEntryGUI {
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', 'ctrl_mm_e_' . ($entry_div_id) ? $entry_div_id : $this->entry->getId());
 		$this->html->setVariable('LINK', $this->entry->getLink());
-		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
+		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('TARGET', $this->entry->getTarget());
-		$cssActive = ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_ACTIVE);
-		$cssInactive = ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_INACTIVE);
+		$cssActive = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_ACTIVE);
+		$cssInactive = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE);
 		$this->html->setVariable('STATE', ($this->entry->isActive() ? $cssActive : $cssInactive));
 
 		return $this->html->get();

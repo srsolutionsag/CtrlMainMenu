@@ -57,14 +57,14 @@ class ctrlmmMenuGUI {
 		$this->object = new ctrlmmMenu($id);
 
 		$tpl->addCss($this->pl->getDirectory() . '/templates/css/ctrlmm.css');
-		if (ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX) == 'fb') {
+		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX) == 'fb') {
 			$tpl->addCss($this->pl->getDirectory() . '/templates/css/fb.css');
 		}
-		if (ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_SIMPLE_FORM_VALIDATION)) {
+		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_SIMPLE_FORM_VALIDATION)) {
 			$tpl->addCss($this->pl->getDirectory() . '/templates/css/forms.css');
 			$tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/forms.js');
 		}
-		if (ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_DOUBLECLICK_PREVENTION)) {
+		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_DOUBLECLICK_PREVENTION)) {
 			$tpl->addCss($this->pl->getDirectory() . '/templates/css/click.css');
 			$tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/click.js');
 		}
@@ -79,7 +79,7 @@ class ctrlmmMenuGUI {
 
 		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu.html');
 		$entry_html = '';
-		$replace_full = ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
+		$replace_full = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
 		/**
 		 * @var $entry ctrlmmEntry
 		 */
@@ -110,7 +110,7 @@ class ctrlmmMenuGUI {
 			}
 		}
 		$this->html->setVariable('ENTRIES', $entry_html);
-		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
+		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('ID', $this->css_id);
 
 		return $this->html->get();

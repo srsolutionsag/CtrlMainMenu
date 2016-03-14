@@ -95,10 +95,10 @@ class ctrlmmMenu {
 
 	/**
 	 * @return string
-	 * @deprecated use ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX)
+	 * @deprecated use ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX)
 	 */
 	public static function getCssPrefix() {
-		return ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX);
+		return ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX);
 	}
 
 
@@ -164,7 +164,7 @@ class ctrlmmMenu {
 	 * @return string
 	 */
 	/*public function getCssPrefix() {
-		return ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX);
+		return ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX);
 	}*/
 
 	/**

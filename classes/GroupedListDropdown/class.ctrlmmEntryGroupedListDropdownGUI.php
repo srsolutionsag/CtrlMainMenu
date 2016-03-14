@@ -33,9 +33,11 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 	protected $html;
 
 	/**
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		global $lng;
 
 		$this->gl = new ilGroupedListGUI();

@@ -19,9 +19,11 @@ class ctrlmmEntryStatusboxGUI extends ctrlmmEntryGUI {
 
 
 	/**
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/statusbox.css');
 
 		$this->html = $this->pl->getVersionTemplate('tpl.menu_statusbox.html', false, true);

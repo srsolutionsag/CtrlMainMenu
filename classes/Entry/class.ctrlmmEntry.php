@@ -385,7 +385,6 @@ class ctrlmmEntry extends ActiveRecord {
 			$this->update();
 		} else {
 			parent::create();
-
 			$this->writeAdditionalData();
 			$this->writeTranslations();
 		}

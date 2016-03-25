@@ -24,6 +24,8 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	protected $mail = false;
 
 
+
+
 	/**
 	 * @param ctrlmmEntry $entry
 	 * @param null        $parent_gui
@@ -177,10 +179,11 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 
 	public function createEntry() {
+		$show_logout = (bool)$this->form->getInput(self::F_SHOW_LOGOUT);
+		$this->entry->setShowLogout($show_logout);
 		parent::createEntry();
-		$this->entry->setShowLogout($this->form->getInput(self::F_SHOW_LOGOUT));
-		$this->entry->update();
 	}
+
 }
 
 ?>

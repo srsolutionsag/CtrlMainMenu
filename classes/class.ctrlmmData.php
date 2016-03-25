@@ -10,10 +10,10 @@
 class ctrlmmData extends ActiveRecord {
 
 	const TABLE_NAME = 'ui_uihk_ctrlmm_d';
-
 	const DATA_TYPE_STRING = 'str';
 	const DATA_TYPE_ARRAY = 'arr';
-
+	const DATA_TYPE_INT = 'int';
+	const DATA_TYPE_BOOL = 'bool';
 	/**
 	 * @var int
 	 *
@@ -49,8 +49,6 @@ class ctrlmmData extends ActiveRecord {
 	 * @con_length     1024
 	 */
 	public $data_value = '';
-
-
 	/**
 	 * @var string
 	 *
@@ -58,7 +56,7 @@ class ctrlmmData extends ActiveRecord {
 	 * @con_fieldtype  text
 	 * @con_length     10
 	 */
-	public $data_type = DATA_TYPE_STRING;
+	public $data_type = self::DATA_TYPE_STRING;
 
 
 	/**
@@ -117,9 +115,24 @@ class ctrlmmData extends ActiveRecord {
 		}
 	}
 
+
+	/**
+	 * @param $value
+	 * @return string
+	 */
 	public static function _getDataTypeForValue($value) {
-		return (is_array($value))? self::DATA_TYPE_ARRAY : self::DATA_TYPE_STRING;
+		switch (true) {
+			case (is_array($value));
+				return self::DATA_TYPE_ARRAY;
+			case (is_bool($value));
+				return self::DATA_TYPE_BOOL;
+			case (is_int($value));
+				return self::DATA_TYPE_INT;
+			default:
+				return self::DATA_TYPE_STRING;
+		}
 	}
+
 
 	/**
 	 * @param $parent_id
@@ -131,10 +144,19 @@ class ctrlmmData extends ActiveRecord {
 
 		$data = array();
 		foreach ($sets as $set) {
-			if($set->getDataType() == self::DATA_TYPE_ARRAY) {
-				$data[$set->getDataKey()] = json_decode($set->getDataValue(), true);
-			} else {
-				$data[$set->getDataKey()] = $set->getDataValue();
+			switch ($set->getDataType()) {
+				case self::DATA_TYPE_ARRAY:
+					$data[$set->getDataKey()] = json_decode($set->getDataValue(), true);
+					break;
+				case self::DATA_TYPE_INT:
+					$data[$set->getDataKey()] = $set->getDataValue();
+					break;
+				case self::DATA_TYPE_BOOL:
+					$data[$set->getDataKey()] = $set->getDataValue() ? '1' : '0';
+					break;
+				default:
+					$data[$set->getDataKey()] = $set->getDataValue();
+					break;
 			}
 		}
 
@@ -204,6 +226,7 @@ class ctrlmmData extends ActiveRecord {
 	public function getParentId() {
 		return $this->parent_id;
 	}
+
 
 	/**
 	 * @return string

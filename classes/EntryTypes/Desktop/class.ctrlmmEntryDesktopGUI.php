@@ -24,17 +24,15 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	protected $mail = false;
 
 
-
-
 	/**
 	 * @param ctrlmmEntry $entry
-	 * @param null        $parent_gui
+	 * @param null $parent_gui
 	 */
-	public function __construct(ctrlmmEntry $entry, $parent_gui = NULL) {
+	public function __construct(ctrlmmEntry $entry, $parent_gui = null) {
 		global $rbacsystem, $ilUser;
 		parent::__construct($entry, $parent_gui);
-		$this->mail = ($rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND
-			$ilUser->getId() != ANONYMOUS_USER_ID);
+		$this->mail = ($rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND $ilUser->getId()
+		                                                                                                         != ANONYMOUS_USER_ID);
 	}
 
 
@@ -51,8 +49,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		$this->gl->addEntry($lng->txt('overview'), 'ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToSelectedItems', '_top', '', '', 'mm_pd_sel_items', ilHelp::getMainMenuTooltip('mm_pd_sel_items'), 'left center', 'right center', false);
 
 		// my groups and courses, if both is available
-		if ($ilSetting->get('disable_my_offers') == 0 AND $ilSetting->get('disable_my_memberships') == 0
-		) {
+		if ($ilSetting->get('disable_my_offers') == 0 AND $ilSetting->get('disable_my_memberships') == 0) {
 			$this->gl->addEntry($lng->txt('my_courses_groups'), 'ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToMemberships', '_top', '', '', 'mm_pd_crs_grp', ilHelp::getMainMenuTooltip('mm_pd_crs_grp'), 'left center', 'right center', false);
 		}
 
@@ -100,7 +97,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		// Learning Progress
 		if (ilObjUserTracking::_enabledLearningProgress() AND (ilObjUserTracking::_hasLearningProgressOtherUsers()
-				OR ilObjUserTracking::_hasLearningProgressLearner())
+		                                                       OR ilObjUserTracking::_hasLearningProgressLearner())
 		) {
 			//$ilTabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass('ilLearningProgressGUI'));
 			$this->gl->addEntry($lng->txt('learning_progress'), 'ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToLP', '_top', '', '', 'mm_pd_lp', ilHelp::getMainMenuTooltip('mm_pd_lp'), 'left center', 'right center', false);
@@ -131,7 +128,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		// contacts
 		if (!$ilias->getSetting('disable_contacts') AND ($ilias->getSetting('disable_contacts_require_mail')
-				OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()))
+		                                                 OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()))
 		) {
 			$this->gl->addEntry($lng->txt('mail_addressbook'), 'ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToContacts', '_top', '', '', 'mm_pd_contacts', ilHelp::getMainMenuTooltip('mm_pd_contacts'), 'left center', 'right center', false);
 

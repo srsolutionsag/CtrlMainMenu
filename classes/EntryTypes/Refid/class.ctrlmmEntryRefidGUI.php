@@ -21,7 +21,7 @@ class ctrlmmEntryRefidGUI extends ctrlmmEntryGUI {
 		$te->setRequired(true);
 		$this->form->addItem($te);
 
-		$cb = new ilCheckboxInputGUI($this->pl->txt('recursive'), 'recursive');
+		$cb = new ilCheckboxInputGUI($this->pl->txt('common_recursive'), 'recursive');
 		$cb->setValue(1);
 		$this->form->addItem($cb);
 

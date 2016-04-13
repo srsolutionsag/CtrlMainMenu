@@ -222,11 +222,11 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$select = new ilPropertyFormGUI();
 		$select->setFormAction($this->ctrl->getFormAction($this));
 		$select->setTitle($this->pl->txt('select_type'));
-		$se = new ilSelectInputGUI($this->pl->txt('type'), 'type');
+		$se = new ilSelectInputGUI($this->pl->txt('common_type'), 'type');
 		$se->setOptions(ctrlmmMenu::getAllTypesAsArray(true, $_GET['parent_id']));
 		$select->addItem($se);
-		$select->addCommandButton('addEntry', $this->pl->txt('select'));
-		$select->addCommandButton('configure', $this->pl->txt('cancel'));
+		$select->addCommandButton('addEntry', $this->pl->txt('common_select'));
+		$select->addCommandButton('configure', $this->pl->txt('common_cancel'));
 		$this->tpl->setContent($select->getHTML());
 	}
 
@@ -311,8 +311,8 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$conf = new ilConfirmationGUI();
 		ilUtil::sendQuestion($this->pl->txt('qst_delete_entry'));
 		$conf->setFormAction($this->ctrl->getFormAction($this));
-		$conf->setConfirm($this->pl->txt('delete'), 'deleteObject');
-		$conf->setCancel($this->pl->txt('cancel'), 'configure');
+		$conf->setConfirm($this->pl->txt('common_delete'), 'deleteObject');
+		$conf->setCancel($this->pl->txt('common_cancel'), 'configure');
 		$conf->addItem('entry_id', $_GET['entry_id'], $entry->getTitle());
 		$this->tpl->setContent($conf->getHTML());
 	}
@@ -369,7 +369,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			$this->form->addItem($field);
 		}
 		$this->form->addCommandButton('save', $lng->txt('save'));
-		$this->form->setTitle($this->pl->txt('configuration'));
+		$this->form->setTitle($this->pl->txt('common_configuration'));
 		$this->form->setFormAction($ilCtrl->getFormAction($this));
 
 		return $this->form;

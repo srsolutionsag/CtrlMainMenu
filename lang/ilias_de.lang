@@ -102,7 +102,7 @@ cache_settings#:#Cache
 update_cache_settings#:#Speichern
 cache_settings_updated#:#Cache-Settings gespeichert
 activate_cache#:#GlobalCache aktivieren (experimental)
-activate_cache_info#:#Einträge werden für 120 Sekunden im Memory des Webservers gespeichert.$
+activate_cache_info#:#Einträge werden für 120 Sekunden im Memory des Webservers gespeichert.
 cache_cleared#:#Cache gelöscht
 clear_cache#:#Cache löschen
 

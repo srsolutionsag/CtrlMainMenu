@@ -154,6 +154,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$form->setFormAction($this->ctrl->getFormAction($this));
 
 		$cb = new ilCheckboxInputGUI($this->pl->txt('activate_cache'), 'activate_cache');
+		$cb->setInfo($this->pl->txt('activate_cache_info'));
 		$form->addItem($cb);
 		$form->setValuesByArray(array( 'activate_cache' => ilCtrlMainMenuConfig::get('activate_cache') ));
 		$form->addCommandButton('updateCacheSettings', $this->pl->txt('update_cache_settings'));

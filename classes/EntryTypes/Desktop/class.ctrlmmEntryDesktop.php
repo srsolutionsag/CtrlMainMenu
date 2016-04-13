@@ -40,9 +40,10 @@ class ctrlmmEntryDesktop extends ctrlmmEntry {
 	 */
 	protected $show_logout = true;
 	/**
-	 * @var int
+	 * @var bool
 	 */
-	//protected $type = ctrlmmMenu::TYPE_DESKTOP;
+	protected $disable_active = false;
+
 
 	public function __construct($primary_key = 0) {
 		$this->setType(ctrlmmMenu::TYPE_DESKTOP);
@@ -64,6 +65,22 @@ class ctrlmmEntryDesktop extends ctrlmmEntry {
 	 */
 	public function getShowLogout() {
 		return $this->show_logout;
+	}
+
+
+	/**
+	 * @return boolean
+	 */
+	public function isDisableActive() {
+		return $this->disable_active;
+	}
+
+
+	/**
+	 * @param boolean $disable_active
+	 */
+	public function setDisableActive($disable_active) {
+		$this->disable_active = $disable_active;
 	}
 
 

@@ -1,106 +1,95 @@
-list_title#:#Menübejegyzések
-title#:#Cím
-type#:#Típus
-css_prefix#:#CSS előtag
-configuration#:#Beállítások
-add_new#:#új bejegyzés létrehozása
-save_sorting#:#Sorrend mentése
-sorting_saved#:#Sorrendet sikeresen mentette
+common_actions#:#M?veletek
+common_cancel#:#Mégsem
+common_cmd#:#Parancs
+common_configuration#:#Beállítások
+common_create#:#Mentés és bezárása
+common_delete#:#Törlés
+common_edit#:#Módosítás
+common_link#:#URL
+common_recursive#:#Bejegyzés legyen aktív, alobjektumoknál is
+common_select#:#Típus választása
+common_settings#:#Típusfügg? beállítások
+common_target#:#Cél
+common_title#:#Cím
+common_type#:#Típus
+activate_cache#:#GlobalCache aktiválása (kísérleti)
+activate_cache_info#:#Bejegyzéseket a webszerver memóriájában tároljuk 120 másodpercig.
+add_new#:#Új bejegyzés
+back_to_main#:#Vissza
+cache_cleared#:#Gyorsítótárat sikeresen ürítette
+cache_settings#:#Gyorsítótár
+cache_settings_updated#:#Gyorsítótár beállításait sikeresen mentette
+clear_cache#:#Gyorsítótár ürítése
+conf_saved#:#Beállításokat sikeren mentette
+create_and_stay#:#Mentés
 css_active#:#Aktív CSS osztály
 css_inactive#:#Inaktív CSS osztály
-actions#:#Műveletek
-edit#:#Módosítás
-delete#:#Törlés
-add_new#:#Új bejegyzés
-select#:#Típus választása
-cancel#:#Mégsem
-select_type#:#Válasszon típust
-form_title#:#Új bejegyzése létrehozása
-permission_type#:#Hozzáférési típus kiválasztása
-create#:#Mentés és bezárása
-perm_none#:#Elérés nincs korlátozva
-perm_input#:#Bemenet:
-perm_role#:#Szerep szerinti korlátozás
-perm_role_exeption#:#Összes szerep, kivéve az alábbiak
-perm_ref_read#:#Olvasási hozzáférés a Ref-ID-nek
-perm_ref_write#:#Írási hozzáférés a Ref-ID-nek
-perm_script#:#Jogosultság ellenőrzése szkripttel (haladó beállítás)
-perm_input_script_path#:#Szkript útvonala
-perm_input_script_class#:#Osztály neve
-perm_input_script_method#:#Módszer neve
-
-get_parameters#:#URL paraméterek
-get_parameters_description#:#Az első bemenet a paraméter megnevezése, a második az értéke. A kimenet valami ilyesmi lesz: URL?megnevezés1=érték1&megnevezés2=érték2
-
-gui_class#:#GUI osztályok, vesszővel elválasztva
-cmd#:#Parancs
-
-type_ctrl#:#ilCtrl
-type_link#:#URL
-type_dropdown#:#Legördülő
-type_refid#:#Ref-ID
-type_admin#:#Rendszerbeállítás
-type_lastvisited#:#Utoljára látogatott
-type_repository#:#Taneszköztároló
-type_desktop#:#Személyes munkaasztal
-type_settings#:#Felhasználói beállítások
-type_separator#:#Szeparátor
-type_search#:#Gyors keresés
-type_statusbox#:#Levél állapot
-type_auth#:#Hitelesítés
-type_subtitle#:#Alcím
-
-title_en#:#Cím angolul
-title_de#:#Cím németül
-title_fr#:#Cím franciául
-title_it#:#Cím olaszul
-settings#:#Típusfüggő beállítások
-link#:#URL
-target#:#Cél
-ref_id#:#Ref-ID
-entry_added#:#Bejegyzést sikeres létrehozta
-entry_updated#:#Bejegyzést sikeres frissítette
-entry_deleted#:#Bejegyzést sikeres törölte
-qst_delete_entry#:#Biztos, hogy törli a következő bejegyzést?
+css_prefix#:#CSS el?tag
+css_settings#:#CSS beállítások
+doubleclick_prevention#:#Dupla kattintás megakadályozása (kísérleti)
 edit_childs#:#Bejegyzések módosítása
-
-back_to_main#:#Vissza
-tabs_title_childs#:#Legördülő módosítása
-tab_main#:#Bejegyzések módosítása
-use_image#:#Nyíl kép használata
-use_user_image#:#Felhasználói kép használata címként
-
-same_page#:#Ugyanaz az ablak
+entry_added#:#Bejegyzést sikeres létrehozta
+entry_deleted#:#Bejegyzést sikeres törölte
+entry_updated#:#Bejegyzést sikeres frissítette
+form_title#:#Új bejegyzése létrehozása
+get_parameters#:#URL paraméterek
+get_parameters_description#:#Az els? bemenet a paraméter megnevezése, a második az értéke. A kimenet valami ilyesmi lesz: URL?megnevezés1=érték1&megnevezés2=érték2
+get_param_name#:#MISSING
+get_param_value#:#MISSING
+gui_class#:#GUI osztályok, vessz?vel elválasztva
+list_title#:#Menübejegyzések
 new_page#:#Új ablak
 not_visible_for_admin#:#<p class='warning'>Jelenlegi felhasználó nem láthatja.</p>
 no_childs#:#<p class='warning'>Nem látható, mert egy bejegyzés sincs.</p>
-css_settings#:#CSS beállítások
-recursive#:#Bejegyzés legyen aktív, alobjektumoknál is
-
-conf_saved#:#Beállításokat sikeren mentette
-create_and_stay#:#Mentés
+permission_type#:#Hozzáférési típus kiválasztása
+perm_input#:#Bemenet:
 perm_input_locale#:#Role-ID-k
-perm_input_locale_info#:#Helyi szerepek azonosítója, vesszővel elválasztva
-perm_userid#:#Csak néhány felhasználó
+perm_input_locale_info#:#Helyi szerepek azonosítója, vessz?vel elválasztva
+perm_input_script_class#:#Osztály neve
+perm_input_script_method#:#Módszer neve
+perm_input_script_path#:#Szkript útvonala
 perm_input_user#:#User-ID-k
-perm_input_user_info#:#Felhasználók azonosítója, vesszővel elválasztva
-
-show_logout#:#Kijelentkezés megjelenítése
-
-show_icons#:#Ikonok megjelenítése
-
-doubleclick_prevention#:#Dupla kattintás megakadályozása (kísérleti)
-simple_form_validation#:#Egyszerű űrlapellenőrzés bekapcsolása (kísérleti)
-
-settentr_button_save#:#Mentés
+perm_input_user_info#:#Felhasználók azonosítója, vessz?vel elválasztva
+perm_none#:#Elérés nincs korlátozva
+perm_ref_read#:#Olvasási hozzáférés a Ref-ID-nek
+perm_ref_write#:#Írási hozzáférés a Ref-ID-nek
+perm_role#:#Szerep szerinti korlátozás
+perm_role_exeption#:#Összes szerep, kivéve az alábbiak
+perm_script#:#Jogosultság ellen?rzése szkripttel (haladó beállítás)
+perm_userid#:#Csak néhány felhasználó
+qst_delete_entry#:#Biztos, hogy törli a következ? bejegyzést?
+ref_id#:#Ref-ID
 replace_full_header#:#Fejléc teljes cseréje (kísérleti)
-
-cache_settings#:#Gyorsítótár
-update_cache_settings#:#Mentés
-cache_settings_updated#:#Gyorsítótár beállításait sikeresen mentette
-activate_cache#:#GlobalCache aktiválása (kísérleti)
-activate_cache_info#:#Bejegyzéseket a webszerver memóriájában tároljuk 120 másodpercig.
-cache_cleared#:#Gyorsítótárat sikeresen ürítette
-clear_cache#:#Gyorsítótár ürítése 
-
+same_page#:#Ugyanaz az ablak
+save_sorting#:#Sorrend mentése
+select_type#:#Válasszon típust
+settentr_button_save#:#Mentés
+show_icons#:#Ikonok megjelenítése
+show_logout#:#Kijelentkezés megjelenítése
 show_with_no_children#:#Gyermekelemek nélküliek is jelenjenek meg
+simple_form_validation#:#Egyszer? ?rlapellen?rzés bekapcsolása (kísérleti)
+sorting_saved#:#Sorrendet sikeresen mentette
+tabs_title_childs#:#Legördül? módosítása
+tab_main#:#Bejegyzések módosítása
+title_de#:#Cím németül
+title_en#:#Cím angolul
+title_fr#:#Cím franciául
+title_it#:#Cím olaszul
+type_admin#:#Rendszerbeállítás
+type_auth#:#Hitelesítés
+type_ctrl#:#ilCtrl
+type_desktop#:#Személyes munkaasztal
+type_dropdown#:#Legördül?
+type_lastvisited#:#Utoljára látogatott
+type_link#:#URL
+type_refid#:#Ref-ID
+type_repository#:#Taneszköztároló
+type_search#:#Gyors keresés
+type_separator#:#Szeparátor
+type_settings#:#Felhasználói beállítások
+type_statusbox#:#Levél állapot
+type_subtitle#:#Alcím
+update_cache_settings#:#Mentés
+use_image#:#Nyíl kép használata
+use_user_image#:#Felhasználói kép használata címként
+disable_active#:#MISSING

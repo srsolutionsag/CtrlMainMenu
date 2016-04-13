@@ -112,7 +112,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		$mode = $this->entry->getId() == 0 ? 'create' : 'edit';
 
 		$te = new ilFormSectionHeaderGUI();
-		$te->setTitle($this->pl->txt('title'));
+		$te->setTitle($this->pl->txt('common_title'));
 		$this->addItem($te);
 		$this->setTitle($this->pl->txt('form_title'));
 		$this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
@@ -127,14 +127,14 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		$this->addItem($link);
 		if (count(ctrlmmEntry::getAdditionalFieldsAsArray($this->entry)) > 0) {
 			$te = new ilFormSectionHeaderGUI();
-			$te->setTitle($this->pl->txt('settings'));
+			$te->setTitle($this->pl->txt('common_settings'));
 			$this->addItem($te);
 		}
-		$this->addCommandButton($mode . 'Object', $this->pl->txt('create'));
+		$this->addCommandButton($mode . 'Object', $this->pl->txt('common_create'));
 		if ($mode != 'create') {
 			$this->addCommandButton($mode . 'ObjectAndStay', $this->pl->txt('create_and_stay'));
 		}
-		$this->addCommandButton('configure', $this->pl->txt('cancel'));
+		$this->addCommandButton('configure', $this->pl->txt('common_cancel'));
 
 		$this->addFields();
 	}

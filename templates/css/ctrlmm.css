@@ -94,7 +94,7 @@ span.ctrlmmNonLink {
 }
 
 .ilias5 span.ctrlmmNonLink {
-	height:          15px;
+	height:      15px;
 	background:  none;
 	line-height: inherit;
 	line-height: 37px;
@@ -146,4 +146,8 @@ div.ilMainMenuRight {
 
 #ilAdvSelListAnchorElement_dd_adm {
 	height: inherit;
+}
+
+.ctrlmm_disabled {
+	pointer-events: none;
 }

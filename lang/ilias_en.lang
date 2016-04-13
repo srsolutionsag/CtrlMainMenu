@@ -1,106 +1,95 @@
-list_title#:#Menu Entries
-title#:#Title
-type#:#Type
-css_prefix#:#CSS Prefix
-configuration#:#Configuration
-add_new#:#Add New Entry
-save_sorting#:#Save Order
-sorting_saved#:#Order save
+common_actions#:#Actions
+common_cancel#:#Cancel
+common_cmd#:#Command
+common_configuration#:#Configuration
+common_create#:#Save and close
+common_delete#:#Delete
+common_edit#:#Edit
+common_link#:#URL
+common_recursive#:#Entry should be active even at sub-objects
+common_select#:#Select Type
+common_settings#:#Type Specific Settings
+common_target#:#Target
+common_title#:#Title
+common_type#:#Type
+activate_cache#:#Activate GlobalCache (experimental)
+activate_cache_info#:#Entries will be stores i Webserver's Memory for 120 seconds.
+add_new#:#Add Entry
+back_to_main#:#Back
+cache_cleared#:#Cache cleared
+cache_settings#:#Cache
+cache_settings_updated#:#Cache-Settings saved
+clear_cache#:#Clear Cache
+conf_saved#:#Saved
+create_and_stay#:#Save
 css_active#:#CSS Class active
 css_inactive#:#CSS Class inactive
-actions#:#Actions
-edit#:#Edit
-delete#:#Delete
-add_new#:#Add Entry
-select#:#Select Type
-cancel#:#Cancel
-select_type#:#Select Type
+css_prefix#:#CSS Prefix
+css_settings#:#CSS Settings
+doubleclick_prevention#:#Prevent Doubleclicks (experimental)
+edit_childs#:#Edit Entries
+entry_added#:#Entry added
+entry_deleted#:#Entry deleted
+entry_updated#:#Entry updated
 form_title#:#Add New Entry
-permission_type#:#Select Access Type
-create#:#Save and close
-perm_none#:#No Access Control
-perm_input#:#Input:
-perm_role#:#Restrict to Role
-perm_role_exeption#:#All Roles except the following
-perm_ref_read#:#Read Permission to Ref-ID
-perm_ref_write#:#Write Permission to Ref-ID
-perm_script#:#Check Permission per Script (Advanced Option)
-perm_input_script_path#:#Script Path
-perm_input_script_class#:#Class Name
-perm_input_script_method#:#Method Name
-
 get_parameters#:#URL-Parameters
 get_parameters_description#:#The first input is the name of the parameter. The second one is the value. The output will be something like URL?name1=value1&name2=value2
-
+get_param_name#:#MISSING
+get_param_value#:#MISSING
 gui_class#:#GUI Classes, comma-separated
-cmd#:#Command
-
-type_ctrl#:#ilCtrl
-type_link#:#URL
-type_dropdown#:#Dropdown
-type_refid#:#Ref-ID
-type_admin#:#Administration
-type_lastvisited#:#Last Visited
-type_repository#:#Repository
-type_desktop#:#Personal Desktop
-type_settings#:#User Settings
-type_separator#:#Separator
-type_search#:#Quick-Search
-type_statusbox#:#Mail-Status
-type_auth#:#Authentication
-type_subtitle#:#Subtitle
-
-title_en#:#English Title
-title_de#:#German Title
-title_fr#:#French Title
-title_it#:#Italien Title
-settings#:#Type Specific Settings
-link#:#URL
-target#:#Target
-ref_id#:#Ref-ID
-entry_added#:#Entry added
-entry_updated#:#Entry updated
-entry_deleted#:#Entry deleted
-qst_delete_entry#:#Are you sure that you want to delete the following entry?
-edit_childs#:#Edit Entries
-
-back_to_main#:#Back
-tabs_title_childs#:#Edit Dropdown
-tab_main#:#Edit Entries
-use_image#:#Use Arrow Image
-use_user_image#:#Use User-Image as Title
-
-same_page#:#Same Window
+list_title#:#Menu Entries
 new_page#:#New Window
 not_visible_for_admin#:#<p class='warning'>For current user not visible.</p>
 no_childs#:#<p class='warning'>Not visible because no Entries.</p>
-css_settings#:#CSS Settings
-recursive#:#Entry should be active even at sub-objects
-
-conf_saved#:#Saved
-create_and_stay#:#Save
+permission_type#:#Select Access Type
+perm_input#:#Input:
 perm_input_locale#:#Locale Roles
 perm_input_locale_info#:#Enter IDs of locale Roles commaseperated
-perm_userid#:#Only for some Users
+perm_input_script_class#:#Class Name
+perm_input_script_method#:#Method Name
+perm_input_script_path#:#Script Path
 perm_input_user#:#User-IDs
 perm_input_user_info#:#User-IDs commaseperated
-
-show_logout#:#Show logout
-
-show_icons#:#Show icons
-
-doubleclick_prevention#:#Prevent Doubleclicks (experimental)
-simple_form_validation#:#Activate Simple Form-Validation (experimental)
-
-settentr_button_save#:#Save
+perm_none#:#No Access Control
+perm_ref_read#:#Read Permission to Ref-ID
+perm_ref_write#:#Write Permission to Ref-ID
+perm_role#:#Restrict to Role
+perm_role_exeption#:#All Roles except the following
+perm_script#:#Check Permission per Script (Advanced Option)
+perm_userid#:#Only for some Users
+qst_delete_entry#:#Are you sure that you want to delete the following entry?
+ref_id#:#Ref-ID
 replace_full_header#:#Replace Full Header (experimental)
-
-cache_settings#:#Cache
-update_cache_settings#:#Save
-cache_settings_updated#:#Cache-Settings saved
-activate_cache#:#Activate GlobalCache (experimental)
-activate_cache_info#:#Entries will be stores i Webserver's Memory for 120 seconds.
-cache_cleared#:#Cache cleared
-clear_cache#:#Clear Cache
-
+same_page#:#Same Window
+save_sorting#:#Save Order
+select_type#:#Select Type
+settentr_button_save#:#Save
+show_icons#:#Show icons
+show_logout#:#Show logout
 show_with_no_children#:#Show also with no child elements
+simple_form_validation#:#Activate Simple Form-Validation (experimental)
+sorting_saved#:#Order save
+tabs_title_childs#:#Edit Dropdown
+tab_main#:#Edit Entries
+title_de#:#German Title
+title_en#:#English Title
+title_fr#:#French Title
+title_it#:#Italien Title
+type_admin#:#Administration
+type_auth#:#Authentication
+type_ctrl#:#ilCtrl
+type_desktop#:#Personal Desktop
+type_dropdown#:#Dropdown
+type_lastvisited#:#Last Visited
+type_link#:#URL
+type_refid#:#Ref-ID
+type_repository#:#Repository
+type_search#:#Quick-Search
+type_separator#:#Separator
+type_settings#:#User Settings
+type_statusbox#:#Mail-Status
+type_subtitle#:#Subtitle
+update_cache_settings#:#Save
+use_image#:#Use Arrow Image
+use_user_image#:#Use User-Image as Title
+disable_active#:#Disable active entries

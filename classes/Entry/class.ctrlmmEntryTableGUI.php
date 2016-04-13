@@ -38,9 +38,9 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		//
 		// Columns
 		$this->addColumn('', 'position', '20px');
-		$this->addColumn($this->pl->txt('title'), 'title', 'auto');
-		$this->addColumn($this->pl->txt('type'), 'type', 'auto');
-		$this->addColumn($this->pl->txt('actions'), 'actions', '100px');
+		$this->addColumn($this->pl->txt('common_title'), 'title', 'auto');
+		$this->addColumn($this->pl->txt('common_type'), 'type', 'auto');
+		$this->addColumn($this->pl->txt('common_actions'), 'actions', '100px');
 		// ...
 		// Header
 		$ilToolbar->addButton($this->pl->txt('add_new'), $this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
@@ -92,13 +92,13 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 
 			$actions = new ilAdvancedSelectionListGUI();
 			$actions->setId('actions_' . $obj->getId());
-			$actions->setListTitle($this->pl->txt('actions'));
+			$actions->setListTitle($this->pl->txt('common_actions'));
 			if ($obj->getType() != ctrlmmMenu::TYPE_SEPARATOR) {
-				$actions->addItem($this->pl->txt('edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, 'editEntry'));
-				//				$actions->addItem($this->pl->txt('edit'), 'edit', $this->ctrl->getLinkTargetByClass('ctrlmmEntryGUI', 'edit')); FSX TODO REFACTORING
+				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, 'editEntry'));
+				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass('ctrlmmEntryGUI', 'edit')); FSX TODO REFACTORING
 			}
 			if ($obj->getType() != ctrlmmMenu::TYPE_ADMIN) {
-				$actions->addItem($this->pl->txt('delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, 'deleteEntry'));
+				$actions->addItem($this->pl->txt('common_delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, 'deleteEntry'));
 			}
 			if ($obj->getType() == ctrlmmMenu::TYPE_DROPDOWN) {
 				$actions->addItem($this->pl->txt('edit_childs'), 'edit_childs', $this->ctrl->getLinkTarget($this->parent_obj, 'editChilds'));

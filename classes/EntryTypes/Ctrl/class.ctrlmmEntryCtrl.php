@@ -31,7 +31,7 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  */
 class ctrlmmEntryCtrl extends ctrlmmEntry {
 
-	const DEBUG = true;
+	const DEBUG = false;
 	const PARAM_NAME = 'param_name';
 	const PARAM_VALUE = 'param_value';
 	/**
@@ -49,13 +49,11 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	/**
 	 * @var int
 	 */
-	protected $ref_id = NULL;
-
+	protected $ref_id = null;
 	/**
 	 * @var array
 	 */
 	protected $get_params = array();
-
 	/**
 	 * @var ilCtrl
 	 */
@@ -110,12 +108,13 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 			return 'ilCtrl-Error';
 		}
 
-		return NULL;
+		return null;
 	}
 
 
 	/**
 	 * @return bool
+	 * @throws \Exception
 	 */
 	protected function checkCtrl() {
 		$gui_classes = @explode(',', $this->getGuiClass());
@@ -123,6 +122,10 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 			try {
 				$this->ctrl->getLinkTargetByClass($gui_classes, $this->getCmd());
 			} catch (Exception $e) {
+				if (self::DEBUG) {
+					throw $e;
+				}
+
 				return false;
 			}
 		} else {
@@ -142,7 +145,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	 */
 	public function getLink() {
 		if (!$this->checkCtrl()) {
-			return NULL;
+			return null;
 		}
 		$gui_classes = @explode(',', $this->getGuiClass());
 		if (ctrlmmMenu::isOldILIAS()) {
@@ -159,8 +162,8 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 			$_GET['cmdClass'] = $cmdClass;
 			$_GET['cmdNode'] = $cmdNode;
 
-			foreach($this->getGetParams() as $entry) {
-				if($entry[self::PARAM_NAME] != "") {
+			foreach ($this->getGetParams() as $entry) {
+				if ($entry[self::PARAM_NAME] != "") {
 					$_GET[$entry[self::PARAM_NAME]] = ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
 				}
 			}
@@ -174,10 +177,10 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 				$link .= '&ref_id=' . $this->getRefId();
 			}
 
-			if(is_array($this->getGetParams())) {
-				foreach($this->getGetParams() as $entry) {
-					if($entry[self::PARAM_NAME] != "") {
-						$link .= '&'.$entry[self::PARAM_NAME].'='.ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
+			if (is_array($this->getGetParams())) {
+				foreach ($this->getGetParams() as $entry) {
+					if ($entry[self::PARAM_NAME] != "") {
+						$link .= '&' . $entry[self::PARAM_NAME] . '=' . ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
 					}
 				}
 			}
@@ -265,6 +268,4 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	public function setGetParams($get_params) {
 		$this->get_params = $get_params;
 	}
-
-
 }

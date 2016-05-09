@@ -1,0 +1,919 @@
+{
+    "plugin_prefix": "ui_uihk_ctrlmm",
+    "languages": [
+        "de",
+        "en",
+        "hu",
+        "nl"
+    ],
+    "entries": {
+        "common": {
+            "actions": {
+                "translations": {
+                    "de": "Aktionen",
+                    "en": "Actions",
+                    "hu": "M?veletek",
+                    "nl": "Acties"
+                },
+                "last_used": "13.04.2016"
+            },
+            "cancel": {
+                "translations": {
+                    "de": "Abbrechen",
+                    "en": "Cancel",
+                    "hu": "M\u00e9gsem",
+                    "nl": "Anuleren"
+                },
+                "last_used": "13.04.2016"
+            },
+            "cmd": {
+                "translations": {
+                    "de": "Command",
+                    "en": "Command",
+                    "hu": "Parancs",
+                    "nl": "Commando"
+                }
+            },
+            "configuration": {
+                "translations": {
+                    "de": "Konfiguration",
+                    "en": "Configuration",
+                    "hu": "Be\u00e1ll\u00edt\u00e1sok",
+                    "nl": "Configuratie"
+                },
+                "last_used": "13.04.2016"
+            },
+            "create": {
+                "translations": {
+                    "de": "Speichern und schliessen",
+                    "en": "Save and close",
+                    "hu": "Ment\u00e9s \u00e9s bez\u00e1r\u00e1sa",
+                    "nl": "Opslaan"
+                },
+                "last_used": "13.04.2016"
+            },
+            "delete": {
+                "translations": {
+                    "de": "L\u00f6schen",
+                    "en": "Delete",
+                    "hu": "T\u00f6rl\u00e9s",
+                    "nl": "Verwijderen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "edit": {
+                "translations": {
+                    "de": "Bearbeiten",
+                    "en": "Edit",
+                    "hu": "M\u00f3dos\u00edt\u00e1s",
+                    "nl": "Wijzigen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "link": {
+                "translations": {
+                    "de": "URL",
+                    "en": "URL",
+                    "hu": "URL",
+                    "nl": "URL"
+                },
+                "last_used": "13.04.2016"
+            },
+            "recursive": {
+                "translations": {
+                    "de": "Men\u00fc-Eintrag soll auch bei Unterobjekten Aktiv sein",
+                    "en": "Entry should be active even at sub-objects",
+                    "hu": "Bejegyz\u00e9s legyen akt\u00edv, alobjektumokn\u00e1l is",
+                    "nl": "Item moet actief zijn, zelfs bij sub-objecten"
+                }
+            },
+            "select": {
+                "translations": {
+                    "de": "Typ w\u00e4hlen",
+                    "en": "Select Type",
+                    "hu": "T\u00edpus v\u00e1laszt\u00e1sa",
+                    "nl": "Selecteren Type"
+                },
+                "last_used": "13.04.2016"
+            },
+            "settings": {
+                "translations": {
+                    "de": "Typ-spezifische Einstellungen",
+                    "en": "Type Specific Settings",
+                    "hu": "T\u00edpusf\u00fcgg? be\u00e1ll\u00edt\u00e1sok",
+                    "nl": "Specifieke instellingen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "target": {
+                "translations": {
+                    "de": "Linkziel",
+                    "en": "Target",
+                    "hu": "C\u00e9l",
+                    "nl": "Doel"
+                },
+                "last_used": "13.04.2016"
+            },
+            "title": {
+                "translations": {
+                    "de": "Titel",
+                    "en": "Title",
+                    "hu": "C\u00edm",
+                    "nl": "Titel"
+                },
+                "last_used": "13.04.2016"
+            },
+            "type": {
+                "translations": {
+                    "de": "Typ",
+                    "en": "Type",
+                    "hu": "T\u00edpus",
+                    "nl": "Type"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "activate": {
+            "cache": {
+                "translations": {
+                    "de": "GlobalCache aktivieren (experimental)",
+                    "en": "Activate GlobalCache (experimental)",
+                    "hu": "GlobalCache aktiv\u00e1l\u00e1sa (k\u00eds\u00e9rleti)",
+                    "nl": "Inschakelen GlobalCache (experimenteel)"
+                }
+            },
+            "cache_info": {
+                "translations": {
+                    "de": "Eintr\u00e4ge werden f\u00fcr 120 Sekunden im Memory des Webservers gespeichert.",
+                    "en": "Entries will be stores i Webserver's Memory for 120 seconds.",
+                    "hu": "Bejegyz\u00e9seket a webszerver mem\u00f3ri\u00e1j\u00e1ban t\u00e1roljuk 120 m\u00e1sodpercig.",
+                    "nl": "Entries zullen worden opgeslagen in Webserver's geheugen voor 120 seconden."
+                }
+            }
+        },
+        "add": {
+            "new": {
+                "translations": {
+                    "de": "Eintrag hinzuf\u00fcgen",
+                    "en": "Add Entry",
+                    "hu": "\u00daj bejegyz\u00e9s",
+                    "nl": "Toevoegen Item"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "back": {
+            "to_main": {
+                "translations": {
+                    "de": "Hauptmenu bearbeiten",
+                    "en": "Back",
+                    "hu": "Vissza",
+                    "nl": "Terug"
+                }
+            }
+        },
+        "cache": {
+            "cleared": {
+                "translations": {
+                    "de": "Cache gel\u00f6scht",
+                    "en": "Cache cleared",
+                    "hu": "Gyors\u00edt\u00f3t\u00e1rat sikeresen \u00fcr\u00edtette",
+                    "nl": "Cache geleegd"
+                }
+            },
+            "settings": {
+                "translations": {
+                    "de": "Cache",
+                    "en": "Cache",
+                    "hu": "Gyors\u00edt\u00f3t\u00e1r",
+                    "nl": "Cache"
+                },
+                "last_used": "13.04.2016"
+            },
+            "settings_updated": {
+                "translations": {
+                    "de": "Cache-Settings gespeichert",
+                    "en": "Cache-Settings saved",
+                    "hu": "Gyors\u00edt\u00f3t\u00e1r be\u00e1ll\u00edt\u00e1sait sikeresen mentette",
+                    "nl": "Cache-Settings opgeslagen"
+                }
+            }
+        },
+        "clear": {
+            "cache": {
+                "translations": {
+                    "de": "Cache l\u00f6schen",
+                    "en": "Clear Cache",
+                    "hu": "Gyors\u00edt\u00f3t\u00e1r \u00fcr\u00edt\u00e9se",
+                    "nl": "Legen van Cache"
+                }
+            }
+        },
+        "conf": {
+            "saved": {
+                "translations": {
+                    "de": "Gespeichert",
+                    "en": "Saved",
+                    "hu": "Be\u00e1ll\u00edt\u00e1sokat sikeren mentette",
+                    "nl": "Opgeslagen"
+                }
+            }
+        },
+        "create": {
+            "and_stay": {
+                "translations": {
+                    "de": "Speichern",
+                    "en": "Save",
+                    "hu": "Ment\u00e9s",
+                    "nl": "Opslaan"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "css": {
+            "active": {
+                "translations": {
+                    "de": "CSS-Klasse aktiv",
+                    "en": "CSS Class active",
+                    "hu": "Akt\u00edv CSS oszt\u00e1ly",
+                    "nl": "Actieve CSS Class"
+                },
+                "last_used": "13.04.2016"
+            },
+            "inactive": {
+                "translations": {
+                    "de": "CSS-Klasse inaktiv",
+                    "en": "CSS Class inactive",
+                    "hu": "Inakt\u00edv CSS oszt\u00e1ly",
+                    "nl": "Inactieve CSS Class"
+                },
+                "last_used": "13.04.2016"
+            },
+            "prefix": {
+                "translations": {
+                    "de": "CSS-Prefix",
+                    "en": "CSS Prefix",
+                    "hu": "CSS el?tag",
+                    "nl": "CSS Prefix"
+                },
+                "last_used": "13.04.2016"
+            },
+            "settings": {
+                "translations": {
+                    "de": "CSS-Einstellungen",
+                    "en": "CSS Settings",
+                    "hu": "CSS be\u00e1ll\u00edt\u00e1sok",
+                    "nl": "CSS Instellingen"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "doubleclick": {
+            "prevention": {
+                "translations": {
+                    "de": "Verhindere Doppelklicks systemweit (experimental)",
+                    "en": "Prevent Doubleclicks (experimental)",
+                    "hu": "Dupla kattint\u00e1s megakad\u00e1lyoz\u00e1sa (k\u00eds\u00e9rleti)",
+                    "nl": "Voorkom dubbelklikken (experimenteel)"
+                }
+            }
+        },
+        "edit": {
+            "childs": {
+                "translations": {
+                    "de": "Eintr\u00e4ge bearbeiten",
+                    "en": "Edit Entries",
+                    "hu": "Bejegyz\u00e9sek m\u00f3dos\u00edt\u00e1sa",
+                    "nl": "Items wijzigen"
+                }
+            }
+        },
+        "entry": {
+            "added": {
+                "translations": {
+                    "de": "Eintrag wurde hinzugef\u00fcgt",
+                    "en": "Entry added",
+                    "hu": "Bejegyz\u00e9st sikeres l\u00e9trehozta",
+                    "nl": "Item toegevoegd"
+                }
+            },
+            "deleted": {
+                "translations": {
+                    "de": "Eintrag wurde gel\u00f6scht",
+                    "en": "Entry deleted",
+                    "hu": "Bejegyz\u00e9st sikeres t\u00f6r\u00f6lte",
+                    "nl": "Item verwijderd"
+                }
+            },
+            "updated": {
+                "translations": {
+                    "de": "Eintrag wurde aktualisiert",
+                    "en": "Entry updated",
+                    "hu": "Bejegyz\u00e9st sikeres friss\u00edtette",
+                    "nl": "Item gewijzigd"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "form": {
+            "title": {
+                "translations": {
+                    "de": "Eintrag erstellen",
+                    "en": "Add New Entry",
+                    "hu": "\u00daj bejegyz\u00e9se l\u00e9trehoz\u00e1sa",
+                    "nl": "Toevoegen nieuw item"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "get": {
+            "parameters": {
+                "translations": {
+                    "de": "URL-Parameter",
+                    "en": "URL-Parameters",
+                    "hu": "URL param\u00e9terek",
+                    "nl": "URL-Parameters"
+                },
+                "last_used": "13.04.2016"
+            },
+            "parameters_description": {
+                "translations": {
+                    "de": "Das erste Eingabefeld definiert den Namen des Parameters. Das Zweite den entsprechenden Wert. Die Ausgabe wird dann in die Form URL?name1=value1&name2=value2 umgewandelt.",
+                    "en": "The first input is the name of the parameter. The second one is the value. The output will be something like URL?name1=value1&name2=value2",
+                    "hu": "Az els? bemenet a param\u00e9ter megnevez\u00e9se, a m\u00e1sodik az \u00e9rt\u00e9ke. A kimenet valami ilyesmi lesz: URL?megnevez\u00e9s1=\u00e9rt\u00e9k1&megnevez\u00e9s2=\u00e9rt\u00e9k2",
+                    "nl": "De eerste input is de naam van de parameter. The tweede is de waarde. De output is iets als: URL?name1=waarde1&name2=waarde2"
+                },
+                "last_used": "13.04.2016"
+            },
+            "param_name": {
+                "translations": {
+                    "de": "MISSING",
+                    "en": "MISSING",
+                    "hu": "MISSING",
+                    "nl": "MISSING"
+                }
+            },
+            "param_value": {
+                "translations": {
+                    "de": "MISSING",
+                    "en": "MISSING",
+                    "hu": "MISSING",
+                    "nl": "MISSING"
+                }
+            }
+        },
+        "gui": {
+            "class": {
+                "translations": {
+                    "de": "GUI-Klassen, komma-separiert",
+                    "en": "GUI Classes, comma-separated",
+                    "hu": "GUI oszt\u00e1lyok, vessz?vel elv\u00e1lasztva",
+                    "nl": "GUI Classes, comma-separated"
+                }
+            }
+        },
+        "list": {
+            "title": {
+                "translations": {
+                    "de": "Menu-Eintr\u00e4ge",
+                    "en": "Menu Entries",
+                    "hu": "Men\u00fcbejegyz\u00e9sek",
+                    "nl": "Menu Items"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "new": {
+            "page": {
+                "translations": {
+                    "de": "Neue Seite",
+                    "en": "New Window",
+                    "hu": "\u00daj ablak",
+                    "nl": "Nieuw Window"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "not": {
+            "visible_for_admin": {
+                "translations": {
+                    "de": "<p class='warning'>F\u00fcr aktuellen Benutzer nicht sichtbar.<\/p>",
+                    "en": "<p class='warning'>For current user not visible.<\/p>",
+                    "hu": "<p class='warning'>Jelenlegi felhaszn\u00e1l\u00f3 nem l\u00e1thatja.<\/p>",
+                    "nl": "<p class='warning'>Niet zichtbaar voor huidige gebruiker<\/p>"
+                }
+            }
+        },
+        "no": {
+            "childs": {
+                "translations": {
+                    "de": "<p class='warning'>Nicht sichtbar, da keine Eintr\u00e4ge.<\/p>",
+                    "en": "<p class='warning'>Not visible because no Entries.<\/p>",
+                    "hu": "<p class='warning'>Nem l\u00e1that\u00f3, mert egy bejegyz\u00e9s sincs.<\/p>",
+                    "nl": "<p class='warning'>Niet zichtbaar omdat er geen items zijn<\/p>"
+                }
+            }
+        },
+        "permission": {
+            "type": {
+                "translations": {
+                    "de": "Zugriff w\u00e4hlen",
+                    "en": "Select Access Type",
+                    "hu": "Hozz\u00e1f\u00e9r\u00e9si t\u00edpus kiv\u00e1laszt\u00e1sa",
+                    "nl": "Selecteer Toegangsbeperkingen"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "perm": {
+            "input": {
+                "translations": {
+                    "de": "Eingabe:",
+                    "en": "Input:",
+                    "hu": "Bemenet:",
+                    "nl": "Input:"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_locale": {
+                "translations": {
+                    "de": "Lokale Rollen",
+                    "en": "Locale Roles",
+                    "hu": "Role-ID-k",
+                    "nl": "Lokale Rollen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_locale_info": {
+                "translations": {
+                    "de": "IDs von lokalen Rollen kommasepariert",
+                    "en": "Enter IDs of locale Roles commaseperated",
+                    "hu": "Helyi szerepek azonos\u00edt\u00f3ja, vessz?vel elv\u00e1lasztva",
+                    "nl": "Geef ID's van lokale rollen in(gescheiden door komma's)"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_script_class": {
+                "translations": {
+                    "de": "Klassenname",
+                    "en": "Class Name",
+                    "hu": "Oszt\u00e1ly neve",
+                    "nl": "Class Naam"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_script_method": {
+                "translations": {
+                    "de": "Methodenname",
+                    "en": "Method Name",
+                    "hu": "M\u00f3dszer neve",
+                    "nl": "Method Naam"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_script_path": {
+                "translations": {
+                    "de": "Skriptpfad",
+                    "en": "Script Path",
+                    "hu": "Szkript \u00fatvonala",
+                    "nl": "Script Pad"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_user": {
+                "translations": {
+                    "de": "Benutzer-IDs",
+                    "en": "User-IDs",
+                    "hu": "User-ID-k",
+                    "nl": "User-IDs"
+                },
+                "last_used": "13.04.2016"
+            },
+            "input_user_info": {
+                "translations": {
+                    "de": "Benutzer-IDs kommasepariert",
+                    "en": "User-IDs commaseperated",
+                    "hu": "Felhaszn\u00e1l\u00f3k azonos\u00edt\u00f3ja, vessz?vel elv\u00e1lasztva",
+                    "nl": "User-IDs gescheiden door komma's"
+                },
+                "last_used": "13.04.2016"
+            },
+            "none": {
+                "translations": {
+                    "de": "Keine Zugriffsregelung",
+                    "en": "No Access Control",
+                    "hu": "El\u00e9r\u00e9s nincs korl\u00e1tozva",
+                    "nl": "Geen toegangsbeperkingen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "ref_read": {
+                "translations": {
+                    "de": "Leserecht auf RefID",
+                    "en": "Read Permission to Ref-ID",
+                    "hu": "Olvas\u00e1si hozz\u00e1f\u00e9r\u00e9s a Ref-ID-nek",
+                    "nl": "Leestoegang op Ref-ID"
+                },
+                "last_used": "13.04.2016"
+            },
+            "ref_write": {
+                "translations": {
+                    "de": "Schreibrecht auf RefID",
+                    "en": "Write Permission to Ref-ID",
+                    "hu": "\u00cdr\u00e1si hozz\u00e1f\u00e9r\u00e9s a Ref-ID-nek",
+                    "nl": "Schrijftoegang op Ref-ID"
+                },
+                "last_used": "13.04.2016"
+            },
+            "role": {
+                "translations": {
+                    "de": "Auf Rollen-IDs einschr\u00e4nken",
+                    "en": "Restrict to Role",
+                    "hu": "Szerep szerinti korl\u00e1toz\u00e1s",
+                    "nl": "Beperkt tot rol"
+                },
+                "last_used": "13.04.2016"
+            },
+            "role_exeption": {
+                "translations": {
+                    "de": "Alle Rollen-IDs ausser die Genannten",
+                    "en": "All Roles except the following",
+                    "hu": "\u00d6sszes szerep, kiv\u00e9ve az al\u00e1bbiak",
+                    "nl": "Alle rollen behalve de volgende"
+                },
+                "last_used": "13.04.2016"
+            },
+            "script": {
+                "translations": {
+                    "de": "Zugriffsrecht per Skript pr\u00fcfen",
+                    "en": "Check Permission per Script (Advanced Option)",
+                    "hu": "Jogosults\u00e1g ellen?rz\u00e9se szkripttel (halad\u00f3 be\u00e1ll\u00edt\u00e1s)",
+                    "nl": "Controleer rechten per script (Geavanceerd)"
+                },
+                "last_used": "13.04.2016"
+            },
+            "userid": {
+                "translations": {
+                    "de": "Einschr\u00e4nkung auf Benutzer",
+                    "en": "Only for some Users",
+                    "hu": "Csak n\u00e9h\u00e1ny felhaszn\u00e1l\u00f3",
+                    "nl": "Alleen voor sommige gebruikers"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "qst": {
+            "delete_entry": {
+                "translations": {
+                    "de": "M\u00f6chten Sie den folgenden Eintrag wirklich l\u00f6schen?",
+                    "en": "Are you sure that you want to delete the following entry?",
+                    "hu": "Biztos, hogy t\u00f6rli a k\u00f6vetkez? bejegyz\u00e9st?",
+                    "nl": "Weet je zeker dat je het volgende item wilt verwijderen?"
+                }
+            }
+        },
+        "ref": {
+            "id": {
+                "translations": {
+                    "de": "Ref-ID",
+                    "en": "Ref-ID",
+                    "hu": "Ref-ID",
+                    "nl": "Ref-ID"
+                }
+            }
+        },
+        "replace": {
+            "full_header": {
+                "translations": {
+                    "de": "Ganzen Header ersetzen (experimental)",
+                    "en": "Replace Full Header (experimental)",
+                    "hu": "Fejl\u00e9c teljes cser\u00e9je (k\u00eds\u00e9rleti)",
+                    "nl": "Volledige Header vervangen (experimenteel)"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "same": {
+            "page": {
+                "translations": {
+                    "de": "Gleiche Seite",
+                    "en": "Same Window",
+                    "hu": "Ugyanaz az ablak",
+                    "nl": "Zelfde Window"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "save": {
+            "sorting": {
+                "translations": {
+                    "de": "Reihenfolge speichern",
+                    "en": "Save Order",
+                    "hu": "Sorrend ment\u00e9se",
+                    "nl": "Volgorde Opslaan"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "select": {
+            "type": {
+                "translations": {
+                    "de": "Typ w\u00e4hlen",
+                    "en": "Select Type",
+                    "hu": "V\u00e1lasszon t\u00edpust",
+                    "nl": "Selecteer Type"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "settentr": {
+            "button_save": {
+                "translations": {
+                    "de": "Speichern",
+                    "en": "Save",
+                    "hu": "Ment\u00e9s",
+                    "nl": "Opslaan"
+                }
+            }
+        },
+        "show": {
+            "icons": {
+                "translations": {
+                    "de": "Icons anzeigen",
+                    "en": "Show icons",
+                    "hu": "Ikonok megjelen\u00edt\u00e9se",
+                    "nl": "Iconen tonen"
+                }
+            },
+            "logout": {
+                "translations": {
+                    "de": "Show logout",
+                    "en": "Show logout",
+                    "hu": "Kijelentkez\u00e9s megjelen\u00edt\u00e9se",
+                    "nl": "Logout tonen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "with_no_children": {
+                "translations": {
+                    "de": "Anzeigen auch wenn keine Subelemente vorhanden sind",
+                    "en": "Show also with no child elements",
+                    "hu": "Gyermekelemek n\u00e9lk\u00fcliek is jelenjenek meg",
+                    "nl": "Ook tonen als er geen kind elementen zijn"
+                }
+            }
+        },
+        "simple": {
+            "form_validation": {
+                "translations": {
+                    "de": "Einfache Formular-Validierung aktivieren (experimental)",
+                    "en": "Activate Simple Form-Validation (experimental)",
+                    "hu": "Egyszer? ?rlapellen?rz\u00e9s bekapcsol\u00e1sa (k\u00eds\u00e9rleti)",
+                    "nl": "Inschakelen eenvoudige formuliervalidatie (experimenteel)"
+                }
+            }
+        },
+        "sorting": {
+            "saved": {
+                "translations": {
+                    "de": "Reihenfolge gespeichert",
+                    "en": "Order save",
+                    "hu": "Sorrendet sikeresen mentette",
+                    "nl": "Volgorde Opslaan"
+                }
+            }
+        },
+        "tabs": {
+            "title_childs": {
+                "translations": {
+                    "de": "Dropdown bearbeiten",
+                    "en": "Edit Dropdown",
+                    "hu": "Leg\u00f6rd\u00fcl? m\u00f3dos\u00edt\u00e1sa",
+                    "nl": "Wijzigen dropdown"
+                }
+            }
+        },
+        "tab": {
+            "main": {
+                "translations": {
+                    "de": "Hauptmenu bearbeiten",
+                    "en": "Edit Entries",
+                    "hu": "Bejegyz\u00e9sek m\u00f3dos\u00edt\u00e1sa",
+                    "nl": "Wijzigen items"
+                },
+                "last_used": "13.04.2016"
+            }
+        },
+        "title": {
+            "de": {
+                "translations": {
+                    "de": "Deutscher Titel",
+                    "en": "German Title",
+                    "hu": "C\u00edm n\u00e9met\u00fcl",
+                    "nl": "Duitste Titel"
+                }
+            },
+            "en": {
+                "translations": {
+                    "de": "Englischer Titel",
+                    "en": "English Title",
+                    "hu": "C\u00edm angolul",
+                    "nl": "Engelse Titel"
+                }
+            },
+            "fr": {
+                "translations": {
+                    "de": "Franz\u00f6sischer Titel",
+                    "en": "French Title",
+                    "hu": "C\u00edm franci\u00e1ul",
+                    "nl": "Franse Titel"
+                }
+            },
+            "it": {
+                "translations": {
+                    "de": "Italienischer Titel",
+                    "en": "Italien Title",
+                    "hu": "C\u00edm olaszul",
+                    "nl": "Italiaanse Titel"
+                }
+            },
+            "nl": {
+                "translations": {
+                    "nl": "Nederlandse Titel"
+                }
+            }
+        },
+        "type": {
+            "admin": {
+                "translations": {
+                    "de": "Administration",
+                    "en": "Administration",
+                    "hu": "Rendszerbe\u00e1ll\u00edt\u00e1s",
+                    "nl": "Beheer"
+                },
+                "last_used": "13.04.2016"
+            },
+            "auth": {
+                "translations": {
+                    "de": "Authentifizierung",
+                    "en": "Authentication",
+                    "hu": "Hiteles\u00edt\u00e9s",
+                    "nl": "Authenticatie"
+                },
+                "last_used": "13.04.2016"
+            },
+            "ctrl": {
+                "translations": {
+                    "de": "ilCtrl",
+                    "en": "ilCtrl",
+                    "hu": "ilCtrl",
+                    "nl": "ilCtrl"
+                },
+                "last_used": "13.04.2016"
+            },
+            "desktop": {
+                "translations": {
+                    "de": "Pers\u00f6nlicher Schreibtisch",
+                    "en": "Personal Desktop",
+                    "hu": "Szem\u00e9lyes munkaasztal",
+                    "nl": "Persoonlijk Scherm"
+                },
+                "last_used": "13.04.2016"
+            },
+            "dropdown": {
+                "translations": {
+                    "de": "Dropdown",
+                    "en": "Dropdown",
+                    "hu": "Leg\u00f6rd\u00fcl?",
+                    "nl": "Dropdown"
+                },
+                "last_used": "13.04.2016"
+            },
+            "lastvisited": {
+                "translations": {
+                    "de": "Zuletzt besucht",
+                    "en": "Last Visited",
+                    "hu": "Utolj\u00e1ra l\u00e1togatott",
+                    "nl": "Laatste bezocht"
+                },
+                "last_used": "13.04.2016"
+            },
+            "link": {
+                "translations": {
+                    "de": "URL",
+                    "en": "URL",
+                    "hu": "URL",
+                    "nl": "URL"
+                },
+                "last_used": "13.04.2016"
+            },
+            "refid": {
+                "translations": {
+                    "de": "Ref-ID",
+                    "en": "Ref-ID",
+                    "hu": "Ref-ID",
+                    "nl": "Ref-ID"
+                },
+                "last_used": "13.04.2016"
+            },
+            "repository": {
+                "translations": {
+                    "de": "Magazin",
+                    "en": "Repository",
+                    "hu": "Taneszk\u00f6zt\u00e1rol\u00f3",
+                    "nl": "Studiecentrum"
+                },
+                "last_used": "13.04.2016"
+            },
+            "search": {
+                "translations": {
+                    "de": "Schnellsuche",
+                    "en": "Quick-Search",
+                    "hu": "Gyors keres\u00e9s",
+                    "nl": "Snel-zoeken"
+                },
+                "last_used": "13.04.2016"
+            },
+            "separator": {
+                "translations": {
+                    "de": "Umbruch",
+                    "en": "Separator",
+                    "hu": "Szepar\u00e1tor",
+                    "nl": "Scheiding"
+                },
+                "last_used": "13.04.2016"
+            },
+            "settings": {
+                "translations": {
+                    "de": "Benutzereinstellungen",
+                    "en": "User Settings",
+                    "hu": "Felhaszn\u00e1l\u00f3i be\u00e1ll\u00edt\u00e1sok",
+                    "nl": "Gebruikersinstellingen"
+                },
+                "last_used": "13.04.2016"
+            },
+            "statusbox": {
+                "translations": {
+                    "de": "Mail-Status",
+                    "en": "Mail-Status",
+                    "hu": "Lev\u00e9l \u00e1llapot",
+                    "nl": "E-mail-Status"
+                },
+                "last_used": "13.04.2016"
+            },
+            "subtitle": {
+                "translations": {
+                    "de": "Subtitel",
+                    "en": "Subtitle",
+                    "hu": "Alc\u00edm",
+                    "nl": "Subtitel"
+                },
+                "last_used": "13.04.2016"
+            },
+            "user": {
+                "translations": {
+                    "de": "Benutzer"
+                }
+            }
+        },
+        "update": {
+            "cache_settings": {
+                "translations": {
+                    "de": "Speichern",
+                    "en": "Save",
+                    "hu": "Ment\u00e9s",
+                    "nl": "Opslaan"
+                }
+            }
+        },
+        "use": {
+            "image": {
+                "translations": {
+                    "de": "Pfeilbild verwenden",
+                    "en": "Use Arrow Image",
+                    "hu": "Ny\u00edl k\u00e9p haszn\u00e1lata",
+                    "nl": "Gebruiken van pijlafbeelding"
+                }
+            },
+            "user_image": {
+                "translations": {
+                    "de": "Benutzerbild statt Titel verwenden",
+                    "en": "Use User-Image as Title",
+                    "hu": "Felhaszn\u00e1l\u00f3i k\u00e9p haszn\u00e1lata c\u00edmk\u00e9nt",
+                    "nl": "Gebruik Gebruikersafbeelding als titel"
+                }
+            }
+        },
+        "disable": {
+            "active": {
+                "translations": {
+                    "de": "Aktive Eintr\u00e4ge deaktivieren",
+                    "en": "Disable active entries",
+                    "hu": "MISSING",
+                    "nl": "MISSING"
+                },
+                "last_used": "13.04.2016"
+            }
+        }
+    }
+}

@@ -2,7 +2,6 @@
 
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php');
-require_once('./Services/Language/classes/class.ilLanguage.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
 /*
@@ -385,7 +384,6 @@ class ctrlmmEntry extends ActiveRecord {
 			$this->update();
 		} else {
 			parent::create();
-
 			$this->writeAdditionalData();
 			$this->writeTranslations();
 		}

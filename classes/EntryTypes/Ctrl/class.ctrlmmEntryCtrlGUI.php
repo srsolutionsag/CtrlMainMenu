@@ -32,7 +32,7 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 		$te->setRequired(true);
 		$this->form->addItem($te);
 
-		$te = new ilTextInputGUI($this->pl->txt('cmd'), 'my_cmd');
+		$te = new ilTextInputGUI($this->pl->txt('common_cmd'), 'my_cmd');
 		$te->setRequired(false);
 		$this->form->addItem($te);
 
@@ -43,7 +43,7 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 		$te->setValue($this->entry->getType());
 		$this->form->addItem($te);
 
-		$se = new ilSelectInputGUI($this->pl->txt('target'), 'target');
+		$se = new ilSelectInputGUI($this->pl->txt('common_target'), 'target');
 		$opt = array( '_top' => $this->pl->txt('same_page'), '_blank' => $this->pl->txt('new_page') );
 		$se->setOptions($opt);
 		$this->form->addItem($se);

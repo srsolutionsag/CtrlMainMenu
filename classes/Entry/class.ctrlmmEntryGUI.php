@@ -128,7 +128,7 @@ class ctrlmmEntryGUI {
 		$this->form = new ilPropertyFormGUI();
 		$this->initPermissionSelectionForm();
 		$te = new ilFormSectionHeaderGUI();
-		$te->setTitle($this->pl->txt('title'));
+		$te->setTitle($this->pl->txt('common_title'));
 		$this->form->addItem($te);
 		$this->form->setTitle($this->pl->txt('form_title'));
 		$this->form->setFormAction($this->ctrl->getFormAction($this->parent_gui));
@@ -145,14 +145,14 @@ class ctrlmmEntryGUI {
 
 		if (count(ctrlmmEntry::getAdditionalFieldsAsArray($this->entry)) > 0) {
 			$te = new ilFormSectionHeaderGUI();
-			$te->setTitle($this->pl->txt('settings'));
+			$te->setTitle($this->pl->txt('common_settings'));
 			$this->form->addItem($te);
 		}
-		$this->form->addCommandButton($mode . 'Object', $this->pl->txt('create'));
+		$this->form->addCommandButton($mode . 'Object', $this->pl->txt('common_create'));
 		if ($mode != 'create') {
 			$this->form->addCommandButton($mode . 'ObjectAndStay', $this->pl->txt('create_and_stay'));
 		}
-		$this->form->addCommandButton('configure', $this->pl->txt('cancel'));
+		$this->form->addCommandButton('configure', $this->pl->txt('common_cancel'));
 	}
 
 

@@ -62,6 +62,13 @@ class ctrlmmTranslation extends ActiveRecord {
 	//
 	// Static
 	//
+
+	/**
+	 * @var array
+	 */
+	protected static $translations_instance_cache = array();
+
+
 	/**
 	 * @param $entry_id
 	 * @param $language_key
@@ -69,18 +76,29 @@ class ctrlmmTranslation extends ActiveRecord {
 	 * @return ctrlmmTranslation
 	 */
 	public static function _getInstanceForLanguageKey($entry_id, $language_key) {
-		$result = self::where(array( 'entry_id' => $entry_id, 'language_key' => $language_key ));
+		if (empty($translations_instance_cache[$entry_id][$language_key])) {
 
-		if ($result->hasSets()) {
-			return $result->first();
-		} else {
-			$instace = new self();
-			$instace->setLanguageKey($language_key);
-			$instace->setEntryId($entry_id);
+			$result = self::where(array( 'entry_id' => $entry_id, 'language_key' => $language_key ));
 
-			return $instace;
+			if ($result->hasSets()) {
+				return $result->first();
+			} else {
+				$instace = new self();
+				$instace->setLanguageKey($language_key);
+				$instace->setEntryId($entry_id);
+
+				$translations_instance_cache[$entry_id][$language_key] = $instace;
+			}
 		}
+
+		return $translations_instance_cache[$entry_id][$language_key];
 	}
+
+
+	/**
+	 * @var array
+	 */
+	protected static $translations_array_cache = array();
 
 
 	/**
@@ -89,15 +107,20 @@ class ctrlmmTranslation extends ActiveRecord {
 	 * @return mixed
 	 */
 	public static function _getAllTranslationsAsArray($entry_id) {
-		$query = self::where(array( 'entry_id' => $entry_id ));
+		if (empty($translations_array_cache [$entry_id])) {
 
-		$entries = $query->getArray();
-		$return = array();
-		foreach ($entries as $set) {
-			$return[$set['language_key']] = $set['title'];
+			$query = self::where(array( 'entry_id' => $entry_id ));
+
+			$entries = $query->getArray();
+			$return = array();
+			foreach ($entries as $set) {
+				$return[$set['language_key']] = $set['title'];
+			}
+
+			$translations_array_cache [$entry_id] = $return;
 		}
 
-		return $return;
+		return $translations_array_cache [$entry_id];
 	}
 
 

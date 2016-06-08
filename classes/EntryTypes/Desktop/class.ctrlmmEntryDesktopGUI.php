@@ -227,8 +227,11 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		if ($this->entry->getShowLogout()) {
 			$this->gl->addSeparator();
-			// settings
-			$this->gl->addEntry($lng->txt('logout'), 'logout.php', '_top', '', $this->getAdditionalClasses(), '', false, 'left center', 'right center', false);
+			$ctrlmmGLEntry = new ctrlmmGLEntry();
+			$ctrlmmGLEntry->setId('mm_logout');
+			$ctrlmmGLEntry->setTitle($lng->txt('logout'));
+			$ctrlmmGLEntry->setLink('logout.php');
+			$this->addGLEntry($ctrlmmGLEntry);
 		}
 	}
 

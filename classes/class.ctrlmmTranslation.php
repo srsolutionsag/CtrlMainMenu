@@ -59,14 +59,11 @@ class ctrlmmTranslation extends ActiveRecord {
 		return self::TABLE_NAME;
 	}
 
-	//
-	// Static
-	//
 
 	/**
 	 * @var array
 	 */
-	protected static $translations_instance_cache = array();
+	protected static $instance_cache = array();
 
 
 	/**
@@ -76,22 +73,22 @@ class ctrlmmTranslation extends ActiveRecord {
 	 * @return ctrlmmTranslation
 	 */
 	public static function _getInstanceForLanguageKey($entry_id, $language_key) {
-		if (empty($translations_instance_cache[$entry_id][$language_key])) {
+		if (!empty($instance_cache[$entry_id][$language_key])) {
+			return $instance_cache[$entry_id][$language_key];
+		}
+		$result = self::where(array( 'entry_id' => $entry_id, 'language_key' => $language_key ));
 
-			$result = self::where(array( 'entry_id' => $entry_id, 'language_key' => $language_key ));
+		if ($result->hasSets()) {
+			$instance_cache[$entry_id][$language_key] = $result->first();
+		} else {
+			$instace = new self();
+			$instace->setLanguageKey($language_key);
+			$instace->setEntryId($entry_id);
 
-			if ($result->hasSets()) {
-				return $result->first();
-			} else {
-				$instace = new self();
-				$instace->setLanguageKey($language_key);
-				$instace->setEntryId($entry_id);
-
-				$translations_instance_cache[$entry_id][$language_key] = $instace;
-			}
+			$instance_cache[$entry_id][$language_key] = $instace;
 		}
 
-		return $translations_instance_cache[$entry_id][$language_key];
+		return $instance_cache[$entry_id][$language_key];
 	}
 
 

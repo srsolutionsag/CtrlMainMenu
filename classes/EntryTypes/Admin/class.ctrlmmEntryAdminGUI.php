@@ -35,7 +35,7 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 		 * @var $item            ilTextInputGUI
 		 */
 		$permission_type = $this->form->getItemByPostVar('permission_type');
-		$permission_type->setDisabled(true);
+//		$permission_type->setDisabled(true);
 	}
 
 

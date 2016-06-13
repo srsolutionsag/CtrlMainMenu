@@ -40,14 +40,15 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 
 
 	/**
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
 		if (ctrlmm::is50()) {
 			ilYuiUtil::initConnection();
 		}
 
-		return parent::renderEntry();
+		return parent::renderEntry($entry_div_id);
 	}
 
 

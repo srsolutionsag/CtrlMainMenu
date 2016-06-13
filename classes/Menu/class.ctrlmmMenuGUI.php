@@ -106,7 +106,7 @@ class ctrlmmMenuGUI {
 				} else {
 					$entryGui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($entry->getId())->getGUIObject();
 				}
-				$entry_html .= $entryGui->prepareAndRenderEntry($entry->getParent() . '_' . $k);
+				$entry_html .= $entryGui->prepareAndRenderEntry('ctrl_mm_e_' . $entry->getParent() . '_' . $k);
 			}
 		}
 		$this->html->setVariable('ENTRIES', $entry_html);

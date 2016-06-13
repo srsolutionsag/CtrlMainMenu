@@ -38,9 +38,9 @@ class ctrlmmEntryGUI {
 
 	/**
 	 * @param ctrlmmEntry $entry
-	 * @param null        $parent_gui
+	 * @param null $parent_gui
 	 */
-	public function __construct(ctrlmmEntry $entry, $parent_gui = NULL) {
+	public function __construct(ctrlmmEntry $entry, $parent_gui = null) {
 		global $ilCtrl, $tpl;
 		/**
 		 * @var $ilCtrl ilCtrl
@@ -93,7 +93,7 @@ class ctrlmmEntryGUI {
 	protected function renderEntry($entry_div_id = '') {
 		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
-		$this->html->setVariable('CSS_ID', 'ctrl_mm_e_' . ($entry_div_id) ? $entry_div_id : $this->entry->getId());
+		$this->html->setVariable('CSS_ID', ($entry_div_id) ? $entry_div_id : 'ctrl_mm_e_' . $this->entry->getId());
 		$this->html->setVariable('LINK', $this->entry->getLink());
 		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('TARGET', $this->entry->getTarget());
@@ -167,7 +167,7 @@ class ctrlmmEntryGUI {
 		$perm_type = $this->entry->getPermissionType();
 		$values['permission_type'] = $perm_type;
 
-		if($perm_type == ctrlmmMenu::PERM_SCRIPT) {
+		if ($perm_type == ctrlmmMenu::PERM_SCRIPT) {
 			$perm_settings = json_decode($this->entry->getPermission());
 			$values['perm_input_script_path'] = $perm_settings[0];
 			$values['perm_input_script_class'] = $perm_settings[1];
@@ -195,7 +195,7 @@ class ctrlmmEntryGUI {
 
 
 	/**
-	 * @param int  $filter
+	 * @param int $filter
 	 * @param bool $with_text
 	 *
 	 * @deprecated
@@ -282,15 +282,18 @@ class ctrlmmEntryGUI {
 		$this->entry->setPermissionType($perm_type);
 		if ($this->form->getInput('permission_locale_' . $perm_type)) {
 			$permission = array_merge(explode(',', $this->form->getInput('permission_locale_'
-				. $perm_type)), (array)$this->form->getInput('permission_' . $perm_type)); // Variante Textfeld
+			                                                             . $perm_type)), (array)$this->form->getInput('permission_'
+			                                                                                                          . $perm_type)); // Variante Textfeld
 			/*$permission = array_merge((array)$this->form->getInput('permission_locale_'
 				. $perm_type), (array)$this->form->getInput('permission_' . $perm_type));*/
 		} elseif ($this->form->getInput('permission_user_' . $perm_type)) {
 			$permission = explode(',', $this->form->getInput('permission_user_' . $perm_type));
-		} elseif  ($this->form->getInput('permission_type') == ctrlmmMenu::PERM_SCRIPT ) {
-			$permission = array(0 => $this->form->getInput('perm_input_script_path'),
-								1 => $this->form->getInput('perm_input_script_class'),
-								2 => $this->form->getInput('perm_input_script_method'));
+		} elseif ($this->form->getInput('permission_type') == ctrlmmMenu::PERM_SCRIPT) {
+			$permission = array(
+				0 => $this->form->getInput('perm_input_script_path'),
+				1 => $this->form->getInput('perm_input_script_class'),
+				2 => $this->form->getInput('perm_input_script_method'),
+			);
 		} else {
 			$permission = (array)$this->form->getInput('permission_' . $perm_type);
 		}

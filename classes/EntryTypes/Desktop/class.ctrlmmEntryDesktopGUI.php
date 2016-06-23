@@ -35,7 +35,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * @param null $parent_gui
 	 */
 	public function __construct(ctrlmmEntry $entry, $parent_gui = null) {
-		global $rbacsystem, $ilUser;
+		global $rbacsystem, $ilUser, $ilias;
 		parent::__construct($entry, $parent_gui);
 		$this->mail = ($rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND $ilUser->getId()
 		                                                                                                         != ANONYMOUS_USER_ID);

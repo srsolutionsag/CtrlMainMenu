@@ -67,9 +67,13 @@ class ctrlmmData extends ActiveRecord {
 		return self::TABLE_NAME;
 	}
 
-	//
-	// Static
-	//
+
+	/**
+	 * @var array
+	 */
+	protected static $instance_cache = array();
+
+
 	/**
 	 * @param $parent_id
 	 * @param $data_key
@@ -77,17 +81,22 @@ class ctrlmmData extends ActiveRecord {
 	 * @return ctrlmmData
 	 */
 	public static function _getInstanceForDataKey($parent_id, $data_key) {
+		if (!empty($instance_cache[$parent_id][$data_key])) {
+			return $instance_cache[$parent_id][$data_key];
+		}
 		$result = self::where(array( 'parent_id' => $parent_id, 'data_key' => $data_key ));
 
 		if ($result->hasSets()) {
-			return $result->first();
+			$instance_cache[$parent_id][$data_key] = $result->first();
 		} else {
 			$instance = new self();
 			$instance->setParentId($parent_id);
 			$instance->setDataKey($data_key);
 
-			return $instance;
+			$instance_cache[$parent_id][$data_key] = $instance;
 		}
+
+		return $instance_cache[$parent_id][$data_key];
 	}
 
 

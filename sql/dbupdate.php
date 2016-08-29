@@ -87,3 +87,11 @@ if ($ilDB->tableColumnExists(ctrlmmData::returnDbTableName(), 'data_type')) {
 global $ilDB;
 $ilDB->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
 ?>
+<#9>
+<?php
+global $ilDB;
+$ilDB->modifyTableColumn('ui_uihk_ctrlmm_t', 'language_key', array( "length" => 64 ));
+$ilDB->addIndex('ui_uihk_ctrlmm_t', array('entry_id', 'language_key'), 'i2');
+$ilDB->addIndex('ui_uihk_ctrlmm_d', array('parent_id'), 'i2');
+$ilDB->addIndex('ui_uihk_ctrlmm_e', array('parent'), 'i2');
+?>

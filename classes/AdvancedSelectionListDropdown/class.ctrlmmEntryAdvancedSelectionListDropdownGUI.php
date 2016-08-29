@@ -25,9 +25,10 @@ abstract class ctrlmmEntryAdvancedSelectionListDropdownGUI extends ctrlmmEntryGU
 
 
 	/**
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
 		$this->selection = new ilAdvancedSelectionListGUI();
 
 		$this->selection->setSelectionHeaderClass(($this->entry->isActive() ? ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_ACTIVE) : ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_INACTIVE)));

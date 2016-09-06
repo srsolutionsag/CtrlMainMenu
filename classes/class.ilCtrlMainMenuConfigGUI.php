@@ -199,8 +199,10 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	public function saveSorting() {
 		foreach ($_POST['position'] as $k => $v) {
 			$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($v)->getObject();
-			$obj->setPosition($k);
-			$obj->update();
+			if($obj instanceof ctrlmmEntry) {
+				$obj->setPosition($k);
+				$obj->update();
+			}
 		}
 		ilUtil::sendSuccess($this->pl->txt('sorting_saved'));
 		$this->ctrl->redirect($this);

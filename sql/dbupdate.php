@@ -95,3 +95,17 @@ $ilDB->addIndex('ui_uihk_ctrlmm_t', array('entry_id', 'language_key'), 'i2');
 $ilDB->addIndex('ui_uihk_ctrlmm_d', array('parent_id'), 'i2');
 $ilDB->addIndex('ui_uihk_ctrlmm_e', array('parent'), 'i2');
 ?>
+<#10>
+<?php
+require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
+foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
+	/**
+	 * @var $ctrlmmEntry ctrlmmEntryAdmin
+	 */
+	if ($ctrlmmEntry->getType() == ctrlmmMenu::TYPE_ADMIN && $ctrlmmEntry->getPermissionType() == ctrlmmMenu::PERM_NONE) {
+		$ctrlmmEntry->setPermissionType(ctrlmmMenu::PERM_ROLE);
+		$ctrlmmEntry->setPermission("[2]");
+		$ctrlmmEntry->update();
+	}
+}
+?>

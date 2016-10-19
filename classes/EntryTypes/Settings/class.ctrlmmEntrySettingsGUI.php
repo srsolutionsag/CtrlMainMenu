@@ -122,12 +122,11 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$options = array(
 				IL_MAIL_LOCAL => $lng->txt('mail_incoming_local'),
 				IL_MAIL_EMAIL => $lng->txt('mail_incoming_smtp'),
-				IL_MAIL_BOTH => $lng->txt('mail_incoming_both')
+				IL_MAIL_BOTH  => $lng->txt('mail_incoming_both'),
 			);
 			$si = new ilSelectInputGUI($lng->txt('mail_incoming'), ctrlmmSettings::INCOMING_TYPE);
 			$si->setOptions($options);
-			if (!strlen(ilObjUser::_lookupEmail($ilUser->getId())) OR $ilSetting->get('usr_settings_disable_mail_incoming_mail') == '1'
-			) {
+			if (!strlen(ilObjUser::_lookupEmail($ilUser->getId())) OR $ilSetting->get('usr_settings_disable_mail_incoming_mail') == '1') {
 				$si->setDisabled(true);
 			}
 			$mailOptions = new ilMailOptions($ilUser->getId());
@@ -147,7 +146,7 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		$form->addCommandButton('#', $this->pl->txt('settentr_button_save'));
 
 		$setting_tpl = $this->pl->getVersionTemplate('tpl.settings_entry.html');
-		$setting_tpl->setVariable('CONTENT', $form->getHTML());
+		$setting_tpl->setVariable('CTRLMM_CONTENT', $form->getHTML());
 
 		return $setting_tpl->get();
 	}
@@ -176,5 +175,3 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	//		$this->entry->update();
 	//	}
 }
-
-?>

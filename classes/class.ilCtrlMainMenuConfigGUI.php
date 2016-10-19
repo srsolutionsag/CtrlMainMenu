@@ -86,12 +86,12 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			'css_inactive' => array(
 				'type' => 'ilTextInputGUI',
 			),
-			//			'doubleclick_prevention' => array(
-			//				'type' => 'ilCheckboxInputGUI',
-			//			),
-			//			'simple_form_validation' => array(
-			//				'type' => 'ilCheckboxInputGUI',
-			//			),
+						'doubleclick_prevention' => array(
+							'type' => 'ilCheckboxInputGUI',
+						),
+						'simple_form_validation' => array(
+							'type' => 'ilCheckboxInputGUI',
+						),
 			'replace_full_header' => array(
 				'type' => 'ilCheckboxInputGUI',
 			),

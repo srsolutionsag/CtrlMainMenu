@@ -3,7 +3,9 @@
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/GroupedListDropdown/class.ctrlmmEntryGroupedListDropdownGUI.php');
 require_once('./Services/UIComponent/GroupedList/classes/class.ilGroupedListGUI.php');
 require_once('./Services/Tracking/classes/class.ilObjUserTracking.php');
-require_once('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php');
+if (is_file('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php')) {
+	require_once('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php');
+}
 
 /**
  * ctrlmmEntryDesktopGUI
@@ -40,9 +42,9 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		parent::__construct($entry, $parent_gui);
 		$this->mail = ($rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND $ilUser->getId()
 		                                                                                                         != ANONYMOUS_USER_ID);
-		$this->contacts = ctrlmm::is51() ? ilBuddySystem::getInstance()->isEnabled()
-			: (!$ilias->getSetting('disable_contacts') AND ($ilias->getSetting('disable_contacts_require_mail')
-				OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId())));
+		$this->contacts = ctrlmm::is51() ? ilBuddySystem::getInstance()->isEnabled() : (!$ilias->getSetting('disable_contacts')
+		                                                                                AND ($ilias->getSetting('disable_contacts_require_mail')
+		                                                                                     OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId())));
 	}
 
 
@@ -203,8 +205,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		}
 
 		// contacts
-		if($this->contacts)
-		{
+		if ($this->contacts) {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_contacts');
 			$ctrlmmGLEntry->setTitle($lng->txt('mail_addressbook'));

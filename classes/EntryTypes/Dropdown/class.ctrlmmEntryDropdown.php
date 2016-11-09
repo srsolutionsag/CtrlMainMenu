@@ -160,9 +160,19 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 
 
 	/**
-	 * @param string $override_id
+	 * @param $list_id
 	 */
 	public function setListId($list_id) {
 		$this->list_id = $list_id;
+	}
+
+
+	/**
+	 * @return bool
+	 */
+	public function hasVisibleChilds() {
+		$return = false;
+
+		return $return;
 	}
 }

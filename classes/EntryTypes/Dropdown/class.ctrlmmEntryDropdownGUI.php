@@ -13,6 +13,22 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 class ctrlmmEntryDropdownGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 	const DOWN_ARROW_DARK = 'mm_down_arrow.png'; // ilAdvancedSelectionListGUI::DOWN_ARROW_DARK
+	/**
+	 * @var ctrlmmEntryDropdown
+	 */
+	protected $entry;
+
+
+	/**
+	 * @return string
+	 */
+	public function renderEntry() {
+		if (!$this->entry->hasVisibleChilds()) {
+			return '';
+		}
+
+		return parent::renderEntry();
+	}
 
 
 	/**
@@ -24,23 +40,23 @@ class ctrlmmEntryDropdownGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 */
 	protected function setGroupedListContent() {
 		$entries = $this->entry->getEntries();
-		foreach ($entries as $key=>$entry) {
+		foreach ($entries as $key => $entry) {
 			/**
 			 * @var ctrlmmEntry $entry
 			 */
 			if ($entry->checkPermission()) {
-				switch($entry->getType()) {
+				switch ($entry->getType()) {
 					case ctrlmmMenu::TYPE_SUBTITLE:
 						// only add subtitle if there is a next entry or the option is show with no children is set
-						$next_element = (isset($entries[$key++]))? $entries[$key++] : null;
-						if($entry->getShowWithNoChildren() || (isset($next_element) && $next_element->checkPermission())) {
+						$next_element = (isset($entries[$key ++])) ? $entries[$key ++] : null;
+						if ($entry->getShowWithNoChildren() || (isset($next_element) && $next_element->checkPermission())) {
 							$this->gl->addGroupHeader($entry->getTitle(), $entry->getLink(), $entry->getTarget(), '', '', 'mm_pd_sel_items'
-								. $entry->getId(), '', 'left center', 'right center', false);
+							                                                                                              . $entry->getId(), '', 'left center', 'right center', false);
 						}
 						break;
 					default:
 						$this->gl->addEntry($entry->getTitle(), $entry->getLink(), $entry->getTarget(), '', '', 'mm_pd_sel_items'
-							. $entry->getId(), '', 'left center', 'right center', false);
+						                                                                                        . $entry->getId(), '', 'left center', 'right center', false);
 				}
 			}
 		}

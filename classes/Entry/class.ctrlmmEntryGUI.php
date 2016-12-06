@@ -25,7 +25,7 @@ class ctrlmmEntryGUI {
 	/**
 	 * @var ctrlmmEntry
 	 */
-	public $entry;
+	protected $entry;
 	/**
 	 * @var ilPropertyFormGUI
 	 */

@@ -234,8 +234,11 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 		// validate
 		foreach ($this->inputs as $input_key => $inputs) {
-			if (! $inputs->checkInput()) {
-				$valid = false;
+			foreach ($out_array as $subitem) {
+				$_POST[$inputs->getPostVar()] = $subitem[$inputs->getPostVar()];
+				if (! $inputs->checkInput()) {
+					$valid = false;
+				}
 			}
 		}
 

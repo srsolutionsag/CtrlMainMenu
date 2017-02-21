@@ -3,6 +3,9 @@
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/GroupedListDropdown/class.ctrlmmEntryGroupedListDropdownGUI.php');
 require_once('./Services/UIComponent/GroupedList/classes/class.ilGroupedListGUI.php');
 require_once('./Services/Tracking/classes/class.ilObjUserTracking.php');
+if (is_file('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php')) {
+	require_once('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php');
+}
 
 /**
  * ctrlmmEntryDesktopGUI
@@ -24,6 +27,10 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * @var bool
 	 */
 	protected $mail = false;
+	/**
+	 * @var bool
+	 */
+	protected $contacts = false;
 
 
 	/**
@@ -31,10 +38,13 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * @param null $parent_gui
 	 */
 	public function __construct(ctrlmmEntry $entry, $parent_gui = null) {
-		global $rbacsystem, $ilUser;
+		global $rbacsystem, $ilUser, $ilias;
 		parent::__construct($entry, $parent_gui);
 		$this->mail = ($rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND $ilUser->getId()
 		                                                                                                         != ANONYMOUS_USER_ID);
+		$this->contacts = ctrlmm::is51() ? ilBuddySystem::getInstance()->isEnabled() : (!$ilias->getSetting('disable_contacts')
+		                                                                                AND ($ilias->getSetting('disable_contacts_require_mail')
+		                                                                                     OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId())));
 	}
 
 
@@ -195,9 +205,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		}
 
 		// contacts
-		if (!$ilias->getSetting('disable_contacts') AND ($ilias->getSetting('disable_contacts_require_mail')
-		                                                 OR $rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()))
-		) {
+		if ($this->contacts) {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_contacts');
 			$ctrlmmGLEntry->setTitle($lng->txt('mail_addressbook'));
@@ -227,8 +235,11 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		if ($this->entry->getShowLogout()) {
 			$this->gl->addSeparator();
-			// settings
-			$this->gl->addEntry($lng->txt('logout'), 'logout.php', '_top', '', $this->getAdditionalClasses(), '', false, 'left center', 'right center', false);
+			$ctrlmmGLEntry = new ctrlmmGLEntry();
+			$ctrlmmGLEntry->setId('mm_logout');
+			$ctrlmmGLEntry->setTitle($lng->txt('logout'));
+			$ctrlmmGLEntry->setLink('logout.php');
+			$this->addGLEntry($ctrlmmGLEntry);
 		}
 	}
 

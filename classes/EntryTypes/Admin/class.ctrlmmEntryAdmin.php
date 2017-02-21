@@ -68,9 +68,22 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function checkPermission() {
-		global $rbacsystem;
+		global $rbacreview, $ilUser;
 
-		// As in ilMainMenuGUI::_checkAdministrationPermission() only visible is required
-		return $rbacsystem->checkAccess('visible', SYSTEM_FOLDER_ID);
+		if (!$this->isPermissionCached()) {
+			$this->setCachedPermission(false);
+			foreach ((array)json_decode($this->getPermission()) as $pid) {
+				if (in_array($pid, $rbacreview->assignedRoles($ilUser->getId()))) {
+					$this->setCachedPermission(true);
+					return true;
+				}
+			}
+
+			//global administrator has permissions
+			if(in_array(2,$rbacreview->assignedGlobalRoles($ilUser->getId()))) {
+				$this->setCachedPermission(true);
+				return true;
+			}
+		}
 	}
 }

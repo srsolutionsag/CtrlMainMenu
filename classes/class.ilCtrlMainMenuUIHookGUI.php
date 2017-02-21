@@ -8,7 +8,11 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 require_once('class.ilCtrlMainMenuPlugin.php');
 require_once('./Modules/SystemFolder/classes/class.ilObjSystemFolder.php');
 require_once('class.ilCtrlMainMenuConfig.php');
-require_once('Services/Style/classes/class.ilStyleDefinition.php');
+if (is_file('Services/Style/classes/class.ilStyleDefinition.php')) {
+	require_once('Services/Style/classes/class.ilStyleDefinition.php');
+} else {
+	require_once('Services/Style/System/classes/class.ilStyleDefinition.php');
+}
 
 /**
  * User interface hook class

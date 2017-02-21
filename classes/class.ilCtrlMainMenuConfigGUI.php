@@ -86,12 +86,12 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			'css_inactive' => array(
 				'type' => 'ilTextInputGUI',
 			),
-			//			'doubleclick_prevention' => array(
-			//				'type' => 'ilCheckboxInputGUI',
-			//			),
-			//			'simple_form_validation' => array(
-			//				'type' => 'ilCheckboxInputGUI',
-			//			),
+						'doubleclick_prevention' => array(
+							'type' => 'ilCheckboxInputGUI',
+						),
+						'simple_form_validation' => array(
+							'type' => 'ilCheckboxInputGUI',
+						),
 			'replace_full_header' => array(
 				'type' => 'ilCheckboxInputGUI',
 			),
@@ -199,8 +199,10 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	public function saveSorting() {
 		foreach ($_POST['position'] as $k => $v) {
 			$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($v)->getObject();
-			$obj->setPosition($k);
-			$obj->update();
+			if($obj instanceof ctrlmmEntry) {
+				$obj->setPosition($k);
+				$obj->update();
+			}
 		}
 		ilUtil::sendSuccess($this->pl->txt('sorting_saved'));
 		$this->ctrl->redirect($this);

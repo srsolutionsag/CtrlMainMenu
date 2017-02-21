@@ -171,7 +171,7 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function hasVisibleChilds() {
-		$return = false;
+		$return = true;
 
 		return $return;
 	}

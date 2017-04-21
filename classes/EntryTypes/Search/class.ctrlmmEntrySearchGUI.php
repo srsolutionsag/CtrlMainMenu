@@ -18,11 +18,11 @@ class ctrlmmEntrySearchGUI extends ctrlmmEntryGUI {
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		$main_search = new ilMainMenuSearchGUI();
 		$this->html = $this->pl->getVersionTemplate('tpl.search_entry.html', false, false);
 		$this->html->setVariable('DROPDOWN', str_ireplace('ilMainMenuSearch', ctrlmmMenu::getCssPrefix()
 			. 'MainMenuSearch', $main_search->getHTML()));
-		$this->html->setVariable('CSS_ID', ($entry_div_id) ? $entry_div_id : 'ctrl_mm_e_' . $this->entry->getId());
 		$this->html->setVariable('CSS_PREFIX', ctrlmmMenu::getCssPrefix());
 
 		return $this->html->get();

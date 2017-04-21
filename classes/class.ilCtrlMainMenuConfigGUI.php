@@ -156,7 +156,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$cb = new ilCheckboxInputGUI($this->pl->txt('activate_cache'), 'activate_cache');
 		$cb->setInfo($this->pl->txt('activate_cache_info'));
 		$form->addItem($cb);
-		$form->setValuesByArray(array( 'activate_cache' => ilCtrlMainMenuConfig::get('activate_cache') ));
+		$form->setValuesByArray(array( 'activate_cache' => ilCtrlMainMenuConfig::getConfigValue('activate_cache') ));
 		$form->addCommandButton('updateCacheSettings', $this->pl->txt('update_cache_settings'));
 
 		$this->tpl->setContent($form->getHTML());
@@ -337,10 +337,10 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	//
 	public function getValues() {
 		foreach ($this->getFields() as $key => $item) {
-			$values[$key] = ilCtrlMainMenuConfig::get($key);
+			$values[$key] = ilCtrlMainMenuConfig::getConfigValue($key);
 			if (is_array($item['subelements'])) {
 				foreach ($item['subelements'] as $subkey => $subitem) {
-					$values[$key . '_' . $subkey] = ilCtrlMainMenuConfig::get($key . '_' . $subkey);
+					$values[$key . '_' . $subkey] = ilCtrlMainMenuConfig::getConfigValue($key . '_' . $subkey);
 				}
 			}
 		}

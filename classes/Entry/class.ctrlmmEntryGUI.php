@@ -87,18 +87,18 @@ class ctrlmmEntryGUI {
 
 
 	/**
-	 * @param string $entry_div_id If set, the value is used to construct the unique ID of the entry (HTML)
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	protected function renderEntry($entry_div_id = '') {
+	public function renderEntry($entry_div_id = '') {
 		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', ($entry_div_id) ? $entry_div_id : 'ctrl_mm_e_' . $this->entry->getId());
 		$this->html->setVariable('LINK', $this->entry->getLink());
-		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
+		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('TARGET', $this->entry->getTarget());
-		$cssActive = ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_ACTIVE);
-		$cssInactive = ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_INACTIVE);
+		$cssActive = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_ACTIVE);
+		$cssInactive = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE);
 		$this->html->setVariable('STATE', ($this->entry->isActive() ? $cssActive : $cssInactive));
 
 		return $this->html->get();

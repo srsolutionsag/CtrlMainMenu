@@ -22,7 +22,8 @@ class ctrlmmEntryDropdownGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	/**
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		if (!$this->entry->hasVisibleChilds()) {
 			return '';
 		}

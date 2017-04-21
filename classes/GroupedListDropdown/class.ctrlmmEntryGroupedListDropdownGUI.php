@@ -33,9 +33,11 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 	protected $html;
 
 	/**
+	 * @param string $entry_div_id
 	 * @return string
 	 */
-	public function renderEntry() {
+	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		global $lng;
 
 		$this->gl = new ilGroupedListGUI();
@@ -49,7 +51,7 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 		$this->html = $this->pl->getVersionTemplate('tpl.grouped_list_dropdown.html');
 
 		$this->html->setVariable('TXT_TITLE', $this->entry->getTitle());
-		$this->html->setVariable('PREFIX', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
+		$this->html->setVariable('PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		if ($this->show_arrow) {
 			$this->html->setVariable('ARROW_IMG', ilUtil::getImagePath('mm_down_arrow.png'));
 		}
@@ -66,10 +68,10 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 		$this->html->setVariable('LIST_ID', $list_id);
 
 		if ($this->entry->isActive()) {
-			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_ACTIVE));
+			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_ACTIVE));
 			$this->html->setVariable('SEL', '<span class=\'ilAccHidden\'>(' . $lng->txt('stat_selected') . ')</span>');
 		} else {
-			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_INACTIVE));
+			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE));
 		}
 
 		$this->accessKey();

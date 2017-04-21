@@ -48,7 +48,7 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 	public function getHTML($a_comp, $a_part, $a_par = array()) {
 
 		$full_header = ($a_part == 'template_get' AND $a_par['tpl_id'] == 'Services/MainMenu/tpl.main_menu.html');
-		$replace = (bool)ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
+		$replace = (bool)ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
 		if ($full_header AND !self::$replaced) {
 			if ($full_header AND $replace) {
 				self::$replaced = true;
@@ -90,7 +90,7 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 		$mainMenu = ilCtrlMainMenuPlugin::getInstance()->getVersionTemplate('tpl.mainmenu.html', true, true);
 
-		$mainMenu->setVariable("CSS_PREFIX", ilCtrlMainMenuConfig::get(ilCtrlMainMenuConfig::F_CSS_PREFIX));
+		$mainMenu->setVariable("CSS_PREFIX", ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 
 		$mainMenu->setVariable("HEADER_URL", $this->getHeaderURL());
 		if (ctrlmm::is50()) {

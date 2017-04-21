@@ -41,7 +41,7 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 *
 	 * @return string
 	 */
-	public static function get($name) {
+	public static function getConfigValue($name) {
 		if (!isset(self::$cache_loaded[$name])) {
 			$obj = self::find($name);
 			if ($obj === NULL) {

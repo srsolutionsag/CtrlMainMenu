@@ -35,7 +35,7 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 		 * @var $item            ilTextInputGUI
 		 */
 		$permission_type = $this->form->getItemByPostVar('permission_type');
-//		$permission_type->setDisabled(true);
+		$permission_type->setDisabled(true);
 	}
 
 
@@ -44,11 +44,12 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
+		unset($entry_div_id);
 		if (ctrlmm::is50()) {
 			ilYuiUtil::initConnection();
 		}
 
-		return parent::renderEntry($entry_div_id);
+		return parent::renderEntry();
 	}
 
 

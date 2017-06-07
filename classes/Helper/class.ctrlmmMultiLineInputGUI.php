@@ -221,7 +221,9 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 		// escape data
 		$out_array = array();
-		foreach ($_POST[$this->getPostVar()] as $item_num => $item) {
+		$var = $_POST[$this->getPostVar()];
+		$var = is_array($var) ? $var : array();
+		foreach ($var as $item_num => $item) {
 			foreach ($this->inputs as $input_key => $input) {
 				if (isset($item[$input_key])) {
 					$out_array[$item_num][$input_key] = (is_string($item[$input_key])) ? ilUtil::stripSlashes($item[$input_key]) : $item[$input_key];

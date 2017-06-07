@@ -14,4 +14,4 @@ class ctrlmmEntrySearchFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

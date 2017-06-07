@@ -39,4 +39,4 @@ class ctrlmmEntryStatusboxGUI extends ctrlmmEntryGUI {
 	}
 }
 
-?>
+

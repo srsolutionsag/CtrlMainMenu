@@ -6,4 +6,3 @@
  */
 require_once('./classes/class.ctrlmmChecker.php');
 ctrlmmChecker::check($_REQUEST['classes']);
-?>

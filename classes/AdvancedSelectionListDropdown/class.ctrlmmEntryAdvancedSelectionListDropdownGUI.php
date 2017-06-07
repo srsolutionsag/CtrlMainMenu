@@ -63,4 +63,4 @@ abstract class ctrlmmEntryAdvancedSelectionListDropdownGUI extends ctrlmmEntryGU
 	abstract protected function customizeAdvancedSelectionList();
 }
 
-?>
+

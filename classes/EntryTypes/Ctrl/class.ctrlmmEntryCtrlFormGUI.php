@@ -54,4 +54,4 @@ class ctrlmmEntryCtrlFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

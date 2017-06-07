@@ -43,4 +43,4 @@ class ctrlmmEntrySeparatorGUI extends ctrlmmEntryGUI {
 	}
 }
 
-?>
+

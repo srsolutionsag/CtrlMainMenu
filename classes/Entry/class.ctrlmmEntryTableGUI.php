@@ -108,4 +108,3 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 	}
 }
 
-?>

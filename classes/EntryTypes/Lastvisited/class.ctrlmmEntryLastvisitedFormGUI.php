@@ -14,4 +14,4 @@ class ctrlmmEntryLastvisitedFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

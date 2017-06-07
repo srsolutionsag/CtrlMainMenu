@@ -14,4 +14,4 @@ class ctrlmmEntrySubtitleFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

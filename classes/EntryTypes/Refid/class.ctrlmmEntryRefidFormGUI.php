@@ -14,4 +14,4 @@ class ctrlmmEntryRefidFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

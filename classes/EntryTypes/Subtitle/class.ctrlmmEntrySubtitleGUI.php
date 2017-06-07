@@ -47,4 +47,4 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 
 }
 
-?>
+

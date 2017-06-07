@@ -29,4 +29,4 @@ class ctrlmmEntrySearchGUI extends ctrlmmEntryGUI {
 	}
 }
 
-?>
+

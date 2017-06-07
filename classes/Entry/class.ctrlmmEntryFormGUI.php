@@ -245,4 +245,4 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 
 }
 
-?>
+

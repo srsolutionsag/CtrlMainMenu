@@ -14,4 +14,4 @@ class ctrlmmEntryAuthFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

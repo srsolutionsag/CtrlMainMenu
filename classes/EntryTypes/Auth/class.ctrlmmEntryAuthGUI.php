@@ -46,4 +46,4 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 	}
 }
 
-?>
+

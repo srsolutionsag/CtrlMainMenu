@@ -14,4 +14,4 @@ class ctrlmmEntryRepositoryFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

@@ -66,4 +66,4 @@ class ctrlmmEntryLastvisitedGUI extends ctrlmmEntryDropdownGUI {
 	}
 }
 
-?>
+

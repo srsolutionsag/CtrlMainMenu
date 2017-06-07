@@ -60,4 +60,4 @@ class ctrlmmEntryRefidGUI extends ctrlmmEntryGUI {
 	}
 }
 
-?>
+

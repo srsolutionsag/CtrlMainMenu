@@ -12,4 +12,4 @@ class ctrlmmEntryLinkFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

@@ -229,4 +229,4 @@ class ctrlmmTranslation extends ActiveRecord {
 	}
 }
 
-?>
+

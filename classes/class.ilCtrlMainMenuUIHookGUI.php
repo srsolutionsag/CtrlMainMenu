@@ -233,4 +233,4 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 	}
 }
 
-?>
+

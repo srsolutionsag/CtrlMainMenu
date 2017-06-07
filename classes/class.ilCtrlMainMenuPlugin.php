@@ -106,4 +106,4 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	}
 }
 
-?>
+

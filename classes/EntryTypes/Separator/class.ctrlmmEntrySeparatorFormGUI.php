@@ -14,4 +14,4 @@ class ctrlmmEntrySeparatorFormGUI extends ctrlmmEntryFormGUI {
 	}
 }
 
-?>
+

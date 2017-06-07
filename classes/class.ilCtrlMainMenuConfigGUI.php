@@ -399,4 +399,4 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	}
 }
 
-?>
+

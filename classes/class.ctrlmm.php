@@ -10,10 +10,9 @@ require_once('./Services/Component/classes/class.ilComponent.php');
  */
 class ctrlmm {
 
-	const ILIAS_44 = 44;
 	const ILIAS_50 = 50;
 	const ILIAS_51 = 51;
-	const MIN_ILIAS_VERSION = self::ILIAS_44;
+	const MIN_ILIAS_VERSION = self::ILIAS_50;
 
 
 	/**
@@ -25,9 +24,6 @@ class ctrlmm {
 		}
 		if (ilComponent::isVersionGreaterString(ILIAS_VERSION_NUMERIC, '4.9.999')) {
 			return self::ILIAS_50;
-		}
-		if (ilComponent::isVersionGreaterString(ILIAS_VERSION_NUMERIC, '4.3.999')) {
-			return self::ILIAS_44;
 		}
 
 		return 0;
@@ -45,16 +41,10 @@ class ctrlmm {
 	/**
 	 * @return bool
 	 */
-	public static function is44() {
-		return self::getILIASVersion() >= self::ILIAS_44;
-	}
-
-	/**
-	 * @return bool
-	 */
 	public static function is50() {
 		return self::getILIASVersion() >= self::ILIAS_50;
 	}
+
 
 	/**
 	 * @return bool
@@ -70,7 +60,8 @@ class ctrlmm {
 	public static function isGlobalCacheActive() {
 		static $has_global_cache;
 		if (!isset($has_global_cache)) {
-			$has_global_cache = ilCtrlMainMenuConfig::getConfigValue('activate_cache') AND self::hasGlobalCache();
+			$has_global_cache = ilCtrlMainMenuConfig::getConfigValue('activate_cache')
+			AND self::hasGlobalCache();
 		}
 
 		return $has_global_cache;

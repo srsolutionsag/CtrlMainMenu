@@ -8,7 +8,7 @@ if (is_file('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php')) {
 }
 
 /**
- * ctrlmmEntryDesktopGUI
+ * Class ctrlmmEntryDesktopGUI
  *
  * @author  Fabian Schmid <fs@studer-raimann.ch>
  * @version 2.0.02

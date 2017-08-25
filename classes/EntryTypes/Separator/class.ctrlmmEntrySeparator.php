@@ -34,7 +34,7 @@ class ctrlmmEntrySeparator extends ctrlmmEntry {
 	/**
 	 * @var bool
 	 */
-	protected $restricted = true;
+	protected $restricted = false;
 
 
 	/**
@@ -47,7 +47,6 @@ class ctrlmmEntrySeparator extends ctrlmmEntry {
 
 	public function __construct($primary_key = 0) {
 		$this->setType(ctrlmmMenu::TYPE_SEPARATOR);
-
 		parent::__construct($primary_key);
 	}
 

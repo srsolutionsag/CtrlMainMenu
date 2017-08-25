@@ -148,7 +148,7 @@ class ctrlmmTranslation extends ActiveRecord {
 	 *
 	 * @return ctrlmmTranslation[]
 	 */
-	public function _getAllInstancesForEntryId($entry_id) {
+	public static function _getAllInstancesForEntryId($entry_id) {
 		$result = self::where(array( 'entry_id' => $entry_id ));
 
 		return $result->get();

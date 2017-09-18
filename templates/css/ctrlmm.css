@@ -151,3 +151,17 @@ div.ilMainMenuRight {
 .ctrlmm_disabled {
 	pointer-events: none;
 }
+
+.after_separator {
+	float: right;
+}
+
+#ilTopNav .navbar-nav.before_separator {
+	display: inline-block;
+}
+
+#ilTopNav .navbar-nav.after_separator {
+	display: inline-block;
+	float: right;
+}
+

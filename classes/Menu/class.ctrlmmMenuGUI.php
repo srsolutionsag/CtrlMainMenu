@@ -78,24 +78,27 @@ class ctrlmmMenuGUI {
 		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
 
 		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu.html');
-		$entry_html = '';
+		$entry_before_html = '';
+		$entry_after_html = '';
 		$replace_full = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
 		/**
 		 * @var $entry ctrlmmEntry
 		 */
 
 		foreach ($this->object->getEntries() as $k => $entry) {
+//			var_dump($entry->getType());
+//			var_dump($this->object->getAfterSeparator());
 			if ($entry->getType() == ctrlmmMenu::TYPE_SEPARATOR) {
-				if ($replace_full) {
-					$this->object->setAfterSeparator(true);
-				}
+//				if ($replace_full) {
+				$this->object->setAfterSeparator(true);
+//				}
 				continue;
 			}
-			if ($this->object->getAfterSeparator() AND $this->getSide() == self::SIDE_LEFT) {
+			if ($this->object->getAfterSeparator() AND $this->getSide() == self::SIDE_LEFT && $replace_full) {
 				continue;
 			}
 
-			if (!$this->object->getAfterSeparator() AND $this->getSide() == self::SIDE_RIGHT) {
+			if (!$this->object->getAfterSeparator() AND $this->getSide() == self::SIDE_RIGHT && $replace_full) {
 				continue;
 			}
 
@@ -106,13 +109,19 @@ class ctrlmmMenuGUI {
 				} else {
 					$entryGui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($entry->getId())->getGUIObject();
 				}
-				$entry_html .= $entryGui->prepareAndRenderEntry('ctrl_mm_e_' . $entry->getParent() . '_' . $k);
+
+				if (!$this->object->getAfterSeparator()) {
+					$entry_before_html .= $entryGui->prepareAndRenderEntry('ctrl_mm_e_' . $entry->getParent() . '_' . $k);
+				} else {
+					$entry_after_html .= $entryGui->prepareAndRenderEntry('ctrl_mm_e_' . $entry->getParent() . '_' . $k);
+				}
 			}
 		}
-		$this->html->setVariable('ENTRIES', $entry_html);
+
+		$this->html->setVariable('BEFORE_ENTRIES', $entry_before_html);
+		$this->html->setVariable('AFTER_ENTRIES', $entry_after_html);
 		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('ID', $this->css_id);
-
 		return $this->html->get();
 	}
 

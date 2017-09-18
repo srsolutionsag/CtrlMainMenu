@@ -38,7 +38,6 @@ class ctrlmmEntrySeparatorGUI extends ctrlmmEntryGUI {
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
 		$this->html = $this->pl->getTemplate('tpl.menu_separator.html', false, false);
-
 		return $this->html->get();
 	}
 }

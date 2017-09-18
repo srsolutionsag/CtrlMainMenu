@@ -49,7 +49,7 @@ class ctrlmmEntrySettings extends ctrlmmEntry {
 	 * @param int $primary_key
 	 */
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_SETTINGS);
+		$this->setTypeId(ctrlmmMenu::TYPE_SETTINGS);
 
 		parent::__construct($primary_key);
 	}

@@ -46,7 +46,7 @@ class ctrlmmEntryDesktop extends ctrlmmEntry {
 
 
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_DESKTOP);
+		$this->setTypeId(ctrlmmMenu::TYPE_DESKTOP);
 
 		parent::__construct($primary_key);
 	}

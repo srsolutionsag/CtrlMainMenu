@@ -81,7 +81,7 @@ class ctrlmmEntry extends ActiveRecord {
 	 * @con_fieldtype  integer
 	 * @con_length     8
 	 */
-	protected $type = ctrlmmMenu::TYPE_LINK;
+	protected $type_id = ctrlmmMenu::TYPE_LINK;
 	/**
 	 * @var string
 	 *
@@ -203,7 +203,7 @@ class ctrlmmEntry extends ActiveRecord {
 			'permission_type',
 			'link',
 			'id',
-			'type',
+			'type_id',
 			'title',
 			'position',
 			'parent',
@@ -253,7 +253,7 @@ class ctrlmmEntry extends ActiveRecord {
 	 * @return bool
 	 */
 	public static function entriesExistForType($type_id) {
-		$set = self::where(array( 'type' => $type_id ));
+		$set = self::where(array( 'type_id' => $type_id ));
 
 		return ($set->count() > 0 ? true : false);
 	}
@@ -374,7 +374,7 @@ class ctrlmmEntry extends ActiveRecord {
 	public function create() {
 		if ($this->getParent() > 0) {
 			$entry = ctrlmmEntryInstaceFactory::getInstanceByEntryId($this->getParent())->getObject();
-			if (!$entry->isChildAllowed($this->getType())) {
+			if (!$entry->isChildAllowed($this->getTypeId())) {
 				ilUtil::sendFailure('Wrong Child-Type');
 
 				return false;
@@ -409,16 +409,16 @@ class ctrlmmEntry extends ActiveRecord {
 	/**
 	 * @return int
 	 */
-	public function getType() {
-		return $this->type;
+	public function getTypeId() {
+		return $this->type_id;
 	}
 
 
 	/**
-	 * @param int $type
+	 * @param int $type_id
 	 */
-	public function setType($type) {
-		$this->type = $type;
+	public function setTypeId($type_id) {
+		$this->type_id = $type_id;
 	}
 
 
@@ -561,7 +561,7 @@ class ctrlmmEntry extends ActiveRecord {
 	 */
 	public function delete() {
 		$deleted_id = $this->getId();
-		if ($this->getType() == ctrlmmMenu::TYPE_DROPDOWN) {
+		if ($this->getTypeId() == ctrlmmMenu::TYPE_DROPDOWN) {
 			/**
 			 * @var $entry ctrlmmEntry
 			 */

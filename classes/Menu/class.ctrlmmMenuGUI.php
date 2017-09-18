@@ -88,7 +88,7 @@ class ctrlmmMenuGUI {
 		foreach ($this->object->getEntries() as $k => $entry) {
 //			var_dump($entry->getType());
 //			var_dump($this->object->getAfterSeparator());
-			if ($entry->getType() == ctrlmmMenu::TYPE_SEPARATOR) {
+			if ($entry->getTypeId() == ctrlmmMenu::TYPE_SEPARATOR) {
 //				if ($replace_full) {
 				$this->object->setAfterSeparator(true);
 //				}
@@ -104,7 +104,7 @@ class ctrlmmMenuGUI {
 
 			if ($entry->checkPermission()) {
 				if ($entry->getId() == 0) {
-					$gui_class = ctrlmmEntryInstaceFactory::getInstanceByTypeId($entry->getType())->getGUIObjectClass();
+					$gui_class = ctrlmmEntryInstaceFactory::getInstanceByTypeId($entry->getTypeId())->getGUIObjectClass();
 					$entryGui = new $gui_class($entry, $this);
 				} else {
 					$entryGui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($entry->getId())->getGUIObject();

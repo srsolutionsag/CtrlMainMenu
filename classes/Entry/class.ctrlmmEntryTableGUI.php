@@ -74,12 +74,12 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		 */
 		$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($a_set['id'])->getObject();
 
-		if ($obj->getType() == ctrlmmMenu::TYPE_SEPARATOR) {
+		if ($obj->getTypeId() == ctrlmmMenu::TYPE_SEPARATOR) {
 			$this->tpl->setVariable('CLASS', 'ctrlmmSeparator');
 		}
 
 		$this->tpl->setVariable('TITLE', $obj->getTitleInAdministration() . ' ' . ($obj->checkPermission() ? '' : '*'));
-		$this->tpl->setVariable('TYPE', ctrlmmEntryInstaceFactory::getClassAppendForValue($obj->getType()));
+		$this->tpl->setVariable('TYPE', ctrlmmEntryInstaceFactory::getClassAppendForValue($obj->getTypeId()));
 		$this->ctrl->setParameter($this->parent_obj, 'entry_id', $obj->getId());
 		if (ctrlmmMenu::isOldILIAS()) {
 			$this->tpl->setVariable('ID_OLD', $obj->getId());
@@ -93,14 +93,14 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 			$actions = new ilAdvancedSelectionListGUI();
 			$actions->setId('actions_' . $obj->getId());
 			$actions->setListTitle($this->pl->txt('common_actions'));
-			if ($obj->getType() != ctrlmmMenu::TYPE_SEPARATOR) {
+			if ($obj->getTypeId() != ctrlmmMenu::TYPE_SEPARATOR) {
 				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, 'editEntry'));
 				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass('ctrlmmEntryGUI', 'edit')); FSX TODO REFACTORING
 			}
-			if ($obj->getType() != ctrlmmMenu::TYPE_ADMIN) {
+			if ($obj->getTypeId() != ctrlmmMenu::TYPE_ADMIN) {
 				$actions->addItem($this->pl->txt('common_delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, 'deleteEntry'));
 			}
-			if ($obj->getType() == ctrlmmMenu::TYPE_DROPDOWN) {
+			if ($obj->getTypeId() == ctrlmmMenu::TYPE_DROPDOWN) {
 				$actions->addItem($this->pl->txt('edit_childs'), 'edit_childs', $this->ctrl->getLinkTarget($this->parent_obj, 'editChilds'));
 			}
 			$this->tpl->setVariable('ACTIONS', $actions->getHTML());

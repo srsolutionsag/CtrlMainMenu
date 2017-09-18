@@ -49,7 +49,7 @@ class ctrlmmEntryStatusbox extends ctrlmmEntry {
 	 * @param int $primary_key
 	 */
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_STATUSBOX);
+		$this->setTypeId(ctrlmmMenu::TYPE_STATUSBOX);
 
 		parent::__construct($primary_key);
 	}

@@ -55,7 +55,7 @@ class ctrlmmEntryLastvisited extends ctrlmmEntryDropdown {
 	public function __construct($primary_key = 0) {
 		parent::__construct($primary_key);
 
-		$this->setType(ctrlmmMenu::TYPE_LASTVISITED);
+		$this->setTypeId(ctrlmmMenu::TYPE_LASTVISITED);
 
 		if ($primary_key != 0) {
 			$this->setHistory();

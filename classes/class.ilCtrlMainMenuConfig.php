@@ -43,11 +43,14 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 */
 	public static function getConfigValue($name) {
 		if (!isset(self::$cache_loaded[$name])) {
+			/**
+			 * @var $obj ilCtrlMainMenuConfig
+			 */
 			$obj = self::find($name);
 			if ($obj === NULL) {
 				self::$cache[$name] = NULL;
 			} else {
-				self::$cache[$name] = $obj->getValue();
+				self::$cache[$name] = $obj->getFieldValue();
 			}
 			self::$cache_loaded[$name] = true;
 		}
@@ -64,11 +67,11 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 */
 	public static function set($name, $value) {
 		/**
-		 * @var $obj arConfig
+		 * @var $obj ilCtrlMainMenuConfig
 		 */
 		$obj = self::findOrGetInstance($name);
-		$obj->setValue($value);
-		if (self::where(array( 'name' => $name ))->hasSets()) {
+		$obj->setFieldValue($value);
+		if (self::where(array( 'name_key' => $name ))->hasSets()) {
 			$obj->update();
 		} else {
 			$obj->create();
@@ -86,7 +89,7 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @db_fieldtype        text
 	 * @db_length           250
 	 */
-	protected $name;
+	protected $name_key;
 	/**
 	 * @var string
 	 *
@@ -94,37 +97,37 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @db_fieldtype        text
 	 * @db_length           1000
 	 */
-	protected $value;
+	protected $field_value;
 
 
 	/**
-	 * @param string $value
+	 * @param string $field_value
 	 */
-	public function setValue($value) {
-		$this->value = $value;
+	public function setFieldValue($field_value) {
+		$this->field_value = $field_value;
 	}
 
 
 	/**
 	 * @return string
 	 */
-	public function getValue() {
-		return $this->value;
+	public function getFieldValue() {
+		return $this->field_value;
 	}
 
 
 	/**
-	 * @param string $name
+	 * @param string $name_key
 	 */
-	public function setName($name) {
-		$this->name = $name;
+	public function setNameKey($name_key) {
+		$this->name_key = $name_key;
 	}
 
 
 	/**
 	 * @return string
 	 */
-	public function getName() {
-		return $this->name;
+	public function getNameKey() {
+		return $this->name_key;
 	}
 }

@@ -54,7 +54,7 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 	 */
 	//protected $type = ctrlmmMenu::TYPE_REFID;
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_REFID);
+		$this->setTypeId(ctrlmmMenu::TYPE_REFID);
 
 		parent::__construct($primary_key);
 	}

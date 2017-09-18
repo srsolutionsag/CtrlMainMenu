@@ -51,7 +51,7 @@ class ctrlmmEntrySubtitle extends ctrlmmEntry {
 
 
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_SUBTITLE);
+		$this->setTypeId(ctrlmmMenu::TYPE_SUBTITLE);
 
 		parent::__construct($primary_key);
 	}

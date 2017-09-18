@@ -46,7 +46,7 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 	 */
 	public function __construct($primary_key = 0) {
 		parent::__construct($primary_key);
-		$this->setType(ctrlmmMenu::TYPE_REPOSITORY);
+		$this->setTypeId(ctrlmmMenu::TYPE_REPOSITORY);
 	}
 
 
@@ -87,7 +87,7 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 					continue;
 				}
 
-				if ($entry->getType() == $this->getType()) {
+				if ($entry->getTypeId() == $this->getTypeId()) {
 					return false;
 				}
 			}

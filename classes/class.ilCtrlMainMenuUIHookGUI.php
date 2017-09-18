@@ -49,8 +49,8 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 		$full_header = ($a_part == 'template_get' AND $a_par['tpl_id'] == 'Services/MainMenu/tpl.main_menu.html');
 		$replace = (bool)ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
-		if ($full_header AND !self::$replaced) {
-			if ($full_header AND $replace) {
+		if ($full_header && !self::$replaced) {
+			if ($full_header && $replace) {
 				self::$replaced = true;
 
 				if (ctrlmm::is50()) {
@@ -68,7 +68,7 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 		}
 
 		$menu_only = ($a_comp == 'Services/MainMenu' AND $a_part == 'main_menu_list_entries');
-		if ($menu_only AND !self::$replaced AND !$replace) {
+		if ($menu_only && !self::$replaced AND !$replace) {
 			$mm = new ctrlmmMenuGUI(0);
 			self::$replaced = true;
 

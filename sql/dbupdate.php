@@ -102,10 +102,26 @@ foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 	/**
 	 * @var $ctrlmmEntry ctrlmmEntryAdmin
 	 */
-	if ($ctrlmmEntry->getType() == ctrlmmMenu::TYPE_ADMIN && $ctrlmmEntry->getPermissionType() == ctrlmmMenu::PERM_NONE) {
+	if ($ctrlmmEntry->getTypeId() == ctrlmmMenu::TYPE_ADMIN && $ctrlmmEntry->getPermissionType() == ctrlmmMenu::PERM_NONE) {
 		$ctrlmmEntry->setPermissionType(ctrlmmMenu::PERM_ROLE);
 		$ctrlmmEntry->setPermission("[2]");
 		$ctrlmmEntry->update();
 	}
 }
 ?>
+<#11>
+<?php
+global $ilDB;
+$table_column = ctrlmmEntry::returnDbTableName();
+if ($ilDB->tableColumnExists($table_column, 'type')) {
+	$ilDB->renameTableColumn($table_column, 'type', 'type_id');
+}
+$table_column = ilCtrlMainMenuConfig::returnDbTableName();
+if ($ilDB->tableColumnExists($table_column, 'name')) {
+	$ilDB->renameTableColumn($table_column, 'name', 'name_key');
+}
+if ($ilDB->tableColumnExists($table_column, 'value')) {
+	$ilDB->renameTableColumn($table_column, 'value', 'field_value');
+}
+?>
+

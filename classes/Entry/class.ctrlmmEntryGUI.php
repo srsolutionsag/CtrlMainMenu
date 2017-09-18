@@ -138,7 +138,7 @@ class ctrlmmEntryGUI {
 			$this->form->addItem($te);
 		}
 		$type = new ilHiddenInputGUI('type');
-		$type->setValue($this->entry->getType());
+		$type->setValue($this->entry->getTypeId());
 		$this->form->addItem($type);
 		$link = new ilHiddenInputGUI('link');
 		$this->form->addItem($link);
@@ -187,7 +187,7 @@ class ctrlmmEntryGUI {
 		}
 
 		$values['permission_user_' . $perm_type] = $role_ids_as_string;
-		$values['type'] = $this->entry->getType();
+		$values['type'] = $this->entry->getTypeId();
 		$this->form->setValuesByArray($values);
 
 		return $values;
@@ -278,7 +278,7 @@ class ctrlmmEntryGUI {
 		$perm_type = $this->form->getInput('permission_type');
 		$this->entry->setParent($_GET['parent_id']);
 		$this->entry->setTranslations($lngs);
-		$this->entry->setType($this->form->getInput('type'));
+		$this->entry->setTypeId($this->form->getInput('type'));
 		$this->entry->setPermissionType($perm_type);
 		if ($this->form->getInput('permission_locale_' . $perm_type)) {
 			$permission = array_merge(explode(',', $this->form->getInput('permission_locale_'

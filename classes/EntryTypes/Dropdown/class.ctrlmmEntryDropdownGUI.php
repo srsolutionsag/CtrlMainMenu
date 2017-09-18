@@ -46,7 +46,7 @@ class ctrlmmEntryDropdownGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			 * @var ctrlmmEntry $entry
 			 */
 			if ($entry->checkPermission()) {
-				switch ($entry->getType()) {
+				switch ($entry->getTypeId()) {
 					case ctrlmmMenu::TYPE_SUBTITLE:
 						// only add subtitle if there is a next entry or the option is show with no children is set
 						$next_element = (isset($entries[$key ++])) ? $entries[$key ++] : null;

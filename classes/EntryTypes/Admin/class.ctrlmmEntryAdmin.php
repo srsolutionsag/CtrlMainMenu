@@ -38,7 +38,7 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 
 
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_ADMIN);
+		$this->setTypeId(ctrlmmMenu::TYPE_ADMIN);
 
 		parent::__construct($primary_key);
 	}

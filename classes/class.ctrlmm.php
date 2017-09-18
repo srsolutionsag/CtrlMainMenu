@@ -19,10 +19,11 @@ class ctrlmm {
 	 * @return int
 	 */
 	public static function getILIASVersion() {
-		if (ilComponent::isVersionGreaterString(ILIAS_VERSION_NUMERIC, '5.0.999')) {
+		$a_ver1 = substr(ILIAS_VERSION_NUMERIC, 0, strpos(ILIAS_VERSION_NUMERIC, " "));
+		if (ilComponent::isVersionGreaterString($a_ver1, '5.0.999')) {
 			return self::ILIAS_51;
 		}
-		if (ilComponent::isVersionGreaterString(ILIAS_VERSION_NUMERIC, '4.9.999')) {
+		if (ilComponent::isVersionGreaterString($a_ver1, '4.9.999')) {
 			return self::ILIAS_50;
 		}
 

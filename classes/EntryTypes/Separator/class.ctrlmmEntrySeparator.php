@@ -46,7 +46,7 @@ class ctrlmmEntrySeparator extends ctrlmmEntry {
 
 
 	public function __construct($primary_key = 0) {
-		$this->setType(ctrlmmMenu::TYPE_SEPARATOR);
+		$this->setTypeId(ctrlmmMenu::TYPE_SEPARATOR);
 		parent::__construct($primary_key);
 	}
 

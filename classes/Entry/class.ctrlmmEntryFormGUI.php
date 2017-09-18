@@ -172,7 +172,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 			$role_ids_as_string = implode(',', $role_ids);
 		}
 		$values['permission_user_' . $perm_type] = $role_ids_as_string;
-		$values['type'] = $this->entry->getType();
+		$values['type'] = $this->entry->getTypeId();
 
 		$values = array_merge($values, $this->returnValuesAsArray());
 
@@ -201,7 +201,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		$perm_type = $this->getInput('permission_type');
 		$this->entry->setParent($_GET['parent_id']);
 		$this->entry->setTranslations($lngs);
-		$this->entry->setType($this->getInput('type'));
+		$this->entry->setTypeId($this->getInput('type'));
 		$this->entry->setPermissionType($perm_type);
 		if ($this->getInput($pl . $perm_type)) {
 			$permission = array_merge(explode(',', $this->getInput($pl . $perm_type)), (array)$this->getInput($p . $perm_type));

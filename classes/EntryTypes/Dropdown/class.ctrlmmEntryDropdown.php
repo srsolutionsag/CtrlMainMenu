@@ -70,7 +70,7 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 	public function __construct($primary_key = 0) {
 		parent::__construct($primary_key);
 
-		$this->setType(ctrlmmMenu::TYPE_DROPDOWN);
+		$this->setTypeId(ctrlmmMenu::TYPE_DROPDOWN);
 
 		if ($primary_key != 0) {
 			$this->setEntries(ctrlmmEntryInstaceFactory::getAllChildsForId($this->getId()));

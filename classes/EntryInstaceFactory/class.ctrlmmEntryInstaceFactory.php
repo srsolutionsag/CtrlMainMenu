@@ -169,7 +169,7 @@ class ctrlmmEntryInstaceFactory {
 		if (!isset(self::$type_id_cache[$entry_id])) {
 			$obj = ctrlmmEntry::find($entry_id);
 			if ($obj) {
-				self::$type_id_cache[$entry_id] = $obj->getType();
+				self::$type_id_cache[$entry_id] = $obj->getTypeId();
 			}
 		}
 

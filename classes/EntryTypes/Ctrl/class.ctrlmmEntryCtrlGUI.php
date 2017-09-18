@@ -40,7 +40,7 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 		$this->form->addItem($te);
 
 		$te = new ilHiddenInputGUI('type_id');
-		$te->setValue($this->entry->getType());
+		$te->setValue($this->entry->getTypeId());
 		$this->form->addItem($te);
 
 		$se = new ilSelectInputGUI($this->pl->txt('common_target'), 'target');

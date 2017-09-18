@@ -66,7 +66,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	function __construct($id = 0) {
 		global $ilCtrl;
 
-		$this->setType(ctrlmmMenu::TYPE_CTRL);
+		$this->setTypeId(ctrlmmMenu::TYPE_CTRL);
 		$this->restricted = ctrlmmMenu::isOldILIAS();
 		/**
 		 * @var $ilCtrl ilCtrl

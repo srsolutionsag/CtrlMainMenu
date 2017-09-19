@@ -111,6 +111,8 @@ foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 ?>
 <#11>
 <?php
+require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
+require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuConfig.php');
 global $ilDB;
 $table_column = ctrlmmEntry::returnDbTableName();
 if ($ilDB->tableColumnExists($table_column, 'type')) {

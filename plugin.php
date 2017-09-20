@@ -1,6 +1,6 @@
 <?php
 $id = 'ctrlmm';
-$version = '3.3.07';
+$version = '3.3.08';
 $ilias_min_version = '5.1.000';
 $ilias_max_version = '5.3.999';
 $responsible = 'Fabian Schmid';

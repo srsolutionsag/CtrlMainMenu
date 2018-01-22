@@ -20,12 +20,12 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 
 	/**
 	 * @param string $entry_div_id
+	 *
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
 		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/login.css');
-		global $lng;
 		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', 'ctrl_mm_e_' . $this->entry->getId());
@@ -39,7 +39,7 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 		if ($this->entry->isLoggedIn()) {
 			$this->html->setVariable('NONLINK', $this->entry->getUsername());
 		} else {
-			$this->html->setVariable('NONLINK', $lng->txt('not_logged_in'));
+			$this->html->setVariable('NONLINK', $this->lng->txt('not_logged_in'));
 		}
 
 		return $this->html->get();

@@ -75,8 +75,8 @@ class ctrlmmEntryStatusbox extends ctrlmmEntry {
 	 * @return int
 	 */
 	public function getNewMailCount() {
-		global $ilUser;
+		global $DIC;
 
-		return ilMailGlobalServices::getNumberOfNewMailsByUserId($ilUser->getId());
+		return ilMailGlobalServices::getNumberOfNewMailsByUserId($DIC->user()->getId());
 	}
 }

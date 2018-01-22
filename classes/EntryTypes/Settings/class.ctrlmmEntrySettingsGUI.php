@@ -43,8 +43,10 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 */
 	protected function getContent() {
 
-		global $lng, $ilUser, $ilSetting, $styleDefinition;
-		$lng->loadLanguageModule('mail');
+		global $DIC;
+
+		$styleDefinition = $DIC["styleDefinition"];
+		$this->lng->loadLanguageModule('mail');
 
 		$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/settings.js');
 		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/settings.css');
@@ -57,19 +59,19 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		// Sprachen
 		//
 		$options = array();
-		foreach ($lng->getInstalledLanguages() as $lang_key) {
+		foreach ($this->lng->getInstalledLanguages() as $lang_key) {
 			$options[$lang_key] = ilLanguage::_lookupEntry($lang_key, 'meta', 'meta_l_' . $lang_key);
 		}
-		$language = new ilSelectInputGUI($lng->txt('language'), ctrlmmSettings::LANGUAGE);
-		$language->setValue($ilUser->getLanguage());
-		$language->setDisabled($ilSetting->get('usr_settings_disable_language'));
+		$language = new ilSelectInputGUI($this->lng->txt('language'), ctrlmmSettings::LANGUAGE);
+		$language->setValue($this->usr->getLanguage());
+		$language->setDisabled($this->settings->get('usr_settings_disable_language'));
 		$language->setOptions($options);
 		$form->addItem($language);
 
 		//
 		// Template/Skin
 		//
-		if (!$ilSetting->get('usr_settings_disable_skin_style')) {
+		if (!$this->settings->get('usr_settings_disable_skin_style')) {
 			$templates = $styleDefinition->getAllTemplates();
 			if (is_array($templates)) {
 				$options = array();
@@ -91,9 +93,9 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 					}
 				}
 
-				$skin = new ilSelectInputGUI($lng->txt('skin_style'), ctrlmmSettings::SKIN);
-				$skin->setValue($ilUser->skin . ':' . $ilUser->prefs['style']);
-				$skin->setDisabled($ilSetting->get('usr_settings_disable_skin_style'));
+				$skin = new ilSelectInputGUI($this->lng->txt('skin_style'), ctrlmmSettings::SKIN);
+				$skin->setValue($this->usr->skin . ':' . $this->usr->prefs['style']);
+				$skin->setDisabled($this->settings->get('usr_settings_disable_skin_style'));
 				$skin->setOptions($options);
 				$form->addItem($skin);
 			}
@@ -102,34 +104,34 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		//
 		// Table-Results
 		//
-		$results = new ilSelectInputGUI($lng->txt('hits_per_page'), ctrlmmSettings::RESULTS);
+		$results = new ilSelectInputGUI($this->lng->txt('hits_per_page'), ctrlmmSettings::RESULTS);
 		$hits_options = array( 10, 15, 20, 30, 40, 50, 100, 9999 );
 		$options = array();
 		foreach ($hits_options as $hits_option) {
-			$hstr = ($hits_option == 9999) ? $lng->txt('no_limit') : $hits_option;
+			$hstr = ($hits_option == 9999) ? $this->lng->txt('no_limit') : $hits_option;
 			$options[$hits_option] = $hstr;
 		}
 		$results->setOptions($options);
-		$results->setValue($ilUser->prefs['hits_per_page']);
-		$results->setDisabled($ilSetting->get('usr_settings_disable_hits_per_page'));
+		$results->setValue($this->usr->prefs['hits_per_page']);
+		$results->setDisabled($this->settings->get('usr_settings_disable_hits_per_page'));
 		$results->setOptions($options);
 		$form->addItem($results);
 
 		//
 		// Mail
 		//
-		if ($ilSetting->get('usr_settings_disable_mail_incoming_mail') != '1') {
+		if ($this->settings->get('usr_settings_disable_mail_incoming_mail') != '1') {
 			$options = array(
-				IL_MAIL_LOCAL => $lng->txt('mail_incoming_local'),
-				IL_MAIL_EMAIL => $lng->txt('mail_incoming_smtp'),
-				IL_MAIL_BOTH  => $lng->txt('mail_incoming_both'),
+				IL_MAIL_LOCAL => $this->lng->txt('mail_incoming_local'),
+				IL_MAIL_EMAIL => $this->lng->txt('mail_incoming_smtp'),
+				IL_MAIL_BOTH => $this->lng->txt('mail_incoming_both'),
 			);
-			$si = new ilSelectInputGUI($lng->txt('mail_incoming'), ctrlmmSettings::INCOMING_TYPE);
+			$si = new ilSelectInputGUI($this->lng->txt('mail_incoming'), ctrlmmSettings::INCOMING_TYPE);
 			$si->setOptions($options);
-			if (!strlen(ilObjUser::_lookupEmail($ilUser->getId())) OR $ilSetting->get('usr_settings_disable_mail_incoming_mail') == '1') {
+			if (!strlen(ilObjUser::_lookupEmail($this->usr->getId())) OR $this->settings->get('usr_settings_disable_mail_incoming_mail') == '1') {
 				$si->setDisabled(true);
 			}
-			$mailOptions = new ilMailOptions($ilUser->getId());
+			$mailOptions = new ilMailOptions($this->usr->getId());
 			$si->setValue($mailOptions->getIncomingType());
 
 			$form->addItem($si);
@@ -140,7 +142,7 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		//
 		$te = new ilHiddenInputGUI(ctrlmmSettings::USR_TOKEN);
 
-		$te->setValue(ctrlmmSettings::enc($ilUser->getId()));
+		$te->setValue(ctrlmmSettings::enc($this->usr->getId()));
 		$form->addItem($te);
 
 		$form->addCommandButton('#', $this->pl->txt('settentr_button_save'));

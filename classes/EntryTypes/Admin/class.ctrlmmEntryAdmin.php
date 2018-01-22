@@ -48,9 +48,9 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getTitle() {
-		global $lng;
+		global $DIC;
 
-		return $this->title ? $this->title : $lng->txt('administration');
+		return $this->title ? $this->title : $DIC->language()->txt('administration');
 	}
 
 
@@ -58,9 +58,9 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function isActive() {
-		global $ilMainMenu;
+		global $DIC;
 
-		return ($ilMainMenu->active == 'administration');
+		return ($DIC["ilMainMenu"]->active == 'administration');
 	}
 
 
@@ -68,20 +68,23 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function checkPermission() {
-		global $rbacreview, $ilUser;
-
+		global $DIC;
+		$rbacreview = $DIC->rbac()->review();
+		$ilUser = $DIC->user();
 		if (!$this->isPermissionCached()) {
 			$this->setCachedPermission(false);
 			foreach ((array)json_decode($this->getPermission()) as $pid) {
 				if (in_array($pid, $rbacreview->assignedRoles($ilUser->getId()))) {
 					$this->setCachedPermission(true);
+
 					return true;
 				}
 			}
 
 			//global administrator has permissions
-			if(in_array(2,$rbacreview->assignedGlobalRoles($ilUser->getId()))) {
+			if (in_array(2, $rbacreview->assignedGlobalRoles($ilUser->getId()))) {
 				$this->setCachedPermission(true);
+
 				return true;
 			}
 		}

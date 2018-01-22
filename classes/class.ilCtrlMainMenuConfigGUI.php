@@ -10,7 +10,6 @@ require_once('./Services/Form/classes/class.ilPropertyFormGUI.php');
 require_once('./Services/Utilities/classes/class.ilConfirmationGUI.php');
 require_once('./Services/jQuery/classes/class.iljQueryUtil.php');
 
-
 /**
  * CtrlMainMenu Configuration
  *
@@ -30,19 +29,44 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 * @var string
 	 */
 	protected $table_name = '';
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var ilCtrl
+	 */
+	protected $ctrl;
+	/**
+	 * @var ilTemplate
+	 */
+	protected $tpl;
+	/**
+	 * @var ilTabsGUI
+	 */
+	protected $tabs;
+	/**
+	 * @var ilToolbarGUI
+	 */
+	protected $toolbar;
+	/**
+	 * @var ilLanguage
+	 */
+	protected $lng;
+	/**
+	 * @var ilPropertyFormGUI
+	 */
+	protected $form;
 
 
 	public function __construct() {
-		global $ilCtrl, $tpl, $ilTabs;
-		/**
-		 * @var $ilCtrl ilCtrl
-		 * @var $tpl    ilTemplate
-		 * @var $ilTabs ilTabsGUI
-		 */
-		$this->ctrl = $ilCtrl;
-		$this->tpl = $tpl;
-		$this->tabs = &$ilTabs;
+		global $DIC;
+		$this->ctrl = $DIC->ctrl();
+		$this->tpl = $DIC->ui()->mainTemplate();
+		$this->tabs = $DIC->tabs();
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
+		$this->toolbar = $DIC->toolbar();
+		$this->lng = $DIC->language();
 		if ($_GET['rl']) {
 			$this->pl->updateLanguages();
 		}
@@ -86,12 +110,12 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			'css_inactive' => array(
 				'type' => 'ilTextInputGUI',
 			),
-						'doubleclick_prevention' => array(
-							'type' => 'ilCheckboxInputGUI',
-						),
-						'simple_form_validation' => array(
-							'type' => 'ilCheckboxInputGUI',
-						),
+			'doubleclick_prevention' => array(
+				'type' => 'ilCheckboxInputGUI',
+			),
+			'simple_form_validation' => array(
+				'type' => 'ilCheckboxInputGUI',
+			),
 			'replace_full_header' => array(
 				'type' => 'ilCheckboxInputGUI',
 			),
@@ -135,19 +159,16 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	public function clearCache() {
-		if(ctrlmm::hasGlobalCache()) {
+		if (ctrlmm::hasGlobalCache()) {
 			ilGlobalCache::flushAll();
 		}
 		ilUtil::sendInfo($this->pl->txt('cache_cleared'), true);
 		$this->ctrl->redirect($this, 'cacheSettings');
 	}
 
+
 	protected function cacheSettings() {
-		global $ilToolbar;
-		/**
-		 * @var $ilToolbar ilToolbarGUI
-		 */
-		$ilToolbar->addButton($this->pl->txt('clear_cache'), $this->ctrl->getLinkTarget($this, 'clearCache'));
+		$this->toolbar->addButton($this->pl->txt('clear_cache'), $this->ctrl->getLinkTarget($this, 'clearCache'));
 		$this->tabs->setTabActive('cache');
 		$form = new ilPropertyFormGUI();
 		$form->setTitle($this->pl->txt('cache_settings'));
@@ -199,7 +220,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	public function saveSorting() {
 		foreach ($_POST['position'] as $k => $v) {
 			$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($v)->getObject();
-			if($obj instanceof ctrlmmEntry) {
+			if ($obj instanceof ctrlmmEntry) {
 				$obj->setPosition($k);
 				$obj->update();
 			}
@@ -352,7 +373,6 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 * @return ilPropertyFormGUI
 	 */
 	public function initConfigurationForm() {
-		global $lng, $ilCtrl;
 		$this->form = new ilPropertyFormGUI();
 		foreach ($this->getFields() as $key => $item) {
 			$field = new $item['type']($this->pl->txt($key), $key);
@@ -370,16 +390,15 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			}
 			$this->form->addItem($field);
 		}
-		$this->form->addCommandButton('save', $lng->txt('save'));
+		$this->form->addCommandButton('save', $this->lng->txt('save'));
 		$this->form->setTitle($this->pl->txt('common_configuration'));
-		$this->form->setFormAction($ilCtrl->getFormAction($this));
+		$this->form->setFormAction($this->ctrl->getFormAction($this));
 
 		return $this->form;
 	}
 
 
 	public function save() {
-		global $tpl, $ilCtrl;
 		$this->initConfigurationForm();
 		if ($this->form->checkInput()) {
 			foreach ($this->getFields() as $key => $item) {
@@ -391,10 +410,10 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 				}
 			}
 			ilUtil::sendSuccess($this->pl->txt('conf_saved'), true);
-			$ilCtrl->redirect($this, 'cssSettings');
+			$this->ctrl->redirect($this, 'cssSettings');
 		} else {
 			$this->form->setValuesByPost();
-			$tpl->setContent($this->form->getHtml());
+			$this->tpl->setContent($this->form->getHtml());
 		}
 	}
 }

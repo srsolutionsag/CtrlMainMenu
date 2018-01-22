@@ -34,20 +34,60 @@ class ctrlmmEntryGUI {
 	 * @var ilTemplate
 	 */
 	protected $tpl;
+	/**
+	 * @var ilCtrl
+	 */
+	protected $ctrl;
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var
+	 */
+	protected $parent_gui;
+	/**
+	 * @var ilLanguage
+	 */
+	protected $lng;
+	/**
+	 * @var ilObjUser
+	 */
+	protected $usr;
+	/**
+	 * @var ilSetting
+	 */
+	protected $settings;
+	/**
+	 * @var ilRbacSystem
+	 */
+	protected $rbacsystem;
+	/**
+	 * @var
+	 */
+	protected $ilias;
+	/**
+	 * @var ilNavigationHistory
+	 */
+	protected $ilNavigationHistory;
 
 
 	/**
 	 * @param ctrlmmEntry $entry
-	 * @param null $parent_gui
+	 * @param null        $parent_gui
 	 */
-	public function __construct(ctrlmmEntry $entry, $parent_gui = null) {
-		global $ilCtrl, $tpl;
-		/**
-		 * @var $ilCtrl ilCtrl
-		 */
-		$this->ctrl = $ilCtrl;
-		$this->tpl = $tpl;
+	public function __construct(ctrlmmEntry $entry, $parent_gui = NULL) {
+		global $DIC;
+
+		$this->ctrl = $DIC->ctrl();
+		$this->tpl = $DIC->ui()->mainTemplate();
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
+		$this->lng = $DIC->language();
+		$this->usr = $DIC->user();
+		$this->settings = $DIC->settings();
+		$this->rbacsystem = $DIC->rbac()->system();
+		$this->ilias = $DIC["ilias"];
+		$this->ilNavigationHistory = $DIC["ilNavigationHistory"];
 		$this->entry = $entry;
 		$this->parent_gui = $parent_gui;
 	}
@@ -88,6 +128,7 @@ class ctrlmmEntryGUI {
 
 	/**
 	 * @param string $entry_div_id
+	 *
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
@@ -107,6 +148,7 @@ class ctrlmmEntryGUI {
 
 	/**
 	 * @param string $entry_div_id If set, the value is used to construct the unique ID of the entry (HTML)
+	 *
 	 * @return string
 	 */
 	public function prepareAndRenderEntry($entry_div_id = '') {
@@ -120,11 +162,7 @@ class ctrlmmEntryGUI {
 	 * @param string $mode
 	 */
 	public function initForm($mode = 'create') {
-		global $lng;
-		/**
-		 * @var $lng ilLanguage
-		 */
-		$lng->loadLanguageModule('meta');
+		$this->lng->loadLanguageModule('meta');
 		$this->form = new ilPropertyFormGUI();
 		$this->initPermissionSelectionForm();
 		$te = new ilFormSectionHeaderGUI();
@@ -133,7 +171,7 @@ class ctrlmmEntryGUI {
 		$this->form->setTitle($this->pl->txt('form_title'));
 		$this->form->setFormAction($this->ctrl->getFormAction($this->parent_gui));
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {
-			$te = new ilTextInputGUI($lng->txt('meta_l_' . $language), 'title_' . $language);
+			$te = new ilTextInputGUI($this->lng->txt('meta_l_' . $language), 'title_' . $language);
 			$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
 			$this->form->addItem($te);
 		}
@@ -195,17 +233,17 @@ class ctrlmmEntryGUI {
 
 
 	/**
-	 * @param int $filter
+	 * @param int  $filter
 	 * @param bool $with_text
 	 *
 	 * @deprecated
 	 * @return array
 	 */
 	public static function getRoles($filter, $with_text = true) {
-		global $rbacreview;
+		global $DIC;
 		$opt = array();
 		$role_ids = array();
-		foreach ($rbacreview->getRolesByFilter($filter) as $role) {
+		foreach ($DIC->rbac()->review()->getRolesByFilter($filter) as $role) {
 			$opt[$role['obj_id']] = $role['title'] . ' (' . $role['obj_id'] . ')';
 			$role_ids[] = $role['obj_id'];
 		}
@@ -282,8 +320,7 @@ class ctrlmmEntryGUI {
 		$this->entry->setPermissionType($perm_type);
 		if ($this->form->getInput('permission_locale_' . $perm_type)) {
 			$permission = array_merge(explode(',', $this->form->getInput('permission_locale_'
-			                                                             . $perm_type)), (array)$this->form->getInput('permission_'
-			                                                                                                          . $perm_type)); // Variante Textfeld
+				. $perm_type)), (array)$this->form->getInput('permission_' . $perm_type)); // Variante Textfeld
 			/*$permission = array_merge((array)$this->form->getInput('permission_locale_'
 				. $perm_type), (array)$this->form->getInput('permission_' . $perm_type));*/
 		} elseif ($this->form->getInput('permission_user_' . $perm_type)) {

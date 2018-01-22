@@ -52,7 +52,8 @@ ilCtrlMainMenuConfig::renameDBField('config_value', 'value');
 ?>
 <#6>
 <?php
-global $ilDB;
+global $DIC;
+$ilDB = $DIC->database();
 /**
  * @var $ilDB ilDB
  */
@@ -64,7 +65,8 @@ $ilDB->modifyTableColumn(ctrlmmEntry::returnDbTableName(), 'parent', array(
 
 <#7>
 <?php
-global $ilDB;
+global $DIC;
+$ilDB = $DIC->database();
 
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php');
 
@@ -84,12 +86,14 @@ if ($ilDB->tableColumnExists(ctrlmmData::returnDbTableName(), 'data_type')) {
 ?>
 <#8>
 <?php
-global $ilDB;
+global $DIC;
+$ilDB = $DIC->database();
 $ilDB->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
 ?>
 <#9>
 <?php
-global $ilDB;
+global $DIC;
+$ilDB = $DIC->database();
 $ilDB->modifyTableColumn('ui_uihk_ctrlmm_t', 'language_key', array( "length" => 64 ));
 $ilDB->addIndex('ui_uihk_ctrlmm_t', array('entry_id', 'language_key'), 'i2');
 $ilDB->addIndex('ui_uihk_ctrlmm_d', array('parent_id'), 'i2');
@@ -114,7 +118,8 @@ foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuConfig.php');
-global $ilDB;
+global $DIC;
+$ilDB = $DIC->database();
 $table_column = ctrlmmEntry::returnDbTableName();
 if ($ilDB->tableColumnExists($table_column, 'type')) {
 	$ilDB->renameTableColumn($table_column, 'type', 'type_id');

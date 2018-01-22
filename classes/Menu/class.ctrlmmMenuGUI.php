@@ -29,6 +29,14 @@ class ctrlmmMenuGUI {
 	 */
 	protected $side = self::SIDE_LEFT;
 	protected $css_id = '';
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var ctrlmmMenu
+	 */
+	protected $object;
 
 
 	/**
@@ -51,10 +59,11 @@ class ctrlmmMenuGUI {
 	 * @param int $id
 	 */
 	public function __construct($id = 0) {
-		global $tpl;
+		global $DIC;
 
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
 		$this->object = new ctrlmmMenu($id);
+		$tpl = $DIC->ui()->mainTemplate();
 
 		$tpl->addCss($this->pl->getDirectory() . '/templates/css/ctrlmm.css');
 		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX) == 'fb') {
@@ -86,12 +95,12 @@ class ctrlmmMenuGUI {
 		 */
 
 		foreach ($this->object->getEntries() as $k => $entry) {
-//			var_dump($entry->getType());
-//			var_dump($this->object->getAfterSeparator());
+			//			var_dump($entry->getType());
+			//			var_dump($this->object->getAfterSeparator());
 			if ($entry->getTypeId() == ctrlmmMenu::TYPE_SEPARATOR) {
-//				if ($replace_full) {
+				//				if ($replace_full) {
 				$this->object->setAfterSeparator(true);
-//				}
+				//				}
 				continue;
 			}
 			if ($this->object->getAfterSeparator() AND $this->getSide() == self::SIDE_LEFT && $replace_full) {
@@ -122,6 +131,7 @@ class ctrlmmMenuGUI {
 		$this->html->setVariable('AFTER_ENTRIES', $entry_after_html);
 		$this->html->setVariable('CSS_PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
 		$this->html->setVariable('ID', $this->css_id);
+
 		return $this->html->get();
 	}
 

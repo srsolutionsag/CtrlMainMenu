@@ -18,14 +18,14 @@ class ctrlmmUserDataReplacer {
 
 	/**
 	 * @param $input_string string
+	 *
 	 * @return string
 	 */
 	public static function parse($input_string) {
 		self::loadData();
 
 		foreach (self::$values as $key => $value) {
-			$input_string = str_replace(self::OPEN_TAG . $key
-			                            . self::CLOSE_TAG, $value, $input_string);
+			$input_string = str_replace(self::OPEN_TAG . $key . self::CLOSE_TAG, $value, $input_string);
 		}
 
 		return $input_string;
@@ -33,9 +33,9 @@ class ctrlmmUserDataReplacer {
 
 
 	protected static function loadData() {
+		global $DIC;
+		$ilUser = $DIC->user();
 		if (!self::$values) {
-			global $ilUser;
-
 			self::$values['user_id'] = $ilUser->getId();
 			self::$values['user_name'] = $ilUser->getLogin();
 			//self::$values['user_session_id'] = session_id();
@@ -59,9 +59,7 @@ class ctrlmmUserDataReplacer {
 
 			foreach ($fds as $k => $f) {
 				// prefixes needed for ilias!
-				self::$values["f_"
-				              . self::escapeGetParameterKeys($f['field_name'])] = urlencode($user_fields['f_'
-				                                                                                         . $f['field_id']]);
+				self::$values["f_" . self::escapeGetParameterKeys($f['field_name'])] = urlencode($user_fields['f_' . $f['field_id']]);
 			}
 		}
 	}
@@ -69,6 +67,7 @@ class ctrlmmUserDataReplacer {
 
 	/**
 	 * @param $value string
+	 *
 	 * @return string
 	 */
 	public static function escapeGetParameterKeys($value) {

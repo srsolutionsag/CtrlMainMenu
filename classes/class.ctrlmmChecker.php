@@ -13,6 +13,10 @@ class ctrlmmChecker {
 	 * @var array
 	 */
 	protected $classes = array();
+	/**
+	 * @var ilCtrl
+	 */
+	protected $ctrl;
 
 
 	/**
@@ -27,6 +31,8 @@ class ctrlmmChecker {
 	 * @param $gui_classes
 	 */
 	private function __construct($gui_classes) {
+		global $DIC;
+		$this->ctrl = $DIC->ctrl();
 		$this->initILIAS();
 		$this->setClasses(explode(',', $gui_classes));
 		$this->printJson();
@@ -34,12 +40,8 @@ class ctrlmmChecker {
 
 
 	protected function printJson() {
-		global $ilCtrl;
-		/**
-		 * @var $ilCtrl ilCtrl
-		 */
 		header('Content-Type: application/json');
-		echo json_encode(array( 'status' => $ilCtrl->checkTargetClass($this->getClasses()) ));
+		echo json_encode(array( 'status' => $this->ctrl->checkTargetClass($this->getClasses()) ));
 	}
 
 

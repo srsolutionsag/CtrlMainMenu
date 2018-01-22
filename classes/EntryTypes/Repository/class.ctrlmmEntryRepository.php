@@ -70,7 +70,8 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function isActive() {
-		global $ilMainMenu;
+		global $DIC;
+		$ilMainMenu = $DIC["ilMainMenu"];
 
 		return $this->hasNoOtherActive() AND ($ilMainMenu->active == 'repository' OR $ilMainMenu->active == NULL);
 	}
@@ -103,13 +104,9 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function checkPermission() {
-		global $ilAccess;
+		global $DIC;
 
-		/**
-		 * @var $ilAccess ilAccessHandler
-		 */
-
-		return parent::checkPermission() AND $ilAccess->checkAccess('visible', '', ROOT_FOLDER_ID);
+		return parent::checkPermission() AND $DIC->access()->checkAccess('visible', '', ROOT_FOLDER_ID);
 	}
 
 
@@ -117,12 +114,11 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getTitle() {
+		global $DIC;
 		if (parent::getTitle()) {
 			return parent::getTitle();
 		} else {
-			global $lng;
-
-			return $lng->txt('repository');
+			return $DIC->language()->txt('repository');
 		}
 	}
 }

@@ -93,9 +93,9 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 
 
 	public function getTitle() {
+		global $DIC;
 		if ($this->getUseUserImage()) {
-			global $ilias;
-
+			$ilias = $DIC["ilias"];
 			$user_img_src = $ilias->account->getPersonalPicturePath("small", true);
 			$user_img_alt = $ilias->account->getFullname();
 

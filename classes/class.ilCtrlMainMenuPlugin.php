@@ -21,6 +21,10 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 * @var ilCtrlMainMenuPlugin
 	 */
 	protected static $plugin_cache;
+	/**
+	 * @var ilDB
+	 */
+	protected $db;
 
 
 	/**
@@ -28,6 +32,12 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 */
 	public function getPluginName() {
 		return 'CtrlMainMenu';
+	}
+
+	public function __construct() {
+		global $DIC;
+
+		$this->db = $DIC->database();
 	}
 
 
@@ -118,13 +128,10 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php');
 		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
 
-		/** $ilDB ilDB */
-		global $ilDB;
-
-		$ilDB->dropTable(ctrlmmEntry::TABLE_NAME, false);
-		$ilDB->dropTable(ctrlmmData::TABLE_NAME, false);
-		$ilDB->dropTable(ctrlmmTranslation::TABLE_NAME, false);
-		$ilDB->dropTable(ilCtrlMainMenuPlugin::CONFIG_TABLE, false);
+		$this->db->dropTable(ctrlmmEntry::TABLE_NAME, false);
+		$this->db->dropTable(ctrlmmData::TABLE_NAME, false);
+		$this->db->dropTable(ctrlmmTranslation::TABLE_NAME, false);
+		$this->db->dropTable(ilCtrlMainMenuPlugin::CONFIG_TABLE, false);
 
 		return true;
 	}

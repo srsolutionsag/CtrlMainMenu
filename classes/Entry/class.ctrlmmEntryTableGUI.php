@@ -15,21 +15,29 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 class ctrlmmEntryTableGUI extends ilTable2GUI {
 
 	/**
+	 * @var ilCtrl
+	 */
+	protected $ctrl;
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var ilTabsGUI
+	 */
+	protected $tabs;
+
+
+	/**
 	 * @param ilCtrlMainMenuConfigGUI $a_parent_obj
 	 * @param string                  $a_parent_cmd
 	 * @param int                     $parent_id
 	 */
 	public function __construct(ilCtrlMainMenuConfigGUI $a_parent_obj, $a_parent_cmd, $parent_id = 0) {
-		global $ilCtrl, $ilTabs, $ilToolbar;
-		/**
-		 * @var $tpl       ilTemplate
-		 * @var $ilCtrl    ilCtrl
-		 * @var $ilTabs    ilTabsGUI
-		 * @var $ilToolbar ilToolbarGUI
-		 */
+		global $DIC;
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
-		$this->ctrl = $ilCtrl;
-		$this->tabs = $ilTabs;
+		$this->ctrl = $DIC->ctrl();
+		$this->tabs = $DIC->tabs();
 
 		$this->setId('mm_entry_list');
 		parent::__construct($a_parent_obj, $a_parent_cmd);
@@ -43,8 +51,8 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		$this->addColumn($this->pl->txt('common_actions'), 'actions', '100px');
 		// ...
 		// Header
-		$ilToolbar->addButton($this->pl->txt('add_new'), $this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
-		$this->setFormAction($ilCtrl->getFormAction($a_parent_obj));
+		$DIC->toolbar()->addButton($this->pl->txt('add_new'), $this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
+		$this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
 		if (ctrlmmMenu::isOldILIAS()) {
 			$this->addCommandButton('saveSortingOld', $this->pl->txt('save_sorting'));
 		} else {

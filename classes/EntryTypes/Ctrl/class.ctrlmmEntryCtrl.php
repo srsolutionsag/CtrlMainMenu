@@ -49,7 +49,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	/**
 	 * @var int
 	 */
-	protected $ref_id = null;
+	protected $ref_id = NULL;
 	/**
 	 * @var array
 	 */
@@ -64,14 +64,11 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	 * @param int $id
 	 */
 	function __construct($id = 0) {
-		global $ilCtrl;
+		global $DIC;
 
 		$this->setTypeId(ctrlmmMenu::TYPE_CTRL);
 		$this->restricted = ctrlmmMenu::isOldILIAS();
-		/**
-		 * @var $ilCtrl ilCtrl
-		 */
-		$this->ctrl = $ilCtrl;
+		$this->ctrl = $DIC->ctrl();
 
 		parent::__construct($id);
 	}
@@ -108,7 +105,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 			return 'ilCtrl-Error';
 		}
 
-		return null;
+		return NULL;
 	}
 
 
@@ -145,7 +142,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	 */
 	public function getLink() {
 		if (!$this->checkCtrl()) {
-			return null;
+			return NULL;
 		}
 		$gui_classes = @explode(',', $this->getGuiClass());
 		if (ctrlmmMenu::isOldILIAS()) {

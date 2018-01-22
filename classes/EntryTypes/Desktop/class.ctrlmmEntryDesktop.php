@@ -88,9 +88,9 @@ class ctrlmmEntryDesktop extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function isActive() {
-		global $ilMainMenu;
+		global $DIC;
 
-		return $ilMainMenu->active == 'desktop';
+		return $DIC["ilMainMenu"]->active == 'desktop';
 	}
 
 
@@ -106,12 +106,11 @@ class ctrlmmEntryDesktop extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getTitle() {
+		global $DIC;
 		if (parent::getTitle()) {
 			return parent::getTitle();
 		} else {
-			global $lng;
-
-			return $lng->txt('personal_desktop');
+			return $DIC->language()->txt('personal_desktop');
 		}
 	}
 }

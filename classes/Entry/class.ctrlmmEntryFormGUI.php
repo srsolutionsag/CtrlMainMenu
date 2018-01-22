@@ -19,6 +19,19 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	 * @var  ilCtrl
 	 */
 	protected $ctrl;
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var ctrlmmEntry
+	 */
+	protected $entry;
+	/**
+	 * @var ilLanguage
+	 */
+	protected $lng;
+	protected $tpl;
 
 
 	/**
@@ -26,11 +39,14 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	 * @param ctrlmmEntry $entry
 	 */
 	public function __construct($parent_gui, ctrlmmEntry $entry) {
-		global $ilCtrl;
+		parent::__construct();
+		global $DIC;
 		$this->parent_gui = $parent_gui;
-		$this->ctrl = $ilCtrl;
+		$this->ctrl = $DIC->ctrl();
 		$this->entry = $entry;
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
+		$this->lng = $DIC->language();
+		$this->tpl = $DIC->ui()->mainTemplate();
 		$this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
 		$this->initPermissionSelectionForm();
 		$this->initForm();
@@ -44,10 +60,10 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	 * @return array
 	 */
 	public static function getRoles($filter, $with_text = true) {
-		global $rbacreview;
+		global $DIC;
 		$opt = array();
 		$role_ids = array();
-		foreach ($rbacreview->getRolesByFilter($filter) as $role) {
+		foreach ($DIC->rbac()->review()->getRolesByFilter($filter) as $role) {
 			$opt[$role['obj_id']] = $role['title'] . ' (' . $role['obj_id'] . ')';
 			$role_ids[] = $role['obj_id'];
 		}
@@ -103,11 +119,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 
 
 	private function initForm() {
-		global $lng;
-		/**
-		 * @var $lng ilLanguage
-		 */
-		$lng->loadLanguageModule('meta');
+		$this->lng->loadLanguageModule('meta');
 
 		$mode = $this->entry->getId() == 0 ? 'create' : 'edit';
 
@@ -117,7 +129,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		$this->setTitle($this->pl->txt('form_title'));
 		$this->setFormAction($this->ctrl->getFormAction($this->parent_gui));
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {
-			$te = new ilTextInputGUI($lng->txt('meta_l_' . $language), 'title_' . $language);
+			$te = new ilTextInputGUI($this->lng->txt('meta_l_' . $language), 'title_' . $language);
 			$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
 			$this->addItem($te);
 		}
@@ -207,10 +219,12 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 			$permission = array_merge(explode(',', $this->getInput($pl . $perm_type)), (array)$this->getInput($p . $perm_type));
 		} elseif ($this->getInput($pu . $perm_type)) {
 			$permission = explode(',', $this->getInput($pu . $perm_type));
-		} elseif  ($this->getInput('permission_type') == ctrlmmMenu::PERM_SCRIPT ) {
-				$permission = array(0 => $this->getInput('perm_input_script_path'),
+		} elseif ($this->getInput('permission_type') == ctrlmmMenu::PERM_SCRIPT) {
+			$permission = array(
+				0 => $this->getInput('perm_input_script_path'),
 				1 => $this->getInput('perm_input_script_class'),
-				2 => $this->getInput('perm_input_script_method'));
+				2 => $this->getInput('perm_input_script_method')
+			);
 		} else {
 			$permission = (array)$this->getInput($p . $perm_type);
 		}

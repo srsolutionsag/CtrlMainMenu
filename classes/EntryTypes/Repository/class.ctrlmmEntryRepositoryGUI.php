@@ -39,10 +39,9 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 
 	protected function setFirstEntry() {
-		global $lng;
 		$icon = ilUtil::img(ilObject::_getIcon(ilObject::_lookupObjId(1), "tiny"));
-		$str = $lng->txt('repository');
-		$this->gl->addEntry($icon . " {$str} - " . $lng->txt("rep_main_page"), ilLink::_getStaticLink(1, 'root', true), "_top");
+		$str = $this->lng->txt('repository');
+		$this->gl->addEntry($icon . " {$str} - " . $this->lng->txt("rep_main_page"), ilLink::_getStaticLink(1, 'root', true), "_top");
 	}
 
 
@@ -50,12 +49,7 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * setItems
 	 */
 	protected function setRecentlyVisitedEntries() {
-		global $lng, $ilNavigationHistory;
-		/**
-		 * @var $ilNavigationHistory ilNavigationHistory
-		 */
-
-		$items = $ilNavigationHistory->getItems();
+		$items = $this->ilNavigationHistory->getItems();
 		reset($items);
 		$this->nr_of_items = 0;
 		$first = true;
@@ -68,10 +62,9 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			// do not list current item
 			if (!isset($item["ref_id"]) || !isset($_GET["ref_id"])
 				|| ($item["ref_id"] != $_GET["ref_id"]
-					|| !$first)
-			) {
+					|| !$first)) {
 				if ($this->nr_of_items == 0) {
-					$this->gl->addGroupHeader($lng->txt("last_visited"), "ilLVNavEnt");
+					$this->gl->addGroupHeader($this->lng->txt("last_visited"), "ilLVNavEnt");
 				}
 				$obj_id = ilObject::_lookupObjId($item["ref_id"]);
 				$this->nr_of_items ++;
@@ -85,12 +78,9 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 
 	protected function setRemoveEntryButton() {
-		global $lng;
-
 		if ($this->nr_of_items > 0) {
-			$this->gl->addEntry("» " . $lng->txt("remove_entries"), "#", "",
-				"return il.MainMenu.removeLastVisitedItems('" . $this->ctrl->getLinkTargetByClass("ilnavigationhistorygui", "removeEntries", "", true)
-				. "');", "ilLVNavEnt");
+			$this->gl->addEntry("» " . $this->lng->txt("remove_entries"), "#", "", "return il.MainMenu.removeLastVisitedItems('"
+				. $this->ctrl->getLinkTargetByClass("ilnavigationhistorygui", "removeEntries", "", true) . "');", "ilLVNavEnt");
 		}
 	}
 

@@ -168,8 +168,11 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	protected function cacheSettings() {
-		$this->toolbar->addButton($this->pl->txt('clear_cache'), $this->ctrl->getLinkTarget($this, 'clearCache'));
-		$this->tabs->setTabActive('cache');
+		$button = ilLinkButton::getInstance();
+		$button->setCaption($this->pl->txt('clear_cache'), false);
+		$button->setUrl($this->ctrl->getLinkTarget($this, 'clearCache'));
+		$this->toolbar->addButtonInstance($button);
+		$this->tabs->activateTab('cache');
 		$form = new ilPropertyFormGUI();
 		$form->setTitle($this->pl->txt('cache_settings'));
 		$form->setFormAction($this->ctrl->getFormAction($this));
@@ -192,7 +195,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	protected function cssSettings() {
-		$this->tabs->setTabActive('css');
+		$this->tabs->activateTab('css');
 		$this->initConfigurationForm();
 		$this->getValues();
 		$this->tpl->setContent($this->form->getHTML());

@@ -11,8 +11,6 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  *
  */
 class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
-
-	const CONFIG_TABLE = 'uihkctrlmainmenu_c';
 	/**
 	 * @var ilCtrlMainMenuConfig
 	 */
@@ -131,7 +129,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		$this->db->dropTable(ctrlmmEntry::TABLE_NAME, false);
 		$this->db->dropTable(ctrlmmData::TABLE_NAME, false);
 		$this->db->dropTable(ctrlmmTranslation::TABLE_NAME, false);
-		$this->db->dropTable(ilCtrlMainMenuPlugin::CONFIG_TABLE, false);
+		$this->db->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
 
 		return true;
 	}

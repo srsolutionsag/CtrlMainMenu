@@ -51,7 +51,10 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		$this->addColumn($this->pl->txt('common_actions'), 'actions', '100px');
 		// ...
 		// Header
-		$DIC->toolbar()->addButton($this->pl->txt('add_new'), $this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
+		$button = ilLinkButton::getInstance();
+		$button->setCaption($this->pl->txt('add_new'), false);
+		$button->setUrl($this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
+		$DIC->toolbar()->addButtonInstance($button);
 		$this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
 		if (ctrlmmMenu::isOldILIAS()) {
 			$this->addCommandButton('saveSortingOld', $this->pl->txt('save_sorting'));

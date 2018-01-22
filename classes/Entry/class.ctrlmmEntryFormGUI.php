@@ -31,6 +31,9 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	 * @var ilLanguage
 	 */
 	protected $lng;
+	/**
+	 * @var ilTemplate
+	 */
 	protected $tpl;
 
 

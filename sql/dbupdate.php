@@ -1,7 +1,6 @@
 <#1>
 <?php
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
-ilCtrlMainMenuPlugin::loadActiveRecord();
+require_once('./Services/ActiveRecord/class.ActiveRecord.php');
 
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 ctrlmmEntry::updateDB();
@@ -110,7 +109,6 @@ foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 <#11>
 <?php
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuConfig.php');
 global $DIC;
 $ilDB = $DIC->database();

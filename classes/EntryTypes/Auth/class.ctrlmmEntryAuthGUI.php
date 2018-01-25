@@ -26,7 +26,7 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
 		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/login.css');
-		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu_entry.html', true, true);
+		$this->html = $this->pl->getTemplate('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', 'ctrl_mm_e_' . $this->entry->getId());
 		$this->html->setVariable('LINK', $this->entry->getLink());

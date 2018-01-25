@@ -67,7 +67,7 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 		global $DIC;
 
 		$this->setTypeId(ctrlmmMenu::TYPE_CTRL);
-		$this->restricted = ctrlmmMenu::isOldILIAS();
+		$this->restricted = false;
 		$this->ctrl = $DIC->ctrl();
 
 		parent::__construct($id);
@@ -115,22 +115,14 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 	 */
 	protected function checkCtrl() {
 		$gui_classes = @explode(',', $this->getGuiClass());
-		if (ctrlmm::is50()) {
-			try {
-				$this->ctrl->getLinkTargetByClass($gui_classes, $this->getCmd());
-			} catch (Exception $e) {
-				if (self::DEBUG) {
-					throw $e;
-				}
-
-				return false;
+		try {
+			$this->ctrl->getLinkTargetByClass($gui_classes, $this->getCmd());
+		} catch (Exception $e) {
+			if (self::DEBUG) {
+				throw $e;
 			}
-		} else {
-			$ctrlTwo = new ilCtrl();
 
-			if (!$ctrlTwo->checkTargetClass($gui_classes)) {
-				return false;
-			}
+			return false;
 		}
 
 		return true;
@@ -145,40 +137,19 @@ class ctrlmmEntryCtrl extends ctrlmmEntry {
 			return NULL;
 		}
 		$gui_classes = @explode(',', $this->getGuiClass());
-		if (ctrlmmMenu::isOldILIAS()) {
-			$ctrlTwo = new ilCtrl();
-			$ctrlTwo->setTargetScript('ilias.php');
-			$a_base_class = $_GET['baseClass'];
-			$cmd = $_GET['cmd'];
-			$cmdClass = $_GET['cmdClass'];
-			$cmdNode = $_GET['cmdNode'];
-			$ctrlTwo->initBaseClass($gui_classes[0]);
-			$link = $ctrlTwo->getLinkTargetByClass($gui_classes, $this->getCmd());
-			$_GET['baseClass'] = $a_base_class;
-			$_GET['cmd'] = $cmd;
-			$_GET['cmdClass'] = $cmdClass;
-			$_GET['cmdNode'] = $cmdNode;
 
+		$link = $this->ctrl->getLinkTargetByClass($gui_classes, $this->getCmd());
+		if ($this->getAdditions()) {
+			$link .= '&' . $this->getAdditions();
+		}
+		if ($this->getRefId()) {
+			$link .= '&ref_id=' . $this->getRefId();
+		}
+
+		if (is_array($this->getGetParams())) {
 			foreach ($this->getGetParams() as $entry) {
 				if ($entry[self::PARAM_NAME] != "") {
-					$_GET[$entry[self::PARAM_NAME]] = ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
-				}
-			}
-		} else {
-
-			$link = $this->ctrl->getLinkTargetByClass($gui_classes, $this->getCmd());
-			if ($this->getAdditions()) {
-				$link .= '&' . $this->getAdditions();
-			}
-			if ($this->getRefId()) {
-				$link .= '&ref_id=' . $this->getRefId();
-			}
-
-			if (is_array($this->getGetParams())) {
-				foreach ($this->getGetParams() as $entry) {
-					if ($entry[self::PARAM_NAME] != "") {
-						$link .= '&' . $entry[self::PARAM_NAME] . '=' . ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
-					}
+					$link .= '&' . $entry[self::PARAM_NAME] . '=' . ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
 				}
 			}
 		}

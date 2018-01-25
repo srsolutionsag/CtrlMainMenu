@@ -81,22 +81,7 @@ class ctrlmmEntryRepository extends ctrlmmEntry {
 	 * @return bool
 	 */
 	protected function hasNoOtherActive() {
-		if (!ctrlmm::is50()) {
-			$active = 0;
-			foreach (ctrlmmEntryInstaceFactory::getAll() as $entry) {
-				if ($entry->getId() == $this->getId()) {
-					continue;
-				}
-
-				if ($entry->getTypeId() == $this->getTypeId()) {
-					return false;
-				}
-			}
-
-			return true;
-		} else {
-			return true;
-		}
+		return true;
 	}
 
 

@@ -84,9 +84,7 @@ class ctrlmmMenuGUI {
 	 * @return string
 	 */
 	public function getHTML() {
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
-
-		$this->html = $this->pl->getVersionTemplate('tpl.ctrl_menu.html');
+		$this->html = $this->pl->getTemplate('tpl.ctrl_menu.html');
 		$entry_before_html = '';
 		$entry_after_html = '';
 		$replace_full = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);

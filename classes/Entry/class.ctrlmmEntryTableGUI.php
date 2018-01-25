@@ -56,11 +56,7 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		$button->setUrl($this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
 		$DIC->toolbar()->addButtonInstance($button);
 		$this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
-		if (ctrlmmMenu::isOldILIAS()) {
-			$this->addCommandButton('saveSortingOld', $this->pl->txt('save_sorting'));
-		} else {
-			$this->addCommandButton('saveSorting', $this->pl->txt('save_sorting'));
-		}
+		$this->addCommandButton('saveSorting', $this->pl->txt('save_sorting'));
 		// $this->setExternalSorting(true);
 		// $this->setExternalSegmentation(true);s
 		$this->setLimit(500);
@@ -92,13 +88,7 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		$this->tpl->setVariable('TITLE', $obj->getTitleInAdministration() . ' ' . ($obj->checkPermission() ? '' : '*'));
 		$this->tpl->setVariable('TYPE', ctrlmmEntryInstaceFactory::getClassAppendForValue($obj->getTypeId()));
 		$this->ctrl->setParameter($this->parent_obj, 'entry_id', $obj->getId());
-		if (ctrlmmMenu::isOldILIAS()) {
-			$this->tpl->setVariable('ID_OLD', $obj->getId());
-			$this->tpl->setVariable('POSITION', self::$num);
-			self::$num ++;
-		} else {
-			$this->tpl->setVariable('ID_NEW', $obj->getId());
-		}
+		$this->tpl->setVariable('ID_NEW', $obj->getId());
 		if (!$obj->getPlugin()) {
 
 			$actions = new ilAdvancedSelectionListGUI();

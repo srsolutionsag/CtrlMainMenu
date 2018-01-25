@@ -246,15 +246,4 @@ class ctrlmmMenu {
 
 		return $names;
 	}
-
-
-	/**
-	 * @return bool
-	 */
-	public static function isOldILIAS() {
-		require_once('./include/inc.ilias_version.php');
-		require_once('./Services/Component/classes/class.ilComponent.php');
-
-		return !ilComponent::isVersionGreaterString(ILIAS_VERSION_NUMERIC, '4.2.999');
-	}
 }

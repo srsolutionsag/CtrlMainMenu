@@ -41,9 +41,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		parent::__construct($entry, $parent_gui);
 		$this->mail = ($this->rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId()) AND $this->usr->getId()
 			!= ANONYMOUS_USER_ID);
-		$this->contacts = ctrlmm::is51() ? ilBuddySystem::getInstance()->isEnabled() : (!$this->ilias->getSetting('disable_contacts')
-			AND ($this->ilias->getSetting('disable_contacts_require_mail')
-				OR $this->rbacsystem->checkAccess('internal_mail', ilMailGlobalServices::getMailObjectRefId())));
+		$this->contacts = ilBuddySystem::getInstance()->isEnabled();
 	}
 
 

@@ -43,13 +43,11 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 
 		$this->gl = new ilGroupedListGUI();
 
-		if (ctrlmm::is50()) {
-			$this->gl->setAsDropDown(true);
-		}
+		$this->gl->setAsDropDown(true);
 
 		$this->setGroupedListContent();
 
-		$this->html = $this->pl->getVersionTemplate('tpl.grouped_list_dropdown.html');
+		$this->html = $this->pl->getTemplate('tpl.grouped_list_dropdown.html');
 
 		$this->html->setVariable('TXT_TITLE', $this->entry->getTitle());
 		$this->html->setVariable('PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
@@ -76,13 +74,6 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 		}
 
 		$this->accessKey();
-		if (!ctrlmm::is50()) {
-			$this->ov = new ilOverlayGUI($this->getDropdownId('ov'));
-			$this->ov->setTrigger($this->getDropdownId());
-			$this->ov->setAnchor($this->getDropdownId());
-			$this->ov->setAutoHide(false);
-			$this->ov->add();
-		}
 
 		$html = $this->html->get();
 

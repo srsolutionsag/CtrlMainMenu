@@ -1,6 +1,5 @@
 <?php
 require_once('./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
 
 /**
  * Class ilCtrlMainMenuPlugin
@@ -11,6 +10,7 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  *
  */
 class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
+
 	/**
 	 * @var ilCtrlMainMenuConfig
 	 */
@@ -32,17 +32,15 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		return 'CtrlMainMenu';
 	}
 
+
 	public function __construct() {
+		parent::__construct();
+
 		global $DIC;
 
 		$this->db = $DIC->database();
 	}
 
-
-	protected function init() {
-		$this->checkAR44();
-		self::loadActiveRecord();
-	}
 
 	//
 	//	public function txt($a_var) {
@@ -53,7 +51,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	//		return sragPluginTranslator::getInstance($this)->active(true)->write(true)->txt($a_var);
 	//	}
 
-
 	/**
 	 * @return ilCtrlMainMenuPlugin
 	 */
@@ -63,54 +60,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		}
 
 		return self::$plugin_cache;
-	}
-
-
-	/**
-	 * @param      $a_template
-	 * @param bool $a_par1
-	 * @param bool $a_par2
-	 *
-	 * @return ilTemplate
-	 */
-	public function getVersionTemplate($a_template, $a_par1 = true, $a_par2 = true) {
-		if (ctrlmm::is50()) {
-			$a_template = 'ilias5/' . $a_template;
-		}
-
-		return $this->getTemplate($a_template, $a_par1, $a_par2);
-	}
-
-
-	public static function loadActiveRecord() {
-		if (ctrlmm::is50()) {
-			require_once('./Services/ActiveRecord/class.ActiveRecord.php');
-		} else {
-			require_once('./Customizing/global/plugins/Libraries/ActiveRecord/class.ActiveRecord.php');
-		}
-	}
-
-
-	/**
-	 * @return bool
-	 * @throws ilPluginException
-	 */
-	protected function beforeActivation() {
-		$this->checkAR44();
-
-		return true;
-	}
-
-
-	/**
-	 * @throws ilPluginException
-	 */
-	protected function checkAR44() {
-		if (ctrlmm::getILIASVersion() < ctrlmm::ILIAS_50) {
-			if (!is_file('./Customizing/global/plugins/Libraries/ActiveRecord/class.ActiveRecord.php')) {
-				throw new ilPluginException('Please install ActiveRecord First');
-			}
-		}
 	}
 
 
@@ -132,6 +81,19 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		$this->db->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
 
 		return true;
+	}
+
+
+	/**
+	 * @return bool
+	 */
+	public static function isGlobalCacheActive() {
+		static $has_global_cache;
+		if (!isset($has_global_cache)) {
+			$has_global_cache = ilCtrlMainMenuConfig::getConfigValue('activate_cache');
+		}
+
+		return $has_global_cache;
 	}
 }
 

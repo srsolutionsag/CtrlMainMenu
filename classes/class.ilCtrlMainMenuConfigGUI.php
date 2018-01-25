@@ -70,13 +70,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		if ($_GET['rl']) {
 			$this->pl->updateLanguages();
 		}
-		if (!ctrlmmMenu::isOldILIAS()) {
-			if (!ctrlmm::is50()) {
-				$this->tpl->addJavaScript('https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', true, 1);
-				ctrlmmEntry::addRestrictedType(ctrlmmMenu::TYPE_REPOSITORY);
-			}
-			$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/sortable.js');
-		}
+		$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/sortable.js');
 
 		ctrlmmMenu::includeAllTypes();
 	}
@@ -139,9 +133,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			$this->tabs->activateTab('mm_admin');
 		}
 		$this->tabs->addTab('css', $this->pl->txt('css_settings'), $this->ctrl->getLinkTarget($this, 'cssSettings'));
-		if (ctrlmm::hasGlobalCache()) {
-			$this->tabs->addTab('cache', $this->pl->txt('cache_settings'), $this->ctrl->getLinkTarget($this, 'cacheSettings'));
-		}
+		$this->tabs->addTab('cache', $this->pl->txt('cache_settings'), $this->ctrl->getLinkTarget($this, 'cacheSettings'));
 		switch ($cmd) {
 			case 'configure':
 			case 'save':
@@ -159,9 +151,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	public function clearCache() {
-		if (ctrlmm::hasGlobalCache()) {
-			ilGlobalCache::flushAll();
-		}
+		ilGlobalCache::flushAll();
 		ilUtil::sendInfo($this->pl->txt('cache_cleared'), true);
 		$this->ctrl->redirect($this, 'cacheSettings');
 	}

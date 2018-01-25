@@ -60,11 +60,7 @@ class ctrlmmEntrySettings extends ctrlmmEntry {
 	 */
 	public function getIcon() {
 		if ($this->getShowIcon()) {
-			if (ctrlmm::is50()) {
-				return ilUtil::img(ilUtil::getImagePath('icon_adm.svg'), 16, 16);
-			} else {
-				return ilUtil::img(ilUtil::getImagePath('icon_extt_s.png'));
-			}
+			return ilUtil::img(ilUtil::getImagePath('icon_adm.svg'), 16, 16);
 		}
 
 		return NULL;

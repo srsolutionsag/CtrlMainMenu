@@ -53,10 +53,10 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		// Header
 		$button = ilLinkButton::getInstance();
 		$button->setCaption($this->pl->txt('add_new'), false);
-		$button->setUrl($this->ctrl->getLinkTarget($a_parent_obj, 'selectEntryType'));
+		$button->setUrl($this->ctrl->getLinkTarget($a_parent_obj, ilCtrlMainMenuConfigGUI::CMD_SELECT_ENTRY_TYPE));
 		$DIC->toolbar()->addButtonInstance($button);
 		$this->setFormAction($this->ctrl->getFormAction($a_parent_obj));
-		$this->addCommandButton('saveSorting', $this->pl->txt('save_sorting'));
+		$this->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_SAVE_SORTING, $this->pl->txt('save_sorting'));
 		// $this->setExternalSorting(true);
 		// $this->setExternalSegmentation(true);s
 		$this->setLimit(500);
@@ -95,14 +95,14 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 			$actions->setId('actions_' . $obj->getId());
 			$actions->setListTitle($this->pl->txt('common_actions'));
 			if ($obj->getTypeId() != ctrlmmMenu::TYPE_SEPARATOR) {
-				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, 'editEntry'));
-				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass('ctrlmmEntryGUI', 'edit')); FSX TODO REFACTORING
+				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, ilCtrlMainMenuConfigGUI::CMD_EDIT_ENTRY));
+				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass(ctrlmmEntryGUI::class, ilCtrlMainMenuConfigGUI::CMD_EDIT_ENTRY)); FSX TODO REFACTORING
 			}
 			if ($obj->getTypeId() != ctrlmmMenu::TYPE_ADMIN) {
-				$actions->addItem($this->pl->txt('common_delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, 'deleteEntry'));
+				$actions->addItem($this->pl->txt('common_delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, ilCtrlMainMenuConfigGUI::CMD_DELETE_ENTRY));
 			}
 			if ($obj->getTypeId() == ctrlmmMenu::TYPE_DROPDOWN) {
-				$actions->addItem($this->pl->txt('edit_childs'), 'edit_childs', $this->ctrl->getLinkTarget($this->parent_obj, 'editChilds'));
+				$actions->addItem($this->pl->txt('edit_childs'), 'edit_childs', $this->ctrl->getLinkTarget($this->parent_obj, ilCtrlMainMenuConfigGUI::CMD_EDIT_CHILDS));
 			}
 			$this->tpl->setVariable('ACTIONS', $actions->getHTML());
 		}

@@ -188,9 +188,9 @@ class ctrlmmEntryGUI {
 		}
 		$this->form->addCommandButton($mode . 'Object', $this->pl->txt('common_create'));
 		if ($mode != 'create') {
-			$this->form->addCommandButton($mode . 'ObjectAndStay', $this->pl->txt('create_and_stay'));
+			$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_UPDATE_OBJECT_AND_STAY, $this->pl->txt('create_and_stay'));
 		}
-		$this->form->addCommandButton('configure', $this->pl->txt('common_cancel'));
+		$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_CONFIGURE, $this->pl->txt('common_cancel'));
 	}
 
 

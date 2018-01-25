@@ -124,7 +124,7 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	private function initForm() {
 		$this->lng->loadLanguageModule('meta');
 
-		$mode = $this->entry->getId() == 0 ? 'create' : 'edit';
+		$mode = $this->entry->getId() == 0 ? 'create' : 'update';
 
 		$te = new ilFormSectionHeaderGUI();
 		$te->setTitle($this->pl->txt('common_title'));
@@ -147,9 +147,9 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		}
 		$this->addCommandButton($mode . 'Object', $this->pl->txt('common_create'));
 		if ($mode != 'create') {
-			$this->addCommandButton($mode . 'ObjectAndStay', $this->pl->txt('create_and_stay'));
+			$this->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_UPDATE_OBJECT_AND_STAY, $this->pl->txt('create_and_stay'));
 		}
-		$this->addCommandButton('configure', $this->pl->txt('common_cancel'));
+		$this->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_CONFIGURE, $this->pl->txt('common_cancel'));
 
 		$this->addFields();
 	}
@@ -247,12 +247,6 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 		$this->entry->create();
 
 		return true;
-	}
-
-
-	protected function addCommandButtons() {
-		$this->addCommandButton('save', $this->pl->txt('admin_form_button_save'));
-		$this->addCommandButton('cancel', $this->pl->txt('admin_form_button_cancel'));
 	}
 
 

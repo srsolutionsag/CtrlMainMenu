@@ -84,7 +84,7 @@ class ctrlmmEntryGUI {
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
 		$this->lng = $DIC->language();
 		$this->usr = $DIC->user();
-		$this->settings = $DIC->settings();
+		$this->settings = $DIC["ilSetting"];
 		$this->rbacsystem = $DIC->rbac()->system();
 		$this->ilias = $DIC["ilias"];
 		$this->ilNavigationHistory = $DIC["ilNavigationHistory"];

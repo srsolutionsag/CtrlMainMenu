@@ -59,7 +59,7 @@ class ctrlmmEntryStatusbox extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getLink() {
-		return 'ilias.php?baseClass=ilMailGUI';
+		return 'ilias.php?baseClass=' . ilMailGUI::class;
 	}
 
 

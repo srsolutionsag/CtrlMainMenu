@@ -102,22 +102,22 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	public function getFields() {
 		$this->fields = array(
 			'css_prefix' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
 			'css_active' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
 			'css_inactive' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
 			'doubleclick_prevention' => array(
-				'type' => 'ilCheckboxInputGUI',
+				'type' => ilCheckboxInputGUI::class,
 			),
 			'simple_form_validation' => array(
-				'type' => 'ilCheckboxInputGUI',
+				'type' => ilCheckboxInputGUI::class,
 			),
 			'replace_full_header' => array(
-				'type' => 'ilCheckboxInputGUI',
+				'type' => ilCheckboxInputGUI::class,
 			),
 		);
 

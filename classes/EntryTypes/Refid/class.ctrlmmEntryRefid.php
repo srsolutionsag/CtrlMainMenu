@@ -70,11 +70,11 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 			$tree = $DIC->repositoryTree();
 			if ($this->getRecursive()) {
 				if (($_GET['ref_id'] == $this->getRefId() OR $tree->isGrandChild($this->getRefId(), $_GET['ref_id'])
-					AND strtolower($_GET['baseClass']) != 'iladministrationgui')) {
+					AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class) != 0)) {
 					return true;
 				}
 			} else {
-				if (($_GET['ref_id'] == $this->getRefId() AND strtolower($_GET['baseClass']) != 'iladministrationgui')) {
+				if (($_GET['ref_id'] == $this->getRefId() AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class)!= 0)) {
 					return true;
 				}
 			}

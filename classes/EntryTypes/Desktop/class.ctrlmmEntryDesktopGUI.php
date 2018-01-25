@@ -80,7 +80,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		$ctrlmmGLEntry = new ctrlmmGLEntry();
 		$ctrlmmGLEntry->setId('mm_pd_sel_items');
 		$ctrlmmGLEntry->setTitle($this->lng->txt('overview'));
-		$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToSelectedItems');
+		$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToSelectedItems');
 		$this->addGLEntry($ctrlmmGLEntry);
 
 		// my groups and courses, if both is available
@@ -88,7 +88,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_crs_grp');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('my_courses_groups'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToMemberships');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToMemberships');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
 
@@ -97,7 +97,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_bookm');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('bookmarks'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToBookmarks');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToBookmarks');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
 
@@ -106,7 +106,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_notes');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('notes_and_comments'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToNotes');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToNotes');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
 
@@ -115,7 +115,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_news');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('news'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToNews');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToNews');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
 
@@ -129,7 +129,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_wsp');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('personal_workspace'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToWorkspace');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToWorkspace');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -140,7 +140,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_port');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('portfolio'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToPortfolio');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToPortfolio');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -152,7 +152,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_skill');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('skills'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToSkills');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToSkills');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -161,11 +161,11 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		// Learning Progress
 		if (ilObjUserTracking::_enabledLearningProgress() AND (ilObjUserTracking::_hasLearningProgressOtherUsers()
 				OR ilObjUserTracking::_hasLearningProgressLearner())) {
-			//$ilTabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass('ilLearningProgressGUI'));
+			//$this->tabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass(ilLearningProgressGUI::class));
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_lp');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('learning_progress'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToLP');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToLP');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -183,7 +183,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_cal');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('calendar'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToCalendar');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToCalendar');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -194,7 +194,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_mail');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('mail'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilMailGUI');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilMailGUI::class);
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -205,7 +205,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_contacts');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('mail_addressbook'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToContacts');
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToContacts');
 			$this->addGLEntry($ctrlmmGLEntry);
 
 			$separator = true;
@@ -219,14 +219,14 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		$ctrlmmGLEntry = new ctrlmmGLEntry();
 		$ctrlmmGLEntry->setId('mm_pd_profile');
 		$ctrlmmGLEntry->setTitle($this->lng->txt('personal_profile'));
-		$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToProfile');
+		$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToProfile');
 		$this->addGLEntry($ctrlmmGLEntry);
 
 		// settings
 		$ctrlmmGLEntry = new ctrlmmGLEntry();
 		$ctrlmmGLEntry->setId('mm_pd_sett');
 		$ctrlmmGLEntry->setTitle($this->lng->txt('personal_settings'));
-		$ctrlmmGLEntry->setLink('ilias.php?baseClass=ilPersonalDesktopGUI&amp;cmd=jumpToSettings');
+		$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToSettings');
 		$this->addGLEntry($ctrlmmGLEntry);
 
 		if ($this->entry->getShowLogout()) {

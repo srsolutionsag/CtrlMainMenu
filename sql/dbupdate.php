@@ -35,7 +35,13 @@ $repo->create();
 ctrlmmEntryInstaceFactory::createAdminEntry();
 
 ?>
-<#2><#3><#4><#5>
+<#2>
+
+<#3>
+
+<#4>
+
+<#5>
 <?php
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuConfig.php');
 ilCtrlMainMenuConfig::renameDBField('config_key', 'name');

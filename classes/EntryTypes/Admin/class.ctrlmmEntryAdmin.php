@@ -88,5 +88,6 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 				return true;
 			}
 		}
+		return $this->getCachedPermission();
 	}
 }

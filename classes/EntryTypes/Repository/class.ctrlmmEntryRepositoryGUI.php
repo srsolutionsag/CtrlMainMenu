@@ -49,7 +49,7 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * setItems
 	 */
 	protected function setRecentlyVisitedEntries() {
-		$items = $this->ilNavigationHistory->getItems();
+		$items = $this->history->getItems();
 		reset($items);
 		$this->nr_of_items = 0;
 		$first = true;

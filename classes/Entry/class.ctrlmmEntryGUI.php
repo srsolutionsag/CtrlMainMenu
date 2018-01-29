@@ -69,7 +69,7 @@ class ctrlmmEntryGUI {
 	/**
 	 * @var ilNavigationHistory
 	 */
-	protected $ilNavigationHistory;
+	protected $history;
 
 
 	/**
@@ -87,7 +87,7 @@ class ctrlmmEntryGUI {
 		$this->settings = $DIC["ilSetting"];
 		$this->rbacsystem = $DIC->rbac()->system();
 		$this->ilias = $DIC["ilias"];
-		$this->ilNavigationHistory = $DIC["ilNavigationHistory"];
+		$this->history = $DIC["ilNavigationHistory"];
 		$this->entry = $entry;
 		$this->parent_gui = $parent_gui;
 	}

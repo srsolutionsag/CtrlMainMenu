@@ -2,7 +2,6 @@
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
 
-
 /**
  * ctrlmmEntryStatusboxGUI
  *
@@ -20,11 +19,12 @@ class ctrlmmEntryStatusboxGUI extends ctrlmmEntryGUI {
 
 	/**
 	 * @param string $entry_div_id
+	 *
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
-		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/statusbox.css');
+		$this->tpl->addCss($this->pl->getDirectory() . '/templates/css/statusbox.css');
 
 		$this->html = $this->pl->getTemplate('tpl.menu_statusbox.html', false, true);
 		$this->html->setVariable('ICON', ilUtil::getImagePath('icon_mail_s.png'));

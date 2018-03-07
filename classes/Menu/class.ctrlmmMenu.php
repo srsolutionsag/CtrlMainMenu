@@ -219,7 +219,7 @@ class ctrlmmMenu {
 		if (!self::$types_included) {
 			foreach (self::getAllTypeConstants() as $name => $value) {
 				$name = ctrlmmEntryInstaceFactory::getClassAppendForValue($value);
-				$type = $pl->getDirectory() . './classes/EntryTypes/' . $name . '/class.ctrlmmEntry' . $name;
+				$type = $pl->getDirectory() . '/classes/EntryTypes/' . $name . '/class.ctrlmmEntry' . $name;
 				require_once($type . '.php');
 				require_once($type . 'GUI.php');
 				//				if (is_file($type . 'FormGUI.php')) {

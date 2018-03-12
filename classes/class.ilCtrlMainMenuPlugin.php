@@ -67,13 +67,10 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 * @return bool true
 	 */
 	protected function beforeUninstall() {
-
-		// drop the tables created by the CtrlMainMenu plugin
-
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php';
 
 		$this->db->dropTable(ctrlmmEntry::TABLE_NAME, false);
 		$this->db->dropTable(ctrlmmData::TABLE_NAME, false);

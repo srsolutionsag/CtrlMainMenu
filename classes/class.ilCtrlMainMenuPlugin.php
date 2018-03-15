@@ -11,6 +11,8 @@ require_once('./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php
  */
 class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
+	const PLUGIN_ID = 'ctrlmm';
+	const PLUGIN_NAME = 'CtrlMainMenu';
 	/**
 	 * @var ilCtrlMainMenuConfig
 	 */
@@ -29,7 +31,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 * @return string
 	 */
 	public function getPluginName() {
-		return 'CtrlMainMenu';
+		return self::PLUGIN_NAME;
 	}
 
 

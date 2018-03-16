@@ -80,7 +80,7 @@ class ctrlmmEntryRepositoryGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	protected function setRemoveEntryButton() {
 		if ($this->nr_of_items > 0) {
 			$this->gl->addEntry("» " . $this->lng->txt("remove_entries"), "#", "", "return il.MainMenu.removeLastVisitedItems('"
-				. $this->ctrl->getLinkTargetByClass("ilnavigationhistorygui", "removeEntries", "", true) . "');", "ilLVNavEnt");
+				. $this->ctrl->getLinkTargetByClass(ilNavigationHistoryGUI::class, "removeEntries", "", true) . "');", "ilLVNavEnt");
 		}
 	}
 

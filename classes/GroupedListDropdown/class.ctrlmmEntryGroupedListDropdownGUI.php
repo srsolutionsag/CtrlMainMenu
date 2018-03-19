@@ -32,23 +32,22 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 	 */
 	protected $html;
 
+
 	/**
 	 * @param string $entry_div_id
+	 *
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
-		global $lng;
 
 		$this->gl = new ilGroupedListGUI();
 
-		if(ctrlmm::is50()) {
-			$this->gl->setAsDropDown(true);
-		}
+		$this->gl->setAsDropDown(true);
 
 		$this->setGroupedListContent();
 
-		$this->html = $this->pl->getVersionTemplate('tpl.grouped_list_dropdown.html');
+		$this->html = $this->pl->getTemplate('tpl.grouped_list_dropdown.html');
 
 		$this->html->setVariable('TXT_TITLE', $this->entry->getTitle());
 		$this->html->setVariable('PREFIX', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
@@ -64,32 +63,26 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 		$this->html->setVariable('OVERLAY_ID', $this->getDropdownId('ov'));
 		$this->html->setVariable('TARGET_REPOSITORY', '_top');
 
-		$list_id = ($this->entry->getListId()!='')? ' id="'.$this->entry->getListId().'"' : '';
+		$list_id = ($this->entry->getListId() != '') ? ' id="' . $this->entry->getListId() . '"' : '';
 		$this->html->setVariable('LIST_ID', $list_id);
 
 		if ($this->entry->isActive()) {
 			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_ACTIVE));
-			$this->html->setVariable('SEL', '<span class=\'ilAccHidden\'>(' . $lng->txt('stat_selected') . ')</span>');
+			$this->html->setVariable('SEL', '<span class=\'ilAccHidden\'>(' . $this->lng->txt('stat_selected') . ')</span>');
 		} else {
 			$this->html->setVariable('MM_CLASS', ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE));
 		}
 
 		$this->accessKey();
-		if(!ctrlmm::is50()) {
-			$this->ov = new ilOverlayGUI($this->getDropdownId('ov'));
-			$this->ov->setTrigger($this->getDropdownId());
-			$this->ov->setAnchor($this->getDropdownId());
-			$this->ov->setAutoHide(false);
-			$this->ov->add();
-		}
 
 		$html = $this->html->get();
 
 		return $html;
 	}
 
+
 	public function getDropdownId($post_fix = 'tr') {
-		return 'mm_'.$this->entry->getId().'_'.$post_fix;
+		return 'mm_' . $this->entry->getId() . '_' . $post_fix;
 	}
 
 

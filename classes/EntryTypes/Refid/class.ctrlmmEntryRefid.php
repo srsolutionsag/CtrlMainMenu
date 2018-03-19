@@ -32,9 +32,9 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  * @version        2.0.02
  */
 class ctrlmmEntryRefid extends ctrlmmEntry {
+
 	const PARAM_NAME = 'param_name';
 	const PARAM_VALUE = 'param_value';
-
 	/**
 	 * @var int
 	 */
@@ -43,12 +43,10 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 	 * @var int
 	 */
 	protected $recursive = 0;
-
 	/**
 	 * @var array
 	 */
 	protected $get_params = array();
-
 	/**
 	 * @var int
 	 */
@@ -64,23 +62,19 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 	 * @return bool
 	 */
 	public function isActive() {
+		global $DIC;
 		if (!$_GET['ref_id']) {
 			return false;
 		} else {
 
-			global $tree;
-			/**
-			 * @var $tree ilTree
-			 */
+			$tree = $DIC->repositoryTree();
 			if ($this->getRecursive()) {
-				if (($_GET['ref_id'] == $this->getRefId() OR
-					$tree->isGrandChild($this->getRefId(), $_GET['ref_id']) AND strtolower($_GET['baseClass']) != 'iladministrationgui')
-				) {
+				if (($_GET['ref_id'] == $this->getRefId() OR $tree->isGrandChild($this->getRefId(), $_GET['ref_id'])
+					AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class) != 0)) {
 					return true;
 				}
 			} else {
-				if (($_GET['ref_id'] == $this->getRefId() AND strtolower($_GET['baseClass']) != 'iladministrationgui')
-				) {
+				if (($_GET['ref_id'] == $this->getRefId() AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class)!= 0)) {
 					return true;
 				}
 			}
@@ -95,9 +89,9 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 	 */
 	public function getLink() {
 		$param_array = array();
-		if(is_array($this->getGetParams())) {
-			foreach($this->getGetParams() as $entry) {
-				if($entry[self::PARAM_NAME] != "") {
+		if (is_array($this->getGetParams())) {
+			foreach ($this->getGetParams() as $entry) {
+				if ($entry[self::PARAM_NAME] != "") {
 					$param_array[$entry[self::PARAM_NAME]] = ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
 				}
 			}
@@ -169,6 +163,4 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 	public function setGetParams($get_params) {
 		$this->get_params = $get_params;
 	}
-
-
 }

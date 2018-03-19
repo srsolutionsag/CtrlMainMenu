@@ -34,18 +34,14 @@ abstract class ctrlmmEntryAdvancedSelectionListDropdownGUI extends ctrlmmEntryGU
 		$this->selection->setSelectionHeaderClass(($this->entry->isActive() ? ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_ACTIVE) : ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_INACTIVE)));
 
 		$this->selection->setSelectionHeaderSpanClass('MMSpan');
-		if (ctrlmm::is50()) {
-			$this->selection->setHeaderIcon('down_arrow_dark');
-		} else {
-			$this->selection->setHeaderIcon('mm_down_arrow.png');
-		}
+		$this->selection->setHeaderIcon('down_arrow_dark');
 
 		$this->selection->setItemLinkClass('small');
 		$this->selection->setUseImages(false);
 
 		$this->customizeAdvancedSelectionList();
 
-		$this->html = $this->pl->getVersionTemplate('tpl.admin_entry.html', false, false);
+		$this->html = $this->pl->getTemplate('tpl.admin_entry.html', false, false);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('DROPDOWN', $this->selection->getHTML());
 		$this->html->setVariable('CSS_PREFIX', ctrlmmMenu::getCssPrefix());

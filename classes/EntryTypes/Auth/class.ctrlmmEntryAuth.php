@@ -48,14 +48,20 @@ class ctrlmmEntryAuth extends ctrlmmEntry {
 	 * @var bool
 	 */
 	protected $show_login_text = true;
+	/**
+	 * @var ilObjUser
+	 */
+	protected $ilUser;
+	protected $lng;
 
 
 	/**
 	 * @param int $id
 	 */
 	public function __construct($id = 0) {
-		global $ilUser;
-		$this->ilUser = $ilUser;
+		global $DIC;
+		$this->ilUser = $DIC->user();
+		$this->lng = $DIC->language();
 
 		$this->setTypeId(ctrlmmMenu::TYPE_AUTH);
 
@@ -106,14 +112,10 @@ class ctrlmmEntryAuth extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getTitle() {
-		global $lng;
-		/**
-		 * @var $lng ilLanguage
-		 */
 		if ($this->isLoggedIn()) {
-			return $lng->txt('logout');
+			return $this->lng->txt('logout');
 		} else {
-			return $lng->txt('log_in');
+			return $this->lng->txt('log_in');
 		}
 	}
 

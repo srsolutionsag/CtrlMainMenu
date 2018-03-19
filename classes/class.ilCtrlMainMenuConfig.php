@@ -7,7 +7,7 @@
  * @author Fabian Schmid <fs@studer-raimann.ch>
  */
 class ilCtrlMainMenuConfig extends ActiveRecord {
-
+	const TABLE_NAME = 'uihkctrlmainmenu_c';
 	const F_CSS_PREFIX = 'css_prefix';
 	const F_CSS_ACTIVE = 'css_active';
 	const F_CSS_INACTIVE = 'css_inactive';
@@ -32,7 +32,7 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @return string
 	 */
 	public static function returnDbTableName() {
-		return ilCtrlMainMenuPlugin::CONFIG_TABLE;
+		return self::TABLE_NAME;
 	}
 
 

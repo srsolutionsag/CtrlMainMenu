@@ -156,7 +156,7 @@ class ctrlmmEntry extends ActiveRecord {
 		if (isset($primary_key)) {
 			foreach (ctrlmmData::getDataForEntry($this->getId()) as $k => $v) {
 				if (self::isAdditionalField(get_class($this), $k)) {
-					if($v !== null) {
+					if ($v !== NULL) {
 						$this->{$k} = $v;
 					}
 				}
@@ -219,7 +219,7 @@ class ctrlmmEntry extends ActiveRecord {
 			'childs_cache',
 			'active_cache',
 			'permission_cache',
-//			'target',
+			//			'target',
 			'icon',
 			'is_new',
 			'forbidden_children',
@@ -332,7 +332,8 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	public function replacePlaceholders() {
-		global $ilUser;
+		global $DIC;
+		$ilUser = $DIC->user();
 		$replacements = array(
 			'[firstname]' => "<span class='headerFirstname'>" . $ilUser->getFirstname() . "</span>",
 			'[lastname]' => "<span class='headerLastname'>" . $ilUser->getLastname() . "</span>",
@@ -501,7 +502,7 @@ class ctrlmmEntry extends ActiveRecord {
 			$type = ctrlmmData::_getDataTypeForValue($v);
 
 			$data->setDataType($type);
-			if($type == ctrlmmData::DATA_TYPE_ARRAY) {
+			if ($type == ctrlmmData::DATA_TYPE_ARRAY) {
 				$data->setDataValue(json_encode($v));
 			} else {
 				$data->setDataValue($v);
@@ -583,7 +584,10 @@ class ctrlmmEntry extends ActiveRecord {
 	public function checkPermission() {
 		if (!$this->isPermissionCached()) {
 			$this->setCachedPermission(false);
-			global $ilAccess, $ilUser, $rbacreview;
+			global $DIC;
+			$ilAccess = $DIC->access();
+			$ilUser = $DIC->user();
+			$rbacreview = $DIC->rbac()->review();
 			switch ($this->getPermissionType()) {
 				case ctrlmmMenu::PERM_ROLE:
 					foreach ((array)json_decode($this->getPermission()) as $pid) {
@@ -618,17 +622,17 @@ class ctrlmmEntry extends ActiveRecord {
 					break;
 				case ctrlmmMenu::PERM_SCRIPT:
 					$perm_settings = json_decode($this->getPermission());
-					$path =  $perm_settings[0];
+					$path = $perm_settings[0];
 					$class_name = $perm_settings[1];
 					$method_name = $perm_settings[2];
 
-					if(file_exists($path)) {
+					if (file_exists($path)) {
 						require_once $path;
-						if(class_exists($class_name)) {
+						if (class_exists($class_name)) {
 							$access_object = new $class_name;
 
-							if (method_exists ($access_object, $method_name)) {
-								if($access_object->$method_name()) {
+							if (method_exists($access_object, $method_name)) {
+								if ($access_object->$method_name()) {
 									$this->setCachedPermission(true);
 								}
 							}

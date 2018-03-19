@@ -10,7 +10,6 @@ require_once('./Services/Form/classes/class.ilPropertyFormGUI.php');
 require_once('./Services/Utilities/classes/class.ilConfirmationGUI.php');
 require_once('./Services/jQuery/classes/class.iljQueryUtil.php');
 
-
 /**
  * CtrlMainMenu Configuration
  *
@@ -20,6 +19,29 @@ require_once('./Services/jQuery/classes/class.iljQueryUtil.php');
  *
  */
 class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
+	const CMD_ADD_ENTRY = 'addEntry';
+	const CMD_CACHE_SETTINGS = 'cacheSettings';
+	const CMD_CLEAR_CACHE = 'clearCache';
+	const CMD_CSS_SETTINGS = 'cssSettings';
+	const CMD_CONFIGURE = 'configure';
+	const CMD_CREATE_ENTRY = 'createEntry';
+	const CMD_CREATE_OBJECT = 'createObject';
+	const CMD_CREATE_OBJECT_AND_STAY = 'createObjectAndStay';
+	const CMD_DELETE_OBJECT = 'deleteObject';
+	const CMD_EDIT_CHILDS = 'editChilds';
+	const CMD_EDIT_ENTRY = 'editEntry';
+	const CMD_DELETE_ENTRY = 'deleteEntry';
+	const CMD_RESET_PARENT = 'resetParent';
+	const CMD_SAVE = 'save';
+	const CMD_SAVE_SORTING = 'saveSorting';
+	const CMD_SELECT_ENTRY_TYPE = 'selectEntryType';
+	const CMD_UPDATE_CACHE_SETTINGS = 'updateCacheSettings';
+	const CMD_UPDATE_OBJECT = 'updateObject';
+	const CMD_UPDATE_OBJECT_AND_STAY = 'updateObjectAndStay';
+	const TAB_CACHE = 'cache';
+	const TAB_CSS = 'css';
+	const TAB_DROPDOWN = 'child_admin';
+	const TAB_MAIN = 'mm_admin';
 
 	/**
 	 *
@@ -30,29 +52,48 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 * @var string
 	 */
 	protected $table_name = '';
+	/**
+	 * @var ilCtrlMainMenuPlugin
+	 */
+	protected $pl;
+	/**
+	 * @var ilCtrl
+	 */
+	protected $ctrl;
+	/**
+	 * @var ilTemplate
+	 */
+	protected $tpl;
+	/**
+	 * @var ilTabsGUI
+	 */
+	protected $tabs;
+	/**
+	 * @var ilToolbarGUI
+	 */
+	protected $toolbar;
+	/**
+	 * @var ilLanguage
+	 */
+	protected $lng;
+	/**
+	 * @var ilPropertyFormGUI
+	 */
+	protected $form;
 
 
 	public function __construct() {
-		global $ilCtrl, $tpl, $ilTabs;
-		/**
-		 * @var $ilCtrl ilCtrl
-		 * @var $tpl    ilTemplate
-		 * @var $ilTabs ilTabsGUI
-		 */
-		$this->ctrl = $ilCtrl;
-		$this->tpl = $tpl;
-		$this->tabs = &$ilTabs;
+		global $DIC;
+		$this->ctrl = $DIC->ctrl();
+		$this->tpl = $DIC->ui()->mainTemplate();
+		$this->tabs = $DIC->tabs();
 		$this->pl = ilCtrlMainMenuPlugin::getInstance();
+		$this->toolbar = $DIC->toolbar();
+		$this->lng = $DIC->language();
 		if ($_GET['rl']) {
 			$this->pl->updateLanguages();
 		}
-		if (!ctrlmmMenu::isOldILIAS()) {
-			if (!ctrlmm::is50()) {
-				$this->tpl->addJavaScript('https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', true, 1);
-				ctrlmmEntry::addRestrictedType(ctrlmmMenu::TYPE_REPOSITORY);
-			}
-			$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/sortable.js');
-		}
+		$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/sortable.js');
 
 		ctrlmmMenu::includeAllTypes();
 	}
@@ -78,22 +119,22 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	public function getFields() {
 		$this->fields = array(
 			'css_prefix' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
 			'css_active' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
 			'css_inactive' => array(
-				'type' => 'ilTextInputGUI',
+				'type' => ilTextInputGUI::class,
 			),
-						'doubleclick_prevention' => array(
-							'type' => 'ilCheckboxInputGUI',
-						),
-						'simple_form_validation' => array(
-							'type' => 'ilCheckboxInputGUI',
-						),
+			'doubleclick_prevention' => array(
+				'type' => ilCheckboxInputGUI::class,
+			),
+			'simple_form_validation' => array(
+				'type' => ilCheckboxInputGUI::class,
+			),
 			'replace_full_header' => array(
-				'type' => 'ilCheckboxInputGUI',
+				'type' => ilCheckboxInputGUI::class,
 			),
 		);
 
@@ -102,29 +143,39 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	/**
-	 * Handles all commmands, default is 'configure'
+	 * Handles all commmands, default is self::CMD_CONFIGURE
 	 */
 	function performCommand($cmd) {
 		$this->ctrl->setParameter($this, 'parent_id', $_GET['parent_id'] ? $_GET['parent_id'] : 0);
 		if ($_GET['parent_id'] > 0) {
-			$this->tabs->addTab('mm_admin', $this->pl->txt('back_to_main'), $this->ctrl->getLinkTarget($this, 'resetParent'));
-			$this->tabs->addTab('child_admin', $this->pl->txt('tabs_title_childs'), $this->ctrl->getLinkTarget($this, 'configure'));
-			$this->tabs->activateTab('child_admin');
+			$this->tabs->addTab(self::TAB_MAIN, $this->pl->txt('back_to_main'), $this->ctrl->getLinkTarget($this, self::CMD_RESET_PARENT));
+			$this->tabs->addTab(self::TAB_DROPDOWN, $this->pl->txt('tabs_title_childs'), $this->ctrl->getLinkTarget($this, self::CMD_CONFIGURE));
+			$this->tabs->activateTab(self::TAB_DROPDOWN);
 		} else {
-			$this->tabs->addTab('mm_admin', $this->pl->txt('tab_main'), $this->ctrl->getLinkTarget($this, 'configure'));
-			$this->tabs->activateTab('mm_admin');
+			$this->tabs->addTab(self::TAB_MAIN, $this->pl->txt('tab_main'), $this->ctrl->getLinkTarget($this, self::CMD_CONFIGURE));
+			$this->tabs->activateTab(self::TAB_MAIN);
 		}
-		$this->tabs->addTab('css', $this->pl->txt('css_settings'), $this->ctrl->getLinkTarget($this, 'cssSettings'));
-		if (ctrlmm::hasGlobalCache()) {
-			$this->tabs->addTab('cache', $this->pl->txt('cache_settings'), $this->ctrl->getLinkTarget($this, 'cacheSettings'));
-		}
+		$this->tabs->addTab(self::TAB_CSS, $this->pl->txt('css_settings'), $this->ctrl->getLinkTarget($this, self::CMD_CSS_SETTINGS));
+		$this->tabs->addTab(self::TAB_CACHE, $this->pl->txt('cache_settings'), $this->ctrl->getLinkTarget($this, self::CMD_CACHE_SETTINGS));
 		switch ($cmd) {
-			case 'configure':
-			case 'save':
-			case 'saveSorting':
-			case 'addEntry':
-			case 'createEntry':
-			case 'selectEntryType':
+			case self::CMD_CONFIGURE:
+			case self::CMD_SAVE:
+			case self::CMD_SAVE_SORTING:
+			case self::CMD_ADD_ENTRY:
+			case self::CMD_CREATE_ENTRY:
+			case self::CMD_SELECT_ENTRY_TYPE:
+			case self::CMD_CLEAR_CACHE:
+			case self::CMD_RESET_PARENT:
+			case self::CMD_CSS_SETTINGS:
+			case self::CMD_EDIT_ENTRY:
+			case self::CMD_DELETE_ENTRY:
+			case self::CMD_EDIT_CHILDS:
+			case self::CMD_UPDATE_CACHE_SETTINGS:
+			case self::CMD_CREATE_OBJECT:
+			case self::CMD_CREATE_OBJECT_AND_STAY:
+			case self::CMD_UPDATE_OBJECT:
+			case self::CMD_UPDATE_OBJECT_AND_STAY:
+			case self::CMD_DELETE_OBJECT:
 				$this->$cmd();
 				break;
 			default:
@@ -135,20 +186,18 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 
 	public function clearCache() {
-		if(ctrlmm::hasGlobalCache()) {
-			ilGlobalCache::flushAll();
-		}
+		ilGlobalCache::flushAll();
 		ilUtil::sendInfo($this->pl->txt('cache_cleared'), true);
-		$this->ctrl->redirect($this, 'cacheSettings');
+		$this->ctrl->redirect($this, self::CMD_CACHE_SETTINGS);
 	}
 
+
 	protected function cacheSettings() {
-		global $ilToolbar;
-		/**
-		 * @var $ilToolbar ilToolbarGUI
-		 */
-		$ilToolbar->addButton($this->pl->txt('clear_cache'), $this->ctrl->getLinkTarget($this, 'clearCache'));
-		$this->tabs->setTabActive('cache');
+		$button = ilLinkButton::getInstance();
+		$button->setCaption($this->pl->txt('clear_cache'), false);
+		$button->setUrl($this->ctrl->getLinkTarget($this, self::CMD_CLEAR_CACHE));
+		$this->toolbar->addButtonInstance($button);
+		$this->tabs->activateTab(self::TAB_CACHE);
 		$form = new ilPropertyFormGUI();
 		$form->setTitle($this->pl->txt('cache_settings'));
 		$form->setFormAction($this->ctrl->getFormAction($this));
@@ -157,7 +206,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$cb->setInfo($this->pl->txt('activate_cache_info'));
 		$form->addItem($cb);
 		$form->setValuesByArray(array( 'activate_cache' => ilCtrlMainMenuConfig::getConfigValue('activate_cache') ));
-		$form->addCommandButton('updateCacheSettings', $this->pl->txt('update_cache_settings'));
+		$form->addCommandButton(self::CMD_UPDATE_CACHE_SETTINGS, $this->pl->txt('update_cache_settings'));
 
 		$this->tpl->setContent($form->getHTML());
 	}
@@ -166,12 +215,12 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	protected function updateCacheSettings() {
 		ilCtrlMainMenuConfig::set('activate_cache', $_POST['activate_cache']);
 		ilUtil::sendInfo($this->pl->txt('cache_settings_updated'), true);
-		$this->ctrl->redirect($this, 'cacheSettings');
+		$this->ctrl->redirect($this, self::CMD_CACHE_SETTINGS);
 	}
 
 
 	protected function cssSettings() {
-		$this->tabs->setTabActive('css');
+		$this->tabs->activateTab(self::TAB_CSS);
 		$this->initConfigurationForm();
 		$this->getValues();
 		$this->tpl->setContent($this->form->getHTML());
@@ -180,26 +229,26 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function editChilds() {
 		$this->ctrl->setParameter($this, 'parent_id', $_GET['entry_id']);
-		$this->ctrl->redirect($this, 'configure');
+		$this->ctrl->redirect($this, self::CMD_CONFIGURE);
 	}
 
 
 	public function configure() {
-		$table = new ctrlmmEntryTableGUI($this, 'configure', $_GET['parent_id'] ? $_GET['parent_id'] : 0);
+		$table = new ctrlmmEntryTableGUI($this, self::CMD_CONFIGURE, $_GET['parent_id'] ? $_GET['parent_id'] : 0);
 		$this->tpl->setContent($table->getHTML());
 	}
 
 
 	public function resetParent() {
 		$this->ctrl->setParameter($this, 'parent_id', 0);
-		$this->ctrl->redirect($this, 'configure');
+		$this->ctrl->redirect($this, self::CMD_CONFIGURE);
 	}
 
 
 	public function saveSorting() {
 		foreach ($_POST['position'] as $k => $v) {
 			$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($v)->getObject();
-			if($obj instanceof ctrlmmEntry) {
+			if ($obj instanceof ctrlmmEntry) {
 				$obj->setPosition($k);
 				$obj->update();
 			}
@@ -227,8 +276,8 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$se = new ilSelectInputGUI($this->pl->txt('common_type'), 'type');
 		$se->setOptions(ctrlmmMenu::getAllTypesAsArray(true, $_GET['parent_id']));
 		$select->addItem($se);
-		$select->addCommandButton('addEntry', $this->pl->txt('common_select'));
-		$select->addCommandButton('configure', $this->pl->txt('common_cancel'));
+		$select->addCommandButton(self::CMD_ADD_ENTRY, $this->pl->txt('common_select'));
+		$select->addCommandButton(self::CMD_CONFIGURE, $this->pl->txt('common_cancel'));
 		$this->tpl->setContent($select->getHTML());
 	}
 
@@ -313,8 +362,8 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$conf = new ilConfirmationGUI();
 		ilUtil::sendQuestion($this->pl->txt('qst_delete_entry'));
 		$conf->setFormAction($this->ctrl->getFormAction($this));
-		$conf->setConfirm($this->pl->txt('common_delete'), 'deleteObject');
-		$conf->setCancel($this->pl->txt('common_cancel'), 'configure');
+		$conf->setConfirm($this->pl->txt('common_delete'), self::CMD_DELETE_OBJECT);
+		$conf->setCancel($this->pl->txt('common_cancel'), self::CMD_CONFIGURE);
 		$conf->addItem('entry_id', $_GET['entry_id'], $entry->getTitle());
 		$this->tpl->setContent($conf->getHTML());
 	}
@@ -328,7 +377,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$entry->delete();
 
 		ilUtil::sendSuccess($this->pl->txt('entry_deleted'));
-		$this->ctrl->redirect($this, 'configure');
+		$this->ctrl->redirect($this, self::CMD_CONFIGURE);
 	}
 
 
@@ -352,7 +401,6 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 * @return ilPropertyFormGUI
 	 */
 	public function initConfigurationForm() {
-		global $lng, $ilCtrl;
 		$this->form = new ilPropertyFormGUI();
 		foreach ($this->getFields() as $key => $item) {
 			$field = new $item['type']($this->pl->txt($key), $key);
@@ -370,16 +418,15 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			}
 			$this->form->addItem($field);
 		}
-		$this->form->addCommandButton('save', $lng->txt('save'));
+		$this->form->addCommandButton(self::CMD_SAVE, $this->lng->txt('save'));
 		$this->form->setTitle($this->pl->txt('common_configuration'));
-		$this->form->setFormAction($ilCtrl->getFormAction($this));
+		$this->form->setFormAction($this->ctrl->getFormAction($this));
 
 		return $this->form;
 	}
 
 
 	public function save() {
-		global $tpl, $ilCtrl;
 		$this->initConfigurationForm();
 		if ($this->form->checkInput()) {
 			foreach ($this->getFields() as $key => $item) {
@@ -391,10 +438,10 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 				}
 			}
 			ilUtil::sendSuccess($this->pl->txt('conf_saved'), true);
-			$ilCtrl->redirect($this, 'cssSettings');
+			$this->ctrl->redirect($this, self::CMD_CSS_SETTINGS);
 		} else {
 			$this->form->setValuesByPost();
-			$tpl->setContent($this->form->getHtml());
+			$this->tpl->setContent($this->form->getHtml());
 		}
 	}
 }

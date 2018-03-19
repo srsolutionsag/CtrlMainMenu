@@ -21,7 +21,7 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 		$this->selection->setListTitle($this->entry->getTitle());
 		$this->selection->setId('dd_adm');
 		$this->selection->setAsynch(true);
-		$this->selection->setAsynchUrl('ilias.php?baseClass=ilAdministrationGUI&cmd=getDropDown&cmdMode=asynch');
+		$this->selection->setAsynchUrl('ilias.php?baseClass='. ilAdministrationGUI::class .'&cmd=getDropDown&cmdMode=asynch');
 	}
 
 
@@ -45,9 +45,7 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
-		if (ctrlmm::is50()) {
-			ilYuiUtil::initConnection();
-		}
+		ilYuiUtil::initConnection();
 
 		return parent::renderEntry();
 	}

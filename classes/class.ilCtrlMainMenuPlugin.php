@@ -1,6 +1,5 @@
 <?php
 require_once('./Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmm.php');
 
 /**
  * Class ilCtrlMainMenuPlugin
@@ -12,7 +11,8 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  */
 class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
-	const CONFIG_TABLE = 'uihkctrlmainmenu_c';
+	const PLUGIN_ID = 'ctrlmm';
+	const PLUGIN_NAME = 'CtrlMainMenu';
 	/**
 	 * @var ilCtrlMainMenuConfig
 	 */
@@ -21,20 +21,28 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 * @var ilCtrlMainMenuPlugin
 	 */
 	protected static $plugin_cache;
+	/**
+	 * @var ilDB
+	 */
+	protected $db;
 
 
 	/**
 	 * @return string
 	 */
 	public function getPluginName() {
-		return 'CtrlMainMenu';
+		return self::PLUGIN_NAME;
 	}
 
 
-	protected function init() {
-		$this->checkAR44();
-		self::loadActiveRecord();
+	public function __construct() {
+		parent::__construct();
+
+		global $DIC;
+
+		$this->db = $DIC->database();
 	}
+
 
 	//
 	//	public function txt($a_var) {
@@ -44,7 +52,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	////		return sragPluginTranslator::getInstance($this)->rebuild(true)->txt($a_var);
 	//		return sragPluginTranslator::getInstance($this)->active(true)->write(true)->txt($a_var);
 	//	}
-
 
 	/**
 	 * @return ilCtrlMainMenuPlugin
@@ -59,74 +66,33 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
 
 	/**
-	 * @param      $a_template
-	 * @param bool $a_par1
-	 * @param bool $a_par2
-	 *
-	 * @return ilTemplate
+	 * @return bool true
 	 */
-	public function getVersionTemplate($a_template, $a_par1 = true, $a_par2 = true) {
-		if (ctrlmm::is50()) {
-			$a_template = 'ilias5/' . $a_template;
-		}
+	protected function beforeUninstall() {
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php';
+		require_once './Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php';
 
-		return $this->getTemplate($a_template, $a_par1, $a_par2);
-	}
+		$this->db->dropTable(ctrlmmEntry::TABLE_NAME, false);
+		$this->db->dropTable(ctrlmmData::TABLE_NAME, false);
+		$this->db->dropTable(ctrlmmTranslation::TABLE_NAME, false);
+		$this->db->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
 
-
-	public static function loadActiveRecord() {
-		if (ctrlmm::is50()) {
-			require_once('./Services/ActiveRecord/class.ActiveRecord.php');
-		} else {
-			require_once('./Customizing/global/plugins/Libraries/ActiveRecord/class.ActiveRecord.php');
-		}
+		return true;
 	}
 
 
 	/**
 	 * @return bool
-	 * @throws ilPluginException
 	 */
-	protected function beforeActivation() {
-		$this->checkAR44();
-
-		return true;
-	}
-
-
-	/**
-	 * @throws ilPluginException
-	 */
-	protected function checkAR44() {
-		if (ctrlmm::getILIASVersion() < ctrlmm::ILIAS_50) {
-			if (!is_file('./Customizing/global/plugins/Libraries/ActiveRecord/class.ActiveRecord.php')) {
-				throw new ilPluginException('Please install ActiveRecord First');
-			}
+	public static function isGlobalCacheActive() {
+		static $has_global_cache;
+		if (!isset($has_global_cache)) {
+			$has_global_cache = ilCtrlMainMenuConfig::getConfigValue('activate_cache');
 		}
-	}
 
-
-	/**
-	 * @return bool true
-	 */
-	protected function beforeUninstall() {
-
-		// drop the tables created by the CtrlMainMenu plugin
-
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php');
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
-
-		/** $ilDB ilDB */
-		global $ilDB;
-
-		$ilDB->dropTable(ctrlmmEntry::TABLE_NAME, false);
-		$ilDB->dropTable(ctrlmmData::TABLE_NAME, false);
-		$ilDB->dropTable(ctrlmmTranslation::TABLE_NAME, false);
-		$ilDB->dropTable(ilCtrlMainMenuPlugin::CONFIG_TABLE, false);
-
-		return true;
+		return $has_global_cache;
 	}
 }
 

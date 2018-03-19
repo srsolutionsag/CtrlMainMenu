@@ -23,8 +23,8 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 	 * @param string $mode
 	 */
 	public function initForm($mode = 'create') {
-		$this->tpl->addJavaScript('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/js/check.js');
-		$this->tpl->addCss('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/templates/css/check.css');
+		$this->tpl->addJavaScript($this->pl->getDirectory() . '/templates/js/check.js');
+		$this->tpl->addCss($this->pl->getDirectory() . '/templates/css/check.css');
 
 		parent::initForm($mode);
 
@@ -84,8 +84,8 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 		$this->entry->setTarget($this->form->getInput('target'));
 
 		// remove duplicates
-		$get_params =  $this->form->getInput('get_params');
-		$this->entry->setGetParams(array_intersect_key($get_params, array_unique(array_map('serialize',$get_params))));
+		$get_params = $this->form->getInput('get_params');
+		$this->entry->setGetParams(array_intersect_key($get_params, array_unique(array_map('serialize', $get_params))));
 		$this->entry->update();
 	}
 }

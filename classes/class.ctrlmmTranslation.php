@@ -127,8 +127,8 @@ class ctrlmmTranslation extends ActiveRecord {
 	 * @return bool|string
 	 */
 	public static function _getTitleForEntryId($entry_id) {
-		global $ilUser;
-		$obj = self::_getInstanceForLanguageKey($entry_id, $ilUser->getLanguage());
+		global $DIC;
+		$obj = self::_getInstanceForLanguageKey($entry_id, $DIC->user()->getLanguage());
 
 		if (!isset($obj)) {
 			require_once('./Services/Language/classes/class.ilLanguage.php');

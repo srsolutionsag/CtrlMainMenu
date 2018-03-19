@@ -173,7 +173,7 @@ class ctrlmmEntryInstaceFactory {
 			}
 		}
 
-		if (ctrlmm::isGlobalCacheActive()) {
+		if (ilCtrlMainMenuPlugin::isGlobalCacheActive()) {
 			require_once('./Services/GlobalCache/classes/class.ilGlobalCache.php');
 			$ilGlobalCache = ilGlobalCache::getInstance(ilGlobalCache::COMP_ILCTRL);
 			if ($ilGlobalCache->isActive()) {

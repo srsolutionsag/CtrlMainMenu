@@ -1,10 +1,8 @@
-<li class="{PREFIX}MainMenu">
-    <a id="{ENTRY_ID}" {ACC_KEY_REPOSITORY} class="{MM_CLASS}" href="#" target="_top">{ICON} {TXT_TITLE}
-	<!-- BEGIN arrow -->
-	<img border="0" alt="" src="{ARROW_IMG}">
-	<!-- END arrow -->
+<li class="{PREFIX}MainMenu dropdown" {LIST_ID}>
+    <a id="{ENTRY_ID}" {ACC_KEY_REPOSITORY} class="{MM_CLASS}" data-toggle="dropdown" href="#" target="_top">{TXT_TITLE}
+    {ICON}
+    <span class="caret"></span>
     </a>{SEL}
-    <div id="{OVERLAY_ID}" class="ilOverlay ilNoDisplay">
-        {CONTENT}
-    </div>
+
+    {CONTENT}
 </li>

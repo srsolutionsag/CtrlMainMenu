@@ -59,7 +59,7 @@ class ctrlmmEntryStatusbox extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getLink() {
-		return 'ilias.php?baseClass=ilMailGUI';
+		return 'ilias.php?baseClass=' . ilMailGUI::class;
 	}
 
 
@@ -75,8 +75,8 @@ class ctrlmmEntryStatusbox extends ctrlmmEntry {
 	 * @return int
 	 */
 	public function getNewMailCount() {
-		global $ilUser;
+		global $DIC;
 
-		return ilMailGlobalServices::getNumberOfNewMailsByUserId($ilUser->getId());
+		return ilMailGlobalServices::getNumberOfNewMailsByUserId($DIC->user()->getId());
 	}
 }

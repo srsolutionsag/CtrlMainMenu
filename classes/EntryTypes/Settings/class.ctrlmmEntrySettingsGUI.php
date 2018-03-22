@@ -147,7 +147,7 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		$form->addCommandButton('#', $this->pl->txt('settentr_button_save'));
 
-		$setting_tpl = new ilTemplate($this->pl->getDirectory() . '/templates/tpl.settings_entry.html', false, true);
+		$setting_tpl = $this->pl->getTemplate('tpl.settings_entry.html', false);
 		$setting_tpl->setVariable('CTRLMM_CONTENT', $form->getHTML());
 
 		return $setting_tpl->get();

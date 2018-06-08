@@ -20,7 +20,6 @@
 	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
 	+-----------------------------------------------------------------------------+
 */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * Application class for ctrlmmEntryCtrl Object.
@@ -29,8 +28,10 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
  * @version        2.0.02
  */
 class ctrlmmEntryLink extends ctrlmmEntry {
+
 	const PARAM_NAME = 'param_name';
 	const PARAM_VALUE = 'param_value';
+
 
 	/**
 	 * @return bool
@@ -44,7 +45,6 @@ class ctrlmmEntryLink extends ctrlmmEntry {
 	 * @var bool
 	 */
 	protected $target = '_blank';
-
 	/**
 	 * @var array
 	 */
@@ -60,18 +60,19 @@ class ctrlmmEntryLink extends ctrlmmEntry {
 		parent::__construct($primary_key);
 	}
 
+
 	public function getLink() {
 		$param_string = "";
 
-		if(is_array($this->getGetParams())) {
-			foreach($this->getGetParams() as $entry) {
-				if($entry[self::PARAM_NAME] != "") {
-					$param_string .= '&'.$entry[self::PARAM_NAME].'='.ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
+		if (is_array($this->getGetParams())) {
+			foreach ($this->getGetParams() as $entry) {
+				if ($entry[self::PARAM_NAME] != "") {
+					$param_string .= '&' . $entry[self::PARAM_NAME] . '=' . ctrlmmUserDataReplacer::parse($entry[self::PARAM_VALUE]);
 				}
 			}
 		}
 
-		return $this->link.$param_string;
+		return $this->link . $param_string;
 	}
 
 

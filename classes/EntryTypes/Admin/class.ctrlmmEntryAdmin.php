@@ -20,7 +20,6 @@
 	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
 	+-----------------------------------------------------------------------------+
 */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * Application class for ctrlmmEntryCtrl Object.
@@ -88,6 +87,7 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 				return true;
 			}
 		}
+
 		return $this->getCachedPermission();
 	}
 }

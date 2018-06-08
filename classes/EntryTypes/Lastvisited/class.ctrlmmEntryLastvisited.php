@@ -20,11 +20,6 @@
 	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
 	+-----------------------------------------------------------------------------+
 */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryTypes/Dropdown/class.ctrlmmEntryDropdown.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryTypes/Link/class.ctrlmmEntryLink.php');
-require_once('./Services/Navigation/classes/class.ilNavigationHistory.php');
-require_once('./Services/Object/classes/class.ilObject2.php');
 
 /**
  * Application class for ctrlmmEntryLastvisited Object.

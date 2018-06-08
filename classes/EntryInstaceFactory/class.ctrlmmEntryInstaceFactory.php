@@ -1,6 +1,4 @@
 <?php
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * Class ctrlmmEntryInstaceFactory
@@ -174,7 +172,6 @@ class ctrlmmEntryInstaceFactory {
 		}
 
 		if (ilCtrlMainMenuPlugin::isGlobalCacheActive()) {
-			require_once('./Services/GlobalCache/classes/class.ilGlobalCache.php');
 			$ilGlobalCache = ilGlobalCache::getInstance(ilGlobalCache::COMP_ILCTRL);
 			if ($ilGlobalCache->isActive()) {
 				$entry = $ilGlobalCache->get('ctrlmm_e_' . $entry_id);
@@ -339,5 +336,3 @@ class ctrlmmEntryInstaceFactory {
 		return $gui_class;
 	}
 }
-
-

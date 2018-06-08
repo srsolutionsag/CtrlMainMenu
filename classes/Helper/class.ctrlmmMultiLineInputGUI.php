@@ -1,7 +1,4 @@
 <?php
-require_once("./Services/Table/interfaces/interface.ilTableFilterItem.php");
-require_once("./Services/Form/classes/class.ilSubEnabledFormPropertyGUI.php");
-require_once("./Services/UIComponent/Toolbar/interfaces/interface.ilToolbarItem.php");
 
 /**
  * Class ctrlmmMultiLineInputGUI

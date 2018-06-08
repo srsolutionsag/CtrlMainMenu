@@ -1,5 +1,4 @@
 <?php
-require_once('./Services/Form/classes/class.ilPropertyFormGUI.php');
 
 /**
  * Class ctrlmmEntryFormGUI
@@ -255,5 +254,3 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 	//
 
 }
-
-

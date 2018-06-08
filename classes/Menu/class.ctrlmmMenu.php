@@ -1,6 +1,5 @@
 <?php
 
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 /*
 	+-----------------------------------------------------------------------------+
 	| ILIAS open source                                                           |

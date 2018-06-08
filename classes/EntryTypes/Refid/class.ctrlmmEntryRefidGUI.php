@@ -1,6 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
 
 /**
  * ctrlmmEntryRefidGUI
@@ -54,8 +53,8 @@ class ctrlmmEntryRefidGUI extends ctrlmmEntryGUI {
 		$this->entry->setRecursive($this->form->getInput('recursive'));
 
 		// remove duplicates
-		$get_params =  $this->form->getInput('get_params');
-		$this->entry->setGetParams(array_intersect_key($get_params, array_unique(array_map('serialize',$get_params))));
+		$get_params = $this->form->getInput('get_params');
+		$this->entry->setGetParams(array_intersect_key($get_params, array_unique(array_map('serialize', $get_params))));
 		$this->entry->update();
 	}
 }

@@ -1,8 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Services/Search/classes/class.ilMainMenuSearchGUI.php');
-require_once('./Services/Search/classes/class.ilSearchSettings.php');
 
 /**
  * ctrlmmEntrySearchGUI
@@ -15,6 +12,7 @@ class ctrlmmEntrySearchGUI extends ctrlmmEntryGUI {
 
 	/**
 	 * @param string $entry_div_id
+	 *
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
@@ -22,7 +20,7 @@ class ctrlmmEntrySearchGUI extends ctrlmmEntryGUI {
 		$main_search = new ilMainMenuSearchGUI();
 		$this->html = $this->pl->getTemplate('tpl.search_entry.html', false, false);
 		$this->html->setVariable('DROPDOWN', str_ireplace(ilMainMenuSearch::class, ctrlmmMenu::getCssPrefix()
-			.ilMainMenuSearch::class, $main_search->getHTML()));
+			. ilMainMenuSearch::class, $main_search->getHTML()));
 		$this->html->setVariable('CSS_PREFIX', ctrlmmMenu::getCssPrefix());
 
 		return $this->html->get();

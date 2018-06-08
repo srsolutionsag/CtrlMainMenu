@@ -1,8 +1,4 @@
 <?php
-require_once('./Services/Table/classes/class.ilTable2GUI.php');
-require_once('class.ctrlmmEntry.php');
-require_once('./Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
 
 /**
  * TableGUI ctrlmmEntryTableGUI
@@ -108,4 +104,3 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		}
 	}
 }
-

@@ -71,17 +71,13 @@ class ctrlmmChecker {
 
 	public function initILIAS() {
 		chdir(substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], "/Customizing")));
-		require_once('include/inc.ilias_version.php');
-		require_once('Services/Component/classes/class.ilComponent.php');
-		include_once "Services/Context/classes/class.ilContext.php";
+		require_once "include/inc.ilias_version.php";
+		require_once "include/inc.header.php";
 		ilContext::init(ilContext::CONTEXT_CRON);
-		include_once 'Services/Authentication/classes/class.ilAuthFactory.php';
 		ilAuthFactory::setContext(ilAuthFactory::CONTEXT_CRON);
-		include_once './include/inc.header.php';
 	}
 
 
 	private static function includes() {
 	}
 }
-

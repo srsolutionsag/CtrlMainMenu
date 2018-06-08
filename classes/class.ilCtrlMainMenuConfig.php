@@ -7,6 +7,7 @@
  * @author Fabian Schmid <fs@studer-raimann.ch>
  */
 class ilCtrlMainMenuConfig extends ActiveRecord {
+
 	const TABLE_NAME = 'uihkctrlmainmenu_c';
 	const F_CSS_PREFIX = 'css_prefix';
 	const F_CSS_ACTIVE = 'css_active';
@@ -14,6 +15,25 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	const F_DOUBLECLICK_PREVENTION = 'doubleclick_prevention';
 	const F_SIMPLE_FORM_VALIDATION = 'simple_form_validation';
 	const F_REPLACE_FULL_HEADER = "replace_full_header";
+
+
+	/**
+	 * @return string
+	 */
+	public function getConnectorContainerName() {
+		return self::TABLE_NAME;
+	}
+
+
+	/**
+	 * @return string
+	 * @deprecated
+	 */
+	public static function returnDbTableName() {
+		return self::TABLE_NAME;
+	}
+
+
 	/**
 	 * @var array
 	 */
@@ -26,14 +46,6 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @var bool
 	 */
 	protected $ar_safe_read = false;
-
-
-	/**
-	 * @return string
-	 */
-	public static function returnDbTableName() {
-		return self::TABLE_NAME;
-	}
 
 
 	/**

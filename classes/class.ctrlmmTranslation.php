@@ -10,6 +10,25 @@
 class ctrlmmTranslation extends ActiveRecord {
 
 	const TABLE_NAME = 'ui_uihk_ctrlmm_t';
+
+
+	/**
+	 * @return string
+	 */
+	public function getConnectorContainerName() {
+		return self::TABLE_NAME;
+	}
+
+
+	/**
+	 * @return string
+	 * @deprecated
+	 */
+	public static function returnDbTableName() {
+		return self::TABLE_NAME;
+	}
+
+
 	/**
 	 * @var int
 	 *
@@ -48,18 +67,6 @@ class ctrlmmTranslation extends ActiveRecord {
 	 * @con_length     500
 	 */
 	protected $title = '';
-
-
-	/**
-	 * @return string
-	 * @description Return the Name of your Database Table
-	 * @deprecated
-	 */
-	static function returnDbTableName() {
-		return self::TABLE_NAME;
-	}
-
-
 	/**
 	 * @var array
 	 */
@@ -131,7 +138,6 @@ class ctrlmmTranslation extends ActiveRecord {
 		$obj = self::_getInstanceForLanguageKey($entry_id, $DIC->user()->getLanguage());
 
 		if (!isset($obj)) {
-			require_once('./Services/Language/classes/class.ilLanguage.php');
 			$lngs = new ilLanguage('en');
 			$obj = self::_getInstanceForLanguageKey($entry_id, $lngs->getDefaultLanguage());
 			if ($obj->getId() == 0) {
@@ -228,5 +234,3 @@ class ctrlmmTranslation extends ActiveRecord {
 		return $this->title;
 	}
 }
-
-

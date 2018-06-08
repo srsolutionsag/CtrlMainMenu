@@ -1,9 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Services/UIComponent/GroupedList/classes/class.ilGroupedListGUI.php');
-require_once('./Services/Accessibility/classes/class.ilAccessKey.php');
-require_once('./Services/UIComponent/Overlay/classes/class.ilOverlayGUI.php');
 
 /**
  * ctrlmmEntryGroupedListDropdownGUI
@@ -107,5 +103,3 @@ abstract class ctrlmmEntryGroupedListDropdownGUI extends ctrlmmEntryGUI {
 		return $this->gl->getHTML();
 	}
 }
-
-

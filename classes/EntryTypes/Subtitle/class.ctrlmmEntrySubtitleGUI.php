@@ -1,6 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
 
 /**
  * ctrlmmEntrySubtitleGUI
@@ -31,6 +30,7 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 		}
 	}
 
+
 	public function setFormValuesByArray() {
 		$values = parent::setFormValuesByArray();
 		$values['show_with_no_children'] = $this->entry->getShowWithNoChildren();
@@ -43,8 +43,6 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 		$this->entry->setShowWithNoChildren($this->form->getInput('show_with_no_children'));
 		$this->entry->update();
 	}
-
-
 }
 
 

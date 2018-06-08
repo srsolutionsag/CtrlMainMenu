@@ -1,9 +1,5 @@
 <?php
 
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmData.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ctrlmmTranslation.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
 /*
 	+-----------------------------------------------------------------------------+
 	| ILIAS open source                                                           |
@@ -36,6 +32,25 @@ require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHoo
 class ctrlmmEntry extends ActiveRecord {
 
 	const TABLE_NAME = 'ui_uihk_ctrlmm_e';
+
+
+	/**
+	 * @return string
+	 */
+	public function getConnectorContainerName() {
+		return self::TABLE_NAME;
+	}
+
+
+	/**
+	 * @return string
+	 * @deprecated
+	 */
+	public static function returnDbTableName() {
+		return self::TABLE_NAME;
+	}
+
+
 	/**
 	 * @var array
 	 */
@@ -138,16 +153,6 @@ class ctrlmmEntry extends ActiveRecord {
 	 * @var string
 	 */
 	protected $title = '';
-
-
-	/**
-	 * @return string
-	 * @description Return the Name of your Database Table
-	 * @deprecated
-	 */
-	static function returnDbTableName() {
-		return self::TABLE_NAME;
-	}
 
 
 	public function __construct($primary_key = 0) {

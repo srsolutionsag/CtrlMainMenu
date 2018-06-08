@@ -1,11 +1,7 @@
 <?php
-
+require_once __DIR__ . "/../../vendor/autoload.php";
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 //MST 20131130: I commented out the following line because of problems with ILIAS Modules which use include instead of include_once
-//require_once('./Services/Form/classes/class.ilPropertyFormGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * User interface hook class
@@ -159,5 +155,3 @@ class ctrlmmMenuGUI {
 		return $this->side;
 	}
 }
-
-

@@ -1,14 +1,5 @@
 <?php
-require_once('class.ilCtrlMainMenuPlugin.php');
-require_once('class.ilCtrlMainMenuConfig.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryTableGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('./Services/Component/classes/class.ilPluginConfigGUI.php');
-require_once('./Services/Form/classes/class.ilPropertyFormGUI.php');
-require_once('./Services/Utilities/classes/class.ilConfirmationGUI.php');
-require_once('./Services/jQuery/classes/class.iljQueryUtil.php');
+require_once __DIR__ . "/../vendor/autoload.php";
 
 /**
  * CtrlMainMenu Configuration
@@ -19,6 +10,7 @@ require_once('./Services/jQuery/classes/class.iljQueryUtil.php');
  *
  */
 class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
+
 	const CMD_ADD_ENTRY = 'addEntry';
 	const CMD_CACHE_SETTINGS = 'cacheSettings';
 	const CMD_CLEAR_CACHE = 'clearCache';
@@ -42,7 +34,6 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	const TAB_CSS = 'css';
 	const TAB_DROPDOWN = 'child_admin';
 	const TAB_MAIN = 'mm_admin';
-
 	/**
 	 *
 	 * @var array
@@ -445,5 +436,3 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		}
 	}
 }
-
-

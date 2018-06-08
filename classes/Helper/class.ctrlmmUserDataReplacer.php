@@ -1,5 +1,4 @@
 <?php
-require_once('./Services/User/classes/class.ilUserDefinedFields.php');
 
 /**
  * Class ctrlmmUserDataReplacer

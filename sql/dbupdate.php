@@ -15,6 +15,8 @@ ctrlmmTranslation::updateDB();
 
 ctrlmmMenu::includeAllTypes();
 
+ctrlmmEntry::updateDB();
+
 $desktop = new ctrlmmEntryDesktop();
 $desktop->setPosition(1);
 $desktop->create();

@@ -25,7 +25,7 @@ class ctrlmmEntryLinkGUI extends ctrlmmEntryGUI {
 		$se->setOptions($opt);
 		$this->form->addItem($se);
 
-		$get_params = new ctrlmmMultiLIneInputGUI($this->pl->txt("get_parameters"), 'get_params');
+		$get_params = new ctrlmmMultiLineInputGUI($this->pl->txt("get_parameters"), 'get_params');
 		$get_params->setInfo($this->pl->txt('get_parameters_description'));
 		$get_params->setTemplateDir($this->pl->getDirectory());
 

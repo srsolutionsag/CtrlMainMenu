@@ -58,7 +58,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	 */
 	public static function getInstance() {
 		if (!isset(self::$plugin_cache)) {
-			self::$plugin_cache = new ilCtrlMainMenuPlugin();
+			self::$plugin_cache = new self();
 		}
 
 		return self::$plugin_cache;

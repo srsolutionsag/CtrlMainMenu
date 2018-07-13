@@ -201,7 +201,7 @@ class ctrlmmEntryInstaceFactory {
 	/**
 	 * @return ctrlmmEntryCtrl
 	 *
-	 * TODO FSX add caching
+	 * TODO: FSX add caching
 	 */
 	public function getObject() {
 		if (!isset($this->object)) {

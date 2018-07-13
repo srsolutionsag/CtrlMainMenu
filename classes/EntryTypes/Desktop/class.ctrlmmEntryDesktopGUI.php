@@ -153,7 +153,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		// Learning Progress
 		if (ilObjUserTracking::_enabledLearningProgress() AND (ilObjUserTracking::_hasLearningProgressOtherUsers()
 				OR ilObjUserTracking::_hasLearningProgressLearner())) {
-			//$this->tabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass(ilLearningProgressGUI::class));
+			//$this->tabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass(ilLearningProgressGUI::class)); // TODO: Translate
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_lp');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('learning_progress'));

@@ -49,14 +49,14 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 
 	/**
-	 * @param $name
+	 * @param string $name
 	 *
 	 * @return string
 	 */
 	public static function getConfigValue($name) {
 		if (!isset(self::$cache_loaded[$name])) {
 			/**
-			 * @var $obj ilCtrlMainMenuConfig
+			 * @var ilCtrlMainMenuConfig $obj
 			 */
 			$obj = self::find($name);
 			if ($obj === NULL) {
@@ -72,14 +72,12 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 
 	/**
-	 * @param $name
-	 * @param $value
-	 *
-	 * @return null
+	 * @param string $name
+	 * @param string $value
 	 */
 	public static function set($name, $value) {
 		/**
-		 * @var $obj ilCtrlMainMenuConfig
+		 * @var ilCtrlMainMenuConfig $obj
 		 */
 		$obj = self::findOrGetInstance($name);
 		$obj->setFieldValue($value);

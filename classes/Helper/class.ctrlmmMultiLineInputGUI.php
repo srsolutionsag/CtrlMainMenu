@@ -59,8 +59,8 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Constructor
 	 *
-	 * @param    string $a_title   Title
-	 * @param    string $a_postvar Post Variable
+	 * @param string $a_title   Title
+	 * @param string $a_postvar Post Variable
 	 */
 	public function __construct($a_title = "", $a_postvar = "") {
 		global $DIC;
@@ -93,7 +93,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 
 	/**
-	 * @param $key
+	 * @param string $key
 	 *
 	 * @return bool
 	 */
@@ -109,8 +109,8 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 
 	/**
-	 * @param       $input
-	 * @param array $options
+	 * @param ilFormPropertyGUI $input
+	 * @param array             $options
 	 */
 	public function addInput(ilFormPropertyGUI $input, $options = array()) {
 		$this->inputs[$input->getPostVar()] = $input;
@@ -153,7 +153,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Get Options.
 	 *
-	 * @return    array    Options. Array ("value" => "option_text")
+	 * @return array    Options. Array ("value" => "option_text")
 	 */
 	public function getInputs() {
 		return $this->inputs;
@@ -173,7 +173,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Set Value.
 	 *
-	 * @param    string $a_value Value
+	 * @param string $a_value Value
 	 */
 	public function setValue($a_value) {
 		foreach ($this->inputs as $key => $item) {
@@ -190,7 +190,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Get Value.
 	 *
-	 * @return    string    Value
+	 * @return string    Value
 	 */
 	public function getValue() {
 		$out = array();
@@ -205,7 +205,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Set value by array
 	 *
-	 * @param    array $a_values value array
+	 * @param array $a_values value array
 	 */
 	public function setValueByArray($a_values) {
 		$data = $a_values[$this->getPostVar()];
@@ -220,7 +220,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Check input, strip slashes etc. set alert, if input is not ok.
 	 *
-	 * @return    boolean        Input ok, true/false
+	 * @return boolean        Input ok, true/false
 	 */
 	public function checkInput() {
 		$valid = true;
@@ -263,8 +263,8 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 
 	/**
-	 * @param            $key
-	 * @param            $value
+	 * @param string     $key
+	 * @param string     $value
 	 * @param bool|false $override
 	 */
 	public function addCustomAttribute($key, $value, $override = false) {
@@ -285,7 +285,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 
 	/**
-	 * @param                   $iterator_id
+	 * @param int               $iterator_id
 	 * @param ilFormPropertyGUI $input
 	 *
 	 * @return string
@@ -390,7 +390,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	/**
 	 * Insert property html
 	 *
-	 * @return    int    Size
+	 * @return int    Size
 	 */
 	public function insert(&$a_tpl) {
 		$output = "";

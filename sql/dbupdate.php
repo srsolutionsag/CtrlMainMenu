@@ -45,7 +45,7 @@ ilCtrlMainMenuConfig::renameDBField('config_value', 'value');
 global $DIC;
 $ilDB = $DIC->database();
 /**
- * @var $ilDB ilDB
+ * @var ilDB $ilDB
  */
 require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
 $ilDB->modifyTableColumn(ctrlmmEntry::TABLE_NAME, 'parent', array(
@@ -94,7 +94,7 @@ $ilDB->addIndex(ctrlmmEntry::TABLE_NAME, array( 'parent' ), 'i2');
 require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
 foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 	/**
-	 * @var $ctrlmmEntry ctrlmmEntryAdmin
+	 * @var ctrlmmEntryAdmin $ctrlmmEntry
 	 */
 	if ($ctrlmmEntry->getTypeId() == ctrlmmMenu::TYPE_ADMIN && $ctrlmmEntry->getPermissionType() == ctrlmmMenu::PERM_NONE) {
 		$ctrlmmEntry->setPermissionType(ctrlmmMenu::PERM_ROLE);

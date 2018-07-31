@@ -74,8 +74,8 @@ class ctrlmmTranslation extends ActiveRecord {
 
 
 	/**
-	 * @param $entry_id
-	 * @param $language_key
+	 * @param int    $entry_id
+	 * @param string $language_key
 	 *
 	 * @return ctrlmmTranslation
 	 */
@@ -106,7 +106,7 @@ class ctrlmmTranslation extends ActiveRecord {
 
 
 	/**
-	 * @param $entry_id
+	 * @param int $entry_id
 	 *
 	 * @return mixed
 	 */
@@ -129,7 +129,7 @@ class ctrlmmTranslation extends ActiveRecord {
 
 
 	/**
-	 * @param $entry_id
+	 * @param int $entry_id
 	 *
 	 * @return bool|string
 	 */
@@ -150,7 +150,7 @@ class ctrlmmTranslation extends ActiveRecord {
 
 
 	/**
-	 * @param $entry_id
+	 * @param int $entry_id
 	 *
 	 * @return ctrlmmTranslation[]
 	 */

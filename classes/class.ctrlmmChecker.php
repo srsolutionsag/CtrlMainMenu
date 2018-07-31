@@ -20,7 +20,7 @@ class ctrlmmChecker {
 
 
 	/**
-	 * @param $gui_classes
+	 * @param string $gui_classes
 	 */
 	public static function check($gui_classes) {
 		new self($gui_classes);
@@ -28,7 +28,7 @@ class ctrlmmChecker {
 
 
 	/**
-	 * @param $gui_classes
+	 * @param string $gui_classes
 	 */
 	private function __construct($gui_classes) {
 		global $DIC;

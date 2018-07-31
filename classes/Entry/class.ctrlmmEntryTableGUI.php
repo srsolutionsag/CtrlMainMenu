@@ -73,7 +73,7 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 	 */
 	public function fillRow($a_set) {
 		/**
-		 * @var $obj ctrlmmEntry
+		 * @var ctrlmmEntry $obj
 		 */
 		$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($a_set['id'])->getObject();
 

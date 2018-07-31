@@ -36,9 +36,9 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 
 	/**
-	 * @param       $a_comp
-	 * @param       $a_part
-	 * @param array $a_par
+	 * @param string $a_comp
+	 * @param string $a_part
+	 * @param array  $a_par
 	 *
 	 * @return array
 	 */

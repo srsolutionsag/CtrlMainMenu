@@ -85,7 +85,7 @@ class ctrlmmMenuGUI {
 		$entry_after_html = '';
 		$replace_full = ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER);
 		/**
-		 * @var $entry ctrlmmEntry
+		 * @var ctrlmmEntry $entry
 		 */
 
 		foreach ($this->object->getEntries() as $k => $entry) {

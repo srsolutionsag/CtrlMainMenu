@@ -85,7 +85,7 @@ class ctrlmmEntryLink extends ctrlmmEntry {
 
 
 	/**
-	 * @param $value string
+	 * @param string $value
 	 */
 	public function setUrl($value) {
 		$this->link = $value;

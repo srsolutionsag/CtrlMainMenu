@@ -16,7 +16,7 @@ class ctrlmmUserDataReplacer {
 
 
 	/**
-	 * @param $input_string string
+	 * @param string $input_string
 	 *
 	 * @return string
 	 */
@@ -65,7 +65,7 @@ class ctrlmmUserDataReplacer {
 
 
 	/**
-	 * @param $value string
+	 * @param string $value
 	 *
 	 * @return string
 	 */

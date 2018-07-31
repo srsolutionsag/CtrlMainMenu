@@ -159,7 +159,7 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 
 
 	/**
-	 * @param $list_id
+	 * @param int $list_id
 	 */
 	public function setListId($list_id) {
 		$this->list_id = $list_id;

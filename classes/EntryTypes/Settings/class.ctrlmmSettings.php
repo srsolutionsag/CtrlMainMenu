@@ -226,7 +226,7 @@ class ctrlmmSettings {
 
 
 	/**
-	 * @param $text
+	 * @param string $text
 	 *
 	 * @return string
 	 */
@@ -240,7 +240,7 @@ class ctrlmmSettings {
 
 
 	/**
-	 * @param $text
+	 * @param string $text
 	 *
 	 * @return string
 	 */

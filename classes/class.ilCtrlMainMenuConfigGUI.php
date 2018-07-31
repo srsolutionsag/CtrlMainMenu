@@ -275,7 +275,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function addEntry() {
 		/**
-		 * @var $entry_gui ctrlmmEntryCtrlGUI
+		 * @var ctrlmmEntryCtrlGUI $entry_gui
 		 */
 		$type_id = $_POST['type'] ? $_POST['type'] : $_GET['type'];
 		$this->ctrl->setParameter($this, 'type', $type_id);
@@ -310,8 +310,8 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function editEntry() {
 		/**
-		 * @var $entry_gui     ctrlmmEntryCtrlGUI
-		 * @var $entry_formgui ctrlmmEntryCtrlFormGUI
+		 * @var ctrlmmEntryCtrlGUI     $entry_gui
+		 * @var ctrlmmEntryCtrlFormGUI $entry_formgui
 		 */
 		$this->ctrl->saveParameter($this, 'entry_id');
 		$entry_gui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($_GET['entry_id'])->getGUIObject($this);
@@ -332,7 +332,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 */
 	public function updateObject($redirect = true) {
 		/**
-		 * @var $entry_gui ctrlmmEntryCtrlGUI
+		 * @var ctrlmmEntryCtrlGUI $entry_gui
 		 */
 		$entry_gui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($_GET['entry_id'])->getGUIObject($this);
 		$entry_gui->initForm('update');
@@ -362,7 +362,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function deleteObject() {
 		/**
-		 * @var $entry ctrlmmEntry
+		 * @var ctrlmmEntry $entry
 		 */
 		$entry = ctrlmmEntryInstaceFactory::getInstanceByEntryId($_POST['entry_id'])->getObject();
 		$entry->delete();

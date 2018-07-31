@@ -28,8 +28,8 @@ class ctrlmmEntryAdminGUI extends ctrlmmEntryAdvancedSelectionListDropdownGUI {
 	public function initForm($mode = 'create') {
 		parent::initForm($mode);
 		/**
-		 * @var $permission_type ilRadioGroupInputGUI
-		 * @var $item            ilTextInputGUI
+		 * @var ilRadioGroupInputGUI $permission_type
+		 * @var ilTextInputGUI       $item
 		 */
 		$permission_type = $this->form->getItemByPostVar('permission_type');
 		$permission_type->setDisabled(true);

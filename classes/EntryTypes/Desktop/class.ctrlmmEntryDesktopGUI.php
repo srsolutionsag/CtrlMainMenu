@@ -53,7 +53,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 
 	/**
-	 * @param \ctrlmmGLEntry $ctrlmmGLEntry
+	 * @param ctrlmmGLEntry $ctrlmmGLEntry
 	 */
 	protected function addGLEntry(ctrlmmGLEntry $ctrlmmGLEntry) {
 		$this->gl->addEntry($ctrlmmGLEntry->getTitle(), $ctrlmmGLEntry->getLink(), '_top', '', implode(' ', $ctrlmmGLEntry->getClasses($this->entry->isDisableActive())), $ctrlmmGLEntry->getId(), ilHelp::getMainMenuTooltip($ctrlmmGLEntry->getId()), 'left center', 'right center', false);
@@ -63,9 +63,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	/**
 	 * Render main menu entry
 	 *
-	 * @param
-	 *
-	 * @return html
+	 * @return string html
 	 */
 	public function setGroupedListContent() {
 		// Overview
@@ -382,7 +380,7 @@ class ctrlmmGLEntry {
 
 
 	/**
-	 * @param $disable_active
+	 * @param bool $disable_active
 	 *
 	 * @return array
 	 */
@@ -402,7 +400,7 @@ class ctrlmmGLEntry {
 
 
 	/**
-	 * @param $disable_active
+	 * @param bool $disable_active
 	 */
 	protected function checkClasses($disable_active) {
 		if ($disable_active) {

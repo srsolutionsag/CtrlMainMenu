@@ -200,7 +200,7 @@ class ctrlmmMenu {
 	 * @return array
 	 */
 	public static function getAllTypeConstants() {
-		$fooClass = new ReflectionClass('ctrlmmMenu');
+		$fooClass = new ReflectionClass(self::class);
 		$fooClass->getConstants();
 		$return = array();
 		foreach ($fooClass->getConstants() as $name => $value) {

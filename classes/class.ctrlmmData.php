@@ -83,8 +83,8 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $parent_id
-	 * @param $data_key
+	 * @param int    $parent_id
+	 * @param string $data_key
 	 *
 	 * @return ctrlmmData
 	 */
@@ -109,7 +109,7 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param      $parent_id
+	 * @param int  $parent_id
 	 * @param bool $as_array
 	 *
 	 * @return ctrlmmData[]|array
@@ -134,7 +134,7 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $value
+	 * @param mixed $value
 	 *
 	 * @return string
 	 */
@@ -153,7 +153,7 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $parent_id
+	 * @param int $parent_id
 	 *
 	 * @return array
 	 */

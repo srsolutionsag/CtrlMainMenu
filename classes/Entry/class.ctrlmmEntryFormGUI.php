@@ -11,11 +11,11 @@
 abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 
 	/**
-	 * @var ilHubConfigGUI
+	 * @var ctrlmmEntryGUI
 	 */
 	protected $parent_gui;
 	/**
-	 * @var  ilCtrl
+	 * @var ilCtrl
 	 */
 	protected $ctrl;
 	/**
@@ -37,8 +37,8 @@ abstract class ctrlmmEntryFormGUI extends ilPropertyFormGUI {
 
 
 	/**
-	 * @param             $parent_gui
-	 * @param ctrlmmEntry $entry
+	 * @param ctrlmmEntryGUI $parent_gui
+	 * @param ctrlmmEntry    $entry
 	 */
 	public function __construct($parent_gui, ctrlmmEntry $entry) {
 		parent::__construct();

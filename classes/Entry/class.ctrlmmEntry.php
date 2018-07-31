@@ -190,8 +190,8 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $obj_name
-	 * @param $field_name
+	 * @param string $obj_name
+	 * @param string $field_name
 	 *
 	 * @return bool
 	 */
@@ -235,7 +235,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $type_id
+	 * @param int $type_id
 	 *
 	 * @return bool
 	 */
@@ -253,7 +253,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $type_id
+	 * @param int $type_id
 	 *
 	 * @return bool
 	 */
@@ -271,7 +271,7 @@ class ctrlmmEntry extends ActiveRecord {
 	/**
 	 * Return all entries for a given command class
 	 *
-	 * @param $cmdClass
+	 * @param string $cmdClass
 	 *
 	 * @return array ctrlmmEntry[]
 	 */
@@ -288,7 +288,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $id
+	 * @param int $id
 	 *
 	 * @deprecated
 	 * @return string
@@ -299,7 +299,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $lng
+	 * @param string $lng
 	 *
 	 * @return bool
 	 */
@@ -311,7 +311,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $type_id
+	 * @param int $type_id
 	 *
 	 * @return bool
 	 */
@@ -519,7 +519,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $obj
+	 * @param object $obj
 	 *
 	 * @return array
 	 */
@@ -563,13 +563,13 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @return int
+	 *
 	 */
 	public function delete() {
 		$deleted_id = $this->getId();
 		if ($this->getTypeId() == ctrlmmMenu::TYPE_DROPDOWN) {
 			/**
-			 * @var $entry ctrlmmEntry
+			 * @var ctrlmmEntry $entry
 			 */
 			foreach (ctrlmmEntryInstaceFactory::getAllChildsForId($this->getId()) as $entry) {
 				$entry->delete();
@@ -667,7 +667,7 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	/**
-	 * @param $active
+	 * @param bool $active
 	 */
 	protected function setCachedPermission($active) {
 		self::$permission_cache[$this->getId()] = $active;

@@ -20,8 +20,8 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 		$this->form->addItem($cb);
 
 		/**
-		 * @var $permission_type ilRadioGroupInputGUI
-		 * @var $item            ilTextInputGUI
+		 * @var ilRadioGroupInputGUI $permission_type
+		 * @var ilTextInputGUI       $item
 		 */
 		$permission_type = $this->form->getItemByPostVar('permission_type');
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {

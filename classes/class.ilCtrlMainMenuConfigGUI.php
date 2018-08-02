@@ -40,10 +40,6 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	 */
 	protected $fields = array();
 	/**
-	 * @var string
-	 */
-	protected $table_name = '';
-	/**
 	 * @var ilCtrlMainMenuPlugin
 	 */
 	protected $pl;

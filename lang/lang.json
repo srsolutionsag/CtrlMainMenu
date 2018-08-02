@@ -347,18 +347,18 @@
             },
             "param_name": {
                 "translations": {
-                    "de": "MISSING",
-                    "en": "MISSING",
-                    "hu": "MISSING",
-                    "nl": "MISSING"
+                    "de": "MISSING get_param_name",
+                    "en": "MISSING get_param_name",
+                    "hu": "MISSING get_param_name",
+                    "nl": "MISSING get_param_name"
                 }
             },
             "param_value": {
                 "translations": {
-                    "de": "MISSING",
-                    "en": "MISSING",
-                    "hu": "MISSING",
-                    "nl": "MISSING"
+                    "de": "MISSING get_param_value",
+                    "en": "MISSING get_param_value",
+                    "hu": "MISSING get_param_value",
+                    "nl": "MISSING get_param_value"
                 }
             }
         },
@@ -909,8 +909,8 @@
                 "translations": {
                     "de": "Aktive Eintr\u00e4ge deaktivieren",
                     "en": "Disable active entries",
-                    "hu": "MISSING",
-                    "nl": "MISSING"
+                    "hu": "MISSING disable_active",
+                    "nl": "MISSING disable_active"
                 },
                 "last_used": "13.04.2016"
             }

@@ -34,8 +34,8 @@ entry_updated#:#Entry updated
 form_title#:#Add New Entry
 get_parameters#:#URL-Parameters
 get_parameters_description#:#The first input is the name of the parameter. The second one is the value. The output will be something like URL?name1=value1&name2=value2
-get_param_name#:#MISSING
-get_param_value#:#MISSING
+get_param_name#:#MISSING get_param_name
+get_param_value#:#MISSING get_param_value
 gui_class#:#GUI Classes, comma-separated
 list_title#:#Menu Entries
 new_page#:#New Window

@@ -34,8 +34,8 @@ entry_updated#:#Eintrag wurde aktualisiert
 form_title#:#Eintrag erstellen
 get_parameters#:#URL-Parameter
 get_parameters_description#:#Das erste Eingabefeld definiert den Namen des Parameters. Das Zweite den entsprechenden Wert. Die Ausgabe wird dann in die Form URL?name1=value1&name2=value2 umgewandelt.
-get_param_name#:#MISSING
-get_param_value#:#MISSING
+get_param_name#:#MISSING get_param_name
+get_param_value#:#MISSING get_param_value
 gui_class#:#GUI-Klassen, komma-separiert
 list_title#:#Menu-Einträge
 new_page#:#Neue Seite

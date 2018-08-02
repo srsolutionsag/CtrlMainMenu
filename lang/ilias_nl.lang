@@ -34,8 +34,8 @@ entry_updated#:#Item gewijzigd
 form_title#:#Toevoegen nieuw item
 get_parameters#:#URL-Parameters
 get_parameters_description#:#De eerste input is de naam van de parameter. The tweede is de waarde. De output is iets als: URL?name1=waarde1&name2=waarde2
-get_param_name#:#MISSING
-get_param_value#:#MISSING
+get_param_name#:#MISSING get_param_name
+get_param_value#:#MISSING get_param_value
 gui_class#:#GUI Classes, comma-separated
 list_title#:#Menu Items
 new_page#:#Nieuw Window
@@ -93,4 +93,4 @@ type_subtitle#:#Subtitel
 update_cache_settings#:#Opslaan
 use_image#:#Gebruiken van pijlafbeelding
 use_user_image#:#Gebruik Gebruikersafbeelding als titel
-disable_active#:#MISSING
+disable_active#:#MISSING disable_active

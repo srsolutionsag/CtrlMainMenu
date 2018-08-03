@@ -75,6 +75,7 @@ title_de#:#Deutscher Titel
 title_en#:#Englischer Titel
 title_fr#:#Französischer Titel
 title_it#:#Italienischer Titel
+title_nl#:#MISSING title_nl
 type_admin#:#Administration
 type_auth#:#Authentifizierung
 type_ctrl#:#ilCtrl
@@ -94,3 +95,4 @@ update_cache_settings#:#Speichern
 use_image#:#Pfeilbild verwenden
 use_user_image#:#Benutzerbild statt Titel verwenden
 disable_active#:#Aktive Einträge deaktivieren
+wrong_child_type#:#MISSING wrong_child_type

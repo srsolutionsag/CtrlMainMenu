@@ -75,6 +75,7 @@ title_de#:#German Title
 title_en#:#English Title
 title_fr#:#French Title
 title_it#:#Italien Title
+title_nl#:#MISSING title_nl
 type_admin#:#Administration
 type_auth#:#Authentication
 type_ctrl#:#ilCtrl
@@ -89,7 +90,9 @@ type_separator#:#Separator
 type_settings#:#User Settings
 type_statusbox#:#Mail-Status
 type_subtitle#:#Subtitle
+type_user#:#User
 update_cache_settings#:#Save
 use_image#:#Use Arrow Image
 use_user_image#:#Use User-Image as Title
 disable_active#:#Disable active entries
+wrong_child_type#:#Wrong Child-Type

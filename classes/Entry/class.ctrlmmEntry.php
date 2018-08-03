@@ -381,7 +381,7 @@ class ctrlmmEntry extends ActiveRecord {
 		if ($this->getParent() > 0) {
 			$entry = ctrlmmEntryInstaceFactory::getInstanceByEntryId($this->getParent())->getObject();
 			if (!$entry->isChildAllowed($this->getTypeId())) {
-				ilUtil::sendFailure('Wrong Child-Type'); // TODO: Translate
+				ilUtil::sendFailure($this->plugin->txt('wrong_child_type'));
 
 				return false;
 			}

@@ -1,7 +1,7 @@
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
   REVIEW_APP_IMAGE: sturai/ilias:latest
-  REVIEW_APP_DEST: /var/www/htmlCustomizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu
+  REVIEW_APP_DEST: /var/www/html/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu
 
 .review_deployment: &review_deployment
   stage: review

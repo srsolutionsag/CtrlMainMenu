@@ -1,5 +1,4 @@
 <?php
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryFormGUI.php');
 
 /**
  * Class ctrlmmEntrySubtitleFormGUI

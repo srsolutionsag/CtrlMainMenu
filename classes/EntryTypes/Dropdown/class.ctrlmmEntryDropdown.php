@@ -20,7 +20,6 @@
 	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
 	+-----------------------------------------------------------------------------+
 */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * Application class for ctrlmmEntryDropdown Object.
@@ -160,7 +159,7 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 
 
 	/**
-	 * @param $list_id
+	 * @param int $list_id
 	 */
 	public function setListId($list_id) {
 		$this->list_id = $list_id;

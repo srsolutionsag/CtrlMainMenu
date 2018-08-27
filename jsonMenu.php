@@ -59,6 +59,6 @@ class jsonMenu {
 
 
 	private static function includes() {
-		require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenuGUI.php');
+
 	}
 }

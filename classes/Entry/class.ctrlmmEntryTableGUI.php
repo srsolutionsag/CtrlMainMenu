@@ -1,8 +1,4 @@
 <?php
-require_once('./Services/Table/classes/class.ilTable2GUI.php');
-require_once('class.ctrlmmEntry.php');
-require_once('./Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/EntryInstaceFactory/class.ctrlmmEntryInstaceFactory.php');
 
 /**
  * TableGUI ctrlmmEntryTableGUI
@@ -77,7 +73,7 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 	 */
 	public function fillRow($a_set) {
 		/**
-		 * @var $obj ctrlmmEntry
+		 * @var ctrlmmEntry $obj
 		 */
 		$obj = ctrlmmEntryInstaceFactory::getInstanceByEntryId($a_set['id'])->getObject();
 
@@ -96,7 +92,7 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 			$actions->setListTitle($this->pl->txt('common_actions'));
 			if ($obj->getTypeId() != ctrlmmMenu::TYPE_SEPARATOR) {
 				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTarget($this->parent_obj, ilCtrlMainMenuConfigGUI::CMD_EDIT_ENTRY));
-				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass(ctrlmmEntryGUI::class, ilCtrlMainMenuConfigGUI::CMD_EDIT_ENTRY)); FSX TODO REFACTORING
+				//				$actions->addItem($this->pl->txt('common_edit'), 'edit', $this->ctrl->getLinkTargetByClass(ctrlmmEntryGUI::class, ilCtrlMainMenuConfigGUI::CMD_EDIT_ENTRY)); FSX TODO: REFACTORING
 			}
 			if ($obj->getTypeId() != ctrlmmMenu::TYPE_ADMIN) {
 				$actions->addItem($this->pl->txt('common_delete'), 'delete', $this->ctrl->getLinkTarget($this->parent_obj, ilCtrlMainMenuConfigGUI::CMD_DELETE_ENTRY));
@@ -108,4 +104,3 @@ class ctrlmmEntryTableGUI extends ilTable2GUI {
 		}
 	}
 }
-

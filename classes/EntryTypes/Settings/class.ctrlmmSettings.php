@@ -215,18 +215,18 @@ class ctrlmmSettings {
 	protected static function initILIAS() {
 		$path = stristr(__FILE__, 'Customizing', true);
 		chdir($path);
-		require_once('include/inc.header.php');
+		require_once "include/inc.header.php";
 		self::includes();
 	}
 
 
 	protected static function includes() {
-		require_once('Services/Mail/classes/class.ilMailOptions.php');
+
 	}
 
 
 	/**
-	 * @param $text
+	 * @param string $text
 	 *
 	 * @return string
 	 */
@@ -240,7 +240,7 @@ class ctrlmmSettings {
 
 
 	/**
-	 * @param $text
+	 * @param string $text
 	 *
 	 * @return string
 	 */
@@ -260,4 +260,3 @@ class ctrlmmSettings {
 		return function_exists('mcrypt_encrypt');
 	}
 }
-

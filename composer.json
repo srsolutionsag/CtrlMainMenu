@@ -1,0 +1,51 @@
+{
+  "autoload": {
+    "classmap": [
+      "./classes/",
+      "../../../../../../../Modules/SystemFolder/classes/class.ilObjSystemFolder.php",
+      "../../../../../../../Services/Accessibility/classes/class.ilAccessKey.php",
+      "../../../../../../../Services/ActiveRecord/class.ActiveRecord.php",
+      "../../../../../../../Services/Authentication/classes/class.ilAuthFactory.php",
+      "../../../../../../../Services/Component/classes/class.ilComponent.php",
+      "../../../../../../../Services/Component/classes/class.ilPluginConfigGUI.php",
+      "../../../../../../../Services/Context/classes/class.ilContext.php",
+      "../../../../../../../Services/Contact/BuddySystem/classes/class.ilBuddySystem.php",
+      "../../../../../../../Services/Exceptions/classes/class.ilException.php",
+      "../../../../../../../Services/Form/classes/class.ilMultiSelectInputGUI.php",
+      "../../../../../../../Services/Form/classes/class.ilPropertyFormGUI.php",
+      "../../../../../../../Services/Form/classes/class.ilSubEnabledFormPropertyGUI.php",
+      "../../../../../../../Services/GlobalCache/classes/class.ilGlobalCache.php",
+      "../../../../../../../Services/jQuery/classes/class.iljQueryUtil.php",
+      "../../../../../../../Services/Language/classes/class.ilLanguage.php",
+      "../../../../../../../Services/Link/classes/class.ilLink.php",
+      "../../../../../../../Services/Mail/classes/class.ilMailOptions.php",
+      "../../../../../../../Services/MediaObjects/classes/class.ilPlayerUtil.php",
+      "../../../../../../../Services/Navigation/classes/class.ilNavigationHistory.php",
+      "../../../../../../../Services/Notifications/classes/class.ilNotificationOSDHandler.php",
+      "../../../../../../../Services/Object/classes/class.ilObject2.php",
+      "../../../../../../../Services/Search/classes/class.ilMainMenuSearchGUI.php",
+      "../../../../../../../Services/Search/classes/class.ilSearchSettings.php",
+      "../../../../../../../Services/Style/classes/class.ilObjStyleSettings.php",
+      "../../../../../../../Services/Style/System/classes/class.ilStyleDefinition.php",
+      "../../../../../../../Services/Table/classes/class.ilTable2GUI.php",
+      "../../../../../../../Services/Table/interfaces/interface.ilTableFilterItem.php",
+      "../../../../../../../Services/Tracking/classes/class.ilObjUserTracking.php",
+      "../../../../../../../Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php",
+      "../../../../../../../Services/UIComponent/classes/class.ilUIHookPluginGUI.php",
+      "../../../../../../../Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php",
+      "../../../../../../../Services/UIComponent/GroupedList/classes/class.ilGroupedListGUI.php",
+      "../../../../../../../Services/UIComponent/Glyph/classes/class.ilGlyphGUI.php",
+      "../../../../../../../Services/UIComponent/Overlay/classes/class.ilOverlayGUI.php",
+      "../../../../../../../Services/UIComponent/Toolbar/interfaces/interface.ilToolbarItem.php",
+      "../../../../../../../Services/UICore/classes/class.ilTemplate.php",
+      "../../../../../../../Services/User/classes/class.ilUserDefinedFields.php",
+      "../../../../../../../Services/User/classes/class.ilUserUtil.php",
+      "../../../../../../../Services/Utilities/classes/class.ilConfirmationGUI.php"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "classmap-authoritative": true
+  }
+}

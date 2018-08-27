@@ -1,11 +1,6 @@
 <?php
-
+require_once __DIR__ . "/../../vendor/autoload.php";
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/class.ilCtrlMainMenuPlugin.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('class.ctrlmmEntry.php');
-require_once('./Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php');
-require_once('./Services/Form/classes/class.ilMultiSelectInputGUI.php');
 
 /**
  * User interface hook class
@@ -359,4 +354,3 @@ class ctrlmmEntryGUI {
 		}
 	}
 }
-

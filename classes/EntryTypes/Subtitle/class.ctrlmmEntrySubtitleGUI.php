@@ -1,6 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
 
 /**
  * ctrlmmEntrySubtitleGUI
@@ -21,8 +20,8 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 		$this->form->addItem($cb);
 
 		/**
-		 * @var $permission_type ilRadioGroupInputGUI
-		 * @var $item            ilTextInputGUI
+		 * @var ilRadioGroupInputGUI $permission_type
+		 * @var ilTextInputGUI       $item
 		 */
 		$permission_type = $this->form->getItemByPostVar('permission_type');
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {
@@ -30,6 +29,7 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 			$item->setRequired(false);
 		}
 	}
+
 
 	public function setFormValuesByArray() {
 		$values = parent::setFormValuesByArray();
@@ -43,8 +43,6 @@ class ctrlmmEntrySubtitleGUI extends ctrlmmEntryGUI {
 		$this->entry->setShowWithNoChildren($this->form->getInput('show_with_no_children'));
 		$this->entry->update();
 	}
-
-
 }
 
 

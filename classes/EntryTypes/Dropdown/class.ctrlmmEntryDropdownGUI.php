@@ -1,7 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/GroupedListDropdown/class.ctrlmmEntryGroupedListDropdownGUI.php');
 
 /**
  * ctrlmmEntryDropdownGUI
@@ -49,15 +47,15 @@ class ctrlmmEntryDropdownGUI extends ctrlmmEntryGroupedListDropdownGUI {
 				switch ($entry->getTypeId()) {
 					case ctrlmmMenu::TYPE_SUBTITLE:
 						// only add subtitle if there is a next entry or the option is show with no children is set
-						$next_element = (isset($entries[$key ++])) ? $entries[$key ++] : null;
+						$next_element = (isset($entries[$key ++])) ? $entries[$key ++] : NULL;
 						if ($entry->getShowWithNoChildren() || (isset($next_element) && $next_element->checkPermission())) {
 							$this->gl->addGroupHeader($entry->getTitle(), $entry->getLink(), $entry->getTarget(), '', '', 'mm_pd_sel_items'
-							                                                                                              . $entry->getId(), '', 'left center', 'right center', false);
+								. $entry->getId(), '', 'left center', 'right center', false);
 						}
 						break;
 					default:
 						$this->gl->addEntry($entry->getTitle(), $entry->getLink(), $entry->getTarget(), '', '', 'mm_pd_sel_items'
-						                                                                                        . $entry->getId(), '', 'left center', 'right center', false);
+							. $entry->getId(), '', 'left center', 'right center', false);
 				}
 			}
 		}

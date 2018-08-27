@@ -34,8 +34,8 @@ entry_updated#:#Bejegyzést sikeres frissítette
 form_title#:#Új bejegyzése létrehozása
 get_parameters#:#URL paraméterek
 get_parameters_description#:#Az els? bemenet a paraméter megnevezése, a második az értéke. A kimenet valami ilyesmi lesz: URL?megnevezés1=érték1&megnevezés2=érték2
-get_param_name#:#MISSING
-get_param_value#:#MISSING
+get_param_name#:#MISSING get_param_name
+get_param_value#:#MISSING get_param_value
 gui_class#:#GUI osztályok, vessz?vel elválasztva
 list_title#:#Menübejegyzések
 new_page#:#Új ablak
@@ -75,6 +75,7 @@ title_de#:#Cím németül
 title_en#:#Cím angolul
 title_fr#:#Cím franciául
 title_it#:#Cím olaszul
+title_nl#:#MISSING title_nl
 type_admin#:#Rendszerbeállítás
 type_auth#:#Hitelesítés
 type_ctrl#:#ilCtrl
@@ -89,7 +90,9 @@ type_separator#:#Szeparátor
 type_settings#:#Felhasználói beállítások
 type_statusbox#:#Levél állapot
 type_subtitle#:#Alcím
+type_user#:#MISSING type_user
 update_cache_settings#:#Mentés
 use_image#:#Nyíl kép használata
 use_user_image#:#Felhasználói kép használata címként
-disable_active#:#MISSING
+disable_active#:#MISSING disable_active
+wrong_child_type#:#MISSING wrong_child_type

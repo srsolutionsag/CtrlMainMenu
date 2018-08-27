@@ -1,6 +1,4 @@
 <?php
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 
 /**
  * Class ctrlmmEntryInstaceFactory
@@ -32,7 +30,7 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param     $type_id
+	 * @param int $type_id
 	 * @param int $entry_id
 	 */
 	protected function __construct($type_id, $entry_id = 0) {
@@ -44,7 +42,7 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $id
+	 * @param int $id
 	 *
 	 * @return ctrlmmEntry[]
 	 */
@@ -151,9 +149,9 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $type_id
+	 * @param int $type_id
 	 *
-	 * @return \ctrlmmEntryInstaceFactory
+	 * @return ctrlmmEntryInstaceFactory
 	 */
 	public static function getInstanceByTypeId($type_id) {
 		return new self($type_id);
@@ -161,9 +159,9 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $entry_id
+	 * @param int $entry_id
 	 *
-	 * @return \ctrlmmEntryInstaceFactory
+	 * @return ctrlmmEntryInstaceFactory
 	 */
 	public static function getInstanceByEntryId($entry_id) {
 		if (!isset(self::$type_id_cache[$entry_id])) {
@@ -174,7 +172,6 @@ class ctrlmmEntryInstaceFactory {
 		}
 
 		if (ilCtrlMainMenuPlugin::isGlobalCacheActive()) {
-			require_once('./Services/GlobalCache/classes/class.ilGlobalCache.php');
 			$ilGlobalCache = ilGlobalCache::getInstance(ilGlobalCache::COMP_ILCTRL);
 			if ($ilGlobalCache->isActive()) {
 				$entry = $ilGlobalCache->get('ctrlmm_e_' . $entry_id);
@@ -204,12 +201,12 @@ class ctrlmmEntryInstaceFactory {
 	/**
 	 * @return ctrlmmEntryCtrl
 	 *
-	 * TODO FSX add caching
+	 * TODO: FSX add caching
 	 */
 	public function getObject() {
 		if (!isset($this->object)) {
 			/**
-			 * @var $entry_class  ctrlmmEntryCtrl
+			 * @var ctrlmmEntryCtrl $entry_class
 			 */
 			$entry_class = $this->getClassName();
 			$this->object = $entry_class::find($this->getEntryId());
@@ -227,9 +224,9 @@ class ctrlmmEntryInstaceFactory {
 	public function getGUIObject($parent_gui = NULL) {
 
 		/**
-		 * @var $entry_class  ctrlmmEntryCtrl
-		 * @var $gui_class    ctrlmmEntryCtrlGUI
-		 * @var $gui_object   ctrlmmEntryCtrlGUI
+		 * @var ctrlmmEntryCtrl    $entry_class
+		 * @var ctrlmmEntryCtrlGUI $gui_class
+		 * @var ctrlmmEntryCtrlGUI $gui_object
 		 */
 		$gui_class = $this->getGUIObjectClass();
 
@@ -240,15 +237,15 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $parent_gui
+	 * @param object $parent_gui
 	 *
 	 * @return ctrlmmEntryCtrlFormGUI
 	 */
 	public function getFormObject($parent_gui) {
 		/**
-		 * @var $entry_class  ctrlmmEntryCtrl
-		 * @var $gui_class    ctrlmmEntryCtrlFormGUI
-		 * @var $gui_object   ctrlmmEntryCtrlFormGUI
+		 * @var ctrlmmEntryCtrl        $entry_class
+		 * @var ctrlmmEntryCtrlFormGUI $gui_class
+		 * @var ctrlmmEntryCtrlFormGUI $gui_object
 		 */
 		$entry_class = $this->getClassName();
 		$gui_class = $entry_class . 'FormGUI';
@@ -308,7 +305,7 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $id
+	 * @param int $id
 	 *
 	 * @return string
 	 */
@@ -320,7 +317,7 @@ class ctrlmmEntryInstaceFactory {
 
 
 	/**
-	 * @param $id
+	 * @param int $id
 	 *
 	 * @return string
 	 */
@@ -339,5 +336,3 @@ class ctrlmmEntryInstaceFactory {
 		return $gui_class;
 	}
 }
-
-

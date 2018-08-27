@@ -1,7 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php');
 
 /**
  * ctrlmmEntryAdvancedSelectionListDropdownGUI
@@ -58,5 +56,3 @@ abstract class ctrlmmEntryAdvancedSelectionListDropdownGUI extends ctrlmmEntryGU
 
 	abstract protected function customizeAdvancedSelectionList();
 }
-
-

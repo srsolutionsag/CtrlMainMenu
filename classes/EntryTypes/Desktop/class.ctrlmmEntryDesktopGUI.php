@@ -1,11 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/GroupedListDropdown/class.ctrlmmEntryGroupedListDropdownGUI.php');
-require_once('./Services/UIComponent/GroupedList/classes/class.ilGroupedListGUI.php');
-require_once('./Services/Tracking/classes/class.ilObjUserTracking.php');
-if (is_file('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php')) {
-	require_once('./Services/Contact/BuddySystem/classes/class.ilBuddySystem.php');
-}
 
 /**
  * Class ctrlmmEntryDesktopGUI
@@ -59,7 +53,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 
 	/**
-	 * @param \ctrlmmGLEntry $ctrlmmGLEntry
+	 * @param ctrlmmGLEntry $ctrlmmGLEntry
 	 */
 	protected function addGLEntry(ctrlmmGLEntry $ctrlmmGLEntry) {
 		$this->gl->addEntry($ctrlmmGLEntry->getTitle(), $ctrlmmGLEntry->getLink(), '_top', '', implode(' ', $ctrlmmGLEntry->getClasses($this->entry->isDisableActive())), $ctrlmmGLEntry->getId(), ilHelp::getMainMenuTooltip($ctrlmmGLEntry->getId()), 'left center', 'right center', false);
@@ -69,9 +63,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	/**
 	 * Render main menu entry
 	 *
-	 * @param
-	 *
-	 * @return html
+	 * @return string html
 	 */
 	public function setGroupedListContent() {
 		// Overview
@@ -159,7 +151,7 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		// Learning Progress
 		if (ilObjUserTracking::_enabledLearningProgress() AND (ilObjUserTracking::_hasLearningProgressOtherUsers()
 				OR ilObjUserTracking::_hasLearningProgressLearner())) {
-			//$this->tabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass(ilLearningProgressGUI::class));
+			//$this->tabs->addTarget('learning_progress', $this->ctrl->getLinkTargetByClass(ilLearningProgressGUI::class)); // TODO: Translate
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_lp');
 			$ctrlmmGLEntry->setTitle($this->lng->txt('learning_progress'));
@@ -388,7 +380,7 @@ class ctrlmmGLEntry {
 
 
 	/**
-	 * @param $disable_active
+	 * @param bool $disable_active
 	 *
 	 * @return array
 	 */
@@ -408,7 +400,7 @@ class ctrlmmGLEntry {
 
 
 	/**
-	 * @param $disable_active
+	 * @param bool $disable_active
 	 */
 	protected function checkClasses($disable_active) {
 		if ($disable_active) {

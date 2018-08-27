@@ -1,6 +1,5 @@
 <?php
 
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
 /*
 	+-----------------------------------------------------------------------------+
 	| ILIAS open source                                                           |
@@ -201,7 +200,7 @@ class ctrlmmMenu {
 	 * @return array
 	 */
 	public static function getAllTypeConstants() {
-		$fooClass = new ReflectionClass('ctrlmmMenu');
+		$fooClass = new ReflectionClass(self::class);
 		$fooClass->getConstants();
 		$return = array();
 		foreach ($fooClass->getConstants() as $name => $value) {

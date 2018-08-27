@@ -20,9 +20,6 @@
 	| Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
 	+-----------------------------------------------------------------------------+
 */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntry.php');
-@include_once('./Services/Link/classes/class.ilLink.php');
-@include_once('./classes/class.ilLink.php');
 
 /**
  * Application class for ctrlmmEntryCtrl Object.
@@ -70,11 +67,11 @@ class ctrlmmEntryRefid extends ctrlmmEntry {
 			$tree = $DIC->repositoryTree();
 			if ($this->getRecursive()) {
 				if (($_GET['ref_id'] == $this->getRefId() OR $tree->isGrandChild($this->getRefId(), $_GET['ref_id'])
-					AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class) != 0)) {
+					AND strcasecmp($_GET['baseClass'], ilAdministrationGUI::class) != 0)) {
 					return true;
 				}
 			} else {
-				if (($_GET['ref_id'] == $this->getRefId() AND strcasecmp($_GET['baseClass'],ilAdministrationGUI::class)!= 0)) {
+				if (($_GET['ref_id'] == $this->getRefId() AND strcasecmp($_GET['baseClass'], ilAdministrationGUI::class) != 0)) {
 					return true;
 				}
 			}

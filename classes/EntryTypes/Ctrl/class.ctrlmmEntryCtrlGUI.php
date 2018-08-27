@@ -1,8 +1,5 @@
 <?php
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Entry/class.ctrlmmEntryGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Helper/class.ctrlmmMultiLineInputGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Helper/class.ctrlmmUserDataReplacer.php');
 
 /**
  * ctrlmmEntryCtrlGUI
@@ -48,7 +45,7 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 		$se->setOptions($opt);
 		$this->form->addItem($se);
 
-		$get_params = new ctrlmmMultiLIneInputGUI($this->pl->txt("get_parameters"), 'get_params');
+		$get_params = new ctrlmmMultiLineInputGUI($this->pl->txt("get_parameters"), 'get_params');
 		$get_params->setInfo($this->pl->txt('get_parameters_description'));
 		$get_params->setTemplateDir($this->pl->getDirectory());
 

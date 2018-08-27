@@ -14,6 +14,25 @@ class ctrlmmData extends ActiveRecord {
 	const DATA_TYPE_ARRAY = 'arr';
 	const DATA_TYPE_INT = 'int';
 	const DATA_TYPE_BOOL = 'bool';
+
+
+	/**
+	 * @return string
+	 */
+	public function getConnectorContainerName() {
+		return self::TABLE_NAME;
+	}
+
+
+	/**
+	 * @return string
+	 * @deprecated
+	 */
+	public static function returnDbTableName() {
+		return self::TABLE_NAME;
+	}
+
+
 	/**
 	 * @var int
 	 *
@@ -57,17 +76,6 @@ class ctrlmmData extends ActiveRecord {
 	 * @con_length     10
 	 */
 	public $data_type = self::DATA_TYPE_STRING;
-
-
-	/**
-	 * @return string
-	 * @description Return the Name of your Database Table
-	 */
-	static function returnDbTableName() {
-		return self::TABLE_NAME;
-	}
-
-
 	/**
 	 * @var array
 	 */
@@ -75,8 +83,8 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $parent_id
-	 * @param $data_key
+	 * @param int    $parent_id
+	 * @param string $data_key
 	 *
 	 * @return ctrlmmData
 	 */
@@ -101,7 +109,7 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param      $parent_id
+	 * @param int  $parent_id
 	 * @param bool $as_array
 	 *
 	 * @return ctrlmmData[]|array
@@ -126,7 +134,8 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $value
+	 * @param mixed $value
+	 *
 	 * @return string
 	 */
 	public static function _getDataTypeForValue($value) {
@@ -144,7 +153,7 @@ class ctrlmmData extends ActiveRecord {
 
 
 	/**
-	 * @param $parent_id
+	 * @param int $parent_id
 	 *
 	 * @return array
 	 */
@@ -252,5 +261,3 @@ class ctrlmmData extends ActiveRecord {
 		$this->data_type = $data_type;
 	}
 }
-
-

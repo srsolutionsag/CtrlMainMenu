@@ -7,6 +7,7 @@
  * @author Fabian Schmid <fs@studer-raimann.ch>
  */
 class ilCtrlMainMenuConfig extends ActiveRecord {
+
 	const TABLE_NAME = 'uihkctrlmainmenu_c';
 	const F_CSS_PREFIX = 'css_prefix';
 	const F_CSS_ACTIVE = 'css_active';
@@ -14,6 +15,25 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	const F_DOUBLECLICK_PREVENTION = 'doubleclick_prevention';
 	const F_SIMPLE_FORM_VALIDATION = 'simple_form_validation';
 	const F_REPLACE_FULL_HEADER = "replace_full_header";
+
+
+	/**
+	 * @return string
+	 */
+	public function getConnectorContainerName() {
+		return self::TABLE_NAME;
+	}
+
+
+	/**
+	 * @return string
+	 * @deprecated
+	 */
+	public static function returnDbTableName() {
+		return self::TABLE_NAME;
+	}
+
+
 	/**
 	 * @var array
 	 */
@@ -29,22 +49,14 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 
 	/**
-	 * @return string
-	 */
-	public static function returnDbTableName() {
-		return self::TABLE_NAME;
-	}
-
-
-	/**
-	 * @param $name
+	 * @param string $name
 	 *
 	 * @return string
 	 */
 	public static function getConfigValue($name) {
 		if (!isset(self::$cache_loaded[$name])) {
 			/**
-			 * @var $obj ilCtrlMainMenuConfig
+			 * @var ilCtrlMainMenuConfig $obj
 			 */
 			$obj = self::find($name);
 			if ($obj === NULL) {
@@ -60,14 +72,12 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 
 	/**
-	 * @param $name
-	 * @param $value
-	 *
-	 * @return null
+	 * @param string $name
+	 * @param string $value
 	 */
 	public static function set($name, $value) {
 		/**
-		 * @var $obj ilCtrlMainMenuConfig
+		 * @var ilCtrlMainMenuConfig $obj
 		 */
 		$obj = self::findOrGetInstance($name);
 		$obj->setFieldValue($value);

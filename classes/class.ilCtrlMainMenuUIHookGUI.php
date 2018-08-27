@@ -1,18 +1,6 @@
 <?php
-
+require_once __DIR__ . "/../vendor/autoload.php";
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
-
-require_once('./Services/UIComponent/classes/class.ilUIHookPluginGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenuGUI.php');
-require_once('./Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/classes/Menu/class.ctrlmmMenu.php');
-require_once('class.ilCtrlMainMenuPlugin.php');
-require_once('./Modules/SystemFolder/classes/class.ilObjSystemFolder.php');
-require_once('class.ilCtrlMainMenuConfig.php');
-if (is_file('Services/Style/classes/class.ilStyleDefinition.php')) {
-	require_once('Services/Style/classes/class.ilStyleDefinition.php');
-} else {
-	require_once('Services/Style/System/classes/class.ilStyleDefinition.php');
-}
 
 /**
  * User interface hook class
@@ -48,9 +36,9 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 
 	/**
-	 * @param       $a_comp
-	 * @param       $a_part
-	 * @param array $a_par
+	 * @param string $a_comp
+	 * @param string $a_part
+	 * @param array  $a_par
 	 *
 	 * @return array
 	 */
@@ -115,24 +103,19 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 			$mainMenu->touchBlock('osd_enabled');
 			$mainMenu->touchBlock('osd_container');
 
-			include_once "Services/jQuery/classes/class.iljQueryUtil.php";
 			iljQueryUtil::initjQuery();
 
-			include_once 'Services/MediaObjects/classes/class.ilPlayerUtil.php';
 			ilPlayerUtil::initMediaElementJs();
 
 			$mainMenu->addJavaScript('Services/Notifications/templates/default/notifications.js');
 			$mainMenu->addCSS('Services/Notifications/templates/default/osd.css');
 
-			require_once 'Services/Notifications/classes/class.ilNotificationOSDHandler.php';
-			require_once 'Services/UIComponent/Glyph/classes/class.ilGlyphGUI.php';
-
 			$notifications = ilNotificationOSDHandler::getNotificationsForUser($this->user->getId());
 			$mainMenu->setVariable('NOTIFICATION_CLOSE_HTML', json_encode(ilGlyphGUI::get(ilGlyphGUI::CLOSE, $lng->txt('close'))));
 			$mainMenu->setVariable('INITIAL_NOTIFICATIONS', json_encode($notifications));
 			$mainMenu->setVariable('OSD_POLLING_INTERVALL', $notificationSettings->get('osd_polling_intervall') ? $notificationSettings->get('osd_polling_intervall') : '5');
-			$mainMenu->setVariable('OSD_PLAY_SOUND',
-				$chatSettings->get('play_invitation_sound') && $this->user->getPref('chat_play_invitation_sound') ? 'true' : 'false');
+			$mainMenu->setVariable('OSD_PLAY_SOUND', $chatSettings->get('play_invitation_sound')
+			&& $this->user->getPref('chat_play_invitation_sound') ? 'true' : 'false');
 			foreach ($notifications as $notification) {
 				if ($notification['type'] == 'osd_maint') {
 					continue;
@@ -156,15 +139,14 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 		$mainMenu->setVariable("LOCATION_STYLESHEET", ilUtil::getStyleSheetLocation());
 
 		$mainMenu->setVariable("TXT_LOGOUT", $lng->txt("logout"));
-//		$mainMenu->setVariable("HEADER_URL", $this->getHeaderURL());
-//		$mainMenu->setVariable("HEADER_ICON", ilUtil::getImagePath("HeaderIcon.png"));
+		//		$mainMenu->setVariable("HEADER_URL", $this->getHeaderURL());
+		//		$mainMenu->setVariable("HEADER_ICON", ilUtil::getImagePath("HeaderIcon.png"));
 
 		return $mainMenu->get();
 	}
 
 
 	protected function getHeaderURL() {
-		include_once './Services/User/classes/class.ilUserUtil.php';
 		$url = ilUserUtil::getStartingPointAsUrl();
 
 		if (!$url) {
@@ -174,5 +156,3 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 		return $url;
 	}
 }
-
-

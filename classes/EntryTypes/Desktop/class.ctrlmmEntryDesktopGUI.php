@@ -167,6 +167,25 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 
 		$separator = false;
 
+		// bugfix mantis 23101
+		// badges
+		if(ilBadgeHandler::getInstance()->isActive())
+		{
+			$ctrlmmGLEntry = new ctrlmmGLEntry();
+			$ctrlmmGLEntry->setId('mm_pd_contacts');
+			$ctrlmmGLEntry->setTitle($this->lng->txt('obj_bdga'));
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToBadges');
+			$this->addGLEntry($ctrlmmGLEntry);
+
+			$separator = true;
+		}
+
+		if ($separator) {
+			$this->gl->addSeparator();
+		}
+
+		$separator = false;
+
 		// calendar
 		$settings = ilCalendarSettings::_getInstance();
 		if ($settings->isEnabled()) {

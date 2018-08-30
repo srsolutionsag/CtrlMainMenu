@@ -32,8 +32,8 @@ class ctrlmmChecker {
 	 */
 	private function __construct($gui_classes) {
 		global $DIC;
-		$this->ctrl = $DIC->ctrl();
 		$this->initILIAS();
+		$this->ctrl = $DIC->ctrl();
 		$this->setClasses(explode(',', $gui_classes));
 		$this->printJson();
 	}
@@ -74,7 +74,7 @@ class ctrlmmChecker {
 		require_once "include/inc.ilias_version.php";
 		require_once "include/inc.header.php";
 		ilContext::init(ilContext::CONTEXT_CRON);
-		ilAuthFactory::setContext(ilAuthFactory::CONTEXT_CRON);
+		ilAuthFactory::setContext(ilAuthFactory::CONTEXT_WEB);
 	}
 
 

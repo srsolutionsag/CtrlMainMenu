@@ -1,103 +1,100 @@
 <#1>
 <?php
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-ilCtrlMainMenuConfig::updateDB();
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::updateDB();
+\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::updateDB();
+\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::updateDB();
+\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::updateDB();
+\srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::includeAllTypes();
 
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_CSS_PREFIX, 'il');
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_CSS_ACTIVE, 'MMActive');
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_CSS_INACTIVE, 'MMInactive');
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER, false);
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_DOUBLECLICK_PREVENTION, false);
-ilCtrlMainMenuConfig::set(ilCtrlMainMenuConfig::F_SIMPLE_FORM_VALIDATION, false);
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_CSS_PREFIX, 'il');
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_CSS_ACTIVE, 'MMActive');
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_CSS_INACTIVE, 'MMInactive');
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_REPLACE_FULL_HEADER, false);
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_DOUBLECLICK_PREVENTION, false);
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_SIMPLE_FORM_VALIDATION, false);
 
-ctrlmmData::updateDB();
-ctrlmmTranslation::updateDB();
+if (!\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::entriesExistForType(\srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::TYPE_DESKTOP)) {
+	$desktop = new \srag\Plugins\CtrlMainMenu\EntryTypes\Desktop\ctrlmmEntryDesktop();
+	$desktop->setPosition(1);
+	$desktop->create();
+}
 
-ctrlmmMenu::includeAllTypes();
+if (!\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::entriesExistForType(\srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::TYPE_REPOSITORY)) {
+	$repo = new \srag\Plugins\CtrlMainMenu\EntryTypes\Repository\ctrlmmEntryRepository();
+	$repo->setPosition(2);
+	$repo->create();
+}
 
-ctrlmmEntry::updateDB();
-
-$desktop = new ctrlmmEntryDesktop();
-$desktop->setPosition(1);
-$desktop->create();
-
-$repo = new ctrlmmEntryRepository();
-$repo->setPosition(2);
-$repo->create();
-
-ctrlmmEntryInstaceFactory::createAdminEntry();
-
+if (!\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::entriesExistForType(\srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::TYPE_ADMIN)) {
+	\srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory::createAdminEntry();
+}
 ?>
 <#2>
-
+<?php
+/* */
+?>
 <#3>
-
+<?php
+/* */
+?>
 <#4>
-
+<?php
+/* */
+?>
 <#5>
 <?php
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-ilCtrlMainMenuConfig::renameDBField('config_key', 'name');
-ilCtrlMainMenuConfig::renameDBField('config_value', 'value');
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::renameDBField('config_key', 'name');
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::renameDBField('config_value', 'value');
 ?>
 <#6>
 <?php
-global $DIC;
-$ilDB = $DIC->database();
-/**
- * @var ilDB $ilDB
- */
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-$ilDB->modifyTableColumn(ctrlmmEntry::TABLE_NAME, 'parent', array(
+\srag\DIC\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, 'parent', array(
 	'length' => '8',
 ));
 ?>
 <#7>
 <?php
-global $DIC;
-$ilDB = $DIC->database();
-
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-
-if ($ilDB->tableColumnExists(ctrlmmData::TABLE_NAME, 'data_type')) {
-	$ilDB->modifyTableColumn(ctrlmmData::TABLE_NAME, 'data_type', array(
+if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type')) {
+	\srag\DIC\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
 		'notnull' => true,
-		'default' => ctrlmmData::DATA_TYPE_STRING,
+		'default' => \srag\Plugins\CtrlMainMenu\Data\ctrlmmData::DATA_TYPE_STRING,
 	));
 } else {
-	$ilDB->addTableColumn(ctrlmmData::TABLE_NAME, 'data_type', array(
+	\srag\DIC\DICStatic::dic()->database()->addTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
 		'type' => 'text',
 		'notnull' => true,
 		'length' => 10,
-		'default' => ctrlmmData::DATA_TYPE_STRING,
+		'default' => \srag\Plugins\CtrlMainMenu\Data\ctrlmmData::DATA_TYPE_STRING,
 	));
 }
 ?>
 <#8>
 <?php
-global $DIC;
-$ilDB = $DIC->database();
-$ilDB->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
+\srag\DIC\DICStatic::dic()->database()->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
 ?>
 <#9>
 <?php
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-global $DIC;
-$ilDB = $DIC->database();
-$ilDB->modifyTableColumn(ctrlmmTranslation::TABLE_NAME, 'language_key', array( "length" => 64 ));
-$ilDB->addIndex(ctrlmmTranslation::TABLE_NAME, array( 'entry_id', 'language_key' ), 'i2');
-$ilDB->addIndex(ctrlmmData::TABLE_NAME, array( 'parent_id' ), 'i2');
-$ilDB->addIndex(ctrlmmEntry::TABLE_NAME, array( 'parent' ), 'i2');
+\srag\DIC\DICStatic::dic()->database()
+	->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::TABLE_NAME, 'language_key', array( "length" => 64 ));
+try {
+	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::TABLE_NAME, array(
+		'entry_id',
+		'language_key'
+	), 'i2');
+	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, array( 'parent_id' ), 'i2');
+	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, array( 'parent' ), 'i2');
+} catch (Exception $ex) {
+}
 ?>
 <#10>
 <?php
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
+foreach (\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::get() as $ctrlmmEntry) {
 	/**
-	 * @var ctrlmmEntryAdmin $ctrlmmEntry
+	 * @var \srag\Plugins\CtrlMainMenu\EntryTypes\Admin\ctrlmmEntryAdmin $ctrlmmEntry
 	 */
-	if ($ctrlmmEntry->getTypeId() == ctrlmmMenu::TYPE_ADMIN && $ctrlmmEntry->getPermissionType() == ctrlmmMenu::PERM_NONE) {
-		$ctrlmmEntry->setPermissionType(ctrlmmMenu::PERM_ROLE);
+	if ($ctrlmmEntry->getTypeId() == \srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::TYPE_ADMIN
+		&& $ctrlmmEntry->getPermissionType() == \srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::PERM_NONE) {
+		$ctrlmmEntry->setPermissionType(\srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::PERM_ROLE);
 		$ctrlmmEntry->setPermission("[2]");
 		$ctrlmmEntry->update();
 	}
@@ -105,18 +102,15 @@ foreach (ctrlmmEntry::get() as $ctrlmmEntry) {
 ?>
 <#11>
 <?php
-require_once 'Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/CtrlMainMenu/vendor/autoload.php';
-global $DIC;
-$ilDB = $DIC->database();
-$table_column = ctrlmmEntry::TABLE_NAME;
-if ($ilDB->tableColumnExists($table_column, 'type')) {
-	$ilDB->renameTableColumn($table_column, 'type', 'type_id');
+$table_column = \srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME;
+if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'type')) {
+	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'type', 'type_id');
 }
-$table_column = ilCtrlMainMenuConfig::TABLE_NAME;
-if ($ilDB->tableColumnExists($table_column, 'name')) {
-	$ilDB->renameTableColumn($table_column, 'name', 'name_key');
+$table_column = \srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::TABLE_NAME;
+if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'name')) {
+	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'name', 'name_key');
 }
-if ($ilDB->tableColumnExists($table_column, 'value')) {
-	$ilDB->renameTableColumn($table_column, 'value', 'field_value');
+if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'value')) {
+	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'value', 'field_value');
 }
 ?>

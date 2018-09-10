@@ -1,5 +1,13 @@
 <?php
+
 require_once __DIR__ . "/../../vendor/autoload.php";
+
+use srag\DIC\DICTrait;
+use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
+use srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry;
+use srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory;
+use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu;
+
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 /**
@@ -13,6 +21,8 @@ require_once __DIR__ . "/../../vendor/autoload.php";
  */
 class ctrlmmEntryGUI {
 
+	use DICTrait;
+	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
 	/**
 	 * @var ilTemplate
 	 */
@@ -26,45 +36,9 @@ class ctrlmmEntryGUI {
 	 */
 	public $form;
 	/**
-	 * @var ilTemplate
-	 */
-	protected $tpl;
-	/**
-	 * @var ilCtrl
-	 */
-	protected $ctrl;
-	/**
-	 * @var ilCtrlMainMenuPlugin
-	 */
-	protected $pl;
-	/**
 	 * @var
 	 */
 	protected $parent_gui;
-	/**
-	 * @var ilLanguage
-	 */
-	protected $lng;
-	/**
-	 * @var ilObjUser
-	 */
-	protected $usr;
-	/**
-	 * @var ilSetting
-	 */
-	protected $settings;
-	/**
-	 * @var ilRbacSystem
-	 */
-	protected $rbacsystem;
-	/**
-	 * @var
-	 */
-	protected $ilias;
-	/**
-	 * @var ilNavigationHistory
-	 */
-	protected $history;
 
 
 	/**
@@ -72,24 +46,13 @@ class ctrlmmEntryGUI {
 	 * @param null        $parent_gui
 	 */
 	public function __construct(ctrlmmEntry $entry, $parent_gui = NULL) {
-		global $DIC;
-
-		$this->ctrl = $DIC->ctrl();
-		$this->tpl = $DIC->ui()->mainTemplate();
-		$this->pl = ilCtrlMainMenuPlugin::getInstance();
-		$this->lng = $DIC->language();
-		$this->usr = $DIC->user();
-		$this->settings = $DIC["ilSetting"];
-		$this->rbacsystem = $DIC->rbac()->system();
-		$this->ilias = $DIC["ilias"];
-		$this->history = $DIC["ilNavigationHistory"];
 		$this->entry = $entry;
 		$this->parent_gui = $parent_gui;
 	}
 
 
 	public function executeCommand() {
-		$cmd = $this->ctrl->getCmd('index');
+		$cmd = self::dic()->ctrl()->getCmd('index');
 		$this->$cmd();
 	}
 
@@ -97,7 +60,7 @@ class ctrlmmEntryGUI {
 	public function edit() {
 		$form = ctrlmmEntryInstaceFactory::getInstanceByEntryId($this->entry->getId())->getFormObject($this);
 		$form->fillForm();
-		$this->tpl->setContent($form->getHTML());
+		self::dic()->template()->setContent($form->getHTML());
 	}
 
 
@@ -127,7 +90,7 @@ class ctrlmmEntryGUI {
 	 * @return string
 	 */
 	public function renderEntry($entry_div_id = '') {
-		$this->html = $this->pl->getTemplate('tpl.ctrl_menu_entry.html', true, true);
+		$this->html = self::plugin()->template('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', ($entry_div_id) ? $entry_div_id : 'ctrl_mm_e_' . $this->entry->getId());
 		$this->html->setVariable('LINK', $this->entry->getLink());
@@ -157,16 +120,16 @@ class ctrlmmEntryGUI {
 	 * @param string $mode
 	 */
 	public function initForm($mode = 'create') {
-		$this->lng->loadLanguageModule('meta');
+		self::dic()->language()->loadLanguageModule('meta');
 		$this->form = new ilPropertyFormGUI();
 		$this->initPermissionSelectionForm();
 		$te = new ilFormSectionHeaderGUI();
-		$te->setTitle($this->pl->txt('common_title'));
+		$te->setTitle(self::plugin()->translate('common_title'));
 		$this->form->addItem($te);
-		$this->form->setTitle($this->pl->txt('form_title'));
-		$this->form->setFormAction($this->ctrl->getFormAction($this->parent_gui));
+		$this->form->setTitle(self::plugin()->translate('form_title'));
+		$this->form->setFormAction(self::dic()->ctrl()->getFormAction($this->parent_gui));
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {
-			$te = new ilTextInputGUI($this->lng->txt('meta_l_' . $language), 'title_' . $language);
+			$te = new ilTextInputGUI(self::dic()->language()->txt('meta_l_' . $language), 'title_' . $language);
 			$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
 			$this->form->addItem($te);
 		}
@@ -178,14 +141,14 @@ class ctrlmmEntryGUI {
 
 		if (count(ctrlmmEntry::getAdditionalFieldsAsArray($this->entry)) > 0) {
 			$te = new ilFormSectionHeaderGUI();
-			$te->setTitle($this->pl->txt('common_settings'));
+			$te->setTitle(self::plugin()->translate('common_settings'));
 			$this->form->addItem($te);
 		}
-		$this->form->addCommandButton($mode . 'Object', $this->pl->txt('common_create'));
+		$this->form->addCommandButton($mode . 'Object', self::plugin()->translate('common_create'));
 		if ($mode != 'create') {
-			$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_UPDATE_OBJECT_AND_STAY, $this->pl->txt('create_and_stay'));
+			$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_UPDATE_OBJECT_AND_STAY, self::plugin()->translate('create_and_stay'));
 		}
-		$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_CONFIGURE, $this->pl->txt('common_cancel'));
+		$this->form->addCommandButton(ilCtrlMainMenuConfigGUI::CMD_CONFIGURE, self::plugin()->translate('common_cancel'));
 	}
 
 
@@ -235,10 +198,9 @@ class ctrlmmEntryGUI {
 	 * @return array
 	 */
 	public static function getRoles($filter, $with_text = true) {
-		global $DIC;
 		$opt = array();
 		$role_ids = array();
-		foreach ($DIC->rbac()->review()->getRolesByFilter($filter) as $role) {
+		foreach (self::dic()->rbacreview()->getRolesByFilter($filter) as $role) {
 			$opt[$role['obj_id']] = $role['title'] . ' (' . $role['obj_id'] . ')';
 			$role_ids[] = $role['obj_id'];
 		}
@@ -253,7 +215,7 @@ class ctrlmmEntryGUI {
 	private function initPermissionSelectionForm() {
 		$global_roles = self::getRoles(ilRbacReview::FILTER_ALL_GLOBAL);
 		$locale_roles = self::getRoles(ilRbacReview::FILTER_ALL_LOCAL);
-		$ro = new ilRadioGroupInputGUI($this->pl->txt('permission_type'), 'permission_type');
+		$ro = new ilRadioGroupInputGUI(self::plugin()->translate('permission_type'), 'permission_type');
 		$ro->setRequired(true);
 		foreach (ctrlmmMenu::getAllPermissionsAsArray() as $k => $v) {
 			$option = new ilRadioOption($v, $k);
@@ -262,36 +224,36 @@ class ctrlmmEntryGUI {
 					break;
 				case ctrlmmMenu::PERM_ROLE :
 				case ctrlmmMenu::PERM_ROLE_EXEPTION :
-					$se = new ilMultiSelectInputGUI($this->pl->txt('perm_input'), 'permission_' . $k);
+					$se = new ilMultiSelectInputGUI(self::plugin()->translate('perm_input'), 'permission_' . $k);
 					$se->setWidth(400);
 					$se->setOptions($global_roles);
 					$option->addSubItem($se);
 					// Variante mit MultiSelection
-					$se = new ilMultiSelectInputGUI($this->pl->txt('perm_input_locale'), 'permission_locale_' . $k);
+					$se = new ilMultiSelectInputGUI(self::plugin()->translate('perm_input_locale'), 'permission_locale_' . $k);
 					$se->setWidth(400);
 					$se->setOptions($locale_roles);
 					// $option->addSubItem($se);
 					// Variante mit TextInputGUI
-					$te = new ilTextInputGUI($this->pl->txt('perm_input_locale'), 'permission_locale_' . $k);
-					$te->setInfo($this->pl->txt('perm_input_locale_info'));
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input_locale'), 'permission_locale_' . $k);
+					$te->setInfo(self::plugin()->translate('perm_input_locale_info'));
 					$option->addSubItem($te);
 					break;
 				case ctrlmmMenu::PERM_REF_WRITE :
 				case ctrlmmMenu::PERM_REF_READ :
-					$te = new ilTextInputGUI($this->pl->txt('perm_input'), 'permission_' . $k);
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input'), 'permission_' . $k);
 					$option->addSubItem($te);
 					break;
 				case ctrlmmMenu::PERM_USERID :
-					$te = new ilTextInputGUI($this->pl->txt('perm_input_user'), 'permission_user_' . $k);
-					$te->setInfo($this->pl->txt('perm_input_user_info'));
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input_user'), 'permission_user_' . $k);
+					$te->setInfo(self::plugin()->translate('perm_input_user_info'));
 					$option->addSubItem($te);
 					break;
 				case ctrlmmMenu::PERM_SCRIPT :
-					$te = new ilTextInputGUI($this->pl->txt('perm_input_script_path'), 'perm_input_script_path');
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input_script_path'), 'perm_input_script_path');
 					$option->addSubItem($te);
-					$te = new ilTextInputGUI($this->pl->txt('perm_input_script_class'), 'perm_input_script_class');
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input_script_class'), 'perm_input_script_class');
 					$option->addSubItem($te);
-					$te = new ilTextInputGUI($this->pl->txt('perm_input_script_method'), 'perm_input_script_method');
+					$te = new ilTextInputGUI(self::plugin()->translate('perm_input_script_method'), 'perm_input_script_method');
 					$option->addSubItem($te);
 					break;
 			}

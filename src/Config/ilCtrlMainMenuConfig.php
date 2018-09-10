@@ -9,26 +9,51 @@ use srag\DIC\DICTrait;
 /**
  * Class Configuration
  *
- * @package srag\Plugins\CtrlMainMenu\Config
+ * @package    srag\Plugins\CtrlMainMenu\Config
  *
- * @author  Michael Heren <mh@studer-raimann.ch>
- * @author  Fabian Schmid <fs@studer-raimann.ch>
+ * @author     Michael Heren <mh@studer-raimann.ch>
+ * @author     Fabian Schmid <fs@studer-raimann.ch>
+ *
+ * @deprecated TODO: Use srag\ActiveRecordConfig
  */
 class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	use DICTrait;
 	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
+	/**
+	 * @deprecated
+	 */
 	const TABLE_NAME = 'uihkctrlmainmenu_c';
+	/**
+	 * @deprecated
+	 */
 	const F_CSS_PREFIX = 'css_prefix';
+	/**
+	 * @deprecated
+	 */
 	const F_CSS_ACTIVE = 'css_active';
+	/**
+	 * @deprecated
+	 */
 	const F_CSS_INACTIVE = 'css_inactive';
+	/**
+	 * @deprecated
+	 */
 	const F_DOUBLECLICK_PREVENTION = 'doubleclick_prevention';
+	/**
+	 * @deprecated
+	 */
 	const F_SIMPLE_FORM_VALIDATION = 'simple_form_validation';
+	/**
+	 * @deprecated
+	 */
 	const F_REPLACE_FULL_HEADER = "replace_full_header";
 
 
 	/**
 	 * @return string
+	 *
+	 * @deprecated
 	 */
 	public function getConnectorContainerName() {
 		return self::TABLE_NAME;
@@ -37,6 +62,7 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @return string
+	 *
 	 * @deprecated
 	 */
 	public static function returnDbTableName() {
@@ -46,14 +72,20 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @var array
+	 *
+	 * @deprecated
 	 */
 	protected static $cache = array();
 	/**
 	 * @var array
+	 *
+	 * @deprecated
 	 */
 	protected static $cache_loaded = array();
 	/**
 	 * @var bool
+	 *
+	 * @deprecated
 	 */
 	protected $ar_safe_read = false;
 
@@ -62,6 +94,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @param string $name
 	 *
 	 * @return string
+	 *
+	 * @deprecated
 	 */
 	public static function getConfigValue($name) {
 		if (!isset(self::$cache_loaded[$name])) {
@@ -84,6 +118,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	/**
 	 * @param string $name
 	 * @param string $value
+	 *
+	 * @deprecated
 	 */
 	public static function set($name, $value) {
 		/**
@@ -101,6 +137,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @param string $name
+	 *
+	 * @deprecated
 	 */
 	public static function remove($name) {
 		/**
@@ -122,6 +160,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @db_is_notnull       true
 	 * @db_fieldtype        text
 	 * @db_length           250
+	 *
+	 * @deprecated
 	 */
 	protected $name_key;
 	/**
@@ -130,12 +170,16 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 	 * @db_has_field        true
 	 * @db_fieldtype        text
 	 * @db_length           1000
+	 *
+	 * @deprecated
 	 */
 	protected $field_value;
 
 
 	/**
 	 * @param string $field_value
+	 *
+	 * @deprecated
 	 */
 	public function setFieldValue($field_value) {
 		$this->field_value = $field_value;
@@ -144,6 +188,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @return string
+	 *
+	 * @deprecated
 	 */
 	public function getFieldValue() {
 		return $this->field_value;
@@ -152,6 +198,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @param string $name_key
+	 *
+	 * @deprecated
 	 */
 	public function setNameKey($name_key) {
 		$this->name_key = $name_key;
@@ -160,6 +208,8 @@ class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	/**
 	 * @return string
+	 *
+	 * @deprecated
 	 */
 	public function getNameKey() {
 		return $this->name_key;

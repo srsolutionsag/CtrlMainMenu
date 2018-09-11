@@ -52,6 +52,7 @@ class ctrlmmEntry extends ActiveRecord {
 	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
 	const TITLE_TYPE_TEXT = 1;
 	const TITLE_TYPE_IMAGE = 2;
+	const IMAGE_FOLDER = ilCtrlMainMenuPlugin::PLUGIN_ID . "/images";
 
 
 	/**
@@ -385,7 +386,7 @@ class ctrlmmEntry extends ActiveRecord {
 	public function getTitle() {
 		switch ($this->getTitleType()) {
 			case self::TITLE_TYPE_IMAGE:
-				$image_file = ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . self::plugin()->getPluginObject()->getId() . "/images/" . $this->title;
+				$image_file = ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . self::IMAGE_FOLDER . "/" . $this->title;
 
 				if (file_exists($image_file)) {
 					$image_title = self::plugin()->template("image_title.html");

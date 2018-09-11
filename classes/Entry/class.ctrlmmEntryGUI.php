@@ -146,8 +146,8 @@ class ctrlmmEntryGUI {
 
 			$te = new ilImageFileInputGUI(self::dic()->language()->txt('meta_l_' . $language), 'title_' . $language);
 			//$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
-			$te->setImage(!empty($this->entry->getTranslations()[$language]) ? ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . self::plugin()
-					->getPluginObject()->getId() . "/images/" . $this->entry->getTranslations()[$language] : NULL);
+			$te->setImage(!empty($this->entry->getTranslations()[$language]) ? ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . ctrlmmEntry::IMAGE_FOLDER . "/"
+				. $this->entry->getTranslations()[$language] : NULL);
 			$title_radio_image->addSubItem($te);
 		}
 
@@ -294,16 +294,8 @@ class ctrlmmEntryGUI {
 	/**
 	 * @return string
 	 */
-	static function getImageFolder() {
-		return CLIENT_WEB_DIR . "/" . self::plugin()->getPluginObject()->getId() . "/images";
-	}
-
-
-	/**
-	 * @return string
-	 */
-	public static function createImageFolder() {
-		$image_folder = self::getImageFolder();
+	protected static function createImageFolder() {
+		$image_folder = CLIENT_WEB_DIR . "/" . ctrlmmEntry::IMAGE_FOLDER;
 
 		if (!file_exists($image_folder)) {
 			ilUtil::makeDirParents($image_folder);

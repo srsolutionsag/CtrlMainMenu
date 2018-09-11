@@ -14,6 +14,7 @@ git clone https://github.com/studer-raimann/CtrlMainMenu.git
 As ILIAS administrator go to "Administration->Plugins" and install/activate the plugin.  
 
 ### Dependencies
+* [composer](https://getcomposer.org)
 * [srag/activerecordconfig](https://packagist.org/packages/srag/activerecordconfig)
 * [srag/dic](https://packagist.org/packages/srag/dic)
 * [srag/removeplugindataconfirm](https://packagist.org/packages/srag/removeplugindataconfirm)

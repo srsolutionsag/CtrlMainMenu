@@ -365,15 +365,17 @@ class ctrlmmEntry extends ActiveRecord {
 
 
 	public function replacePlaceholders() {
-		$replacements = array(
-			'[firstname]' => "<span class='headerFirstname'>" . self::dic()->user()->getFirstname() . "</span>",
-			'[lastname]' => "<span class='headerLastname'>" . self::dic()->user()->getLastname() . "</span>",
-			'[login]' => "<span class='headerLogin' > " . self::dic()->user()->getLogin() . "</span>",
-			'[email]' => "<span class='headerEmail'>" . self::dic()->user()->getEmail() . "</span>",
-			'[picture]' => "<img class='headerImage' src='" . self::dic()->user()->getPersonalPicturePath('xxsmall') . "' />",
-		);
+		if ($this->getTitleType() == self::TITLE_TYPE_TEXT) {
+			$replacements = array(
+				'[firstname]' => "<span class='headerFirstname'>" . self::dic()->user()->getFirstname() . "</span>",
+				'[lastname]' => "<span class='headerLastname'>" . self::dic()->user()->getLastname() . "</span>",
+				'[login]' => "<span class='headerLogin' > " . self::dic()->user()->getLogin() . "</span>",
+				'[email]' => "<span class='headerEmail'>" . self::dic()->user()->getEmail() . "</span>",
+				'[picture]' => "<img class='headerImage' src='" . self::dic()->user()->getPersonalPicturePath('xxsmall') . "' />",
+			);
 
-		$this->setTitle(strtr($this->title, $replacements));
+			$this->setTitle(strtr($this->title, $replacements));
+		}
 	}
 
 

@@ -128,11 +128,29 @@ class ctrlmmEntryGUI {
 		$this->form->addItem($te);
 		$this->form->setTitle(self::plugin()->translate('form_title'));
 		$this->form->setFormAction(self::dic()->ctrl()->getFormAction($this->parent_gui));
+
+		$title_radio = new ilRadioGroupInputGUI(self::plugin()->translate("title_type"), "title_type");
+		$title_radio->setRequired(true);
+		$this->form->addItem($title_radio);
+
+		$title_radio_text = new ilRadioOption(self::plugin()->translate("title_type_text"), ctrlmmEntry::TITLE_TYPE_TEXT);
+		$title_radio->addOption($title_radio_text);
+
+		$title_radio_image = new ilRadioOption(self::plugin()->translate("title_type_image"), ctrlmmEntry::TITLE_TYPE_IMAGE);
+		$title_radio->addOption($title_radio_image);
+
 		foreach (ctrlmmEntry::getAllLanguageIds() as $language) {
 			$te = new ilTextInputGUI(self::dic()->language()->txt('meta_l_' . $language), 'title_' . $language);
-			$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
-			$this->form->addItem($te);
+			//$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
+			$title_radio_text->addSubItem($te);
+
+			$te = new ilImageFileInputGUI(self::dic()->language()->txt('meta_l_' . $language), 'title_' . $language);
+			//$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
+			$te->setImage(!empty($this->entry->getTranslations()[$language]) ? ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . self::plugin()
+					->getPluginObject()->getId() . "/images/" . $this->entry->getTranslations()[$language] : NULL);
+			$title_radio_image->addSubItem($te);
 		}
+
 		$type = new ilHiddenInputGUI('type');
 		$type->setValue($this->entry->getTypeId());
 		$this->form->addItem($type);
@@ -157,8 +175,18 @@ class ctrlmmEntryGUI {
 	 */
 	public function setFormValuesByArray() {
 		$values = array();
+		$values["title_type"] = $this->entry->getTitleType();
 		foreach ($this->entry->getTranslations() as $k => $v) {
-			$values['title_' . $k] = $v;
+			switch ($values["title_type"]) {
+				case ctrlmmEntry::TITLE_TYPE_TEXT:
+					$values['title_' . $k] = $v;
+					break;
+				case ctrlmmEntry::TITLE_TYPE_IMAGE:
+					$values['title_' . $k] = $v;
+					break;
+				default:
+					break;
+			}
 		}
 		$perm_type = $this->entry->getPermissionType();
 		$values['permission_type'] = $perm_type;
@@ -263,13 +291,87 @@ class ctrlmmEntryGUI {
 	}
 
 
+	/**
+	 * @return string
+	 */
+	static function getImageFolder() {
+		return CLIENT_WEB_DIR . "/" . self::plugin()->getPluginObject()->getId() . "/images";
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public static function createImageFolder() {
+		$image_folder = self::getImageFolder();
+
+		if (!file_exists($image_folder)) {
+			ilUtil::makeDirParents($image_folder);
+		}
+
+		return $image_folder;
+	}
+
+
 	public function createEntry() {
+		$image_folder = self::createImageFolder();
+		$title_type = $this->form->getInput("title_type");
 		$lngs = array();
 		foreach (ctrlmmEntry::getAllLanguageIds() as $lng) {
 			if ($this->form->getInput('title_' . $lng)) {
-				$lngs[$lng] = $this->form->getInput('title_' . $lng);
+				switch ($title_type) {
+					case ctrlmmEntry::TITLE_TYPE_TEXT:
+						if (intval($this->entry->getTitleType()) === ctrlmmEntry::TITLE_TYPE_IMAGE) {
+							// Remove image uploads
+							if (!empty($this->entry->getTranslations()[$lng])) {
+								$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
+								if (file_exists($image_file)) {
+									unlink($image_file);
+								}
+							}
+						}
+
+						$lngs[$lng] = $this->form->getInput('title_' . $lng);
+						break;
+					case ctrlmmEntry::TITLE_TYPE_IMAGE:
+						$image = $this->form->getInput('title_' . $lng);
+
+						// Remove previous upload
+						if ((is_array($image) && empty($image["error"])) || $this->form->getInput('title_' . $lng . "_delete")) {
+							if (!empty($this->entry->getTranslations()[$lng])) {
+								$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
+								if (file_exists($image_file)) {
+									unlink($image_file);
+								}
+							}
+							$lngs[$lng] = "";
+						}
+
+						if (is_array($image) && empty($image["error"])) {
+							$tmp_name = $image["tmp_name"];
+							$ext = strrchr($image["name"], ".");
+							$image_file = ilUtil::randomhash() . $ext;
+
+							$image_path = $image_folder . "/" . $image_file;
+
+							ilUtil::moveUploadedFile($tmp_name, "", $image_path, false);
+
+							$lngs[$lng] = $image_file;
+						} else {
+							if (!$this->form->getInput('title_' . $lng . "_delete")) {
+								$lngs[$lng] = $this->entry->getTranslations()[$lng];
+							}
+						}
+						if (empty($lngs[$lng])) {
+							$lngs[$lng] = "";
+						}
+						break;
+					default:
+						break;
+				}
 			}
 		}
+		$this->entry->setTitleType($title_type);
 		$perm_type = $this->form->getInput('permission_type');
 		$this->entry->setParent($_GET['parent_id']);
 		$this->entry->setTranslations($lngs);

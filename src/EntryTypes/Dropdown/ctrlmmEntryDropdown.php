@@ -107,7 +107,7 @@ class ctrlmmEntryDropdown extends ctrlmmEntry {
 
 			return '<img src="' . $user_img_src . '" alt="' . $user_img_alt . '" class="dropdown_image" />';
 		} else {
-			return $this->title;
+			return parent::getTitle();
 		}
 	}
 

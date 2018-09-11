@@ -647,7 +647,7 @@
       },
       "logout": {
         "translations": {
-          "de": "Show logout",
+          "de": "MISSING show_logout",
           "en": "Show logout",
           "hu": "Kijelentkez\u00e9s megjelen\u00edt\u00e9se",
           "nl": "Logout tonen"
@@ -743,6 +743,54 @@
           "en": "MISSING title_nl",
           "hu": "MISSING title_nl",
           "nl": "Nederlandse Titel"
+        }
+      },
+      "type": {
+        "translations": {
+          "de": "Typ",
+          "en": "Type",
+          "hu": "MISSING title_type",
+          "nl": "MISSING title_type"
+        }
+      },
+      "type_info": {
+        "translations": {
+          "de": "",
+          "en": "",
+          "hu": "MISSING title_type_info",
+          "nl": "MISSING title_type_info"
+        }
+      },
+      "type_text": {
+        "translations": {
+          "de": "Text",
+          "en": "Text",
+          "hu": "MISSING title_type_text",
+          "nl": "MISSING title_type_text"
+        }
+      },
+      "type_text_info": {
+        "translations": {
+          "de": "",
+          "en": "",
+          "hu": "MISSING title_type_text_info",
+          "nl": "MISSING title_type_text_info"
+        }
+      },
+      "type_image": {
+        "translations": {
+          "de": "Bild",
+          "en": "Image",
+          "hu": "MISSING title_type_image",
+          "nl": "MISSING title_type_image"
+        }
+      },
+      "type_image_info": {
+        "translations": {
+          "de": "",
+          "en": "",
+          "hu": "MISSING title_type_image_info",
+          "nl": "MISSING title_type_image_info"
         }
       }
     },

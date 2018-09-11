@@ -114,3 +114,18 @@ if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'va
 	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'value', 'field_value');
 }
 ?>
+<#12>
+<?php
+\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::updateDB();
+
+foreach (\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::get() as $ctrlmmEntry) {
+	/**
+	 * @var \srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry $ctrlmmEntry
+	 */
+
+	if (empty($ctrlmmEntry->getTitleType())) {
+		$ctrlmmEntry->setTitleType(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TITLE_TYPE_TEXT);
+		$ctrlmmEntry->update();
+	}
+}
+?>

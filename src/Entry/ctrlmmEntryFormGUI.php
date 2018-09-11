@@ -3,18 +3,15 @@
 namespace srag\Plugins\CtrlMainMenu\Entry;
 
 use ctrlmmEntryGUI;
-use ilCtrl;
 use ilCtrlMainMenuConfigGUI;
 use ilCtrlMainMenuPlugin;
 use ilFormSectionHeaderGUI;
 use ilHiddenInputGUI;
-use ilLanguage;
 use ilMultiSelectInputGUI;
 use ilPropertyFormGUI;
 use ilRadioGroupInputGUI;
 use ilRadioOption;
 use ilRbacReview;
-use ilTemplate;
 use ilTextInputGUI;
 use srag\DIC\DICTrait;
 use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu;

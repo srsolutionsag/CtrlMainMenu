@@ -50,6 +50,8 @@ class ctrlmmEntry extends ActiveRecord {
 	use DICTrait;
 	const TABLE_NAME = 'ui_uihk_ctrlmm_e';
 	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
+	const TITLE_TYPE_TEXT = 1;
+	const TITLE_TYPE_IMAGE = 2;
 
 
 	/**
@@ -147,6 +149,14 @@ class ctrlmmEntry extends ActiveRecord {
 	 * @con_length     8
 	 */
 	protected $parent = 0;
+	/**
+	 * @var int
+	 *
+	 * @con_has_field  true
+	 * @con_fieldtype  integer
+	 * @con_length     8
+	 */
+	protected $title_type = self::TITLE_TYPE_TEXT;
 	/**
 	 * @var string
 	 */
@@ -363,7 +373,7 @@ class ctrlmmEntry extends ActiveRecord {
 			'[picture]' => "<img class='headerImage' src='" . self::dic()->user()->getPersonalPicturePath('xxsmall') . "' />",
 		);
 
-		$this->setTitle(strtr($this->getTitle(), $replacements));
+		$this->setTitle(strtr($this->title, $replacements));
 	}
 
 
@@ -371,7 +381,25 @@ class ctrlmmEntry extends ActiveRecord {
 	 * @return string
 	 */
 	public function getTitle() {
-		return $this->title;
+		switch ($this->getTitleType()) {
+			case self::TITLE_TYPE_IMAGE:
+				$image_file = ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . self::plugin()->getPluginObject()->getId() . "/images/" . $this->title;
+
+				if (file_exists($image_file)) {
+					$image_title = self::plugin()->template("image_title.html");
+					$image_title->setVariable("ALT", "");
+					$image_title->setVariable("SRC", $image_file);
+
+					return $image_title->get();
+				} else {
+					return "";
+				}
+				break;
+			case self::TITLE_TYPE_TEXT:
+				return $this->title;
+			default:
+				return "";
+		}
 	}
 
 
@@ -605,7 +633,7 @@ class ctrlmmEntry extends ActiveRecord {
 	public function checkPermission() {
 		if (!$this->isPermissionCached()) {
 			$this->setCachedPermission(false);
-			
+
 			switch ($this->getPermissionType()) {
 				case ctrlmmMenu::PERM_ROLE:
 					foreach ((array)json_decode($this->getPermission()) as $pid) {
@@ -764,5 +792,54 @@ class ctrlmmEntry extends ActiveRecord {
 
 	public static function addRestrictedType($type) {
 		self::$restricted_types[] = $type;
+	}
+
+
+	/**
+	 * @return int
+	 */
+	public function getTitleType() {
+		return $this->title_type;
+	}
+
+
+	/**
+	 * @param int $title_type
+	 */
+	public function setTitleType($title_type) {
+		$this->title_type = $title_type;
+	}
+
+
+	/**
+	 * @param string $field_name
+	 *
+	 * @return mixed|null
+	 */
+	public function sleep($field_name) {
+		$field_value = $this->{$field_name};
+
+		switch ($field_name) {
+			default:
+				return NULL;
+		}
+	}
+
+
+	/**
+	 * @param string $field_name
+	 * @param mixed  $field_value
+	 *
+	 * @return mixed|null
+	 */
+	public function wakeUp($field_name, $field_value) {
+		switch ($field_name) {
+			case "title_type":
+				return intval($field_value);
+				break;
+
+			default:
+				return NULL;
+		}
 	}
 }

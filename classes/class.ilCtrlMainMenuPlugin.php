@@ -75,6 +75,8 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 		self::dic()->database()->dropTable(ctrlmmData::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ctrlmmTranslation::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
+
+		ilUtil::delDir(CLIENT_WEB_DIR . "/" . $this->getId());
 	}
 
 

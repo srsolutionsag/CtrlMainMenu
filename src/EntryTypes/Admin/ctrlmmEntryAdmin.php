@@ -55,7 +55,7 @@ class ctrlmmEntryAdmin extends ctrlmmEntry {
 	 * @return string
 	 */
 	public function getTitle() {
-		return $this->title ? $this->title : self::dic()->language()->txt('administration');
+		return $this->title ? parent::getTitle() : self::dic()->language()->txt('administration');
 	}
 
 

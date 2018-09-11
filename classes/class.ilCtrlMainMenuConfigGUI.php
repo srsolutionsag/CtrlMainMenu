@@ -70,8 +70,8 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function executeCommand() {
 		$next_class = self::dic()->ctrl()->getNextClass();
-		switch ($next_class) {
-			case'ctrlmmentrygui':
+		switch (strtolower($next_class)) {
+			case strtolower(ctrlmmEntryGUI::class):
 				$entrygui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($_GET['entry_id'])->getGUIObject($this);
 				self::dic()->ctrl()->forwardCommand($entrygui);
 				break;
@@ -117,15 +117,20 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 	function performCommand($cmd) {
 		self::dic()->ctrl()->setParameter($this, 'parent_id', $_GET['parent_id'] ? $_GET['parent_id'] : 0);
 		if ($_GET['parent_id'] > 0) {
-			self::dic()->tabs()->addTab(self::TAB_MAIN, self::plugin()->translate('back_to_main'), self::dic()->ctrl()->getLinkTarget($this, self::CMD_RESET_PARENT));
-			self::dic()->tabs()->addTab(self::TAB_DROPDOWN, self::plugin()->translate('tabs_title_childs'), self::dic()->ctrl()->getLinkTarget($this, self::CMD_CONFIGURE));
+			self::dic()->tabs()->addTab(self::TAB_MAIN, self::plugin()->translate('back_to_main'), self::dic()->ctrl()
+				->getLinkTarget($this, self::CMD_RESET_PARENT));
+			self::dic()->tabs()->addTab(self::TAB_DROPDOWN, self::plugin()->translate('tabs_title_childs'), self::dic()->ctrl()
+				->getLinkTarget($this, self::CMD_CONFIGURE));
 			self::dic()->tabs()->activateTab(self::TAB_DROPDOWN);
 		} else {
-			self::dic()->tabs()->addTab(self::TAB_MAIN, self::plugin()->translate('tab_main'), self::dic()->ctrl()->getLinkTarget($this, self::CMD_CONFIGURE));
+			self::dic()->tabs()->addTab(self::TAB_MAIN, self::plugin()->translate('tab_main'), self::dic()->ctrl()
+				->getLinkTarget($this, self::CMD_CONFIGURE));
 			self::dic()->tabs()->activateTab(self::TAB_MAIN);
 		}
-		self::dic()->tabs()->addTab(self::TAB_CSS, self::plugin()->translate('css_settings'), self::dic()->ctrl()->getLinkTarget($this, self::CMD_CSS_SETTINGS));
-		self::dic()->tabs()->addTab(self::TAB_CACHE, self::plugin()->translate('cache_settings'), self::dic()->ctrl()->getLinkTarget($this, self::CMD_CACHE_SETTINGS));
+		self::dic()->tabs()->addTab(self::TAB_CSS, self::plugin()->translate('css_settings'), self::dic()->ctrl()
+			->getLinkTarget($this, self::CMD_CSS_SETTINGS));
+		self::dic()->tabs()->addTab(self::TAB_CACHE, self::plugin()->translate('cache_settings'), self::dic()->ctrl()
+			->getLinkTarget($this, self::CMD_CACHE_SETTINGS));
 		switch ($cmd) {
 			case self::CMD_CONFIGURE:
 			case self::CMD_SAVE:

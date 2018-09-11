@@ -1,5 +1,12 @@
 <?php
+
 require_once __DIR__ . "/../vendor/autoload.php";
+
+use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
+use srag\Plugins\CtrlMainMenu\Data\ctrlmmData;
+use srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation;
+use srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry;
+use srag\RemovePluginDataConfirm\PluginUninstallTrait;
 
 /**
  * Class ilCtrlMainMenuPlugin
@@ -11,20 +18,19 @@ require_once __DIR__ . "/../vendor/autoload.php";
  */
 class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
+	use PluginUninstallTrait;
 	const PLUGIN_ID = 'ctrlmm';
 	const PLUGIN_NAME = 'CtrlMainMenu';
+	const PLUGIN_CLASS_NAME = self::class;
+	const REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME = CtrlMainMenuRemoveDataConfirm::class;
 	/**
 	 * @var ilCtrlMainMenuConfig
 	 */
 	protected static $config_cache;
 	/**
-	 * @var ilCtrlMainMenuPlugin
+	 * @var self
 	 */
 	protected static $plugin_cache;
-	/**
-	 * @var ilDB
-	 */
-	protected $db;
 
 
 	/**
@@ -37,10 +43,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
 	public function __construct() {
 		parent::__construct();
-
-		global $DIC;
-
-		$this->db = $DIC->database();
 	}
 
 
@@ -54,7 +56,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	//	}
 
 	/**
-	 * @return ilCtrlMainMenuPlugin
+	 * @return self
 	 */
 	public static function getInstance() {
 		if (!isset(self::$plugin_cache)) {
@@ -66,15 +68,15 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 
 
 	/**
-	 * @return bool
+	 * @inheritdoc
 	 */
-	protected function beforeUninstall() {
-		$this->db->dropTable(ctrlmmEntry::TABLE_NAME, false);
-		$this->db->dropTable(ctrlmmData::TABLE_NAME, false);
-		$this->db->dropTable(ctrlmmTranslation::TABLE_NAME, false);
-		$this->db->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
+	protected function deleteData() {
+		self::dic()->database()->dropTable(ctrlmmEntry::TABLE_NAME, false);
+		self::dic()->database()->dropTable(ctrlmmData::TABLE_NAME, false);
+		self::dic()->database()->dropTable(ctrlmmTranslation::TABLE_NAME, false);
+		self::dic()->database()->dropTable(ilCtrlMainMenuConfig::TABLE_NAME, false);
 
-		return true;
+		ilUtil::delDir(CLIENT_WEB_DIR . "/" . self::PLUGIN_ID);
 	}
 
 
@@ -84,7 +86,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	public static function isGlobalCacheActive() {
 		static $has_global_cache;
 		if (!isset($has_global_cache)) {
-			$has_global_cache = ilCtrlMainMenuConfig::getConfigValue('activate_cache');
+			$has_global_cache = boolval(ilCtrlMainMenuConfig::getConfigValue('activate_cache'));
 		}
 
 		return $has_global_cache;

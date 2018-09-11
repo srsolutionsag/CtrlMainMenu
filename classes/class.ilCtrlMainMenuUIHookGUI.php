@@ -1,5 +1,11 @@
 <?php
+
 require_once __DIR__ . "/../vendor/autoload.php";
+
+use srag\DIC\DICTrait;
+use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
+use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenuGUI;
+
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 /**
@@ -14,24 +20,16 @@ require_once __DIR__ . "/../vendor/autoload.php";
  */
 class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
+	use DICTrait;
+	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
 	/**
 	 * @var bool
 	 */
 	protected static $replaced = false;
-	/**
-	 * @var ilCtrlMainMenuPlugin
-	 */
-	protected $pl;
-	/**
-	 * @var ilObjUser
-	 */
-	protected $user;
 
 
 	public function __construct() {
-		global $DIC;
-		$this->pl = ilCtrlMainMenuPlugin::getInstance();
-		$this->user = $DIC->user();
+
 	}
 
 
@@ -76,9 +74,6 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 	 * @return string
 	 */
 	protected function getMainMenuHTML() {
-		global $DIC;
-		$lng = $DIC->language();
-
 		$mainMenu = ilCtrlMainMenuPlugin::getInstance()->getTemplate('tpl.mainmenu.html', true, true);
 
 		$mainMenu->setVariable("CSS_PREFIX", ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX));
@@ -110,12 +105,12 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 			$mainMenu->addJavaScript('Services/Notifications/templates/default/notifications.js');
 			$mainMenu->addCSS('Services/Notifications/templates/default/osd.css');
 
-			$notifications = ilNotificationOSDHandler::getNotificationsForUser($this->user->getId());
-			$mainMenu->setVariable('NOTIFICATION_CLOSE_HTML', json_encode(ilGlyphGUI::get(ilGlyphGUI::CLOSE, $lng->txt('close'))));
+			$notifications = ilNotificationOSDHandler::getNotificationsForUser(self::dic()->user()->getId());
+			$mainMenu->setVariable('NOTIFICATION_CLOSE_HTML', json_encode(ilGlyphGUI::get(ilGlyphGUI::CLOSE, self::dic()->language()->txt('close'))));
 			$mainMenu->setVariable('INITIAL_NOTIFICATIONS', json_encode($notifications));
 			$mainMenu->setVariable('OSD_POLLING_INTERVALL', $notificationSettings->get('osd_polling_intervall') ? $notificationSettings->get('osd_polling_intervall') : '5');
 			$mainMenu->setVariable('OSD_PLAY_SOUND', $chatSettings->get('play_invitation_sound')
-			&& $this->user->getPref('chat_play_invitation_sound') ? 'true' : 'false');
+			&& self::dic()->user()->getPref('chat_play_invitation_sound') ? 'true' : 'false');
 			foreach ($notifications as $notification) {
 				if ($notification['type'] == 'osd_maint') {
 					continue;
@@ -138,7 +133,7 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 		$mainMenu->setVariable("LOCATION_STYLESHEET", ilUtil::getStyleSheetLocation());
 
-		$mainMenu->setVariable("TXT_LOGOUT", $lng->txt("logout"));
+		$mainMenu->setVariable("TXT_LOGOUT", self::dic()->language()->txt("logout"));
 		//		$mainMenu->setVariable("HEADER_URL", $this->getHeaderURL());
 		//		$mainMenu->setVariable("HEADER_ICON", ilUtil::getImagePath("HeaderIcon.png"));
 

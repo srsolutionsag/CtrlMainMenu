@@ -65,7 +65,7 @@ save_sorting#:#Reihenfolge speichern
 select_type#:#Typ wählen
 settentr_button_save#:#Speichern
 show_icons#:#Icons anzeigen
-show_logout#:#Show logout
+show_logout#:#MISSING show_logout
 show_with_no_children#:#Anzeigen auch wenn keine Subelemente vorhanden sind
 simple_form_validation#:#Einfache Formular-Validierung aktivieren (experimental)
 sorting_saved#:#Reihenfolge gespeichert
@@ -96,3 +96,18 @@ use_image#:#Pfeilbild verwenden
 use_user_image#:#Benutzerbild statt Titel verwenden
 disable_active#:#Aktive Einträge deaktivieren
 wrong_child_type#:#MISSING wrong_child_type
+ilctrl_error#:#ilCtrl-Error!
+title_type#:#Typ
+title_type_info#:#
+title_type_text#:#Text
+title_type_text_info#:#
+title_type_image#:#Bild
+title_type_image_info#:#
+removeplugindataconfirm_cancel#:#Abbrechen
+removeplugindataconfirm_confirm_remove_data#:#Möchten Sie die %1$s-Daten auch entfernen? Allenfalls möchten Sie das %1$s-Plugin nur deaktivieren?
+removeplugindataconfirm_deactivate#:#%1$s-Plugin nur deaktivieren
+removeplugindataconfirm_data#:#%1$s-Daten
+removeplugindataconfirm_keep_data#:#%1$s-Daten behalten
+removeplugindataconfirm_msg_kept_data#:#Die %1$s-Daten wurden behalten!
+removeplugindataconfirm_msg_removed_data#:#Die %1$s-Daten wurden auch entfernt!
+removeplugindataconfirm_remove_data#:#Entferne %1$s-Daten

@@ -96,3 +96,18 @@ use_image#:#Nyíl kép használata
 use_user_image#:#Felhasználói kép használata címként
 disable_active#:#MISSING disable_active
 wrong_child_type#:#MISSING wrong_child_type
+ilctrl_error#:#MISSING ilctrl_error
+title_type#:#MISSING title_type
+title_type_info#:#MISSING title_type_info
+title_type_text#:#MISSING title_type_text
+title_type_text_info#:#MISSING title_type_text_info
+title_type_image#:#MISSING title_type_image
+title_type_image_info#:#MISSING title_type_image_info
+removeplugindataconfirm_cancel#:#MISSING removeplugindataconfirm_cancel
+removeplugindataconfirm_confirm_remove_data#:#MISSING removeplugindataconfirm_confirm_remove_data
+removeplugindataconfirm_deactivate#:#MISSING removeplugindataconfirm_deactivate
+removeplugindataconfirm_data#:#MISSING removeplugindataconfirm_data
+removeplugindataconfirm_keep_data#:#MISSING removeplugindataconfirm_keep_data
+removeplugindataconfirm_msg_kept_data#:#MISSING removeplugindataconfirm_msg_kept_data
+removeplugindataconfirm_msg_removed_data#:#MISSING removeplugindataconfirm_msg_removed_data
+removeplugindataconfirm_remove_data#:#MISSING removeplugindataconfirm_remove_data

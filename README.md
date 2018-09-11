@@ -5,12 +5,12 @@ The CtrlMainMenu-Plugin gives you the possibility to customize the Main Menu of 
 Please read the Documentation on [Documentation.docx](https://github.com/studer-raimann/CtrlMainMenu/blob/master/doc/Documentation.pdf?raw=true)
 
 ## Installation
-Start at your ILIAS root directory  
+Start at your ILIAS root directory
 ```bash
-mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/  
-cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/  
-git clone https://github.com/studer-raimann/CtrlMainMenu.git  
-```  
+mkdir -p Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
+cd Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
+git clone https://github.com/studer-raimann/CtrlMainMenu.git
+```
 As ILIAS administrator go to "Administration->Plugins" and install/activate the plugin.  
 
 ### Dependencies

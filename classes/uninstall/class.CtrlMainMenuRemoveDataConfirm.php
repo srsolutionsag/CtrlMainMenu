@@ -18,14 +18,6 @@ class CtrlMainMenuRemoveDataConfirm extends AbstractRemovePluginDataConfirm {
 	/**
 	 * @inheritdoc
 	 */
-	public function removeUninstallRemovesData() {
-		ilCtrlMainMenuConfig::remove(self::KEY_UNINSTALL_REMOVES_DATA);
-	}
-
-
-	/**
-	 * @inheritdoc
-	 */
 	public function getUninstallRemovesData() {
 		return ilCtrlMainMenuConfig::getConfigValue(self::KEY_UNINSTALL_REMOVES_DATA);
 	}
@@ -36,5 +28,13 @@ class CtrlMainMenuRemoveDataConfirm extends AbstractRemovePluginDataConfirm {
 	 */
 	public function setUninstallRemovesData($uninstall_removes_data) {
 		ilCtrlMainMenuConfig::set(self::KEY_UNINSTALL_REMOVES_DATA, $uninstall_removes_data);
+	}
+
+
+	/**
+	 * @inheritdoc
+	 */
+	public function removeUninstallRemovesData() {
+		ilCtrlMainMenuConfig::remove(self::KEY_UNINSTALL_REMOVES_DATA);
 	}
 }

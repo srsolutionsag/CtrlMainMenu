@@ -357,6 +357,7 @@ class ctrlmmEntryGUI {
 						if (empty($lngs[$lng])) {
 							$lngs[$lng] = "";
 						}
+						$_POST['title_' . $lng] = $lngs[$lng];
 						break;
 					default:
 						break;

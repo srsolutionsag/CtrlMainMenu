@@ -8,6 +8,7 @@
     "Plugin",
     "CtrlMainMenu"
   ],
+  "homepage": "https://github.com/studer-raimann/CtrlMainMenu",
   "license": "GPL-3.0-only",
   "authors": [
     {

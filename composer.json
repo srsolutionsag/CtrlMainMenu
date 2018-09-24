@@ -1,24 +1,25 @@
 {
   "name": "srag/plugins/ctrlmainmenu",
   "description": "",
-  "version": "3.6.0",
-  "type": "library",
+  "type": "project",
+  "version": "3.6.1",
   "keywords": [
     "ILIAS",
     "Plugin",
     "CtrlMainMenu"
   ],
+  "homepage": "https://github.com/studer-raimann/CtrlMainMenu",
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "srag",
-      "email": "support@studer-raimann.ch",
+      "name": "studer + raimann ag - Team Core 1",
+      "email": "support-core1@studer-raimann.ch",
       "homepage": "https://studer-raimann.ch",
       "role": "Developer"
     }
   ],
   "support": {
-    "email": "support@studer-raimann.ch"
+    "email": "support-core1@studer-raimann.ch"
   },
   "require": {
     "php": ">=5.6",

@@ -1,8 +1,7 @@
 {
   "name": "srag/plugins/ctrlmainmenu",
   "description": "",
-  "version": "3.6.0",
-  "type": "library",
+  "type": "project",
   "keywords": [
     "ILIAS",
     "Plugin",

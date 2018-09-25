@@ -70,7 +70,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	/**
 	 * @inheritdoc
 	 */
-	protected function deleteData() {
+	protected function deleteData()/*: void*/ {
 		self::dic()->database()->dropTable(ctrlmmEntry::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ctrlmmData::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ctrlmmTranslation::TABLE_NAME, false);

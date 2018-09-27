@@ -46,15 +46,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	}
 
 
-	//
-	//	public function txt($a_var) {
-	//		require_once('./Customizing/global/plugins/Libraries/PluginTranslator/class.sragPluginTranslator.php');
-	////		return parent::txt($a_var);
-	//
-	////		return sragPluginTranslator::getInstance($this)->rebuild(true)->txt($a_var);
-	//		return sragPluginTranslator::getInstance($this)->active(true)->write(true)->txt($a_var);
-	//	}
-
 	/**
 	 * @return self
 	 */

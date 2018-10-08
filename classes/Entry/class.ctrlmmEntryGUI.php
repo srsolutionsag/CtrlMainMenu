@@ -60,7 +60,7 @@ class ctrlmmEntryGUI {
 	public function edit() {
 		$form = ctrlmmEntryInstaceFactory::getInstanceByEntryId($this->entry->getId())->getFormObject($this);
 		$form->fillForm();
-		self::dic()->template()->setContent($form->getHTML());
+		self::dic()->mainTemplate()->setContent($form->getHTML());
 	}
 
 

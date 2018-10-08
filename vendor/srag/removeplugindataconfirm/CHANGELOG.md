@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.2.5]
+Update readme
+
 ## [0.2.4]
 - Added dependencies to readme
 

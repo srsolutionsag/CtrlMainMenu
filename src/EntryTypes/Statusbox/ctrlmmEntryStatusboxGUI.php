@@ -33,7 +33,7 @@ class ctrlmmEntryStatusboxGUI extends ctrlmmEntryGUI {
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/statusbox.css');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/statusbox.css');
 
 		$this->html = self::plugin()->template('tpl.menu_statusbox.html', false, true);
 		$this->html->setVariable('ICON', ilUtil::getImagePath('icon_mail_s.png'));

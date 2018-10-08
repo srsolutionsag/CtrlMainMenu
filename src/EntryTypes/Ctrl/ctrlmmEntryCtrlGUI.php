@@ -32,8 +32,8 @@ class ctrlmmEntryCtrlGUI extends ctrlmmEntryGUI {
 	 * @param string $mode
 	 */
 	public function initForm($mode = 'create') {
-		self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/check.js');
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/check.css');
+		self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/check.js');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/check.css');
 
 		parent::initForm($mode);
 

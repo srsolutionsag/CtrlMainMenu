@@ -32,7 +32,7 @@ class ctrlmmEntryAuthGUI extends ctrlmmEntryGUI {
 	 */
 	public function renderEntry($entry_div_id = '') {
 		unset($entry_div_id);
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/login.css');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/login.css');
 		$this->html = self::plugin()->template('tpl.ctrl_menu_entry.html', true, true);
 		$this->html->setVariable('TITLE', $this->entry->getTitle());
 		$this->html->setVariable('CSS_ID', 'ctrl_mm_e_' . $this->entry->getId());

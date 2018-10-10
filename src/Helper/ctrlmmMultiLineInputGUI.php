@@ -399,7 +399,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 	 */
 	public function insert(&$a_tpl) {
 		$output = "";
-		self::dic()->template()->addCss($this->getTemplateDir() . '/templates/css/multi_line_input.css');
+		self::dic()->mainTemplate()->addCss($this->getTemplateDir() . '/templates/css/multi_line_input.css');
 
 		$output .= $this->render(0, true);
 
@@ -417,7 +417,7 @@ class ctrlmmMultiLineInputGUI extends ilFormPropertyGUI {
 
 		if ($this->getMulti()) {
 			$output = '<div id="' . $this->getFieldId() . '" class="multi_line_input">' . $output . '</div>';
-			self::dic()->template()->addJavascript($this->getTemplateDir() . '/templates/js/multi_line_input.js');
+			self::dic()->mainTemplate()->addJavascript($this->getTemplateDir() . '/templates/js/multi_line_input.js');
 			$output .= '<script type="text/javascript">$("#' . $this->getFieldId() . '").multi_line_input(' . json_encode($this->input_options)
 				. ')</script>';
 		}

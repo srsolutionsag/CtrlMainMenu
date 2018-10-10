@@ -46,15 +46,6 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	}
 
 
-	//
-	//	public function txt($a_var) {
-	//		require_once('./Customizing/global/plugins/Libraries/PluginTranslator/class.sragPluginTranslator.php');
-	////		return parent::txt($a_var);
-	//
-	////		return sragPluginTranslator::getInstance($this)->rebuild(true)->txt($a_var);
-	//		return sragPluginTranslator::getInstance($this)->active(true)->write(true)->txt($a_var);
-	//	}
-
 	/**
 	 * @return self
 	 */
@@ -70,7 +61,7 @@ class ilCtrlMainMenuPlugin extends ilUserInterfaceHookPlugin {
 	/**
 	 * @inheritdoc
 	 */
-	protected function deleteData() {
+	protected function deleteData()/*: void*/ {
 		self::dic()->database()->dropTable(ctrlmmEntry::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ctrlmmData::TABLE_NAME, false);
 		self::dic()->database()->dropTable(ctrlmmTranslation::TABLE_NAME, false);

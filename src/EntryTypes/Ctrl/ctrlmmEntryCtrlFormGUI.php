@@ -27,8 +27,8 @@ class ctrlmmEntryCtrlFormGUI extends ctrlmmEntryFormGUI {
 
 
 	public function addFields() {
-		self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/check.js');
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/check.css');
+		self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/check.js');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/check.css');
 
 		$te = new ilTextInputGUI(self::plugin()->translate(self::F_GUI_CLASS), self::F_GUI_CLASS);
 		$te->setRequired(true);

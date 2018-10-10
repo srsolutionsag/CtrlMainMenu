@@ -60,7 +60,7 @@ class ctrlmmEntryGUI {
 	public function edit() {
 		$form = ctrlmmEntryInstaceFactory::getInstanceByEntryId($this->entry->getId())->getFormObject($this);
 		$form->fillForm();
-		self::dic()->template()->setContent($form->getHTML());
+		self::dic()->mainTemplate()->setContent($form->getHTML());
 	}
 
 
@@ -146,8 +146,8 @@ class ctrlmmEntryGUI {
 
 			$te = new ilImageFileInputGUI(self::dic()->language()->txt('meta_l_' . $language), 'img_' . $language);
 			//$te->setRequired(ctrlmmEntry::isDefaultLanguage($language));
-			$te->setImage(!empty($this->entry->getTranslations()[$language]) ? ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . ctrlmmEntry::IMAGE_FOLDER . "/"
-				. $this->entry->getTranslations()[$language] : NULL);
+			$te->setImage(!empty($this->entry->getTranslations()[$language]) ? ILIAS_WEB_DIR . "/" . CLIENT_ID . "/" . ctrlmmEntry::getImageFolder()
+				. "/" . $this->entry->getTranslations()[$language] : NULL);
 			$title_radio_image->addSubItem($te);
 		}
 
@@ -295,7 +295,7 @@ class ctrlmmEntryGUI {
 	 * @return string
 	 */
 	protected static function createImageFolder() {
-		$image_folder = CLIENT_WEB_DIR . "/" . ctrlmmEntry::IMAGE_FOLDER;
+		$image_folder = CLIENT_WEB_DIR . "/" . ctrlmmEntry::getImageFolder();
 
 		if (!file_exists($image_folder)) {
 			ilUtil::makeDirParents($image_folder);
@@ -311,62 +311,61 @@ class ctrlmmEntryGUI {
 		$lngs = array();
 		foreach (ctrlmmEntry::getAllLanguageIds() as $lng) {
 
-				switch ($title_type) {
-					case ctrlmmEntry::TITLE_TYPE_TEXT:
-						if ($this->form->getInput('title_' . $lng)) {
-							if (intval($this->entry->getTitleType()) === ctrlmmEntry::TITLE_TYPE_IMAGE) {
-								// Remove image uploads
-								if (!empty($this->entry->getTranslations()[$lng])) {
-									$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
-									if (file_exists($image_file)) {
-										unlink($image_file);
-									}
+			switch ($title_type) {
+				case ctrlmmEntry::TITLE_TYPE_TEXT:
+					if ($this->form->getInput('title_' . $lng)) {
+						if (intval($this->entry->getTitleType()) === ctrlmmEntry::TITLE_TYPE_IMAGE) {
+							// Remove image uploads
+							if (!empty($this->entry->getTranslations()[$lng])) {
+								$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
+								if (file_exists($image_file)) {
+									unlink($image_file);
 								}
-							}
-
-							$lngs[$lng] = $this->form->getInput('title_' . $lng);
-						}
-						break;
-					case ctrlmmEntry::TITLE_TYPE_IMAGE:
-						if ($this->form->getInput('img_' . $lng)) {
-							$image = $this->form->getInput('img_' . $lng);
-
-							// Remove previous upload
-							if ((is_array($image) && empty($image["error"])) || $this->form->getInput('img_' . $lng . "_delete")) {
-								if (!empty($this->entry->getTranslations()[$lng])) {
-									$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
-									if (file_exists($image_file)) {
-										unlink($image_file);
-									}
-								}
-								$lngs[$lng] = "";
-							}
-
-							if (is_array($image) && empty($image["error"])) {
-								$tmp_name = $image["tmp_name"];
-								$ext = strrchr($image["name"], ".");
-								$image_file = ilUtil::randomhash() . $ext;
-
-								$image_path = $image_folder . "/" . $image_file;
-
-								ilUtil::moveUploadedFile($tmp_name, "", $image_path, false);
-
-								$lngs[$lng] = $image_file;
-							} else {
-								if (!$this->form->getInput('img_' . $lng . "_delete")) {
-									$lngs[$lng] = $this->entry->getTranslations()[$lng];
-								}
-							}
-							if (empty($lngs[$lng])) {
-								$lngs[$lng] = "";
 							}
 						}
-						$_POST['title_' . $lng] = $lngs[$lng];
-						break;
-					default:
-						break;
-				}
 
+						$lngs[$lng] = $this->form->getInput('title_' . $lng);
+					}
+					break;
+				case ctrlmmEntry::TITLE_TYPE_IMAGE:
+					if ($this->form->getInput('img_' . $lng)) {
+						$image = $this->form->getInput('img_' . $lng);
+
+						// Remove previous upload
+						if ((is_array($image) && empty($image["error"])) || $this->form->getInput('img_' . $lng . "_delete")) {
+							if (!empty($this->entry->getTranslations()[$lng])) {
+								$image_file = $image_folder . "/" . $this->entry->getTranslations()[$lng];
+								if (file_exists($image_file)) {
+									unlink($image_file);
+								}
+							}
+							$lngs[$lng] = "";
+						}
+
+						if (is_array($image) && empty($image["error"])) {
+							$tmp_name = $image["tmp_name"];
+							$ext = strrchr($image["name"], ".");
+							$image_file = ilUtil::randomhash() . $ext;
+
+							$image_path = $image_folder . "/" . $image_file;
+
+							ilUtil::moveUploadedFile($tmp_name, "", $image_path, false);
+
+							$lngs[$lng] = $image_file;
+						} else {
+							if (!$this->form->getInput('img_' . $lng . "_delete")) {
+								$lngs[$lng] = $this->entry->getTranslations()[$lng];
+							}
+						}
+						if (empty($lngs[$lng])) {
+							$lngs[$lng] = "";
+						}
+					}
+					$_POST['title_' . $lng] = $lngs[$lng];
+					break;
+				default:
+					break;
+			}
 		}
 		$this->entry->setTitleType($title_type);
 		$perm_type = $this->form->getInput('permission_type');

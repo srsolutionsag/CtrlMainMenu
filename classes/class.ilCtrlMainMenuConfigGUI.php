@@ -62,7 +62,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		if ($_GET['rl']) {
 			self::plugin()->getPluginObject()->updateLanguages();
 		}
-		self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/sortable.js');
+		self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/sortable.js');
 
 		ctrlmmMenu::includeAllTypes();
 	}
@@ -182,7 +182,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$form->setValuesByArray(array( 'activate_cache' => ilCtrlMainMenuConfig::getConfigValue('activate_cache') ));
 		$form->addCommandButton(self::CMD_UPDATE_CACHE_SETTINGS, self::plugin()->translate('update_cache_settings'));
 
-		self::dic()->template()->setContent($form->getHTML());
+		self::dic()->mainTemplate()->setContent($form->getHTML());
 	}
 
 
@@ -197,7 +197,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		self::dic()->tabs()->activateTab(self::TAB_CSS);
 		$this->initConfigurationForm();
 		$this->getValues();
-		self::dic()->template()->setContent($this->form->getHTML());
+		self::dic()->mainTemplate()->setContent($this->form->getHTML());
 	}
 
 
@@ -209,7 +209,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 
 	public function configure() {
 		$table = new ctrlmmEntryTableGUI($this, self::CMD_CONFIGURE, $_GET['parent_id'] ? $_GET['parent_id'] : 0);
-		self::dic()->template()->setContent($table->getHTML());
+		self::dic()->mainTemplate()->setContent($table->getHTML());
 	}
 
 
@@ -252,7 +252,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$select->addItem($se);
 		$select->addCommandButton(self::CMD_ADD_ENTRY, self::plugin()->translate('common_select'));
 		$select->addCommandButton(self::CMD_CONFIGURE, self::plugin()->translate('common_cancel'));
-		self::dic()->template()->setContent($select->getHTML());
+		self::dic()->mainTemplate()->setContent($select->getHTML());
 	}
 
 
@@ -265,7 +265,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$entry_gui = ctrlmmEntryInstaceFactory::getInstanceByTypeId($type_id)->getGUIObject($this);
 		$entry_gui->initForm();
 		$entry_gui->setFormValuesByArray();
-		self::dic()->template()->setContent($entry_gui->form->getHTML());
+		self::dic()->mainTemplate()->setContent($entry_gui->form->getHTML());
 	}
 
 
@@ -287,7 +287,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			}
 		}
 		$entry_gui->form->setValuesByPost();
-		self::dic()->template()->setContent($entry_gui->form->getHTML());
+		self::dic()->mainTemplate()->setContent($entry_gui->form->getHTML());
 	}
 
 
@@ -300,7 +300,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$entry_gui = ctrlmmEntryInstaceFactory::getInstanceByEntryId($_GET['entry_id'])->getGUIObject($this);
 		$entry_gui->initForm('update');
 		$entry_gui->setFormValuesByArray();
-		self::dic()->template()->setContent($entry_gui->form->getHTML());
+		self::dic()->mainTemplate()->setContent($entry_gui->form->getHTML());
 	}
 
 
@@ -327,7 +327,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			}
 		}
 		$entry_gui->form->setValuesByPost();
-		self::dic()->template()->setContent($entry_gui->form->getHTML());
+		self::dic()->mainTemplate()->setContent($entry_gui->form->getHTML());
 	}
 
 
@@ -339,7 +339,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 		$conf->setConfirm(self::plugin()->translate('common_delete'), self::CMD_DELETE_OBJECT);
 		$conf->setCancel(self::plugin()->translate('common_cancel'), self::CMD_CONFIGURE);
 		$conf->addItem('entry_id', $_GET['entry_id'], $entry->getTitle());
-		self::dic()->template()->setContent($conf->getHTML());
+		self::dic()->mainTemplate()->setContent($conf->getHTML());
 	}
 
 
@@ -415,7 +415,7 @@ class ilCtrlMainMenuConfigGUI extends ilPluginConfigGUI {
 			self::dic()->ctrl()->redirect($this, self::CMD_CSS_SETTINGS);
 		} else {
 			$this->form->setValuesByPost();
-			self::dic()->template()->setContent($this->form->getHtml());
+			self::dic()->mainTemplate()->setContent($this->form->getHtml());
 		}
 	}
 }

@@ -12,6 +12,7 @@ class ComposerStaticInite2d71506fbd166bbf4e6af0f4a4b2301
             'srag\\RemovePluginDataConfirm\\' => 29,
             'srag\\Plugins\\CtrlMainMenu\\' => 26,
             'srag\\DIC\\' => 9,
+            'srag\\ActiveRecordConfig\\' => 24,
         ),
     );
 
@@ -27,6 +28,10 @@ class ComposerStaticInite2d71506fbd166bbf4e6af0f4a4b2301
         'srag\\DIC\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
+        ),
+        'srag\\ActiveRecordConfig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/srag/activerecordconfig/src',
         ),
     );
 
@@ -76,6 +81,10 @@ class ComposerStaticInite2d71506fbd166bbf4e6af0f4a4b2301
         'ilUserInterfaceHookPlugin' => __DIR__ . '/../..' . '/../../../../../../../Services/UIComponent/classes/class.ilUserInterfaceHookPlugin.php',
         'ilUserUtil' => __DIR__ . '/../..' . '/../../../../../../../Services/User/classes/class.ilUserUtil.php',
         'iljQueryUtil' => __DIR__ . '/../..' . '/../../../../../../../Services/jQuery/classes/class.iljQueryUtil.php',
+        'srag\\ActiveRecordConfig\\ActiveRecordConfig' => __DIR__ . '/..' . '/srag/activerecordconfig/src/ActiveRecordConfig.php',
+        'srag\\ActiveRecordConfig\\ActiveRecordConfigFormGUI' => __DIR__ . '/..' . '/srag/activerecordconfig/src/ActiveRecordConfigFormGUI.php',
+        'srag\\ActiveRecordConfig\\ActiveRecordConfigGUI' => __DIR__ . '/..' . '/srag/activerecordconfig/src/ActiveRecordConfigGUI.php',
+        'srag\\ActiveRecordConfig\\Exception\\ActiveRecordConfigException' => __DIR__ . '/..' . '/srag/activerecordconfig/src/Exception/ActiveRecordConfigException.php',
         'srag\\DIC\\DICStatic' => __DIR__ . '/..' . '/srag/dic/src/DICStatic.php',
         'srag\\DIC\\DICStaticInterface' => __DIR__ . '/..' . '/srag/dic/src/DICStaticInterface.php',
         'srag\\DIC\\DICTrait' => __DIR__ . '/..' . '/srag/dic/src/DICTrait.php',
@@ -86,6 +95,8 @@ class ComposerStaticInite2d71506fbd166bbf4e6af0f4a4b2301
         'srag\\DIC\\Exception\\DICException' => __DIR__ . '/..' . '/srag/dic/src/Exception/DICException.php',
         'srag\\DIC\\Plugin\\Plugin' => __DIR__ . '/..' . '/srag/dic/src/Plugin/Plugin.php',
         'srag\\DIC\\Plugin\\PluginInterface' => __DIR__ . '/..' . '/srag/dic/src/Plugin/PluginInterface.php',
+        'srag\\DIC\\Version\\Version' => __DIR__ . '/..' . '/srag/dic/src/Version/Version.php',
+        'srag\\DIC\\Version\\VersionInterface' => __DIR__ . '/..' . '/srag/dic/src/Version/VersionInterface.php',
         'srag\\Plugins\\CtrlMainMenu\\AdvancedSelectionListDropdown\\ctrlmmEntryAdvancedSelectionListDropdownGUI' => __DIR__ . '/../..' . '/src/AdvancedSelectionListDropdown/ctrlmmEntryAdvancedSelectionListDropdownGUI.php',
         'srag\\Plugins\\CtrlMainMenu\\Checker\\ctrlmmChecker' => __DIR__ . '/../..' . '/src/Checker/ctrlmmChecker.php',
         'srag\\Plugins\\CtrlMainMenu\\Checker\\ctrlmmPermissionChecker' => __DIR__ . '/../..' . '/src/Checker/ctrlmmPermissionChecker.php',

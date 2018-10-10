@@ -65,17 +65,17 @@ class ctrlmmMenuGUI {
 	public function __construct($id = 0) {
 		$this->object = new ctrlmmMenu($id);
 
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/ctrlmm.css');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/ctrlmm.css');
 		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_CSS_PREFIX) == 'fb') {
-			self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/fb.css');
+			self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/fb.css');
 		}
 		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_SIMPLE_FORM_VALIDATION)) {
-			self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/forms.css');
-			self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/forms.js');
+			self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/forms.css');
+			self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/forms.js');
 		}
 		if (ilCtrlMainMenuConfig::getConfigValue(ilCtrlMainMenuConfig::F_DOUBLECLICK_PREVENTION)) {
-			self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/click.css');
-			self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/click.js');
+			self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/click.css');
+			self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/click.js');
 		}
 	}
 

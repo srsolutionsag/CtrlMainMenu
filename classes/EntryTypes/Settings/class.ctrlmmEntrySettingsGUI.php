@@ -47,8 +47,8 @@ class ctrlmmEntrySettingsGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	protected function getContent() {
 		self::dic()->language()->loadLanguageModule('mail');
 
-		self::dic()->template()->addJavaScript(self::plugin()->directory() . '/templates/js/settings.js');
-		self::dic()->template()->addCss(self::plugin()->directory() . '/templates/css/settings.css');
+		self::dic()->mainTemplate()->addJavaScript(self::plugin()->directory() . '/templates/js/settings.js');
+		self::dic()->mainTemplate()->addCss(self::plugin()->directory() . '/templates/css/settings.css');
 
 		$form = new ilPropertyFormGUI();
 

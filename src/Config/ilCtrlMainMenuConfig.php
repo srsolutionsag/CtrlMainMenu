@@ -19,6 +19,9 @@ use srag\DIC\DICTrait;
 class ilCtrlMainMenuConfig extends ActiveRecord {
 
 	use DICTrait;
+	/**
+	 * @deprecated
+	 */
 	const PLUGIN_CLASS_NAME = ilCtrlMainMenuPlugin::class;
 	/**
 	 * @deprecated

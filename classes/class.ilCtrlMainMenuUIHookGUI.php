@@ -57,8 +57,28 @@ class ilCtrlMainMenuUIHookGUI extends ilUIHookPluginGUI {
 
 		$menu_only = ($a_comp == 'Services/MainMenu' AND $a_part == 'main_menu_list_entries');
 		if ($menu_only && !self::$replaced AND !$replace) {
-			$mm = new ctrlmmMenuGUI(0);
 			self::$replaced = true;
+
+			if (ilCtrlMainMenuPlugin::isGlobalCacheActive()) {
+				$ilGlobalCache = ilGlobalCache::getInstance(ilGlobalCache::COMP_ILCTRL);
+				if ($ilGlobalCache->isActive()) {
+					if(strlen($ilGlobalCache->get('ctrlmm_html_usr_'.self::dic()->user()->getId())) > 0) {
+						$mm_html = $ilGlobalCache->get('ctrlmm_html_usr_'.self::dic()->user()->getId());
+						return array(
+							'mode' => ilUIHookPluginGUI::REPLACE,
+							'html' => $mm_html
+						);
+					}
+				}
+			}
+
+			$mm = new ctrlmmMenuGUI(0);
+			if (ilCtrlMainMenuPlugin::isGlobalCacheActive()) {
+				$ilGlobalCache = ilGlobalCache::getInstance(ilGlobalCache::COMP_ILCTRL);
+				if ($ilGlobalCache->isActive()) {
+					$ilGlobalCache->set('ctrlmm_html_usr_'.self::dic()->user()->getId(),$mm->getHTML());
+				}
+			}
 
 			return array(
 				'mode' => ilUIHookPluginGUI::REPLACE,

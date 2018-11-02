@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "66006d802a34fb78f54d5379a7236231",
+    "content-hash": "e5149580e42e16a90175700df9aacf31",
     "packages": [
         {
             "name": "srag/activerecordconfig",
-            "version": "0.6.4",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/ActiveRecordConfig.git",
-                "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e"
+                "reference": "b51e5032dfeef0e46facdf6a11a489ba37c5741d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/c67b5662ce36645a44ecb1491780cefbb14f935e",
-                "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e",
+                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/b51e5032dfeef0e46facdf6a11a489ba37c5741d",
+                "reference": "b51e5032dfeef0e46facdf6a11a489ba37c5741d",
                 "shasum": ""
             },
             "require": {
@@ -49,20 +49,20 @@
                 "activerecord",
                 "config"
             ],
-            "time": "2018-09-17T09:03:25+00:00"
+            "time": "2018-11-02T13:48:13+00:00"
         },
         {
             "name": "srag/dic",
-            "version": "v0.9.1",
+            "version": "v0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749"
+                "reference": "7b4208ac5d0733e13d443099aac45dd89cf14b29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/654c519756eb9d00ea057a5d7a1c32120ade5749",
-                "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/7b4208ac5d0733e13d443099aac45dd89cf14b29",
+                "reference": "7b4208ac5d0733e13d443099aac45dd89cf14b29",
                 "shasum": ""
             },
             "require": {
@@ -94,7 +94,7 @@
                 "globals",
                 "trait"
             ],
-            "time": "2018-10-08T13:22:42+00:00"
+            "time": "2018-10-15T12:09:44+00:00"
         },
         {
             "name": "srag/removeplugindataconfirm",
@@ -151,7 +151,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=5.5"
     },
     "platform-dev": []
 }

@@ -685,7 +685,11 @@ class ctrlmmEntry extends ActiveRecord {
 					if (file_exists($path)) {
 						require_once $path;
 						if (class_exists($class_name)) {
-							$access_object = new $class_name;
+							if (method_exists($class_name, "getInstance")) {
+								$access_object = $class_name::getInstance();
+							} else {
+								$access_object = new $class_name();
+							}
 
 							if (method_exists($access_object, $method_name)) {
 								if ($access_object->$method_name()) {

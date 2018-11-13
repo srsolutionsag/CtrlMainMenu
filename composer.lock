@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5149580e42e16a90175700df9aacf31",
+    "content-hash": "2f2a6c6cac7f99b1ce4aa4f2edf316f1",
     "packages": [
         {
             "name": "srag/activerecordconfig",
-            "version": "v0.8.0",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/ActiveRecordConfig.git",
-                "reference": "b51e5032dfeef0e46facdf6a11a489ba37c5741d"
+                "reference": "55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/b51e5032dfeef0e46facdf6a11a489ba37c5741d",
-                "reference": "b51e5032dfeef0e46facdf6a11a489ba37c5741d",
+                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d",
+                "reference": "55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "activerecord",
                 "config"
             ],
-            "time": "2018-11-02T13:48:13+00:00"
+            "time": "2018-11-08T07:41:24+00:00"
         },
         {
             "name": "srag/dic",
@@ -97,17 +97,60 @@
             "time": "2018-10-15T12:09:44+00:00"
         },
         {
-            "name": "srag/removeplugindataconfirm",
-            "version": "0.2.5",
+            "name": "srag/librariesnamespacechanger",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/studer-raimann/RemovePluginDataConfirm.git",
-                "reference": "911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f"
+                "url": "https://github.com/studer-raimann/LibrariesNamespaceChanger.git",
+                "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f",
-                "reference": "911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f",
+                "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
+                "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\LibrariesNamespaceChanger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Change namespace of libraries to plugin namespace",
+            "homepage": "https://github.com/studer-raimann/LibrariesNamespaceChanger",
+            "keywords": [
+                "ILIAS",
+                "libraries"
+            ],
+            "time": "2018-11-13T10:30:02+00:00"
+        },
+        {
+            "name": "srag/removeplugindataconfirm",
+            "version": "v0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/RemovePluginDataConfirm.git",
+                "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/b816ca0856d77eb245e445e7529fcd4906d666a5",
+                "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5",
                 "shasum": ""
             },
             "require": {
@@ -141,7 +184,7 @@
                 "plugin",
                 "uninstall"
             ],
-            "time": "2018-09-17T09:07:15+00:00"
+            "time": "2018-11-08T06:26:27+00:00"
         }
     ],
     "packages-dev": [],

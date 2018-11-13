@@ -26,7 +26,7 @@ namespace srag\Plugins\CtrlMainMenu\Menu;
 
 use ilCtrlMainMenuPlugin;
 use ReflectionClass;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmData;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation;

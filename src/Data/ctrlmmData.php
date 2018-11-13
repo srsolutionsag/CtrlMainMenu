@@ -4,7 +4,7 @@ namespace srag\Plugins\CtrlMainMenu\Data;
 
 use ActiveRecord;
 use ilCtrlMainMenuPlugin;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * ctrlmmData

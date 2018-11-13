@@ -1,46 +1,5 @@
 # Changelog
 
-## [0.9.4]
-- Fix on some strange PHP versions
-
-## [0.9.3]
-- Fixes
-
-## [0.9.2]
-- Add missing return in `setField`
-
-## [0.9.1]
-- Easier: Default value is now voluntary
-
-## [0.9.0]
-- Rewrite ActiveRecordConfig for supports easier handling fields: Define your fields in the `$fields` variable and access by `getField`, `setField` and `removeField
-- DateTime datatype
-
-## [0.8.0]
-- getCmdForTab and redirectToTab
-
-## [0.7.5]
-- Fix boolean datatype
-
-## [0.7.4]
-- Fix
-
-## [0.7.3]
-- Fix
-
-## [0.7.2]
-- Fix
-
-## [0.7.1]
-- Fix
-
-## [0.7.0]
-- Correctly store boolean
-- Rename setForm to initForm
-- LANG_MODULE_CONFIG
-- Multiple config tabs support
-- Config table gui support
-
 ## [0.6.4]
 - Update readme
 

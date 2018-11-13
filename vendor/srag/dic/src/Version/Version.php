@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\DIC\CtrlMainMenu\Version;
+namespace srag\DIC\Version;
 
 /**
  * Class Version
  *
- * @package srag\DIC\CtrlMainMenu\Version
+ * @package srag\DIC\Version
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

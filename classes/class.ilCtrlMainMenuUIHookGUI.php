@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
 use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenuGUI;
 

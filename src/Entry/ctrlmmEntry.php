@@ -8,7 +8,7 @@ use ilLanguage;
 use ilUtil;
 use ReflectionClass;
 use ReflectionProperty;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmData;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation;
 use srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory;

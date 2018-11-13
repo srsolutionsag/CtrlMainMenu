@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\CtrlMainMenu\Plugin;
+namespace srag\DIC\Plugin;
 
 use ilConfirmationGUI;
 use ilPlugin;
@@ -9,13 +9,13 @@ use ilTable2GUI;
 use ilTemplate;
 use ilTemplateException;
 use JsonSerializable;
-use srag\DIC\CtrlMainMenu\Exception\DICException;
+use srag\DIC\Exception\DICException;
 use stdClass;
 
 /**
  * Interface PluginInterface
  *
- * @package srag\DIC\CtrlMainMenu\Plugin
+ * @package srag\DIC\Plugin
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

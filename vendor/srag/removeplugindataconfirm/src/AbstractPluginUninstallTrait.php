@@ -1,18 +1,16 @@
 <?php
 
-namespace srag\RemovePluginDataConfirm\CtrlMainMenu;
+namespace srag\RemovePluginDataConfirm;
 
 use ilUIPluginRouterGUI;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 
 /**
  * Trait AbstractPluginUninstallTrait
  *
- * @package srag\RemovePluginDataConfirm\CtrlMainMenu
+ * @package srag\RemovePluginDataConfirm
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
- *
- * @access  namespace
  */
 trait AbstractPluginUninstallTrait {
 
@@ -35,8 +33,6 @@ trait AbstractPluginUninstallTrait {
 
 	/**
 	 * @var AbstractRemovePluginDataConfirm[]
-	 *
-	 * @access namespace
 	 */
 	private static $remove_plugin_data_confirm_classes = [];
 
@@ -78,9 +74,10 @@ trait AbstractPluginUninstallTrait {
 			if ($remove_data) {
 				$this->deleteData();
 			}
+		} else {
+			// Ask again if reinstalled
+			$remove_plugin_data_confirm_class->removeUninstallRemovesData();
 		}
-
-		$remove_plugin_data_confirm_class->removeUninstallRemovesData();
 
 		return true;
 	}
@@ -95,8 +92,6 @@ trait AbstractPluginUninstallTrait {
 
 	/**
 	 * @return bool
-	 *
-	 * @access namespace
 	 */
 	private static final function getRemovePluginDataConfirmConst()/*: bool*/ {
 		if (defined("static::REMOVE_PLUGIN_DATA_CONFIRM")) {
@@ -143,8 +138,6 @@ trait AbstractPluginUninstallTrait {
 
 	/**
 	 * @throws RemovePluginDataConfirmException Your class needs to implement the REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME constant!
-	 *
-	 * @access namespace
 	 */
 	private static final function checkRemovePluginDataConfirmClassNameConst()/*: void*/ {
 		if (!defined("static::REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME") || empty(static::REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME)) {

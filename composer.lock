@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f2a6c6cac7f99b1ce4aa4f2edf316f1",
+    "content-hash": "66006d802a34fb78f54d5379a7236231",
     "packages": [
         {
             "name": "srag/activerecordconfig",
-            "version": "v0.9.4",
+            "version": "0.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/ActiveRecordConfig.git",
-                "reference": "55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d"
+                "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d",
-                "reference": "55d2213f1e0c9d4bd4a9e9dc9d51e5493d03152d",
+                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/c67b5662ce36645a44ecb1491780cefbb14f935e",
+                "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e",
                 "shasum": ""
             },
             "require": {
@@ -49,20 +49,20 @@
                 "activerecord",
                 "config"
             ],
-            "time": "2018-11-08T07:41:24+00:00"
+            "time": "2018-09-17T09:03:25+00:00"
         },
         {
             "name": "srag/dic",
-            "version": "v0.10.3",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/DIC.git",
-                "reference": "7b4208ac5d0733e13d443099aac45dd89cf14b29"
+                "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/7b4208ac5d0733e13d443099aac45dd89cf14b29",
-                "reference": "7b4208ac5d0733e13d443099aac45dd89cf14b29",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/654c519756eb9d00ea057a5d7a1c32120ade5749",
+                "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749",
                 "shasum": ""
             },
             "require": {
@@ -94,63 +94,20 @@
                 "globals",
                 "trait"
             ],
-            "time": "2018-10-15T12:09:44+00:00"
-        },
-        {
-            "name": "srag/librariesnamespacechanger",
-            "version": "v0.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/studer-raimann/LibrariesNamespaceChanger.git",
-                "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
-                "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "srag\\LibrariesNamespaceChanger\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "studer + raimann ag - Team Custom 1",
-                    "email": "support-custom1@studer-raimann.ch",
-                    "homepage": "https://studer-raimann.ch",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Change namespace of libraries to plugin namespace",
-            "homepage": "https://github.com/studer-raimann/LibrariesNamespaceChanger",
-            "keywords": [
-                "ILIAS",
-                "libraries"
-            ],
-            "time": "2018-11-13T10:30:02+00:00"
+            "time": "2018-10-08T13:22:42+00:00"
         },
         {
             "name": "srag/removeplugindataconfirm",
-            "version": "v0.3.1",
+            "version": "0.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/studer-raimann/RemovePluginDataConfirm.git",
-                "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5"
+                "reference": "911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/b816ca0856d77eb245e445e7529fcd4906d666a5",
-                "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5",
+                "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f",
+                "reference": "911c0ff316181c3efdf9068cf1cc2eb0e5ed6c8f",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +141,7 @@
                 "plugin",
                 "uninstall"
             ],
-            "time": "2018-11-08T06:26:27+00:00"
+            "time": "2018-09-17T09:07:15+00:00"
         }
     ],
     "packages-dev": [],
@@ -194,7 +151,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5"
+        "php": ">=5.6"
     },
     "platform-dev": []
 }

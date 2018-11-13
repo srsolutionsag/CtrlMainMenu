@@ -7,7 +7,7 @@ use ilCtrlMainMenuConfigGUI;
 use ilCtrlMainMenuPlugin;
 use ilLinkButton;
 use ilTable2GUI;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 use srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory;
 use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu;
 

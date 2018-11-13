@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\CtrlMainMenu\DIC;
+namespace srag\DIC\DIC;
 
 use Collator;
 use ilAccess;
@@ -43,12 +43,12 @@ use ilTemplate;
 use ilToolbarGUI;
 use ilTree;
 use Session;
-use srag\DIC\CtrlMainMenu\Exception\DICException;
+use srag\DIC\Exception\DICException;
 
 /**
  * Interface DICInterface
  *
- * @package srag\DIC\CtrlMainMenu\DIC
+ * @package srag\DIC\DIC
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

@@ -4,7 +4,7 @@ namespace srag\Plugins\CtrlMainMenu\Config;
 
 use ActiveRecord;
 use ilCtrlMainMenuPlugin;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * Class Configuration
@@ -14,7 +14,7 @@ use srag\DIC\DICTrait;
  * @author     Michael Heren <mh@studer-raimann.ch>
  * @author     Fabian Schmid <fs@studer-raimann.ch>
  *
- * @deprecated TODO: Use srag\ActiveRecordConfig
+ * @deprecated TODO: Use srag\ActiveRecordConfig\CtrlMainMenu
  */
 class ilCtrlMainMenuConfig extends ActiveRecord {
 

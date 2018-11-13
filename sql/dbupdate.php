@@ -48,19 +48,19 @@ if (!\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::entriesExistForType(\srag\Plu
 ?>
 <#6>
 <?php
-\srag\DIC\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, 'parent', array(
+\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, 'parent', array(
 	'length' => '8',
 ));
 ?>
 <#7>
 <?php
-if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type')) {
-	\srag\DIC\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableColumnExists(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type')) {
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
 		'notnull' => true,
 		'default' => \srag\Plugins\CtrlMainMenu\Data\ctrlmmData::DATA_TYPE_STRING,
 	));
 } else {
-	\srag\DIC\DICStatic::dic()->database()->addTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->addTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, 'data_type', array(
 		'type' => 'text',
 		'notnull' => true,
 		'length' => 10,
@@ -70,19 +70,19 @@ if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists(\srag\Plugins\Ctrl
 ?>
 <#8>
 <?php
-\srag\DIC\DICStatic::dic()->database()->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
+\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->manipulate('DELETE FROM ctrl_classfile WHERE comp_prefix IN ("ui_uihk_ctrlmm", "ui_uihk_ctrlmainmenu");');
 ?>
 <#9>
 <?php
-\srag\DIC\DICStatic::dic()->database()
+\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()
 	->modifyTableColumn(\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::TABLE_NAME, 'language_key', array( "length" => 64 ));
 try {
-	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::TABLE_NAME, array(
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::TABLE_NAME, array(
 		'entry_id',
 		'language_key'
 	), 'i2');
-	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, array( 'parent_id' ), 'i2');
-	\srag\DIC\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, array( 'parent' ), 'i2');
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::TABLE_NAME, array( 'parent_id' ), 'i2');
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->addIndex(\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME, array( 'parent' ), 'i2');
 } catch (Exception $ex) {
 }
 ?>
@@ -103,15 +103,15 @@ foreach (\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::get() as $ctrlmmEntry) {
 <#11>
 <?php
 $table_column = \srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::TABLE_NAME;
-if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'type')) {
-	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'type', 'type_id');
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableColumnExists($table_column, 'type')) {
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->renameTableColumn($table_column, 'type', 'type_id');
 }
 $table_column = \srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::TABLE_NAME;
-if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'name')) {
-	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'name', 'name_key');
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableColumnExists($table_column, 'name')) {
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->renameTableColumn($table_column, 'name', 'name_key');
 }
-if (\srag\DIC\DICStatic::dic()->database()->tableColumnExists($table_column, 'value')) {
-	\srag\DIC\DICStatic::dic()->database()->renameTableColumn($table_column, 'value', 'field_value');
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableColumnExists($table_column, 'value')) {
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->renameTableColumn($table_column, 'value', 'field_value');
 }
 ?>
 <#12>

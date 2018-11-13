@@ -5,7 +5,7 @@ namespace srag\Plugins\CtrlMainMenu\EntryInstaceFactory;
 use ilCtrlMainMenuPlugin;
 use ilGlobalCache;
 use ilPluginAdmin;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 use srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry;
 use srag\Plugins\CtrlMainMenu\EntryTypes\Ctrl\ctrlmmEntryCtrl;
 use srag\Plugins\CtrlMainMenu\EntryTypes\Ctrl\ctrlmmEntryCtrlFormGUI;

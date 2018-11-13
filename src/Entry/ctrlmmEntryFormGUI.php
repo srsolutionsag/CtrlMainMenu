@@ -13,7 +13,7 @@ use ilRadioGroupInputGUI;
 use ilRadioOption;
 use ilRbacReview;
 use ilTextInputGUI;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 use srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu;
 
 /**

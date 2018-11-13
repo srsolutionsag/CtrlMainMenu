@@ -6,7 +6,7 @@ namespace srag\Plugins\CtrlMainMenu\Menu;
 //MST 20131130: I commented out the following line because of problems with ILIAS Modules which use include instead of include_once
 use ilCtrlMainMenuPlugin;
 use ilTemplate;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
 use srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry;
 use srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory;

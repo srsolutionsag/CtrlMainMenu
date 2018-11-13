@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Plugin;
+namespace srag\DIC\CtrlMainMenu\Plugin;
 
 use Exception;
 use ilConfirmationGUI;
@@ -10,14 +10,14 @@ use ilPropertyFormGUI;
 use ilTable2GUI;
 use ilTemplate;
 use JsonSerializable;
-use srag\DIC\DICTrait;
-use srag\DIC\Exception\DICException;
+use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\CtrlMainMenu\Exception\DICException;
 use stdClass;
 
 /**
  * Class Plugin
  *
- * @package srag\DIC\Plugin
+ * @package srag\DIC\CtrlMainMenu\Plugin
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

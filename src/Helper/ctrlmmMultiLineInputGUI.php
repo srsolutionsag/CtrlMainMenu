@@ -10,7 +10,7 @@ use ilFormPropertyGUI;
 use ilLanguage;
 use ilTemplate;
 use ilUtil;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * Class ctrlmmMultiLineInputGUI

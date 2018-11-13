@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DIC;
+namespace srag\DIC\CtrlMainMenu;
 
-use srag\DIC\DIC\DICInterface;
-use srag\DIC\Exception\DICException;
-use srag\DIC\Plugin\PluginInterface;
-use srag\DIC\Version\VersionInterface;
+use srag\DIC\CtrlMainMenu\DIC\DICInterface;
+use srag\DIC\CtrlMainMenu\Exception\DICException;
+use srag\DIC\CtrlMainMenu\Plugin\PluginInterface;
+use srag\DIC\CtrlMainMenu\Version\VersionInterface;
 
 /**
  * Interface DICStaticInterface
  *
- * @package srag\DIC
+ * @package srag\DIC\CtrlMainMenu
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

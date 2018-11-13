@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\ActiveRecordConfig;
+namespace srag\ActiveRecordConfig\CtrlMainMenu;
 
 use ActiveRecord;
 use arConnector;
 use arException;
 use DateTime;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * Class ActiveRecordConfig
  *
- * @package srag\ActiveRecordConfig
+ * @package srag\ActiveRecordConfig\CtrlMainMenu
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */

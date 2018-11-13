@@ -4,7 +4,7 @@ namespace srag\Plugins\CtrlMainMenu\Helper;
 
 use ilCtrlMainMenuPlugin;
 use ilUserDefinedFields;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * Class ctrlmmUserDataReplacer

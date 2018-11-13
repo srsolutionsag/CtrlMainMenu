@@ -28,7 +28,7 @@ Hint: Because of multiple autoloaders of plugins, it could be, that different ve
 Declare your config class basically like follow:
 ```php
 //...
-use srag\ActiveRecordConfig\ActiveRecordConfig;
+use srag\ActiveRecordConfig\CtrlMainMenu\ActiveRecordConfig;
 //...
 class XConfig extends ActiveRecordConfig {
 	//...
@@ -128,7 +128,7 @@ Other `ActiveRecord` methods should be not used!
 Create a class `ilXConfigGUI`:
 ```php
 //...
-use srag\ActiveRecordConfig\ActiveRecordConfigGUI;
+use srag\ActiveRecordConfig\CtrlMainMenu\ActiveRecordConfigGUI;
 //...
 class ilXConfigGUI extends ActiveRecordConfigGUI {
 	//...
@@ -139,7 +139,7 @@ class ilXConfigGUI extends ActiveRecordConfigGUI {
 and a class `XConfigFormGUI`:
 ```php
 //...
-use srag\ActiveRecordConfig\ActiveRecordConfigFormGUI;
+use srag\ActiveRecordConfig\CtrlMainMenu\ActiveRecordConfigFormGUI;
 //...
 class XConfigFormGUI extends ActiveRecordConfigFormGUI {
 	//...
@@ -210,13 +210,13 @@ Column name based:
 <?php
 XConfig::updateDB();
 
-if (\srag\DIC\DICStatic::dic()->database()->tableExists(XConfigOld::TABLE_NAME)) {
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableExists(XConfigOld::TABLE_NAME)) {
 	$config_old = XConfigOld::getConfig();
 
  	XConfig::setSome($config_old->getSome());
 	//...
 
-	\srag\DIC\DICStatic::dic()->database()->dropTable(XConfigOld::TABLE_NAME);
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->dropTable(XConfigOld::TABLE_NAME);
 }
 ?>
 ```
@@ -227,7 +227,7 @@ Key and value based (Similar to this library):
 <?php
 XConfig::updateDB();
 
-if (\srag\DIC\DICStatic::dic()->database()->tableExists(XConfigOld::TABLE_NAME)) {
+if (\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->tableExists(XConfigOld::TABLE_NAME)) {
 	foreach (XConfigOld::get() as $config) {
 		/**
 		 * @var XConfigOld $config
@@ -242,7 +242,7 @@ if (\srag\DIC\DICStatic::dic()->database()->tableExists(XConfigOld::TABLE_NAME))
 		}
 	}
 
-	\srag\DIC\DICStatic::dic()->database()->dropTable(XConfigOld::TABLE_NAME);
+	\srag\DIC\CtrlMainMenu\DICStatic::dic()->database()->dropTable(XConfigOld::TABLE_NAME);
 }
 ?>
 ```

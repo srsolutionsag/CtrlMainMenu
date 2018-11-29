@@ -96,7 +96,7 @@ use_image#:#Pfeilbild verwenden
 use_user_image#:#Benutzerbild statt Titel verwenden
 disable_active#:#Aktive Einträge deaktivieren
 wrong_child_type#:#MISSING wrong_child_type
-ilctrl_error#:#ilCtrl-Error!
+ilctrl_error#:#ilCtrl-Error
 title_type#:#Typ
 title_type_info#:#
 title_type_text#:#Text
@@ -108,6 +108,6 @@ removeplugindataconfirm_confirm_remove_data#:#Möchten Sie die %1$s-Daten auch e
 removeplugindataconfirm_deactivate#:#%1$s-Plugin nur deaktivieren
 removeplugindataconfirm_data#:#%1$s-Daten
 removeplugindataconfirm_keep_data#:#%1$s-Daten behalten
-removeplugindataconfirm_msg_kept_data#:#Die %1$s-Daten wurden behalten!
-removeplugindataconfirm_msg_removed_data#:#Die %1$s-Daten wurden auch entfernt!
+removeplugindataconfirm_msg_kept_data#:#Die %1$s-Daten wurden behalten
+removeplugindataconfirm_msg_removed_data#:#Die %1$s-Daten wurden auch entfernt
 removeplugindataconfirm_remove_data#:#Entferne %1$s-Daten

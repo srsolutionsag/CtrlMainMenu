@@ -9,6 +9,7 @@ use ilCheckboxInputGUI;
 use ilHelp;
 use ilMailGlobalServices;
 use ilMailGUI;
+use ilMyStaffAccess;
 use ilObjUserTracking;
 use ilPersonalDesktopGUI;
 use ilSetting;
@@ -131,6 +132,17 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 		$this->gl->addSeparator();
 
 		$separator = false;
+
+		if (self::dic()->settings()->get("enable_my_staff") and ilMyStaffAccess::getInstance()->hasCurrentUserAccessToMyStaff() == true) {
+			// my staff
+			$ctrlmmGLEntry = new ctrlmmGLEntry();
+			$ctrlmmGLEntry->setId('mm_pd_mst');
+			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('my_staff'));
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToMyStaff');
+			$this->addGLEntry($ctrlmmGLEntry);
+
+			$separator = true;
+		}
 
 		if (!self::dic()->settings()->get('disable_personal_workspace')) {
 			// workspace

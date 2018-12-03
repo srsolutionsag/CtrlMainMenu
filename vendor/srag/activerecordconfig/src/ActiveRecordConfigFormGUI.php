@@ -1,14 +1,14 @@
 <?php
 
-namespace srag\ActiveRecordConfig\CtrlMainMenu;
+namespace srag\ActiveRecordConfig;
 
 use ilPropertyFormGUI;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 
 /**
  * Class ActiveRecordConfigFormGUI
  *
- * @package srag\ActiveRecordConfig\CtrlMainMenu
+ * @package srag\ActiveRecordConfig
  *
  * @author  studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  */
@@ -19,38 +19,31 @@ abstract class ActiveRecordConfigFormGUI extends ilPropertyFormGUI {
 	 * @var ActiveRecordConfigGUI
 	 */
 	protected $parent;
-	/**
-	 * @var string
-	 */
-	protected $tab_id;
 
 
 	/**
 	 * ActiveRecordConfigFormGUI constructor
 	 *
 	 * @param ActiveRecordConfigGUI $parent
-	 * @param string                $tab_id
 	 */
-	public function __construct(ActiveRecordConfigGUI $parent, /*string*/
-		$tab_id) {
+	public function __construct(ActiveRecordConfigGUI $parent) {
 		parent::__construct();
 
 		$this->parent = $parent;
-		$this->tab_id = $tab_id;
 
-		$this->initForm();
+		$this->setForm();
 	}
 
 
 	/**
 	 *
 	 */
-	protected function initForm()/*: void*/ {
+	protected function setForm()/*: void*/ {
 		$this->setFormAction(self::dic()->ctrl()->getFormAction($this->parent));
 
-		$this->setTitle($this->txt($this->tab_id));
+		$this->setTitle($this->txt("configuration"));
 
-		$this->addCommandButton(ActiveRecordConfigGUI::CMD_UPDATE_CONFIGURE . "_" . $this->tab_id, $this->txt("save"));
+		$this->addCommandButton(ActiveRecordConfigGUI::CMD_UPDATE_CONFIGURE, $this->txt("save"));
 	}
 
 
@@ -66,8 +59,8 @@ abstract class ActiveRecordConfigFormGUI extends ilPropertyFormGUI {
 	 *
 	 * @return string
 	 */
-	protected final function txt(/*string*/
+	private final function txt(/*string*/
 		$key)/*: string*/ {
-		return self::plugin()->translate($key, ActiveRecordConfigGUI::LANG_MODULE_CONFIG);
+		return self::plugin()->translate($key, "activerecordconfig");
 	}
 }

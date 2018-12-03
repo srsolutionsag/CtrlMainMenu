@@ -5,7 +5,7 @@ namespace srag\Plugins\CtrlMainMenu\Data;
 use ActiveRecord;
 use ilCtrlMainMenuPlugin;
 use ilLanguage;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 
 /**
  * ctrlmmTranslation

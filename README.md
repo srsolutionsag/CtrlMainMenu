@@ -14,12 +14,10 @@ git clone https://github.com/studer-raimann/CtrlMainMenu.git
 As ILIAS administrator go to "Administration->Plugins" and install/activate the plugin.  
 
 ### Dependencies
-* ILIAS 5.2 or ILIAS 5.3
 * PHP >=5.5
 * [composer](https://getcomposer.org)
 * [srag/activerecordconfig](https://packagist.org/packages/srag/activerecordconfig)
 * [srag/dic](https://packagist.org/packages/srag/dic)
-* [srag/librariesnamespacechanger](https://packagist.org/packages/srag/librariesnamespacechanger)
 * [srag/removeplugindataconfirm](https://packagist.org/packages/srag/removeplugindataconfirm)
 
 Please use it for further development!

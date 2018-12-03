@@ -1,6 +1,7 @@
 {
   "name": "srag/activerecordconfig",
   "description": "Simple ActiveRecord config for ILIAS plugins",
+  "version": "0.6.4",
   "type": "library",
   "keywords": [
     "ILIAS",
@@ -26,12 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\ActiveRecordConfig\\CtrlMainMenu\\": "src/"
+      "srag\\ActiveRecordConfig\\": "src/"
     }
-  },
-  "config": {
-    "classmap-authoritative": true,
-    "optimize-autoloader": true,
-    "sort-packages": true
   }
 }

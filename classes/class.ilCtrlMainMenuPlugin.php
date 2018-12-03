@@ -6,7 +6,7 @@ use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmData;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation;
 use srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry;
-use srag\RemovePluginDataConfirm\CtrlMainMenu\PluginUninstallTrait;
+use srag\RemovePluginDataConfirm\PluginUninstallTrait;
 
 /**
  * Class ilCtrlMainMenuPlugin

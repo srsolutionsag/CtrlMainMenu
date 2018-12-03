@@ -5,7 +5,7 @@ namespace srag\Plugins\CtrlMainMenu\Checker;
 use ilAuthFactory;
 use ilContext;
 use ilCtrlMainMenuPlugin;
-use srag\DIC\CtrlMainMenu\DICTrait;
+use srag\DIC\DICTrait;
 
 /**
  * Class ctrlmmChecker

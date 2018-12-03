@@ -11,14 +11,14 @@
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "studer + raimann ag - Team Core",
-      "email": "support-core@studer-raimann.ch",
+      "name": "studer + raimann ag - Team Core 1",
+      "email": "support-core1@studer-raimann.ch",
       "homepage": "https://studer-raimann.ch",
       "role": "Developer"
     }
   ],
   "support": {
-    "email": "support-core@studer-raimann.ch"
+    "email": "support-core1@studer-raimann.ch"
   },
   "require": {
     "php": ">=5.5",

@@ -1,29 +1,30 @@
 [
     {
         "name": "srag/activerecordconfig",
-        "version": "0.6.4",
-        "version_normalized": "0.6.4.0",
+        "version": "v0.13.2",
+        "version_normalized": "0.13.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/ActiveRecordConfig.git",
-            "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e"
+            "reference": "4c12107c37cafe977c3a99bae4c57ec16929e97a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/c67b5662ce36645a44ecb1491780cefbb14f935e",
-            "reference": "c67b5662ce36645a44ecb1491780cefbb14f935e",
+            "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/4c12107c37cafe977c3a99bae4c57ec16929e97a",
+            "reference": "4c12107c37cafe977c3a99bae4c57ec16929e97a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6",
+            "srag/custominputguis": ">=0.1.0",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2018-09-17T09:03:25+00:00",
+        "time": "2018-11-23T10:42:57+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "srag\\ActiveRecordConfig\\": "src/"
+                "srag\\ActiveRecordConfig\\CtrlMainMenu\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -47,29 +48,78 @@
         ]
     },
     {
-        "name": "srag/dic",
-        "version": "v0.9.1",
-        "version_normalized": "0.9.1.0",
+        "name": "srag/custominputguis",
+        "version": "v0.13.20",
+        "version_normalized": "0.13.20.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/studer-raimann/DIC.git",
-            "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749"
+            "url": "https://github.com/studer-raimann/CustomInputGUIs.git",
+            "reference": "1d84cfda42824db9a7f86a750cee06cfd5bbf7d8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/654c519756eb9d00ea057a5d7a1c32120ade5749",
-            "reference": "654c519756eb9d00ea057a5d7a1c32120ade5749",
+            "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/1d84cfda42824db9a7f86a750cee06cfd5bbf7d8",
+            "reference": "1d84cfda42824db9a7f86a750cee06cfd5bbf7d8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6",
+            "srag/dic": ">=0.1.0"
+        },
+        "time": "2018-12-04T06:43:31+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "srag\\CustomInputGUIs\\CtrlMainMenu\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0-only"
+        ],
+        "authors": [
+            {
+                "name": "studer + raimann ag - Team Custom 1",
+                "email": "support-custom1@studer-raimann.ch",
+                "homepage": "https://studer-raimann.ch",
+                "role": "Developer"
+            }
+        ],
+        "description": "Custom Input-GUI's",
+        "homepage": "https://github.com/studer-raimann/CustomInputGUIs",
+        "keywords": [
+            "ILIAS",
+            "PropertyForm",
+            "gui",
+            "input",
+            "table"
+        ]
+    },
+    {
+        "name": "srag/dic",
+        "version": "v0.14.3",
+        "version_normalized": "0.14.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/studer-raimann/DIC.git",
+            "reference": "40943be9fc2a4953df8ceaf46942c2f302115b68"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/40943be9fc2a4953df8ceaf46942c2f302115b68",
+            "reference": "40943be9fc2a4953df8ceaf46942c2f302115b68",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2018-10-08T13:22:42+00:00",
+        "time": "2018-12-04T14:30:51+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "srag\\DIC\\": "src/"
+                "srag\\DIC\\CtrlMainMenu\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -95,23 +145,23 @@
     },
     {
         "name": "srag/librariesnamespacechanger",
-        "version": "v0.3.2",
-        "version_normalized": "0.3.2.0",
+        "version": "v0.3.6",
+        "version_normalized": "0.3.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/LibrariesNamespaceChanger.git",
-            "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb"
+            "reference": "cf5f3be4341270fbe46a977bbd1403d744fb797a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
-            "reference": "60c9c9293acb9a2b9d51b3ce3ce18722c0ac87bb",
+            "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/cf5f3be4341270fbe46a977bbd1403d744fb797a",
+            "reference": "cf5f3be4341270fbe46a977bbd1403d744fb797a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6"
         },
-        "time": "2018-11-13T10:30:02+00:00",
+        "time": "2018-11-21T08:31:42+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -140,29 +190,29 @@
     },
     {
         "name": "srag/removeplugindataconfirm",
-        "version": "v0.3.1",
-        "version_normalized": "0.3.1.0",
+        "version": "v0.3.3",
+        "version_normalized": "0.3.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/studer-raimann/RemovePluginDataConfirm.git",
-            "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5"
+            "reference": "0a4c2efb645c77ed609885366d3ac8f17c1dedbc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/b816ca0856d77eb245e445e7529fcd4906d666a5",
-            "reference": "b816ca0856d77eb245e445e7529fcd4906d666a5",
+            "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/0a4c2efb645c77ed609885366d3ac8f17c1dedbc",
+            "reference": "0a4c2efb645c77ed609885366d3ac8f17c1dedbc",
             "shasum": ""
         },
         "require": {
             "php": ">=5.6",
             "srag/dic": ">=0.1.0"
         },
-        "time": "2018-11-08T06:26:27+00:00",
+        "time": "2018-11-28T08:24:16+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "srag\\RemovePluginDataConfirm\\": "src/"
+                "srag\\RemovePluginDataConfirm\\CtrlMainMenu\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",

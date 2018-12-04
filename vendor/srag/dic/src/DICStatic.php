@@ -4,12 +4,16 @@ namespace srag\DIC\CtrlMainMenu;
 
 use ilLogLevel;
 use ilPlugin;
-use League\Flysystem\PluginInterface;
 use srag\DIC\CtrlMainMenu\DIC\DICInterface;
-use srag\DIC\CtrlMainMenu\DIC\LegacyDIC;
-use srag\DIC\CtrlMainMenu\DIC\NewDIC;
+use srag\DIC\CtrlMainMenu\DIC\Implementation\ILIAS52DIC;
+use srag\DIC\CtrlMainMenu\DIC\Implementation\ILIAS53DIC;
+use srag\DIC\CtrlMainMenu\DIC\Implementation\ILIAS54DIC;
+use srag\DIC\CtrlMainMenu\DIC\Implementation\LegacyDIC;
 use srag\DIC\CtrlMainMenu\Exception\DICException;
+use srag\DIC\CtrlMainMenu\Output\Output;
+use srag\DIC\CtrlMainMenu\Output\OutputInterface;
 use srag\DIC\CtrlMainMenu\Plugin\Plugin;
+use srag\DIC\CtrlMainMenu\Plugin\PluginInterface;
 use srag\DIC\CtrlMainMenu\Version\Version;
 use srag\DIC\CtrlMainMenu\Version\VersionInterface;
 
@@ -27,6 +31,10 @@ final class DICStatic implements DICStaticInterface {
 	 */
 	private static $dic = NULL;
 	/**
+	 * @var OutputInterface|null
+	 */
+	private static $output = NULL;
+	/**
 	 * @var PluginInterface[]
 	 */
 	private static $plugins = [];
@@ -39,18 +47,55 @@ final class DICStatic implements DICStaticInterface {
 	/**
 	 * @inheritdoc
 	 */
+	public static function clearCache()/*: void*/ {
+		self::$dic = NULL;
+		self::$output = NULL;
+		self::$plugins = [];
+		self::$version = NULL;
+	}
+
+
+	/**
+	 * @inheritdoc
+	 */
 	public static function dic()/*: DICInterface*/ {
 		if (self::$dic === NULL) {
-			if (self::version()->is52()) {
-				global $DIC;
-				self::$dic = new NewDIC($DIC);
-			} else {
-				global $GLOBALS;
-				self::$dic = new LegacyDIC($GLOBALS);
+			switch (true) {
+				case (self::version()->isLower(VersionInterface::ILIAS_VERSION_5_2)):
+					global $GLOBALS;
+					self::$dic = new LegacyDIC($GLOBALS);
+					break;
+
+				case (self::version()->isLower(VersionInterface::ILIAS_VERSION_5_3)):
+					global $DIC;
+					self::$dic = new ILIAS52DIC($DIC);
+					break;
+
+				case (self::version()->isLower(VersionInterface::ILIAS_VERSION_5_4)):
+					global $DIC;
+					self::$dic = new ILIAS53DIC($DIC);
+					break;
+
+				default:
+					global $DIC;
+					self::$dic = new ILIAS54DIC($DIC);
+					break;
 			}
 		}
 
 		return self::$dic;
+	}
+
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function output()/*: OutputInterface*/ {
+		if (self::$output === NULL) {
+			self::$output = new Output();
+		}
+
+		return self::$output;
 	}
 
 

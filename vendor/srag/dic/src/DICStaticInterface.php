@@ -4,6 +4,7 @@ namespace srag\DIC\CtrlMainMenu;
 
 use srag\DIC\CtrlMainMenu\DIC\DICInterface;
 use srag\DIC\CtrlMainMenu\Exception\DICException;
+use srag\DIC\CtrlMainMenu\Output\OutputInterface;
 use srag\DIC\CtrlMainMenu\Plugin\PluginInterface;
 use srag\DIC\CtrlMainMenu\Version\VersionInterface;
 
@@ -17,11 +18,27 @@ use srag\DIC\CtrlMainMenu\Version\VersionInterface;
 interface DICStaticInterface {
 
 	/**
+	 * Clear cache. Needed for instance in unit tests
+	 */
+	public static function clearCache()/*: void*/
+	;
+
+
+	/**
 	 * Get DIC interface
 	 *
 	 * @return DICInterface DIC interface
 	 */
 	public static function dic()/*: DICInterface*/
+	;
+
+
+	/**
+	 * Get output interface
+	 *
+	 * @return OutputInterface Output interface
+	 */
+	public static function output()/*: OutputInterface*/
 	;
 
 

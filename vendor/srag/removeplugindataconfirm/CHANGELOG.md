@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.3]
+- Fix repository object uninstaller
+
+## [0.3.2]
+- New OutputInterface
+
 ## [0.3.1]
 - Fixes
 

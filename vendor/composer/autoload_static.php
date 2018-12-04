@@ -12,7 +12,7 @@ class ComposerStaticInit37ef34c51472267f61bafea7b8ad9947
             'srag\\RemovePluginDataConfirm\\CtrlMainMenu\\' => 42,
             'srag\\Plugins\\CtrlMainMenu\\' => 26,
             'srag\\LibrariesNamespaceChanger\\' => 31,
-            'srag\\DIC\\' => 9,
+            'srag\\DIC\\CtrlMainMenu\\' => 22,
             'srag\\CustomInputGUIs\\CtrlMainMenu\\' => 34,
             'srag\\ActiveRecordConfig\\CtrlMainMenu\\' => 37,
         ),
@@ -31,7 +31,7 @@ class ComposerStaticInit37ef34c51472267f61bafea7b8ad9947
         array (
             0 => __DIR__ . '/..' . '/srag/librariesnamespacechanger/src',
         ),
-        'srag\\DIC\\' => 
+        'srag\\DIC\\CtrlMainMenu\\' => 
         array (
             0 => __DIR__ . '/..' . '/srag/dic/src',
         ),
@@ -53,6 +53,7 @@ class ComposerStaticInit37ef34c51472267f61bafea7b8ad9947
         'ilAccessKey' => __DIR__ . '/../..' . '/../../../../../../../Services/Accessibility/classes/class.ilAccessKey.php',
         'ilAdvancedSelectionListGUI' => __DIR__ . '/../..' . '/../../../../../../../Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php',
         'ilAuthFactory' => __DIR__ . '/../..' . '/../../../../../../../Services/Authentication/classes/class.ilAuthFactory.php',
+        'ilBadgeHandler' => __DIR__ . '/../..' . '/../../../../../../../Services/Badge/classes/class.ilBadgeHandler.php',
         'ilBuddySystem' => __DIR__ . '/../..' . '/../../../../../../../Services/Contact/BuddySystem/classes/class.ilBuddySystem.php',
         'ilComponent' => __DIR__ . '/../..' . '/../../../../../../../Services/Component/classes/class.ilComponent.php',
         'ilConfirmationGUI' => __DIR__ . '/../..' . '/../../../../../../../Services/Utilities/classes/class.ilConfirmationGUI.php',

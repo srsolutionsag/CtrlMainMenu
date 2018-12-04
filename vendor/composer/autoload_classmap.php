@@ -13,6 +13,7 @@ return array(
     'ilAccessKey' => $baseDir . '/../../../../../../../Services/Accessibility/classes/class.ilAccessKey.php',
     'ilAdvancedSelectionListGUI' => $baseDir . '/../../../../../../../Services/UIComponent/AdvancedSelectionList/classes/class.ilAdvancedSelectionListGUI.php',
     'ilAuthFactory' => $baseDir . '/../../../../../../../Services/Authentication/classes/class.ilAuthFactory.php',
+    'ilBadgeHandler' => $baseDir . '/../../../../../../../Services/Badge/classes/class.ilBadgeHandler.php',
     'ilBuddySystem' => $baseDir . '/../../../../../../../Services/Contact/BuddySystem/classes/class.ilBuddySystem.php',
     'ilComponent' => $baseDir . '/../../../../../../../Services/Component/classes/class.ilComponent.php',
     'ilConfirmationGUI' => $baseDir . '/../../../../../../../Services/Utilities/classes/class.ilConfirmationGUI.php',

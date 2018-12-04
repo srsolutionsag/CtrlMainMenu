@@ -119,7 +119,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "srag\\DIC\\": "src/"
+                    "srag\\DIC\\CtrlMainMenu\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",

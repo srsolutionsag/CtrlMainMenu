@@ -37,6 +37,7 @@
       "../../../../../../../Services/Accessibility/classes/class.ilAccessKey.php",
       "../../../../../../../Services/ActiveRecord/class.ActiveRecord.php",
       "../../../../../../../Services/Authentication/classes/class.ilAuthFactory.php",
+      "../../../../../../../Services/Badge/classes/class.ilBadgeHandler.php",
       "../../../../../../../Services/Component/classes/class.ilComponent.php",
       "../../../../../../../Services/Component/classes/class.ilPluginConfigGUI.php",
       "../../../../../../../Services/Context/classes/class.ilContext.php",

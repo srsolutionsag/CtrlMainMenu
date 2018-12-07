@@ -13,7 +13,7 @@ common_target#:#Target
 common_title#:#Title
 common_type#:#Type
 activate_cache#:#Activate GlobalCache (experimental)
-activate_cache_info#:#Entries will be stores i Webserver's Memory for 120 seconds.
+activate_cache_info#:#Entries will be stored in Webserver's Memory for 120 seconds.
 add_new#:#Add Entry
 back_to_main#:#Back
 cache_cleared#:#Cache cleared

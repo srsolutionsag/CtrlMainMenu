@@ -8,7 +8,7 @@ use ilLanguage;
 use ilUtil;
 use ReflectionClass;
 use ReflectionProperty;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmData;
 use srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation;
 use srag\Plugins\CtrlMainMenu\EntryInstaceFactory\ctrlmmEntryInstaceFactory;
@@ -685,7 +685,11 @@ class ctrlmmEntry extends ActiveRecord {
 					if (file_exists($path)) {
 						require_once $path;
 						if (class_exists($class_name)) {
-							$access_object = new $class_name;
+							if (method_exists($class_name, "getInstance")) {
+								$access_object = $class_name::getInstance();
+							} else {
+								$access_object = new $class_name();
+							}
 
 							if (method_exists($access_object, $method_name)) {
 								if ($access_object->$method_name()) {

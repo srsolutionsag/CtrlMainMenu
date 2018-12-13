@@ -2,8 +2,7 @@
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
-use srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig;
-use srag\RemovePluginDataConfirm\AbstractRemovePluginDataConfirm;
+use srag\RemovePluginDataConfirm\CtrlMainMenu\AbstractRemovePluginDataConfirm;
 
 /**
  * Class CtrlMainMenuRemoveDataConfirm

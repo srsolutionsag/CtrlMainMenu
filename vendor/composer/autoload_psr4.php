@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'srag\\RemovePluginDataConfirm\\' => array($vendorDir . '/srag/removeplugindataconfirm/src'),
+    'srag\\RemovePluginDataConfirm\\CtrlMainMenu\\' => array($vendorDir . '/srag/removeplugindataconfirm/src'),
     'srag\\Plugins\\CtrlMainMenu\\' => array($baseDir . '/src'),
-    'srag\\DIC\\' => array($vendorDir . '/srag/dic/src'),
-    'srag\\ActiveRecordConfig\\' => array($vendorDir . '/srag/activerecordconfig/src'),
+    'srag\\LibrariesNamespaceChanger\\' => array($vendorDir . '/srag/librariesnamespacechanger/src'),
+    'srag\\DIC\\CtrlMainMenu\\' => array($vendorDir . '/srag/dic/src'),
+    'srag\\CustomInputGUIs\\CtrlMainMenu\\' => array($vendorDir . '/srag/custominputguis/src'),
+    'srag\\ActiveRecordConfig\\CtrlMainMenu\\' => array($vendorDir . '/srag/activerecordconfig/src'),
 );

@@ -11,19 +11,20 @@
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "studer + raimann ag - Team Core 1",
-      "email": "support-core1@studer-raimann.ch",
+      "name": "studer + raimann ag - Team Core",
+      "email": "support-core@studer-raimann.ch",
       "homepage": "https://studer-raimann.ch",
       "role": "Developer"
     }
   ],
   "support": {
-    "email": "support-core1@studer-raimann.ch"
+    "email": "support-core@studer-raimann.ch"
   },
   "require": {
     "php": ">=5.5",
     "srag/activerecordconfig": ">=0.1.0",
     "srag/dic": ">=0.1.0",
+    "srag/librariesnamespacechanger": ">=0.1.0",
     "srag/removeplugindataconfirm": ">=0.1.0"
   },
   "autoload": {
@@ -36,6 +37,7 @@
       "../../../../../../../Services/Accessibility/classes/class.ilAccessKey.php",
       "../../../../../../../Services/ActiveRecord/class.ActiveRecord.php",
       "../../../../../../../Services/Authentication/classes/class.ilAuthFactory.php",
+      "../../../../../../../Services/Badge/classes/class.ilBadgeHandler.php",
       "../../../../../../../Services/Component/classes/class.ilComponent.php",
       "../../../../../../../Services/Component/classes/class.ilPluginConfigGUI.php",
       "../../../../../../../Services/Context/classes/class.ilContext.php",
@@ -77,5 +79,8 @@
     "optimize-autoloader": true,
     "sort-packages": true,
     "classmap-authoritative": true
+  },
+  "scripts": {
+    "pre-autoload-dump": "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces"
   }
 }

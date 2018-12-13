@@ -5,7 +5,7 @@ namespace srag\Plugins\CtrlMainMenu\EntryTypes\Desktop;
 /* Copyright (c) 1998-2010 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 use ilCtrlMainMenuPlugin;
-use srag\DIC\DICTrait;
+use srag\DIC\CtrlMainMenu\DICTrait;
 
 /**
  * Class ctrlmmGLEntry

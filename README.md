@@ -14,8 +14,8 @@ git clone https://github.com/studer-raimann/CtrlMainMenu.git
 As ILIAS administrator go to "Administration->Plugins" and install/activate the plugin.  
 
 ### Requirements
-* ILIAS 5.2 or ILIAS 5.3
-* PHP >=5.5
+* ILIAS 5.4
+* PHP >=7.0
 
 ### ILIAS Plugin SLA
 

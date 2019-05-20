@@ -17,6 +17,9 @@ As ILIAS administrator go to "Administration->Plugins" and install/activate the 
 * ILIAS 5.4
 * PHP >=7.0
 
+### ROADMAP
+With ILIAS 5.4 it is already possible to configure the MainMenu (but with less Menu-Item-Types). The CtrlMainMenu-Plugin is compatible to ILIAS 5.4. But with ILIAS 6.0 there will be a lot of braking changes and we won't update the plugin for ILIAS 6.0. There will be another-plugin (or a spin-off) to provide the known Menu-Item-Types in ILIAS 6.0. 
+
 ### ILIAS Plugin SLA
 
 Wir lieben und leben die Philosophie von Open Source Software! Die meisten unserer Entwicklungen, welche wir im Kundenauftrag oder in Eigenleistung entwickeln, stellen wir öffentlich allen Interessierten kostenlos unter https://github.com/studer-raimann zur Verfügung.

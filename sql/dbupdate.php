@@ -1,9 +1,9 @@
 <#1>
 <?php
-\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::updateDB();
-\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::updateDB();
-\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::updateDB();
-\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::updateDB();
+\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::installDB();
+\srag\Plugins\CtrlMainMenu\Data\ctrlmmData::installDB();
+\srag\Plugins\CtrlMainMenu\Data\ctrlmmTranslation::installDB();
+\srag\Plugins\CtrlMainMenu\Entry\ctrlmmEntry::installDB();
 \srag\Plugins\CtrlMainMenu\Menu\ctrlmmMenu::includeAllTypes();
 
 \srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::set(\srag\Plugins\CtrlMainMenu\Config\ilCtrlMainMenuConfig::F_CSS_PREFIX, 'il');

@@ -85,6 +85,11 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 	 * @return string html
 	 */
 	public function setGroupedListContent() {
+	
+		/** @var $lng \ilLanguage */
+		/** @var $ilCtrl \ilCtrl */
+		global $lng, $ilCtrl;
+	
 		// Overview
 		$ctrlmmGLEntry = new ctrlmmGLEntry();
 		$ctrlmmGLEntry->setId('mm_pd_sel_items');
@@ -109,29 +114,16 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToBookmarks');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
-
-		// private notes
-		if (!self::dic()->ilias()->getSetting('disable_notes')) {
+		
+		// calendar
+		$settings = ilCalendarSettings::_getInstance();
+		if ($settings->isEnabled()) {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
-			$ctrlmmGLEntry->setId('mm_pd_notes');
-			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('notes_and_comments'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToNotes');
+			$ctrlmmGLEntry->setId('mm_pd_cal');
+			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('calendar'));
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToCalendar');
 			$this->addGLEntry($ctrlmmGLEntry);
 		}
-
-		// news
-		if (self::dic()->settings()->get('block_activated_news')) {
-			$ctrlmmGLEntry = new ctrlmmGLEntry();
-			$ctrlmmGLEntry->setId('mm_pd_news');
-			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('news'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToNews');
-			$this->addGLEntry($ctrlmmGLEntry);
-		}
-
-		// overview is always active
-		$this->gl->addSeparator();
-
-		$separator = false;
 
 		if (self::dic()->settings()->get("enable_my_staff") and ilMyStaffAccess::getInstance()->hasCurrentUserAccessToMyStaff() == true) {
 			// my staff
@@ -140,8 +132,6 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('my_staff'));
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToMyStaff');
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
 
 		if (!self::dic()->settings()->get('disable_personal_workspace')) {
@@ -151,8 +141,6 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('personal_workspace'));
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToWorkspace');
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
 
 		// portfolio
@@ -162,8 +150,6 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('portfolio'));
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToPortfolio');
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
 
 		// skills
@@ -172,61 +158,23 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_skill');
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('skills'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToSkills');
+			$ctrlmmGLEntry->setLink( $ilCtrl->getLinkTargetByClass(['ilpersonaldesktopgui', 'ilAchievementsGUI', 'ilPersonalSkillsGUI']) );
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
 
 		// Learning Progress
 		if (ilObjUserTracking::_enabledLearningProgress() AND (ilObjUserTracking::_hasLearningProgressOtherUsers()
 				OR ilObjUserTracking::_hasLearningProgressLearner())) {
-			//self::dic()->tabs()->addTarget('learning_progress', self::dic()->ctrl()->getLinkTargetByClass(ilLearningProgressGUI::class)); // TODO: Translate
+
+			$lng->loadLanguageModule( 'pd' );
+
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
 			$ctrlmmGLEntry->setId('mm_pd_lp');
-			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('learning_progress'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToLP');
+			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('pd_achievements'));
+			$ctrlmmGLEntry->setLink( $ilCtrl->getLinkTargetByClass(['ilpersonaldesktopgui', 'ilAchievementsGUI', 'ilLearningHistoryGUI']) );
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
-
-		if ($separator) {
-			$this->gl->addSeparator();
-		}
-
-		$separator = false;
-
-		// bugfix mantis 23101
-		// badges
-		if (ilBadgeHandler::getInstance()->isActive()) {
-			$ctrlmmGLEntry = new ctrlmmGLEntry();
-			$ctrlmmGLEntry->setId('mm_pd_contacts');
-			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('obj_bdga'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToBadges');
-			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
-		}
-
-		if ($separator) {
-			$this->gl->addSeparator();
-		}
-
-		$separator = false;
-
-		// calendar
-		$settings = ilCalendarSettings::_getInstance();
-		if ($settings->isEnabled()) {
-			$ctrlmmGLEntry = new ctrlmmGLEntry();
-			$ctrlmmGLEntry->setId('mm_pd_cal');
-			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('calendar'));
-			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToCalendar');
-			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
-		}
-
+		
 		// mail
 		if ($this->mail) {
 			$ctrlmmGLEntry = new ctrlmmGLEntry();
@@ -234,8 +182,6 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('mail'));
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilMailGUI::class);
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
 
 		// contacts
@@ -245,12 +191,15 @@ class ctrlmmEntryDesktopGUI extends ctrlmmEntryGroupedListDropdownGUI {
 			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('mail_addressbook'));
 			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToContacts');
 			$this->addGLEntry($ctrlmmGLEntry);
-
-			$separator = true;
 		}
-
-		if ($separator) {
-			$this->gl->addSeparator();
+		
+		// private notes
+		if (!self::dic()->ilias()->getSetting('disable_notes')) {
+			$ctrlmmGLEntry = new ctrlmmGLEntry();
+			$ctrlmmGLEntry->setId('mm_pd_notes');
+			$ctrlmmGLEntry->setTitle(self::dic()->language()->txt('notes_and_comments'));
+			$ctrlmmGLEntry->setLink('ilias.php?baseClass=' . ilPersonalDesktopGUI::class . '&amp;cmd=jumpToNotes');
+			$this->addGLEntry($ctrlmmGLEntry);
 		}
 
 		// profile

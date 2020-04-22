@@ -147,7 +147,7 @@ class ctrlmmTranslation extends ActiveRecord {
 	public static function _getTitleForEntryId($entry_id) {
 		$obj = self::_getInstanceForLanguageKey($entry_id, self::dic()->user()->getLanguage());
 
-		if (!isset($obj)) {
+		if ($obj->getId() == 0) {
 			$lngs = new ilLanguage('en');
 			$obj = self::_getInstanceForLanguageKey($entry_id, $lngs->getDefaultLanguage());
 			if ($obj->getId() == 0) {
